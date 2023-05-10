@@ -41,7 +41,7 @@
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^5.1.0",
-    "inquirer": "^8.2.4",
+    "inquirer": "^9.2.2",
     "jest": "^28.1.1",
     "lodash": "^4.17.21",
     "luxon": "^2.4.0",
