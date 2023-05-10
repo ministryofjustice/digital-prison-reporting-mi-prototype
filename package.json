@@ -44,7 +44,7 @@
     "inquirer": "^8.2.4",
     "jest": "^28.1.1",
     "lodash": "^4.17.21",
-    "luxon": "^2.4.0",
+    "luxon": "^2.5.2",
     "marked": "^4.0.17",
     "notifications-node-client": "^5.1.1",
     "nunjucks": "^3.2.3",
