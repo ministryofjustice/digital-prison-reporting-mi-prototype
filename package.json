@@ -17,7 +17,7 @@
     "test:integration:edge": "start-server-and-test 3000 'cypress run --browser edge'",
     "test:integration:chrome": "start-server-and-test 3000 'cypress run --browser chrome'",
     "test:integration:electron": "start-server-and-test 3000 'cypress run --browser electron'",
-    "test": "gulp generate-assets && jest && npm run lint"
+    "test": "gulp generate-assets && jest --passWithNoTests && npm run lint"
   },
   "dependencies": {
     "acorn": "^8.5.0",
@@ -63,6 +63,7 @@
     "eslint-plugin-cypress": "^2.12.1",
     "glob": "^8.0.3",
     "jest": "^29.5.0",
+    "jest-jasmine2": "^29.5.0",
     "standard": "^17.0.0",
     "start-server-and-test": "^1.14.0",
     "supertest": "^6.2.3",
