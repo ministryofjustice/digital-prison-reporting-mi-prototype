@@ -46,7 +46,7 @@
     "lodash": "^4.17.21",
     "luxon": "2.5.2",
     "marked": "^4.0.17",
-    "notifications-node-client": "^5.1.1",
+    "notifications-node-client": "^7.0.0",
     "nunjucks": "^3.2.4",
     "portscanner": "^2.2.0",
     "require-dir": "^1.2.0",
