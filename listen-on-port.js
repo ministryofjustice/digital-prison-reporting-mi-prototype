@@ -8,8 +8,8 @@ const config = require('./app/config.js')
 const utils = require('./lib/utils.js')
 
 // Set up configuration variables
-var useBrowserSync = config.useBrowserSync.toLowerCase()
-var env = utils.getNodeEnv()
+const useBrowserSync = config.useBrowserSync.toLowerCase()
+const env = utils.getNodeEnv()
 
 utils.findAvailablePort(server, function (port) {
   console.log('Listening on port ' + port + '   url: http://localhost:' + port)
@@ -19,7 +19,7 @@ utils.findAvailablePort(server, function (port) {
     server.listen(port - 50, function () {
       browserSync({
         proxy: 'localhost:' + (port - 50),
-        port: port,
+        port,
         ui: false,
         files: ['public/**/*.*', 'app/views/**/*.*'],
         ghostMode: false,
