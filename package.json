@@ -27,7 +27,7 @@
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.6",
     "cross-spawn": "^7.0.2",
-    "del": "^7.0.0",
+    "del": "^6.1.1",
     "dotenv": "^16.0.1",
     "eslint-plugin-cypress": "^2.12.1",
     "express": "^4.18.1",
