@@ -51,7 +51,7 @@
     "portscanner": "^2.2.0",
     "require-dir": "^1.2.0",
     "sass": "^1.52.3",
-    "start-server-and-test": "^1.14.0",
+    "start-server-and-test": "^2.0.0",
     "supertest": "^6.2.3",
     "sync-request": "^6.1.0",
     "universal-analytics": "^0.5.3",
@@ -65,7 +65,7 @@
     "jest": "^29.5.0",
     "jest-jasmine2": "^29.5.0",
     "standard": "^17.0.0",
-    "start-server-and-test": "^1.14.0",
+    "start-server-and-test": "^2.0.0",
     "supertest": "^6.2.3",
     "wait-on": "^7.0.1"
   },
