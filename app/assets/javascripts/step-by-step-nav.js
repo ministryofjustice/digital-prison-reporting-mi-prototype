@@ -70,7 +70,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           let linkText = actions.showText // eslint-disable-line no-unused-vars
 
           if (headerIsOpen($(this))) {
-            linkText = actions.hideText
+            linkText = actions.hideText // eslint-disable-line no-unused-vars
           }
 
           if (!$(this).find('.js-toggle-link').length) {
