@@ -30,6 +30,7 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 {% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
+{% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -55,12 +56,12 @@
     items: [
       {
         text: 'Home',
-        href: '',
+        href: '/',
         active: true
       },
       {
         text: 'Reports',
-        href: '#reports'
+        href: '/reports'
       }
     ]
   }) }}
