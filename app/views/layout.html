@@ -50,20 +50,18 @@
     containerClasses: "govuk-width-container"
   }) }}
 
-
   {{ mojPrimaryNavigation({
     label: 'Primary navigation',
     items: [
       {
         text: 'Home',
-        href: '/',
-        active: true
+        href: '/'
       },
       {
         text: 'Reports',
         href: '/reports'
       }
-    ]
+    ] | setCurrentToActive(currentUrl)
   }) }}
 {% endblock %}
 

@@ -1,4 +1,4 @@
-module.exports = function (env) {
+module.exports = function () {
   /**
    * Instantiate object used to store the methods registered as a
    * 'filter' (of the same name) within nunjucks. You can override
@@ -6,6 +6,10 @@ module.exports = function (env) {
    * @type {Object}
    */
   const filters = {}
+
+  filters.setCurrentToActive = function (navItems, currentUrl) {
+    return navItems.map(n => n.href === currentUrl ? { ...n, active: true } : n)
+  }
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
