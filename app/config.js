@@ -10,7 +10,7 @@ module.exports = {
   port: '3000',
 
   // Enable or disable password protection on production
-  useAuth: 'true',
+  useAuth: 'false',
 
   // Automatically stores form data, and send to all views
   useAutoStoreData: 'true',
@@ -20,7 +20,7 @@ module.exports = {
   useCookieSessionStore: 'false',
 
   // Enable or disable built-in docs and examples.
-  useDocumentation: 'true',
+  useDocumentation: 'false',
 
   // Force HTTP to redirect to HTTPS on production
   useHttps: 'true',
