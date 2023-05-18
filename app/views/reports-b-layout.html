@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Digital Prison Reporting MI Prototype - Reports
+{% endblock %}
+
+{% block subHeader %}
+  {% set breadCrumbs = [ { text: "Reports", href: "/reports-b/" } ] | addMatchingBreadCrumbs(reportsNavItems, currentUrl) %}
+
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: breadCrumbs
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column">
+      {% block reportBody %}{% endblock %}
+    </div>
+  </div>
+
+{% endblock %}

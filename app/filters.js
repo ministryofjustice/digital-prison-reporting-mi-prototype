@@ -11,6 +11,22 @@ module.exports = function () {
     return navItems.map(n => n.href === currentUrl ? { ...n, active: true } : n)
   }
 
+  filters.addMatchingBreadCrumbs = function (items, navItems, currentUrl) {
+    const flattenedItems = navItems.flatMap(section => section.items.map(item => {
+      return {
+        text: `${section.heading.text} - ${item.text}`,
+        href: item.href
+      }
+    }))
+    const matchingItem = flattenedItems.find(item => item.href === currentUrl)
+    return matchingItem
+      ? [
+          ...items,
+          matchingItem
+        ]
+      : items
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

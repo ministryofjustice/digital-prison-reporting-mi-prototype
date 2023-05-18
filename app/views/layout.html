@@ -1,6 +1,33 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
+{% set reportsNavItems = [
+        {
+          heading: {
+            text: 'People'
+          },
+          items: [{
+            text: 'Person register',
+            href: '/reports-' + type + '/people/person-register',
+            description: 'Person register description'
+          }, {
+            text: 'Prisoner movements',
+            href: '/reports-' + type + '/people/prisoner-movements',
+            description: 'Prisoner movements description'
+          }] | setCurrentToActive(currentUrl)
+        },
+        {
+          heading: {
+            text: 'Locations'
+          },
+          items: [{
+            text: 'Summary',
+            href: '/reports-' + type + '/locations/summary',
+            description: 'Summary description'
+          }] | setCurrentToActive(currentUrl)
+        }
+      ] %}
+
 {% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
@@ -31,6 +58,7 @@
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 {% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
 {% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
+{% from "_components/card-group/macro.html"              import appCardGroup %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -58,11 +86,16 @@
         href: '/'
       },
       {
-        text: 'Reports',
-        href: '/reports'
+        text: 'Reports A',
+        href: '/reports-a/'
+      },
+      {
+        text: 'Reports B',
+        href: '/reports-b/'
       }
     ] | setCurrentToActive(currentUrl)
   }) }}
+  {% block subHeader %}{% endblock %}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
