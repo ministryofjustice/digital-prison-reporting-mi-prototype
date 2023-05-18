@@ -23,4 +23,8 @@ $moj-assets-path: '/moj/assets/';
 
 @import "node_modules/@ministryofjustice/frontend/moj/all";
 
+// Components
+
+@import "components/_cards";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

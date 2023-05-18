@@ -1,0 +1,11 @@
+
+{% extends "reports-b-layout.html" %}
+
+{% block reportBody %}
+
+  {% for section in reportsNavItems %}
+    <h3 class="govuk-heading-m">{{ section.heading.text }}</h3>
+    {{ appCardGroup(section.items) }}
+  {% endfor %}
+
+{% endblock %}
