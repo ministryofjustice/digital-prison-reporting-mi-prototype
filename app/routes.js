@@ -25,12 +25,12 @@ router.get('/reports-:type/locations/summary', [configureReportsOptions, functio
 function configureReportsOptions (req, res, next) {
   req.renderOptions = {
     currentUrl: req.originalUrl,
-    type: cleanseType(req.params.type, res)
+    type: validateReportType(req.params.type, res)
   }
   next()
 }
 
-function cleanseType (type, res) {
+function validateReportType (type, res) {
   const reportType = reportTypes.find(t => t === type)
   if (reportType) {
     return reportType
