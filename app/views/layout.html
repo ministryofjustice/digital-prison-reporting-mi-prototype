@@ -29,6 +29,8 @@
 {% from "govuk/components/tag/macro.njk"                 import govukTag %}
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
+{% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
+{% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -46,6 +48,20 @@
     serviceName: serviceName,
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
+  }) }}
+
+  {{ mojPrimaryNavigation({
+    label: 'Primary navigation',
+    items: [
+      {
+        text: 'Home',
+        href: '/'
+      },
+      {
+        text: 'Reports',
+        href: '/reports'
+      }
+    ] | setCurrentToActive(currentUrl)
   }) }}
 {% endblock %}
 

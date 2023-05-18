@@ -148,6 +148,10 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 
+// Serve MOJ front end assets and JS
+app.use('/moj/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')))
+app.use('/moj/all.js', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/all.js')))
+
 let nunjucksDocumentationEnv
 
 // Set up documentation app
