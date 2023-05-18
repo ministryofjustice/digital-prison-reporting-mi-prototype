@@ -13,6 +13,7 @@
     "lint:fix": "standard --fix",
     "rapidtest": "jest --bail",
     "cypress:open": "cypress open",
+    "security_audit": "npx audit-ci --config audit-ci.json",
     "test:integration": "start-server-and-test 3000 'cypress run'",
     "test:integration:edge": "start-server-and-test 3000 'cypress run --browser edge'",
     "test:integration:chrome": "start-server-and-test 3000 'cypress run --browser chrome'",

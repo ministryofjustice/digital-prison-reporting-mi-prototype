@@ -26,8 +26,10 @@ Run the command ```npm start``` and open http://localhost:3000 in a web browser.
 
 To update protype kit in this repository see the [update guide](https://govuk-prototype-kit.herokuapp.com/docs/updating-the-kit).
 
-## Usage
+## Prototype deployment
 
-```
-    TBD
-```
+The prototype is deployed to the Cloud Platform, as laid out by the prototype [publishing guide](https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/prototype-kit.html#publish-prototypes-on-the-web).
+
+- URL: https://digital-prison-reporting-mi-prototype-main.apps.live.cloud-platform.service.justice.gov.uk/
+- Username: `dpr_user`
+- Password: `dpr_password`
