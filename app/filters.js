@@ -8,7 +8,14 @@ module.exports = function () {
   const filters = {}
 
   filters.setCurrentToActive = function (navItems, currentUrl) {
-    return navItems.map(n => n.href === currentUrl ? { ...n, active: true } : n)
+    return navItems.map(n => {
+      if (currentUrl.startsWith(n.href) &&
+        (n.href !== '/' || currentUrl === '/')) {
+        return { ...n, active: true }
+      } else {
+        return n
+      }
+    })
   }
 
   filters.addMatchingBreadCrumbs = function (items, navItems, currentUrl) {
