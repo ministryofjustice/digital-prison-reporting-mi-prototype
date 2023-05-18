@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const reportTypes = ['a', 'b']
 
 router.get('/', function (req, res) {
   res.render('index', { currentUrl: req.originalUrl })
@@ -30,12 +31,12 @@ function configureReportsOptions (req, res, next) {
 }
 
 function cleanseType (type, res) {
-  switch (type) {
-    case 'a':
-    case 'b':
-      return type
+  const reportType = reportTypes.find(t => t === type)
+  if (reportType) {
+    return reportType
+  } else {
+    res.status(404).send('Page not found')
   }
-  res.status(404).send('Page not found')
 }
 
 module.exports = router
