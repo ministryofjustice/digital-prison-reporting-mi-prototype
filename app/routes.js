@@ -6,7 +6,7 @@ router.get('/', function (req, res) {
 })
 
 router.get('/reports-:type/', [configureReportsOptions, function (req, res) {
-  res.render(`reports-${req.params.type}-home`, req.renderOptions)
+  res.render(`reports-${req.renderOptions.type}-home`, req.renderOptions)
 }])
 
 router.get('/reports-:type/people/person-register', [configureReportsOptions, function (req, res) {
@@ -24,7 +24,7 @@ router.get('/reports-:type/locations/summary', [configureReportsOptions, functio
 function configureReportsOptions (req, res, next) {
   req.renderOptions = {
     currentUrl: req.originalUrl,
-    type: cleanseType(req.params.type, res),
+    type: cleanseType(req.params.type, res)
   }
   next()
 }
