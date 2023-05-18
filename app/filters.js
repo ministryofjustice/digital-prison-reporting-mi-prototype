@@ -8,6 +8,10 @@ module.exports = function () {
   const filters = {}
 
   filters.setCurrentToActive = function (navItems, currentUrl) {
+    if (!currentUrl || !navItems) {
+      return navItems
+    }
+
     return navItems.map(n => {
       if (currentUrl.startsWith(n.href) &&
         (n.href !== '/' || currentUrl === '/')) {
@@ -19,6 +23,10 @@ module.exports = function () {
   }
 
   filters.addMatchingBreadCrumbs = function (items, navItems, currentUrl) {
+    if (!currentUrl || !navItems) {
+      return items
+    }
+
     const flattenedItems = navItems.flatMap(section => section.items.map(item => {
       return [
         {
