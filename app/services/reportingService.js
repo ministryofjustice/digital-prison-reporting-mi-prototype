@@ -1,9 +1,13 @@
-import fakePersonRegisterData from '../data/fakePersonRegisterData'
+const fakePersonRegisterData = require('../data/fakePersonRegisterData')
 
-const reportingService = {
+module.exports = {
+
   listPersonRegister: () => {
-    return fakePersonRegisterData
-  }
-}
+    return fakePersonRegisterData.data
+  },
 
-export default reportingService
+  countPersonRegister: () => {
+    return fakePersonRegisterData.data.length
+  }
+
+}
