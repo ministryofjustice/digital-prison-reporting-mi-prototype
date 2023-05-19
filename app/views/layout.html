@@ -8,11 +8,11 @@
           },
           items: [{
             text: 'Person register',
-            href: '/reports-' + type + '/people/person-register',
+            href: '/reports/person-register',
             description: 'Person register description'
           }, {
             text: 'Prisoner movements',
-            href: '/reports-' + type + '/people/prisoner-movements',
+            href: '/reports/people/prisoner-movements',
             description: 'Prisoner movements description'
           }] | setCurrentToActive(currentUrl)
         },
@@ -22,7 +22,7 @@
           },
           items: [{
             text: 'Summary',
-            href: '/reports-' + type + '/locations/summary',
+            href: '/reports/locations/summary',
             description: 'Summary description'
           }] | setCurrentToActive(currentUrl)
         }
@@ -91,7 +91,7 @@
       },
       {
         text: 'Reports B',
-        href: '/reports-b/'
+        href: '/reports/'
       }
     ] | setCurrentToActive(currentUrl)
   }) }}
