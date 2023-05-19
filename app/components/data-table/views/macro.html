@@ -1,0 +1,13 @@
+{#
+  caption,        // The caption above the table, describing the data
+  head,           // A list of columns containing 'text', and optionally 'format' (e.g. numeric)
+  rows,           // A list (rows) of a list (cells) containing 'text', and optionally 'format' (e.g. numeric)
+  totalRowCount,  // The total number of rows
+  selectedPage,   // The currently selected page (e.g. '3', which would display rows 41-60 with a page size of 20)
+  pageSize,       // The number of rows on each page
+  sortedOn,       // The field name the data is sorted on (should match a 'text' field in 'head')
+  sortedAsc       // The sort order of the data
+#}
+{% macro appDataTable(caption, head, rows, totalRowCount, selectedPage, pageSize, sortedOn, sortedAsc) %}
+  {%- include "./template.html" -%}
+{% endmacro %}

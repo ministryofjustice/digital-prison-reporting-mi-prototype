@@ -8,11 +8,11 @@
           },
           items: [{
             text: 'Person register',
-            href: '/reports-' + type + '/people/person-register',
+            href: '/reports/person-register',
             description: 'Person register description'
           }, {
             text: 'Prisoner movements',
-            href: '/reports-' + type + '/people/prisoner-movements',
+            href: '/reports/people/prisoner-movements',
             description: 'Prisoner movements description'
           }] | setCurrentToActive(currentUrl)
         },
@@ -22,7 +22,7 @@
           },
           items: [{
             text: 'Summary',
-            href: '/reports-' + type + '/locations/summary',
+            href: '/reports/locations/summary',
             description: 'Summary description'
           }] | setCurrentToActive(currentUrl)
         }
@@ -59,6 +59,7 @@
 {% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
 {% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
 {% from "_components/card-group/macro.html"              import appCardGroup %}
+{% from "../components/data-table/views/macro.html"      import appDataTable %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -86,12 +87,8 @@
         href: '/'
       },
       {
-        text: 'Reports A',
-        href: '/reports-a/'
-      },
-      {
-        text: 'Reports B',
-        href: '/reports-b/'
+        text: 'Reports',
+        href: '/reports/'
       }
     ] | setCurrentToActive(currentUrl)
   }) }}
