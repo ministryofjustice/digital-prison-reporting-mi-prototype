@@ -6,11 +6,10 @@ const dataTableUtils = require('./components/data-table/utils')
 const dataFormats = require('./reportDataFormats')
 
 const configureReportsOptions = (req, res, next) => {
-  console.log(req)
   const query = req.query ? req.query : {}
   const {
     selectedPage = 1,
-    pageSize = 20,
+    pageSize = 10,
     sortColumn = 0,
     sortedAsc = true
   } = query
@@ -36,7 +35,6 @@ router.get('/reports/', [configureReportsOptions, function (req, res) {
 }])
 
 router.get('/reports/person-register', [configureReportsOptions, function (req, res) {
-  console.log(req.renderOptions)
   const personRegisterData = reportingService.listPersonRegister({
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormats.personRegister[req.renderOptions.dataTable.sortColumn].name

@@ -46,7 +46,14 @@ TO DO: totalRowCount, selectedPage, pageSize, sortColumn, sortedAsc
       id: "pageSize",
       name: "sort",
       value: pageSize,
+      attributes: {
+        onchange: "window.location.href = '?selectedPage=" + selectedPage + "&pageSize=' + this.value + '&sortColumn=" + sortColumn + "&sortedAsc=" + sortedAsc + "'"
+      },
       items: [
+        {
+          value: "10",
+          text: "10 rows per page"
+        },
         {
           value: "20",
           text: "20 rows per page"
