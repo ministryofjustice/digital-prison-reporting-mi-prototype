@@ -14,7 +14,8 @@ const personRegisterDataFormat = [
 ]
  */
 
-const querystring = require('querystring');
+const LOCALE = 'en-GB'
+const querystring = require('querystring')
 
 module.exports = {
   getHeaders: format => (format.map(f => ({
@@ -27,7 +28,7 @@ module.exports = {
     format: f.format
   }))))),
 
-  mapDate: isoDate => new Date(isoDate).toLocaleDateString('en-GB'),
+  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE),
 
   mapOptionsToUrl: (selectedPage, pageSize, sortColumn, sortedAsc) => (
     '?' + querystring.stringify({
