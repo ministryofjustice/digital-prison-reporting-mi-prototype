@@ -1,4 +1,4 @@
-const { filters: dataTableFilters } = require('./components/data-table/utils')
+const dataTableFilters = require('./components/data-table/filters')
 
 module.exports = function () {
   /**

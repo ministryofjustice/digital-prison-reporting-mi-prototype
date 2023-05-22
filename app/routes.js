@@ -3,7 +3,8 @@ const router = express.Router()
 
 const reportingService = require('./services/reportingService')
 const dataFormats = require('./reportDataFormats')
-const { configureDataTableOptions, getHeaders, mapData } = require('./components/data-table/utils')
+const { getHeaders, mapData } = require('./components/data-table/utils')
+const { configureDataTableOptions } = require('./components/data-table/handlers')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
