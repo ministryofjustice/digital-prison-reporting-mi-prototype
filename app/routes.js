@@ -2,39 +2,27 @@ const express = require('express')
 const router = express.Router()
 
 const reportingService = require('./services/reportingService')
-const dataTableUtils = require('./components/data-table/utils')
 const dataFormats = require('./reportDataFormats')
+const { getHeaders, mapData } = require('./components/data-table/utils')
+const { configureDataTableOptions } = require('./components/data-table/handlers')
 
-const configureReportsOptions = (req, res, next) => {
-  const query = req.query ? req.query : {}
-  const {
-    selectedPage = 1,
-    pageSize = 10,
-    sortColumn = 0,
-    sortedAsc = true
-  } = query
-
+const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
-    currentUrl: req.route.path,
-    dataTable: {
-      selectedPage,
-      pageSize,
-      sortColumn,
-      sortedAsc
-    }
+    ...req.renderOptions,
+    currentUrl: req.route.path
   }
   next()
 }
 
-router.get('/', function (req, res) {
-  res.render('index', { currentUrl: req.originalUrl })
-})
+router.get('/', [configureCurrentUrl, function (req, res) {
+  res.render('index', req.renderOptions)
+}])
 
-router.get('/reports/', [configureReportsOptions, function (req, res) {
+router.get('/reports/', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   res.render('reports-home', req.renderOptions)
 }])
 
-router.get('/reports/person-register', [configureReportsOptions, function (req, res) {
+router.get('/reports/person-register', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   const personRegisterData = reportingService.listPersonRegister({
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormats.personRegister[req.renderOptions.dataTable.sortColumn].name
@@ -42,17 +30,17 @@ router.get('/reports/person-register', [configureReportsOptions, function (req, 
 
   res.render('reports-people-person-register', {
     ...req.renderOptions,
-    head: dataTableUtils.getHeaders(dataFormats.personRegister),
-    rows: dataTableUtils.mapData(personRegisterData, dataFormats.personRegister),
+    head: getHeaders(dataFormats.personRegister),
+    rows: mapData(personRegisterData, dataFormats.personRegister),
     totalRowCount: reportingService.countPersonRegister()
   })
 }])
 
-router.get('/reports/people/prisoner-movements', [configureReportsOptions, function (req, res) {
+router.get('/reports/people/prisoner-movements', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   res.render('reports-people-prisoner-movements', req.renderOptions)
 }])
 
-router.get('/reports/locations/summary', [configureReportsOptions, function (req, res) {
+router.get('/reports/locations/summary', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   res.render('reports-locations-summary', req.renderOptions)
 }])
 
