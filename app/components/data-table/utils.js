@@ -14,6 +14,10 @@ const personRegisterDataFormat = [
 ]
  */
 
+const mapOptionsToUrl = (selectedPage, pageSize, sortColumn, sortedAsc) => (
+  '?selectedPage=' + selectedPage + '&pageSize=' + pageSize + '&sortColumn=' + sortColumn + '&sortedAsc=' + sortedAsc
+)
+
 module.exports = {
   getHeaders: format => (format.map(f => ({
     text: f.header,
@@ -25,5 +29,54 @@ module.exports = {
     format: f.format
   }))))),
 
-  mapDate: isoDate => isoDate
+  mapDate: isoDate => isoDate,
+
+  configureDataTableOptions: (req, res, next) => {
+    const query = req.query ? req.query : {}
+    const {
+      selectedPage = 1,
+      pageSize = 10,
+      sortColumn = 0,
+      sortedAsc = 'true'
+    } = query
+
+    req.renderOptions = {
+      ...req.renderOptions,
+      dataTable: {
+        selectedPage,
+        pageSize,
+        sortColumn,
+        sortedAsc: sortedAsc === 'true',
+        mapOptionsToUrl
+      }
+    }
+
+    next()
+  },
+
+  filters: {
+    applySorting: (headers, dataTableOptions) => {
+      const {
+        selectedPage,
+        pageSize,
+        sortColumn,
+        sortedAsc,
+        mapOptionsToUrl
+      } = dataTableOptions
+
+      return headers.map((h, index) => {
+        const ariaSort = ((index === Number(sortColumn)) ? (sortedAsc ? 'ascending' : 'descending') : 'none')
+
+        return {
+          ...h,
+          html: '<button ' +
+            'data-index="' + index + '" ' +
+            'aria-sort="' + ariaSort + '" ' +
+            'class="data-table-header-button data-table-header-button-sort-' + ariaSort + '" ' +
+            'onclick="window.location.href=\'' + mapOptionsToUrl(selectedPage, pageSize, index, ariaSort !== 'ascending') + '\'"' +
+            '>' + h.text + '</button>'
+        }
+      })
+    }
+  }
 }
