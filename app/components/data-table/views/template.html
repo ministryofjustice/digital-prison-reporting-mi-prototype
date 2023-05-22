@@ -1,35 +1,69 @@
-{% from "govuk/components/table/macro.njk"               import govukTable %}
-{% from "govuk/components/pagination/macro.njk"          import govukPagination %}
-<!--
-TO DO: totalRowCount, selectedPage, pageSize, sortedOn, sortedAsc
--->
-{{ govukTable({
-  caption: caption,
-  captionClasses: "govuk-table__caption--m",
-  head: head,
-  rows: rows
-}) }}
+{% from "govuk/components/table/macro.njk"       import govukTable %}
+{% from "govuk/components/pagination/macro.njk"  import govukPagination %}
+{% from "govuk/components/select/macro.njk"      import govukSelect %}
 
-{{ govukPagination({
-  previous: {
-    href: "#"
-  },
-  next: {
-    href: "#"
-  },
-  items: [
-    {
-      number: 1,
-      href: "#"
+<!--
+TO DO: totalRowCount, selectedPage, sortColumn, sortedAsc
+-->
+{%- set pages = [] %}
+{%- set lastPage = (totalRowCount / pageSize) | round(0, 'ceil') %}
+{%- for page in range(1, lastPage + 1) %}
+  {%- if page === 1 or page === lastPage or (page >= selectedPage - 1 and page <= (selectedPage | int) + 1) %}
+    {%- set href = "?selectedPage=" + page + "&pageSize=" + pageSize + "&sortColumn=" + sortColumn + "&sortedAsc=" + sortedAsc %}
+    {%- set pages = pages.concat({ number: page, href: href, current: (page === (selectedPage | int)) }) %}
+  {%- elif page === 2 or page === lastPage - 1 %}
+    {%- set pages = pages.concat({ ellipsis: true }) %}
+  {%- endif %}
+{%- endfor %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column">
+    {{ govukTable({
+      caption: caption,
+      captionClasses: "govuk-table__caption--m",
+      head: head,
+      rows: rows
+    }) }}
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  {{ govukPagination({
+    previous: {
+      href: "?selectedPage=" + (selectedPage - 1) + "&pageSize=" + pageSize + "&sortColumn=" + sortColumn + "&sortedAsc=" + sortedAsc
     },
-    {
-      number: 2,
-      current: true,
-      href: "#"
+    next: {
+      href: "?selectedPage=" + ((selectedPage | int) + 1) + "&pageSize=" + pageSize + "&sortColumn=" + sortColumn + "&sortedAsc=" + sortedAsc
     },
-    {
-      number: 3,
-      href: "#"
-    }
-  ]
-}) }}
+    items: pages
+  }) }}
+  </div>
+  <div class="govuk-grid-column-one-third data-table-page-size">
+    {{ govukSelect({
+      id: "pageSize",
+      name: "sort",
+      value: pageSize,
+      attributes: {
+        onchange: "window.location.href = '?selectedPage=1&pageSize=' + this.value + '&sortColumn=" + sortColumn + "&sortedAsc=" + sortedAsc + "'"
+      },
+      items: [
+        {
+          value: "10",
+          text: "10 rows per page"
+        },
+        {
+          value: "20",
+          text: "20 rows per page"
+        },
+        {
+          value: "100",
+          text: "100 rows per page"
+        },
+        {
+          value: "200",
+          text: "200 rows per page"
+        }
+      ]
+    }) }}
+  </div>
+</div>

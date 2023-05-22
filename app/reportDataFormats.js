@@ -2,13 +2,13 @@ const dataTableUtils = require('./components/data-table/utils')
 
 module.exports = {
   personRegister: [
-    { header: 'Book Number', data: d => d.bookNumber },
-    { header: 'Agency Location Code', data: d => d.agencyLocationCode },
-    { header: 'Prison Number', data: d => d.prisonNumber },
-    { header: 'First Name', data: d => d.firstName },
-    { header: 'Last Name', data: d => d.lastName },
-    { header: 'Date Of Birth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric' },
-    { header: 'Establishment', data: d => d.establishment },
-    { header: 'Cell', data: d => d.cell }
+    { header: 'Book Number', name: 'bookNumber' },
+    { header: 'Agency Location Code', name: 'agencyLocationCode' },
+    { header: 'Prison Number', name: 'prisonNumber' },
+    { header: 'First Name', name: 'firstName' },
+    { header: 'Last Name', name: 'lastName' },
+    { header: 'Date Of Birth', name: 'dateOfBirth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric' },
+    { header: 'Establishment', name: 'establishment' },
+    { header: 'Cell', name: 'cell' }
   ]
 }
