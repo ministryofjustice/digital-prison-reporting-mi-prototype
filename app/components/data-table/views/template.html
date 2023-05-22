@@ -41,7 +41,7 @@
       name: "sort",
       value: pageSize,
       attributes: {
-        onchange: "window.location.href = '" + mapOptionsToUrl(1, "' + this.value + '", sortColumn, sortedAsc) + "'"
+        onchange: "window.location.href = ('" + mapOptionsToUrl(1, "thisValue", sortColumn, sortedAsc) + "'.replace(/thisValue/, this.value))"
       },
       items: [
         {

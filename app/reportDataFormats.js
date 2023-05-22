@@ -10,5 +10,16 @@ module.exports = {
     { header: 'Date Of Birth', name: 'dateOfBirth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric' },
     { header: 'Establishment', name: 'establishment' },
     { header: 'Cell', name: 'cell' }
+  ],
+
+  externalMovements: [
+    { header: 'Book Number', name: 'bookNumber' },
+    { header: 'Date', name: 'date', data: d => dataTableUtils.mapDate(d.date), format: 'numeric' },
+    { header: 'Time', name: 'time' },
+    { header: 'From', name: 'from' },
+    { header: 'To', name: 'to' },
+    { header: 'Direction', name: 'direction' },
+    { header: 'Type', name: 'type' },
+    { header: 'Reason', name: 'reason' }
   ]
 }

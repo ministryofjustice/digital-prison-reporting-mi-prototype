@@ -37,7 +37,17 @@ router.get('/reports/person-register', [configureCurrentUrl, configureDataTableO
 }])
 
 router.get('/reports/people/prisoner-movements', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
-  res.render('reports-people-prisoner-movements', req.renderOptions)
+  const externalMovementsData = reportingService.listExternalMovements({
+    ...req.renderOptions.dataTable,
+    sortColumnName: dataFormats.externalMovements[req.renderOptions.dataTable.sortColumn].name
+  })
+
+  res.render('reports-people-prisoner-movements', {
+    ...req.renderOptions,
+    head: getHeaders(dataFormats.externalMovements),
+    rows: mapData(externalMovementsData, dataFormats.externalMovements),
+    totalRowCount: reportingService.countPersonRegister()
+  })
 }])
 
 router.get('/reports/locations/summary', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
