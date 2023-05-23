@@ -32,3 +32,27 @@ describe('GET /reports/', () => {
       })
   })
 })
+
+describe('GET /reports/person-register', () => {
+  it('Person register report returns successfully', () => {
+    return request(app)
+      .get('/reports/person-register')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('Person register')
+      })
+  })
+})
+
+describe('GET /reports/prisoner-movements', () => {
+  it('External movements report returns successfully', () => {
+    return request(app)
+      .get('/reports/prisoner-movements')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
+      })
+  })
+})

@@ -36,7 +36,7 @@ router.get('/reports/person-register', [configureCurrentUrl, configureDataTableO
   })
 }])
 
-router.get('/reports/people/prisoner-movements', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
+router.get('/reports/prisoner-movements', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   const externalMovementsData = reportingService.listExternalMovements({
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormats.externalMovements[req.renderOptions.dataTable.sortColumn].name
