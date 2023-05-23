@@ -72,9 +72,9 @@
     "plugins": [
       "cypress"
     ],
-    "env": {
-      "cypress/globals": true
-    }
+    "env": [
+      "jest"
+    ]
   },
   "jest": {
     "testRunner": "jest-jasmine2"
