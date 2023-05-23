@@ -36,31 +36,36 @@
   }) }}
   </div>
   <div class="govuk-grid-column-one-third data-table-page-size">
-    {{ govukSelect({
-      id: "pageSize",
-      name: "sort",
-      value: pageSize,
-      attributes: {
-        onchange: "window.location.href = ('" + mapOptionsToUrl(1, "thisValue", sortColumn, sortedAsc) + "'.replace(/thisValue/, this.value))"
-      },
-      items: [
-        {
-          value: "10",
-          text: "10 rows per page"
+    <div class="govuk-input__wrapper">
+      {{ govukSelect({
+        id: "pageSize",
+        name: "sort",
+        value: pageSize,
+        attributes: {
+          onchange: "window.location.href = ('" + mapOptionsToUrl(1, "thisValue", sortColumn, sortedAsc) + "'.replace(/thisValue/, this.value))"
         },
-        {
-          value: "20",
-          text: "20 rows per page"
-        },
-        {
-          value: "100",
-          text: "100 rows per page"
-        },
-        {
-          value: "200",
-          text: "200 rows per page"
-        }
-      ]
-    }) }}
+        items: [
+          {
+            value: "10",
+            text: "10"
+          },
+          {
+            value: "20",
+            text: "20"
+          },
+          {
+            value: "100",
+            text: "100"
+          },
+          {
+            value: "200",
+            text: "200"
+          }
+        ]
+      }) }}
+      <div class="govuk-input__suffix" aria-hidden="true">
+        rows per page
+      </div>
+    </div>
   </div>
 </div>
