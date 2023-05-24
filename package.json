@@ -80,6 +80,11 @@
     ]
   },
   "jest": {
-    "testRunner": "jest-jasmine2"
+    "testRunner": "jest-jasmine2",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "app/**/*.{js,jsx}",
+      "!app/assets/**/*.{js,jsx}"
+    ]
   }
 }

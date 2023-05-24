@@ -28,10 +28,10 @@
   {{ govukPagination({
     previous: {
       href: mapOptionsToUrl(selectedPage - 1, pageSize, sortColumn, sortedAsc)
-    },
+    } if ((selectedPage | int) > 1) else null,
     next: {
       href: mapOptionsToUrl((selectedPage | int) + 1, pageSize, sortColumn, sortedAsc)
-    },
+    } if ((selectedPage | int) < lastPage) else null,
     items: pages
   }) }}
   </div>

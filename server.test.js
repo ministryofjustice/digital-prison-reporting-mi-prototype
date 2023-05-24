@@ -56,3 +56,31 @@ describe('GET /reports/prisoner-movements', () => {
       })
   })
 })
+
+describe('GET /reports/locations/summary', () => {
+  it('External movements report returns successfully', () => {
+    return request(app)
+      .get('/reports/locations/summary')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('Summary')
+      })
+  })
+})
+
+describe('GET /prototype-admin/*', () => {
+  it('Clear data successfully', () => {
+    return request(app)
+      .get('/prototype-admin/clear-data')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+  })
+
+  it('Password check renders successfully', () => {
+    return request(app)
+      .get('/prototype-admin/password')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+  })
+})
