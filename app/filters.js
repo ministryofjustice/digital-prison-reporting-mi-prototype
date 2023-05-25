@@ -27,10 +27,6 @@ module.exports = function () {
   }
 
   filters.addMatchingBreadCrumbs = function (items, navItems, currentUrl) {
-    if (!currentUrl || !navItems) {
-      return items
-    }
-
     const flattenedItems = navItems.flatMap(section => section.items.map(item => {
       return [
         {
