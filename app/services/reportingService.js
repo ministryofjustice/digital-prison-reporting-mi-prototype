@@ -1,13 +1,14 @@
 const fakePersonRegisterData = require('../data/fakePersonRegisterData')
 const fakeExternalMovementsData = require('../data/fakeExternalMovementsData')
 
-const sortAndPage = (
+const sortPageAndFilter = (
   data,
   selectedPage,
   pageSize,
   sortColumnName,
-  sortedAsc
-) => data
+  sortedAsc,
+  filters
+) => filter(data, filters)
   .sort((a, b) => {
     const aVal = a[sortColumnName]
     const bVal = b[sortColumnName]
@@ -22,43 +23,50 @@ const sortAndPage = (
   })
   .slice((selectedPage - 1) * pageSize, (selectedPage * pageSize))
 
+const filter = (data, filters) => data
+  .filter(row => (
+    !Object.keys(filters).find(filter => (
+      filters[filter] && row[filter].toLowerCase() !== filters[filter]
+    ))
+  ))
+
 module.exports = {
 
   listPersonRegister: ({
     selectedPage,
     pageSize,
     sortColumnName,
-    sortedAsc
+    sortedAsc,
+    filters
   }) => {
-    return sortAndPage(
+    return sortPageAndFilter(
       fakePersonRegisterData.data,
       selectedPage,
       pageSize,
       sortColumnName,
-      sortedAsc
+      sortedAsc,
+      filters
     )
   },
 
-  countPersonRegister: () => {
-    return fakePersonRegisterData.data.length
-  },
+  countPersonRegister: (filters) => filter(fakePersonRegisterData.data, filters).length,
 
   listExternalMovements: ({
     selectedPage,
     pageSize,
     sortColumnName,
-    sortedAsc
+    sortedAsc,
+    filters
   }) => {
-    return sortAndPage(
+    return sortPageAndFilter(
       fakeExternalMovementsData.data,
       selectedPage,
       pageSize,
       sortColumnName,
-      sortedAsc
+      sortedAsc,
+      filters
     )
   },
 
-  countExternalMovements: () => {
-    return fakeExternalMovementsData.data.length
-  }
+  countExternalMovements: (filters) => filter(fakeExternalMovementsData.data, filters).length
 }

@@ -22,9 +22,9 @@ In addition to the protype kit v12.1.0, this repository contains Cloud Platform 
 
 Run the command ```npm start``` and open http://localhost:3000 in a web browser.
 
-## Updating Protype Kit
+## Updating Prototype Kit
 
-To update protype kit in this repository see the [update guide](https://govuk-prototype-kit.herokuapp.com/docs/updating-the-kit).
+To update prototype kit in this repository see the [update guide](https://govuk-prototype-kit.herokuapp.com/docs/updating-the-kit).
 
 ## Prototype deployment
 

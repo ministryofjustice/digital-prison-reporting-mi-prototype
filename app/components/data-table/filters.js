@@ -1,17 +1,29 @@
 /* Nunjuck filter methods to be included in an app's filters.js */
 
 module.exports = {
-  applySorting: (headers, dataTableOptions) => {
+  applySorting: (headers, dataTableOptions, createUrlForParameters) => {
     const {
-      selectedPage,
-      pageSize,
       sortColumn,
-      sortedAsc,
-      mapOptionsToUrl
+      sortedAsc
     } = dataTableOptions
 
     return headers.map((h, index) => {
-      const ariaSort = ((index === Number(sortColumn)) ? (sortedAsc ? 'ascending' : 'descending') : 'none')
+      let ariaSort = 'none'
+      let url = createUrlForParameters({
+        sortColumn: index,
+        sortedAsc: true
+      })
+
+      if (index === Number(sortColumn)) {
+        ariaSort = sortedAsc ? 'ascending' : 'descending'
+
+        if (sortedAsc) {
+          url = createUrlForParameters({
+            sortColumn: index,
+            sortedAsc: false
+          })
+        }
+      }
 
       return {
         ...h,
@@ -19,7 +31,7 @@ module.exports = {
           'data-index="' + index + '" ' +
           'aria-sort="' + ariaSort + '" ' +
           'class="data-table-header-button data-table-header-button-sort-' + ariaSort + '" ' +
-          'onclick="window.location.href=\'' + mapOptionsToUrl(selectedPage, pageSize, index, ariaSort !== 'ascending') + '\'"' +
+          'onclick="window.location.href=\'' + url + '\'"' +
           '>' + h.text + '</button>'
       }
     })

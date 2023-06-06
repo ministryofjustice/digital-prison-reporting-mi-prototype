@@ -1,0 +1,13 @@
+{#
+  filters: [{
+    text,           // The text to show next to the filter
+    id,             // The unique ID of the filter
+    type,           // The type of the filter (select)
+    options,        // The options to display if this filter is a select
+    value,          // The selected value of the filter.
+  }],
+  createUrlForParameters // A function accepting a parameter object that maps to the target URL
+#}
+{% macro appFilters(filters, createUrlForParameters) %}
+  {%- include "./template.html" -%}
+{% endmacro %}

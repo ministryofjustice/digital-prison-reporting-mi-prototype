@@ -6,43 +6,43 @@
 {%- set lastPage = (totalRowCount / pageSize) | round(0, 'ceil') %}
 {%- for page in range(1, lastPage + 1) %}
   {%- if page === 1 or page === lastPage or (page >= selectedPage - 1 and page <= (selectedPage | int) + 1) %}
-    {%- set href = mapOptionsToUrl(page, pageSize, sortColumn, sortedAsc) %}
+    {%- set href = createUrlForParameters({ selectedPage: page }) %}
     {%- set pages = pages.concat({ number: page, href: href, current: (page === (selectedPage | int)) }) %}
   {%- elif page === 2 or page === lastPage - 1 %}
     {%- set pages = pages.concat({ ellipsis: true }) %}
   {%- endif %}
 {%- endfor %}
 
-<div class="govuk-grid-row">
+<div>
   <div class="govuk-grid-column">
     {{ govukTable({
       caption: caption,
       captionClasses: "govuk-table__caption--m",
-      head: head | applySorting(dataTableOptions),
+      head: head | applySorting(dataTableOptions, createUrlForParameters),
       rows: rows
     }) }}
   </div>
 </div>
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<div>
+  <div class="govuk-grid-column-one-half">
   {{ govukPagination({
     previous: {
-      href: mapOptionsToUrl(selectedPage - 1, pageSize, sortColumn, sortedAsc)
+      href: createUrlForParameters({ selectedPage: selectedPage - 1 })
     } if ((selectedPage | int) > 1) else null,
     next: {
-      href: mapOptionsToUrl((selectedPage | int) + 1, pageSize, sortColumn, sortedAsc)
+      href: createUrlForParameters({ selectedPage: (selectedPage | int) + 1 })
     } if ((selectedPage | int) < lastPage) else null,
     items: pages
   }) }}
   </div>
-  <div class="govuk-grid-column-one-third data-table-page-size">
+  <div class="govuk-grid-column-one-half data-table-page-size">
     <div class="govuk-input__wrapper">
       {{ govukSelect({
         id: "pageSize",
         name: "sort",
         value: pageSize,
         attributes: {
-          onchange: "window.location.href = ('" + mapOptionsToUrl(1, "thisValue", sortColumn, sortedAsc) + "'.replace(/thisValue/, this.value))"
+          onchange: "window.location.href = ('" + createUrlForParameters({ selectedPage: 1, pageSize: "thisValue" }) + "'.replace(/thisValue/, this.value))"
         },
         items: [
           {

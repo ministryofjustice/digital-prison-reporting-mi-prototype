@@ -2,11 +2,66 @@
 {% extends "reports-layout.html" %}
 
 {% block reportBody %}
-      {{ appDataTable(
-        'External movements',
-        head,
-        rows,
-        totalRowCount,
-        dataTable
+  <h2 class="govuk-heading-m">
+    External movements
+  </h2>
+  <div class="moj-filter-layout">
+    <div class="moj-filter-layout__filter">
+      {{ appFilters(
+        filters,
+        createUrlForParametersFilters
       ) }}
+    </div>
+    <div class="moj-filter-layout__content">
+      <div class="moj-action-bar">
+        <div class="moj-action-bar__filter"></div>
+        {{ mojButtonMenu({
+          items: filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters)
+        }) }}
+      </div>
+      <div class="moj-scrollable-pane">
+        {{ appDataTable(
+          null,
+          head,
+          rows,
+          totalRowCount,
+          dataTable,
+          createUrlForParametersPaging
+        ) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script lang="js">
+  new MOJFrontend.FilterToggleButton({
+    bigModeMediaQuery: "(min-width: 48.063em)",
+    startHidden: true,
+    toggleButton: {
+      container: $(".moj-action-bar__filter"),
+      showText: "Show filter",
+      hideText: "Hide filter",
+      classes: "govuk-button--secondary",
+    },
+    closeButton: {
+      container: $(".moj-filter__header-action"),
+      text: "Close",
+    },
+    filter: {
+      container: $(".moj-filter"),
+    },
+  });
+
+  $(".moj-filter__options button").on("click", function() {
+    let url = window.location.href
+      .replaceAll(new RegExp("filters\\.\\w+=\\w*", "g"),"");
+    url += "&";
+    url += $(".moj-filter__options input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  })
+</script>
 {% endblock %}

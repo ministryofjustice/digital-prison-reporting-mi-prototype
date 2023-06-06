@@ -15,10 +15,7 @@ const defaultDataTableOptions = {
   selectedPage: 1,
   pageSize: 2,
   sortColumn: 0,
-  sortedAsc: true,
-  mapOptionsToUrl: (selectedPage, pageSize, sortColumn, sortedAsc) => JSON.stringify({
-    selectedPage, pageSize, sortColumn, sortedAsc
-  })
+  sortedAsc: true
 }
 
 const defaultOptions = {
@@ -33,7 +30,8 @@ const defaultOptions = {
   ],
   totalRowCount: 20,
   ...defaultDataTableOptions,
-  dataTableOptions: defaultDataTableOptions
+  dataTableOptions: defaultDataTableOptions,
+  createUrlForParameters: parameters => JSON.stringify(parameters)
 }
 
 describe('Content renders correctly', () => {
@@ -79,8 +77,8 @@ describe('Sorting renders correctly', () => {
       'aria-sort="none" ' +
       'class="data-table-header-button data-table-header-button-sort-none"')
 
-    expect(rendered).toContain('window.location.href=\'{"selectedPage":1,"pageSize":2,"sortColumn":' + column + ',"sortedAsc":' + !ascending + '}\'')
-    expect(rendered).toContain('window.location.href=\'{"selectedPage":1,"pageSize":2,"sortColumn":' + otherColumn + ',"sortedAsc":true}\'')
+    expect(rendered).toContain('window.location.href=\'{"sortColumn":' + column + ',"sortedAsc":' + !ascending + '}\'')
+    expect(rendered).toContain('window.location.href=\'{"sortColumn":' + otherColumn + ',"sortedAsc":true}\'')
   })
 })
 

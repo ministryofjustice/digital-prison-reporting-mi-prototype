@@ -1,4 +1,5 @@
 const dataTableFilters = require('./components/data-table/filters')
+const filtersFilters = require('./components/filters/filters')
 
 module.exports = function () {
   /**
@@ -8,7 +9,8 @@ module.exports = function () {
    * @type {Object}
    */
   const filters = {
-    ...dataTableFilters
+    ...dataTableFilters,
+    ...filtersFilters
   }
 
   filters.setCurrentToActive = function (navItems, currentUrl) {
