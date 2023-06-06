@@ -27,5 +27,5 @@ module.exports = {
     format: f.format
   }))))),
 
-  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE),
+  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE)
 }

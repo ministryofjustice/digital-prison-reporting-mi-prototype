@@ -68,5 +68,5 @@ module.exports = {
     )
   },
 
-  countExternalMovements: (filters) => filter(fakeExternalMovementsData.data, filters).length,
+  countExternalMovements: (filters) => filter(fakeExternalMovementsData.data, filters).length
 }
