@@ -5,9 +5,17 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
     ...currentQueryParams
   }
 
-  Object.keys(updateQueryParams).forEach(q => {
-    queryParams[prefix + q] = updateQueryParams[q]
-  })
+  if (updateQueryParams) {
+    Object.keys(updateQueryParams).forEach(q => {
+      queryParams[prefix + q] = updateQueryParams[q]
+    })
+  } else {
+    Object.keys(queryParams)
+      .filter(key => key.startsWith(prefix))
+      .forEach(key => {
+        queryParams[key] = null
+      })
+  }
 
   return '?' + querystring.stringify(queryParams)
 }
