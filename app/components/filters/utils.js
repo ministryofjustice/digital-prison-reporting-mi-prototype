@@ -14,18 +14,13 @@ const personRegisterDataFormat = [
 ]
  */
 
-const LOCALE = 'en-GB'
-
 module.exports = {
-  getHeaders: format => (format.map(f => ({
-    text: f.header,
-    format: f.format
-  }))),
-
-  mapData: (data, format) => (data.map(d => (format.map(f => ({
-    text: f.data ? f.data(d) : d[f.name],
-    format: f.format
-  }))))),
-
-  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE),
+  getFilters: (format, filterValues) => (format
+    .filter(f => f.filter)
+    .map(f => ({
+      text: f.header,
+      name: f.name,
+      ...f.filter,
+      value: filterValues ? filterValues[f.name] : null
+    })))
 }

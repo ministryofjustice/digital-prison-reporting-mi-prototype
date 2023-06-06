@@ -8,14 +8,13 @@
     pageSize,       // The number of rows on each page
     sortColumn,     // The column the data is sorted on (e.g. '0')
     sortedAsc,      // The sort order of the data
-    mapOptionsToUrl // A function accepting (selectedPage, pageSize, sortColumn, sortedAsc) that maps to the target URL
-  }
+  },
+  createUrlForParameters // A function accepting a parameter object that maps to the target URL
 #}
-{% macro appDataTable(caption, head, rows, totalRowCount, dataTableOptions) %}
+{% macro appDataTable(caption, head, rows, totalRowCount, dataTableOptions, createUrlForParameters) %}
   {%- set selectedPage = dataTableOptions.selectedPage %}
   {%- set pageSize = dataTableOptions.pageSize %}
   {%- set sortColumn = dataTableOptions.sortColumn %}
   {%- set sortedAsc = dataTableOptions.sortedAsc %}
-  {%- set mapOptionsToUrl = dataTableOptions.mapOptionsToUrl %}
   {%- include "./template.html" -%}
 {% endmacro %}
