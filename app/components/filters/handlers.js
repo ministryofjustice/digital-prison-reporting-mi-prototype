@@ -12,7 +12,22 @@ module.exports = {
     Object.keys(query)
       .filter(q => q.startsWith(queryParameterPrefix))
       .forEach(q => {
-        filterOptions[q.replace(queryParameterPrefix, '')] = query[q]
+        const filterName = q.replace(queryParameterPrefix, '')
+        const splitFilterName = filterName.split('.')
+
+        switch (splitFilterName.length) {
+          case 1:
+            filterOptions[filterName] = query[q]
+            break
+          case 2:
+            filterOptions[splitFilterName[0]] = {
+              ...filterOptions[splitFilterName[0]],
+              [splitFilterName[1]]: query[q]
+            }
+            break
+          default:
+            console.error('Unable to parse filter name: ' + filterName)
+        }
       })
 
     req.renderOptions = {
