@@ -29,14 +29,15 @@ router.get('/reports/person-register', [configureCurrentUrl, configureDataTableO
   const personRegisterData = reportingService.listPersonRegister({
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormats.personRegister[req.renderOptions.dataTable.sortColumn].name,
-    filters: req.renderOptions.filterValues
+    filters: req.renderOptions.filterValues,
+    dataFormat: dataFormats.personRegister
   })
 
   res.render('reports-people-person-register', {
     ...req.renderOptions,
     head: getHeaders(dataFormats.personRegister),
     rows: mapData(personRegisterData, dataFormats.personRegister),
-    totalRowCount: reportingService.countPersonRegister(req.renderOptions.filterValues),
+    totalRowCount: reportingService.countPersonRegister(req.renderOptions.filterValues, dataFormats.personRegister),
     createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix)
   })
 }])
@@ -45,7 +46,8 @@ router.get('/reports/prisoner-movements', [configureCurrentUrl, configureDataTab
   const externalMovementsData = reportingService.listExternalMovements({
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormats.externalMovements[req.renderOptions.dataTable.sortColumn].name,
-    filters: req.renderOptions.filterValues
+    filters: req.renderOptions.filterValues,
+    dataFormat: dataFormats.externalMovements
   })
 
   res.render('reports-people-prisoner-movements', {
@@ -53,7 +55,7 @@ router.get('/reports/prisoner-movements', [configureCurrentUrl, configureDataTab
     head: getHeaders(dataFormats.externalMovements),
     rows: mapData(externalMovementsData, dataFormats.externalMovements),
     filters: getFilters(dataFormats.externalMovements, req.renderOptions.filterValues),
-    totalRowCount: reportingService.countExternalMovements(req.renderOptions.filterValues),
+    totalRowCount: reportingService.countExternalMovements(req.renderOptions.filterValues, dataFormats.externalMovements),
     createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
     createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix)
   })

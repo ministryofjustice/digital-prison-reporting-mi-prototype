@@ -1,6 +1,7 @@
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "moj/components/filter/macro.njk"   import mojFilter -%}
+{% from "govuk/components/select/macro.njk"       import govukSelect %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "moj/components/filter/macro.njk"         import mojFilter -%}
+{% from "../../date-picker/views/date-picker.njk" import appDatePicker %}
 
 {%- set filterOptionsHtml %}
   {%- for filter in filters %}
@@ -21,12 +22,38 @@
         fieldset: {
           legend: {
             text: filter.text,
-            classes: "govuk-label"
+            classes: "govuk-label govuk-!-font-weight-bold"
           }
         },
         items: filter.options,
         value: filter.value
       }) }}
+    {% elif filter.type === 'date-range' %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
+            {{ filter.text }}
+          </legend>
+          {{ appDatePicker({
+            id: 'filters.' + filter.name + '.start',
+            label: 'Start',
+            name: 'filters.' + filter.name + '.start',
+            date: filter.value.start,
+            attributes: {
+              'data-disable-future-date': 'true'
+            }
+          }) }}
+          {{ appDatePicker({
+            id: 'filters.' + filter.name + '.end',
+            label: 'End',
+            name: 'filters.' + filter.name + '.end',
+            date: filter.value.end,
+            attributes: {
+              'data-disable-future-date': 'true'
+            }
+          }) }}
+        </fieldset>
+      </div>
     {% endif %}
   {%- endfor %}
 {%- endset %}

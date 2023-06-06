@@ -54,8 +54,8 @@
   });
 
   $(".moj-filter__options button").on("click", function() {
-    let url = window.location.href
-      .replaceAll(new RegExp("filters\\.\\w+=\\w*", "g"),"");
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"");
     if (url.indexOf("?") === -1) {
       url += "?";
     } else {
