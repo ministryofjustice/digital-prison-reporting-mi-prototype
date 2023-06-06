@@ -1,19 +1,36 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
+{%- set today = getTodayMinusDays(0) -%}
+{%- set yesterday = getTodayMinusDays(1) -%}
+{%- set lastWeek = getTodayMinusDays(8) -%}
 
 {% set reportsNavItems = [
         {
           heading: {
-            text: 'People'
+            text: 'External movements'
+          },
+          items: [{
+            text: 'All',
+            href: '/reports/prisoner-movements',
+            description: 'A record of all prisoner external movements.'
+          }, {
+            text: 'Admissions last week',
+            href: '/reports/prisoner-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission',
+            description: 'A list of admissions in the past week.'
+          }, {
+            text: 'Yesterday\'s transfers out',
+            href: '/reports/prisoner-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer',
+            description: 'A list of yesterday\'s transfers out.'
+          }] | setCurrentToActive(currentUrl)
+        },
+        {
+          heading: {
+            text: 'Person register'
           },
           items: [{
             text: 'Person register',
             href: '/reports/person-register',
             description: 'A register of all people.'
-          }, {
-            text: 'External Movements',
-            href: '/reports/prisoner-movements',
-            description: 'A record of all prisoner external movements.'
           }] | setCurrentToActive(currentUrl)
         },
         {

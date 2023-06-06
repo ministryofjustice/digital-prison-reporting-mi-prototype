@@ -203,6 +203,12 @@ if (useV6) {
   app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
 }
 
+nunjucksAppEnv.addGlobal('getTodayMinusDays', function (days) {
+  const date = new Date()
+  date.setDate(date.getDate() - days)
+  return date.toLocaleDateString('en-GB')
+})
+
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)

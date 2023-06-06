@@ -403,7 +403,7 @@ module.exports = {
     },
     {
       prisonNumber: 'B0030SC',
-      date: '2023-01-05',
+      date: '2023-06-05',
       time: '07:07',
       from: 'Usk',
       to: 'Thameside',
@@ -1633,7 +1633,7 @@ module.exports = {
     },
     {
       prisonNumber: 'F4010GF',
-      date: '2022-12-31',
+      date: '2023-06-01',
       time: '00:14',
       from: 'Wakefield',
       to: 'Garth',
@@ -2083,7 +2083,7 @@ module.exports = {
     },
     {
       prisonNumber: 'F3220GG',
-      date: '2023-01-03',
+      date: '2023-06-03',
       time: '21:43',
       from: 'Kirkham',
       to: 'Elmley',
@@ -2263,7 +2263,7 @@ module.exports = {
     },
     {
       prisonNumber: 'Q3430VX',
-      date: '2023-01-02',
+      date: '2023-06-02',
       time: '04:06',
       from: 'Usk',
       to: 'Send',
@@ -2663,7 +2663,7 @@ module.exports = {
     },
     {
       prisonNumber: 'R2320PI',
-      date: '2023-01-05',
+      date: '2023-06-05',
       time: '04:27',
       from: 'Northumberland',
       to: 'Usk',
@@ -4613,13 +4613,13 @@ module.exports = {
     },
     {
       prisonNumber: 'J0840YP',
-      date: '2022-12-29',
+      date: '2023-06-05',
       time: '12:56',
       from: 'Elmley',
       to: 'Altcourse',
-      direction: 'In',
+      direction: 'Out',
       type: 'Transfer',
-      reason: 'Transfer In from Other Establishment'
+      reason: 'Transfer Out to Other Establishment'
     },
     {
       prisonNumber: 'C8450AG',
