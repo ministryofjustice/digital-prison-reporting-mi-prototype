@@ -77,8 +77,8 @@ describe('Sorting renders correctly', () => {
       'aria-sort="none" ' +
       'class="data-table-header-button data-table-header-button-sort-none"')
 
-    expect(rendered).toContain('window.location.href=\'{"selectedPage":1,"pageSize":2,"sortColumn":' + column + ',"sortedAsc":' + !ascending + '}\'')
-    expect(rendered).toContain('window.location.href=\'{"selectedPage":1,"pageSize":2,"sortColumn":' + otherColumn + ',"sortedAsc":true}\'')
+    expect(rendered).toContain('window.location.href=\'{"sortColumn":' + column + ',"sortedAsc":' + !ascending + '}\'')
+    expect(rendered).toContain('window.location.href=\'{"sortColumn":' + otherColumn + ',"sortedAsc":true}\'')
   })
 })
 

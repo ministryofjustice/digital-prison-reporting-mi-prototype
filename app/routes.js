@@ -36,7 +36,8 @@ router.get('/reports/person-register', [configureCurrentUrl, configureDataTableO
     ...req.renderOptions,
     head: getHeaders(dataFormats.personRegister),
     rows: mapData(personRegisterData, dataFormats.personRegister),
-    totalRowCount: reportingService.countPersonRegister(req.renderOptions.filterValues)
+    totalRowCount: reportingService.countPersonRegister(req.renderOptions.filterValues),
+    createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix)
   })
 }])
 
