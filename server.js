@@ -153,6 +153,12 @@ app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/no
 app.use('/moj/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')))
 app.use('/moj/all.js', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/all.js')))
 
+// Serve jQuery JS
+app.use('/jquery/jquery.min.js', express.static(path.join(__dirname, '/node_modules/jquery/dist/jquery.min.js')))
+app.use('/jquery/jquery-ui.min.js', express.static(path.join(__dirname, '/node_modules/jquery-ui/dist/jquery-ui.min.js')))
+app.use('/jquery/jquery-migrate.min.js', express.static(path.join(__dirname, '/node_modules/jquery-migrate/dist/jquery-migrate.min.js')))
+app.use('/jquery/jquery-ui.min.css', express.static(path.join(__dirname, '/node_modules/jquery-ui/dist/themes/ui-lightness/jquery-ui.min.css')))
+
 let nunjucksDocumentationEnv
 
 // Set up documentation app
