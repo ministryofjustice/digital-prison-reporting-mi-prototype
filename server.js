@@ -80,6 +80,8 @@ app.locals.useCookieSessionStore = (useCookieSessionStore === 'true')
 app.locals.promoMode = promoMode
 app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
+app.locals.appScripts = config.scripts
+app.locals.appStylesheets = config.stylesheets
 // extensionConfig sets up variables used to add the scripts and stylesheets to each page.
 app.locals.extensionConfig = extensions.getAppConfig()
 
@@ -149,15 +151,13 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 // Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 
-// Serve MOJ front end assets and JS
+// Serve MOJ front end assets
 app.use('/moj/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')))
-app.use('/moj/all.js', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/all.js')))
 
-// Serve jQuery JS
-app.use('/jquery/jquery.min.js', express.static(path.join(__dirname, '/node_modules/jquery/dist/jquery.min.js')))
-app.use('/jquery/jquery-ui.min.js', express.static(path.join(__dirname, '/node_modules/jquery-ui/dist/jquery-ui.min.js')))
-app.use('/jquery/jquery-migrate.min.js', express.static(path.join(__dirname, '/node_modules/jquery-migrate/dist/jquery-migrate.min.js')))
-app.use('/jquery/jquery-ui.min.css', express.static(path.join(__dirname, '/node_modules/jquery-ui/dist/themes/ui-lightness/jquery-ui.min.css')))
+// Serve app JS and stylesheets
+config.scripts.concat(config.stylesheets).forEach(s => {
+  app.use(s.path, express.static(path.join(__dirname, s.location)))
+})
 
 let nunjucksDocumentationEnv
 

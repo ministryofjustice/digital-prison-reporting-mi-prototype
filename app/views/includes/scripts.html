@@ -1,5 +1,8 @@
 <!-- Javascript -->
-<script src="/moj/all.js"></script>
+
+{% for appScript in appScripts %}
+<script src="{{appScript.path}}"></script>
+{% endfor %}
 
 {% for scriptUrl in extensionConfig.scripts %}
   <script src="{{scriptUrl}}"></script>
@@ -10,9 +13,3 @@
 {% if useAutoStoreData %}
   <script src="/public/javascripts/auto-store-data.js"></script>
 {% endif %}
-
-<!-- jQuery -->
-<script src="/jquery/jquery.min.js"></script>
-<script src="/jquery/jquery-ui.min.js"></script>
-<script src="/jquery/jquery-migrate.min.js"></script>
-<link href="/jquery/jquery-ui.min.css" rel="stylesheet">
