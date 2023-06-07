@@ -45,9 +45,9 @@ const filter = (data, filters, dataFormat) => data
 
       if (filterFormat.filter.type === 'date-range') {
         const dataDate = new Date(row[filter])
-        const filterStartDate = parseLocaleDate(filters[filter].start)
-        const filterEndDate = parseLocaleDate(filters[filter].end)
-        return dataDate < filterStartDate || dataDate > filterEndDate
+
+        return (filters[filter].start && parseLocaleDate(filters[filter].start) > dataDate) ||
+          (filters[filter].end && parseLocaleDate(filters[filter].end) < dataDate)
       }
 
       return row[filter].toLowerCase() !== filters[filter]
