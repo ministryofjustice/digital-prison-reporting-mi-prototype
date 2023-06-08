@@ -16,7 +16,5 @@ $(function () {
       minDate
     })
     $(element).prop('placeholder', 'DD/MM/YYYY')
-
-    $(element).attr('readonly', 'true')
   })
 })

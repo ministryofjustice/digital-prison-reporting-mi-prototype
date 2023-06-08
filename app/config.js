@@ -35,7 +35,8 @@ module.exports = {
     { path: '/app/jquery.min.js', location: '/node_modules/jquery/dist/jquery.min.js' },
     { path: '/app/jquery-ui.min.js', location: '/node_modules/jquery-ui/dist/jquery-ui.min.js' },
     { path: '/app/jquery-migrate.js', location: '/node_modules/jquery-migrate/dist/jquery-migrate.js' },
-    { path: '/app/date-picker.js', location: '/app/components/date-picker/init.js' }
+    { path: '/app/date-picker.js', location: '/app/components/date-picker/init.js' },
+    { path: '/app/data-table-layout.js', location: '/app/components/data-table-layout/init.js' }
   ],
 
   stylesheets: [

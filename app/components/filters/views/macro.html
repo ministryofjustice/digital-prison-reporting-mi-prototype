@@ -6,8 +6,9 @@
     options,        // The options to display if this filter is a select
     value,          // The selected value of the filter.
   }],
-  createUrlForParameters // A function accepting a parameter object that maps to the target URL
+  createUrlForParameters // A function accepting a parameter object that maps to the target URL.
+  onApplyFilters // A function to call when the "Apply filters" button is clicked.
 #}
-{% macro appFilters(filters, createUrlForParameters) %}
+{% macro appFilters(filters, createUrlForParameters, onApplyFilters) %}
   {%- include "./template.html" -%}
 {% endmacro %}
