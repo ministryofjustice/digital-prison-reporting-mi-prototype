@@ -2,6 +2,7 @@
 
 $(function () {
   $('.moj-action-bar__filter').each(function (index, element) {
+    // eslint-disable-next-line no-new
     new MOJFrontend.FilterToggleButton({
       bigModeMediaQuery: '(min-width: 48.063em)',
       startHidden: true,
