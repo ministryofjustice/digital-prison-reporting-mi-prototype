@@ -37,29 +37,45 @@ router.get('/reports/person-register', [configureCurrentUrl, configureDataTableO
     ...req.renderOptions,
     head: getHeaders(dataFormats.personRegister),
     rows: mapData(personRegisterData, dataFormats.personRegister),
+    filters: getFilters(dataFormats.personRegister, req.renderOptions.filterValues),
     totalRowCount: reportingService.countPersonRegister(req.renderOptions.filterValues, dataFormats.personRegister),
-    createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix)
-  })
-}])
-
-router.get('/reports/prisoner-movements', [configureCurrentUrl, configureDataTableOptions, configureFilterOptions, function (req, res) {
-  const externalMovementsData = reportingService.listExternalMovements({
-    ...req.renderOptions.dataTable,
-    sortColumnName: dataFormats.externalMovements[req.renderOptions.dataTable.sortColumn].name,
-    filters: req.renderOptions.filterValues,
-    dataFormat: dataFormats.externalMovements
-  })
-
-  res.render('reports-people-prisoner-movements', {
-    ...req.renderOptions,
-    head: getHeaders(dataFormats.externalMovements),
-    rows: mapData(externalMovementsData, dataFormats.externalMovements),
-    filters: getFilters(dataFormats.externalMovements, req.renderOptions.filterValues),
-    totalRowCount: reportingService.countExternalMovements(req.renderOptions.filterValues, dataFormats.externalMovements),
     createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
     createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix)
   })
 }])
+
+// router.get('/reports/prisoner-movements', [
+//   configureCurrentUrl,
+//   (req, res, next) => {
+//     // Set data format and data source (maybe separate format no longer needed)
+//     next()
+//   },
+//   ...filterTableLayoutHandlers
+// ])
+
+router.get('/reports/prisoner-movements', [
+  configureCurrentUrl,
+  configureDataTableOptions,
+  configureFilterOptions,
+  function (req, res) {
+    const externalMovementsData = reportingService.listExternalMovements({
+      ...req.renderOptions.dataTable,
+      sortColumnName: dataFormats.externalMovements[req.renderOptions.dataTable.sortColumn].name,
+      filters: req.renderOptions.filterValues,
+      dataFormat: dataFormats.externalMovements
+    })
+
+    res.render('reports-people-prisoner-movements', {
+      ...req.renderOptions,
+      head: getHeaders(dataFormats.externalMovements),
+      rows: mapData(externalMovementsData, dataFormats.externalMovements),
+      filters: getFilters(dataFormats.externalMovements, req.renderOptions.filterValues),
+      totalRowCount: reportingService.countExternalMovements(req.renderOptions.filterValues, dataFormats.externalMovements),
+      createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
+      createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix)
+    })
+  }
+])
 
 router.get('/reports/locations/summary', [configureCurrentUrl, configureDataTableOptions, function (req, res) {
   res.render('reports-locations-summary', req.renderOptions)
