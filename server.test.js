@@ -56,6 +56,16 @@ describe('GET /reports/prisoner-movements', () => {
       })
   })
 
+  it('Does not fail when valid filters passed', () => {
+    return request(app)
+      .get('/reports/prisoner-movements?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
+      })
+  })
+
   it('Does not fail when empty dates passed', () => {
     return request(app)
       .get('/reports/prisoner-movements?filters.date.start=&filters.date.end=')
