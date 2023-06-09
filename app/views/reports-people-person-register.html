@@ -1,13 +1,6 @@
+{% set parentLayout = "../../../views/reports-layout.html" %}
+{% extends "../components/data-table-layout/views/layout.html" %}
 
-{% extends "reports-layout.html" %}
-
-{% block reportBody %}
-      {{ appDataTable(
-        'Person register',
-        head,
-        rows,
-        totalRowCount,
-        dataTable,
-        createUrlForParametersPaging
-      ) }}
+{% block pageTitle %}
+  Person register
 {% endblock %}

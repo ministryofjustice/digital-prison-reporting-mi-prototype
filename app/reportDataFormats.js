@@ -29,7 +29,7 @@ module.exports = {
     { header: 'Prison Number', name: 'prisonNumber' },
     { header: 'First Name', name: 'firstName' },
     { header: 'Last Name', name: 'lastName' },
-    { header: 'Date Of Birth', name: 'dateOfBirth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric' },
+    { header: 'Date Of Birth', name: 'dateOfBirth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric', filter: { type: 'date-range' } },
     { header: 'Establishment', name: 'establishment' },
     { header: 'Cell', name: 'cell' }
   ],

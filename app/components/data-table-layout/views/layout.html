@@ -1,0 +1,54 @@
+{% extends parentLayout %}
+
+{% block reportBody %}
+  <h2 class="govuk-heading-m">
+    {% block pageTitle %}{% endblock %}
+  </h2>
+  <div class="moj-filter-layout">
+    <div class="moj-filter-layout__filter">
+      {{ appFilters(
+        filters,
+        createUrlForParametersFilters,
+        "onApplyFilters()"
+      ) }}
+    </div>
+    <div class="moj-filter-layout__content">
+      <div class="moj-action-bar">
+        <div class="moj-action-bar__filter"></div>
+        {{ mojButtonMenu({
+          items: filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters)
+        }) }}
+      </div>
+      <div class="moj-scrollable-pane">
+        {{ appDataTable(
+          null,
+          head,
+          rows,
+          totalRowCount,
+          dataTable,
+          createUrlForParametersPaging
+        ) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script lang="js">
+
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".moj-filter-layout__filter input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+</script>
+{% endblock %}

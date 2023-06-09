@@ -29,6 +29,17 @@ module.exports = {
   cookieText: 'GOV.UK uses cookies to make the site simpler. <a href="#">Find out more about cookies</a>',
 
   // Enable or disable Browser Sync
-  useBrowserSync: 'true'
+  useBrowserSync: 'true',
 
+  scripts: [
+    { path: '/app/jquery.min.js', location: '/node_modules/jquery/dist/jquery.min.js' },
+    { path: '/app/jquery-ui.min.js', location: '/node_modules/jquery-ui/dist/jquery-ui.min.js' },
+    { path: '/app/jquery-migrate.js', location: '/node_modules/jquery-migrate/dist/jquery-migrate.js' },
+    { path: '/app/date-picker.js', location: '/app/components/date-picker/init.js' },
+    { path: '/app/data-table-layout.js', location: '/app/components/data-table-layout/init.js' }
+  ],
+
+  stylesheets: [
+    { path: '/app/jquery-ui.min.css', location: '/node_modules/jquery-ui/dist/themes/ui-lightness/jquery-ui.min.css' }
+  ]
 }

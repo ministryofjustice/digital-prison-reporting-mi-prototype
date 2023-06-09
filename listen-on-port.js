@@ -1,4 +1,3 @@
-
 // NPM dependencies
 const browserSync = require('browser-sync')
 
