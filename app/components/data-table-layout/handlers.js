@@ -1,7 +1,7 @@
 /* Request handler methods to be used in an app's routes.js */
 
-const { configureDataTableOptions, dataTableQueryParameterPrefix } = require('../data-table/handlers')
-const { configureFilterOptions, filtersQueryParameterPrefix } = require('../filters/handlers')
+const { configureDataTableOptions, queryParameterPrefix: dataTableQueryParameterPrefix } = require('../data-table/handlers')
+const { configureFilterOptions, queryParameterPrefix: filtersQueryParameterPrefix } = require('../filters/handlers')
 const { getHeaders, mapData } = require('../data-table/utils')
 const { getFilters } = require('../filters/utils')
 const { getCreateUrlForParametersFunction } = require('../../utils/urlHelper')

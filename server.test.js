@@ -55,6 +55,16 @@ describe('GET /reports/prisoner-movements', () => {
         expect(res.text).toContain('External movements')
       })
   })
+
+  it('Does not fail when empty dates passed', () => {
+    return request(app)
+      .get('/reports/prisoner-movements?filters.date.start=&filters.date.end=')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
+      })
+  })
 })
 
 describe('GET /reports/locations/summary', () => {
