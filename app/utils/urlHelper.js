@@ -7,7 +7,15 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
 
   if (updateQueryParams) {
     Object.keys(updateQueryParams).forEach(q => {
-      queryParams[prefix + q] = updateQueryParams[q]
+      if (updateQueryParams[q]) {
+        queryParams[prefix + q] = updateQueryParams[q]
+      } else {
+        Object.keys(queryParams)
+          .filter(key => key === (prefix + q) || key.startsWith(prefix + q + '.'))
+          .forEach(key => {
+            queryParams[key] = null
+          })
+      }
     })
   } else {
     Object.keys(queryParams)
@@ -17,7 +25,15 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
       })
   }
 
-  return '?' + querystring.stringify(queryParams)
+  const nonEmptyQueryParams = {}
+
+  Object.keys(queryParams)
+    .filter(key => queryParams[key])
+    .forEach(key => {
+      nonEmptyQueryParams[key] = queryParams[key]
+    })
+
+  return '?' + querystring.stringify(nonEmptyQueryParams)
 }
 
 module.exports = {
