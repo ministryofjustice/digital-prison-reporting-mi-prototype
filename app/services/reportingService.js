@@ -1,6 +1,16 @@
 const fakePersonRegisterData = require('../data/fakePersonRegisterData')
 const fakeExternalMovementsData = require('../data/fakeExternalMovementsData')
 
+const maxExternalMovementDate = new Date('2023-06-06')
+
+const adjustExternalMovementDate = row => {
+  const dateDiff = new Date() - maxExternalMovementDate
+  return {
+    ...row,
+    date: (new Date(row.date).getTime() + dateDiff)
+  }
+}
+
 const parseLocaleDate = dateString => {
   const dateParser = /(\d{2})\/(\d{2})\/(\d{4})/
   const match = dateString.match(dateParser)
@@ -86,7 +96,7 @@ module.exports = {
     dataFormat
   }) => {
     return sortPageAndFilter(
-      fakeExternalMovementsData.data,
+      fakeExternalMovementsData.data.map(d => adjustExternalMovementDate(d)),
       selectedPage,
       pageSize,
       sortColumnName,
