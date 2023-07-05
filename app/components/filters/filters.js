@@ -12,10 +12,12 @@ const getFilterValueForDisplay = filter => {
   }
 }
 
+const valueIsNotEmpty = f => (f.value && (f.type !== 'date-range' || f.value.start || f.value.end))
+
 module.exports = {
   mapSelectedValuesForFilter: (filters, createUrlForParameters) => (
     filters
-      .filter(f => f.value)
+      .filter(f => valueIsNotEmpty(f))
       .map(f => ({
         heading: {
           text: f.text
@@ -29,7 +31,7 @@ module.exports = {
 
   mapSelectedValuesForButtonMenu: (filters, createUrlForParameters) => (
     filters
-      .filter(f => f.value)
+      .filter(f => valueIsNotEmpty(f))
       .map(f => ({
         text: f.text + ': ' + getFilterValueForDisplay(f),
         href: createUrlForParameters({ [f.name]: '' }),
