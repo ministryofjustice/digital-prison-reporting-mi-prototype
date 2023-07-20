@@ -1,22 +1,46 @@
 {% extends parentLayout %}
 
 {% block reportBody %}
+{% set showFiltersButton = {
+  text: 'Show filters',
+  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  attributes: {
+    'data-toggle-button': 'false',
+    'data-toggle-button-target-selector': '.moj-filter-layout__filter',
+    'data-toggle-button-caption-show': 'Show filters',
+    'data-toggle-button-caption-hide': 'Hide filters'
+  }
+} %}
+
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
+{% if (selectedFilters.length > 0) %}
+  {% set selectedFilters = [
+    showFiltersButton,
+    {
+      text: 'Clear all',
+      href: createUrlForParametersFilters(),
+      classes: 'govuk-button--primary'
+    }
+  ].concat(selectedFilters) %}
+{% else %}
+  {% set selectedFilters = [ showFiltersButton ].concat(selectedFilters) %}
+{% endif %}
+
   <h2 class="govuk-heading-m">
     {% block pageTitle %}{% endblock %}
   </h2>
   <div class="moj-filter-layout">
-    <div class="moj-filter-layout__filter">
+    <div class="moj-filter-layout__filter" style="display: none">
       {{ appFilters(
         filters,
-        createUrlForParametersFilters,
         "onApplyFilters()"
       ) }}
     </div>
     <div class="moj-filter-layout__content">
       <div class="moj-action-bar">
-        <div class="moj-action-bar__filter"></div>
         {{ mojButtonMenu({
-          items: filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters)
+          items: selectedFilters
         }) }}
       </div>
       {% set tableHtml %}

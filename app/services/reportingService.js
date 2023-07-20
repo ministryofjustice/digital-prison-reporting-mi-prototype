@@ -11,16 +11,6 @@ const adjustExternalMovementDate = row => {
   }
 }
 
-const parseLocaleDate = dateString => {
-  const dateParser = /(\d{2})\/(\d{2})\/(\d{4})/
-  const match = dateString.match(dateParser)
-  return new Date(
-    match[3],
-    match[2] - 1,
-    match[1]
-  )
-}
-
 const sortPageAndFilter = (
   data,
   selectedPage,
@@ -56,8 +46,8 @@ const filter = (data, filters, dataFormat) => data
       if (filterFormat.filter.type === 'date-range') {
         const dataDate = new Date(row[filter])
 
-        return (filters[filter].start && parseLocaleDate(filters[filter].start) > dataDate) ||
-          (filters[filter].end && parseLocaleDate(filters[filter].end) < dataDate)
+        return (filters[filter].start && new Date(filters[filter].start) > dataDate) ||
+          (filters[filter].end && new Date(filters[filter].end) < dataDate)
       }
 
       return row[filter].toLowerCase() !== filters[filter]

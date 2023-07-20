@@ -1,19 +1,20 @@
-/* global $, MOJFrontend */
+/* global $ */
 
 $(function () {
-  $('.moj-action-bar__filter').each(function (index, element) {
+  $('button[data-toggle-button]').each(function (index, element) {
     // eslint-disable-next-line no-new
-    new MOJFrontend.FilterToggleButton({
-      startHidden: true,
-      toggleButton: {
-        container: $(element),
-        showText: 'Show filter',
-        hideText: 'Hide filter',
-        classes: 'govuk-button--secondary'
-      },
-      filter: {
-        container: $('.moj-filter')
-      }
+    $(element).on('click', (event) => {
+      event.stopPropagation()
+
+      const show = $(element).data('toggle-button') !== 'true'
+      const target = $($(element).data('toggle-button-target-selector'))
+
+      target.css('display', show ? '' : 'none')
+
+      const caption = $(element).data('toggle-button-caption-' + (show ? 'hide' : 'show'))
+      $(element).html(caption)
+
+      $(element).data('toggle-button', show ? 'true' : 'false')
     })
   })
 })
