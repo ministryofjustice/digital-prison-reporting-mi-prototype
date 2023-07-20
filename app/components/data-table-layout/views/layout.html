@@ -43,49 +43,21 @@
           items: selectedFilters
         }) }}
       </div>
-      {% set tableHtml %}
-        <div class="moj-scrollable-pane">
-          {{ appDataTable(
-          null,
-          head,
-          rows,
-          totalRowCount,
-          dataTable,
-          createUrlForParametersPaging
-          ) }}
-        </div>
-      {% endset %}
-
-      {% set chartHtml %}
       <div class="moj-scrollable-pane">
-        <canvas id="dataTableChart"></canvas>
+        {{ appDataTable(
+        null,
+        head,
+        rows,
+        totalRowCount,
+        dataTable,
+        createUrlForParametersPaging
+        ) }}
       </div>
-      {% endset %}
-
-      {{ govukTabs({
-        items: [
-          {
-            label: "Chart",
-            id: "chart",
-            panel: {
-            html: chartHtml
-            }
-          },
-          {
-            label: "Table",
-            id: "data",
-            panel: {
-              html: tableHtml
-            }
-          }
-        ]
-      }) }}
     </div>
   </div>
 {% endblock %}
 
 {% block pageScripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script lang="js">
 
   const onApplyFilters = function() {
@@ -103,29 +75,5 @@
     window.location.href = url
   }
 
-  $(document).ready(function () {
-    const ctx = document.getElementById('dataTableChart');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        datasets: [{
-          label: 'Number of External Movements',
-          data: [220, 156, 334, 432, 111, 2, 4],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        },
-        borderColor: '#5694ca',
-        backgroundColor: '#5694ca'
-      }
-    });
-  })
 </script>
 {% endblock %}
