@@ -212,7 +212,12 @@ if (useV6) {
 nunjucksAppEnv.addGlobal('getTodayMinusDays', function (days) {
   const date = new Date()
   date.setDate(date.getDate() - days)
-  return date.toLocaleDateString('en-GB')
+  return date.toISOString().substring(0, 10)
+})
+
+nunjucksAppEnv.addGlobal('getTodayIsoDate', () => {
+  const date = new Date()
+  return date.toISOString().substring(0, 10)
 })
 
 // Automatically store all data users enter

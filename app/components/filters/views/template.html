@@ -1,7 +1,7 @@
 {% from "govuk/components/select/macro.njk"       import govukSelect %}
 {% from "govuk/components/radios/macro.njk"       import govukRadios %}
 {% from "moj/components/filter/macro.njk"         import mojFilter -%}
-{% from "../../date-picker/views/date-picker.njk" import appDatePicker %}
+{% from "govuk/components/input/macro.njk"        import govukInput %}
 
 {%- set filterOptionsHtml %}
   {%- for filter in filters %}
@@ -34,22 +34,28 @@
           <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
             {{ filter.text }}
           </legend>
-          {{ appDatePicker({
+          {{ govukInput({
             id: 'filters.' + filter.name + '.start',
-            label: 'Start',
+            label: {
+              text: 'Start'
+            },
             name: 'filters.' + filter.name + '.start',
-            date: filter.value.start,
+            value: filter.value.start,
+            type: 'date',
             attributes: {
-              'data-disable-future-date': 'true'
+              max: getTodayIsoDate()
             }
           }) }}
-          {{ appDatePicker({
+          {{ govukInput({
             id: 'filters.' + filter.name + '.end',
-            label: 'End',
+            label: {
+              text: 'End'
+            },
             name: 'filters.' + filter.name + '.end',
-            date: filter.value.end,
+            value: filter.value.end,
+            type: 'date',
             attributes: {
-              'data-disable-future-date': 'true'
+              max: getTodayIsoDate()
             }
           }) }}
         </fieldset>
@@ -69,14 +75,5 @@
     }
   },
 
-  selectedFilters: {
-
-    clearLink: {
-      text: 'Clear filters',
-      href: createUrlForParameters()
-    },
-
-    categories: filters | mapSelectedValuesForFilter(createUrlForParameters)
-  },
   optionsHtml: filterOptionsHtml
 }) }}

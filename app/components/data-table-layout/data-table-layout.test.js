@@ -71,11 +71,4 @@ describe('Filters render correctly', () => {
     expect($('.filter-summary-remove-button:contains(\'Direction: In\')').length).toEqual(1)
     expect($('.filter-summary-remove-button:contains(\'Type: B\')').length).toEqual(1)
   })
-
-  it('Filter selected filters render successfully', () => {
-    document.body.innerHTML = env.render('layout.html', defaultOptions)
-
-    expect($(".moj-filter__tag:contains('In')").length).toEqual(1)
-    expect($(".moj-filter__tag:contains('B')").length).toEqual(1)
-  })
 })
