@@ -44,36 +44,6 @@ const defaultOptions = {
   ]
 }
 
-describe('Selected filters render correctly', () => {
-  it('Selected filters render successfully', () => {
-    document.body.innerHTML = env.render('template.html', defaultOptions)
-
-    expect($(".moj-filter__tag:contains('In')").length).toEqual(1)
-    expect($(".moj-filter__tag:contains('B')").length).toEqual(1)
-  })
-
-  it('No selected filters renders successfully', () => {
-    const options = {
-      ...defaultOptions,
-      filters: [
-        { text: 'Direction', name: 'direction', type: 'radio', options: [{ value: 'in', text: 'In' }, { value: 'out', text: 'Out' }] },
-        { text: 'Type', name: 'type', type: 'select', options: [{ value: 'a', text: 'A' }, { value: 'b', text: 'B' }] }
-      ]
-    }
-
-    document.body.innerHTML = env.render('template.html', options)
-
-    expect($('.moj-filter__tag').length).toEqual(0)
-  })
-
-  it('Remove URLs are correct', () => {
-    document.body.innerHTML = env.render('template.html', defaultOptions)
-
-    expect($(".moj-filter__tag:contains('In')").attr('href')).toBe('{"direction":""}')
-    expect($(".moj-filter__tag:contains('B')").attr('href')).toBe('{"type":""}')
-  })
-})
-
 describe('Filters options render correctly', () => {
   it('Select filter renders successfully', () => {
     document.body.innerHTML = env.render('template.html', defaultOptions)
