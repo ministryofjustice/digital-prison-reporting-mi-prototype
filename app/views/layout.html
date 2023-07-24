@@ -7,19 +7,49 @@
 {% set reportsNavItems = [
         {
           heading: {
+            text: 'External movements by'
+          },
+          items: [
+            {
+              text: 'Day of the Week',
+              href: '/reports/external-movements-by-weekday',
+              description: 'External movements by Day of the Week.'
+            },
+            {
+              text: 'Direction',
+              href: '/reports/external-movements-by-direction',
+              description: 'External movements by Direction.'
+            },
+            {
+              text: 'Type',
+              href: '/reports/external-movements-by-type',
+              description: 'External movements by Type.'
+            },
+            {
+              text: 'Reason',
+              href: '/reports/external-movements-by-reason',
+              description: 'External movements by Reason.'
+            }
+          ] | setCurrentToActive(currentUrl)
+        }
+      ] %}
+
+{% set listsNavItems = [
+        {
+          heading: {
             text: 'External movements'
           },
           items: [{
             text: 'All',
-            href: '/reports/prisoner-movements',
+            href: '/lists/external-movements',
             description: 'A record of all prisoner external movements.'
           }, {
             text: 'Admissions last week',
-            href: '/reports/prisoner-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission',
+            href: '/lists/external-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission',
             description: 'A list of admissions in the past week.'
           }, {
             text: 'Yesterday\'s transfers out',
-            href: '/reports/prisoner-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer',
+            href: '/lists/external-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer',
             description: 'A list of yesterday\'s transfers out.'
           }] | setCurrentToActive(currentUrl)
         },
@@ -29,7 +59,7 @@
           },
           items: [{
             text: 'Person register',
-            href: '/reports/person-register',
+            href: '/lists/person-register',
             description: 'A register of all people.'
           }] | setCurrentToActive(currentUrl)
         },
@@ -39,7 +69,7 @@
           },
           items: [{
             text: 'Summary',
-            href: '/reports/locations/summary',
+            href: '/lists/locations/summary',
             description: 'Summary description'
           }] | setCurrentToActive(currentUrl)
         }
@@ -76,6 +106,7 @@
 {%- from "moj/components/button-menu/macro.njk"          import mojButtonMenu -%}
 {% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
 {% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
+{% from "moj/components/filter/macro.njk"                import mojFilter -%}
 {% from "../components/card-group/macro.html"            import appCardGroup %}
 {% from "../components/data-table/views/macro.html"      import appDataTable %}
 {% from "../components/filters/views/macro.html"         import appFilters %}
@@ -104,6 +135,10 @@
       {
         text: 'Home',
         href: '/'
+      },
+      {
+        text: 'Lists',
+        href: '/lists/'
       },
       {
         text: 'Reports',

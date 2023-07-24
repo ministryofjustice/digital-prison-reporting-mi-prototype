@@ -22,6 +22,37 @@ const movementTypeOptions = [
   }
 ]
 
+const weekdayGroups = [
+  {
+    value: 'monday',
+    text: 'Monday'
+  },
+  {
+    value: 'tuesday',
+    text: 'Tuesday'
+  },
+  {
+    value: 'wednesday',
+    text: 'Wednesday'
+  },
+  {
+    value: 'thursday',
+    text: 'Thursday'
+  },
+  {
+    value: 'friday',
+    text: 'Friday'
+  },
+  {
+    value: 'saturday',
+    text: 'Saturday'
+  },
+  {
+    value: 'sunday',
+    text: 'Sunday'
+  }
+]
+
 module.exports = {
   personRegister: [
     { header: 'Book Number', name: 'bookNumber' },
@@ -42,6 +73,7 @@ module.exports = {
     { header: 'To', name: 'to' },
     { header: 'Direction', name: 'direction', filter: { type: 'radio', options: movementDirectionOptions } },
     { header: 'Type', name: 'type', filter: { type: 'radio', options: movementTypeOptions } },
-    { header: 'Reason', name: 'reason' }
+    { header: 'Reason', name: 'reason' },
+    { header: 'Day of week', name: 'weekday', display: false, grouping: { groups: weekdayGroups } }
   ]
 }
