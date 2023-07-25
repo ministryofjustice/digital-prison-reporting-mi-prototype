@@ -4,9 +4,8 @@ const router = express.Router()
 const reportingService = require('./services/reportingService')
 const dataFormats = require('./reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
-const { configureFilterOptions, queryParameterPrefix } = require('./components/filters/handlers')
-const { getFilters } = require('./components/filters/utils')
-const { getCreateUrlForParametersFunction } = require('./utils/urlHelper')
+const { configureFilterOptions } = require('./components/filters/handlers')
+const { renderReport } = require('./reportHandlers')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -20,39 +19,6 @@ const getFieldByName = (name, format) => {
   const field = format.find(f => f.name === name)
 
   return field || {}
-}
-
-const renderReport = (req, res) => {
-  const {
-    dataFormat,
-    template,
-    reportData
-  } = req.reportOptions
-
-  const groupField = req.renderOptions.groupField
-
-  const data = reportData({
-    filters: req.renderOptions.filterValues,
-    dataFormat,
-    groupFieldName: groupField.name
-  })
-
-  const rows = Object.keys(data).map(d => [
-    { text: d },
-    { text: data[d] }
-  ])
-
-  res.render(template, {
-    ...req.renderOptions,
-    head: groupField.header,
-    rows,
-    chart: {
-      labels: Object.keys(data),
-      data: Object.values(data)
-    },
-    filters: getFilters(dataFormat, req.renderOptions.filterValues),
-    createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, queryParameterPrefix)
-  })
 }
 
 router.get('/', [configureCurrentUrl, function (req, res) {
@@ -99,20 +65,22 @@ router.get('/reports/', [configureCurrentUrl, function (req, res) {
   res.render('reports-home', req.renderOptions)
 }])
 
-router.get('/reports/external-movements-by-:groupField', [
+router.get('/reports/external-movements-by-:groupField-:chartType', [
   configureCurrentUrl,
   (req, res, next) => {
     const groupField = getFieldByName(req.params.groupField, dataFormats.externalMovements)
+    const chartType = req.params.chartType
 
     req.reportOptions = {
       dataFormat: dataFormats.externalMovements,
-      template: 'reports-people-external-movements-by',
       reportData: reportingService.reportExternalMovements,
-      countData: reportingService.countExternalMovements
+      countData: reportingService.countExternalMovements,
+      groupField,
+      chartType
     }
     req.renderOptions = {
       ...req.renderOptions,
-      groupField
+      title: 'External Movements'
     }
     next()
   },
