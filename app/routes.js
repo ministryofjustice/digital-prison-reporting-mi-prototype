@@ -80,7 +80,7 @@ router.get('/reports/external-movements-by-:groupField-:chartType', [
     }
     req.renderOptions = {
       ...req.renderOptions,
-      title: 'External Movements'
+      title: 'External movements'
     }
     next()
   },

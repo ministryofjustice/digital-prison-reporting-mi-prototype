@@ -50,7 +50,7 @@ describe('GET /lists/person-register', () => {
 })
 
 describe('GET /lists/external-movements', () => {
-  it('External movements report returns successfully', () => {
+  it('External movements list returns successfully', () => {
     return request(app)
       .get('/lists/external-movements')
       .expect('Content-Type', /text\/html/)
@@ -82,13 +82,45 @@ describe('GET /lists/external-movements', () => {
 })
 
 describe('GET /lists/locations/summary', () => {
-  it('External movements report returns successfully', () => {
+  it('Locations list returns successfully', () => {
     return request(app)
       .get('/lists/locations/summary')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
         expect(res.text).toContain('Summary')
+      })
+  })
+})
+
+describe('GET /reports/external-movements', () => {
+  it('External movements report returns successfully', () => {
+    return request(app)
+      .get('/reports/external-movements-by-weekday-bar')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
+      })
+  })
+
+  it('Does not fail when valid filters passed', () => {
+    return request(app)
+      .get('/reports/external-movements-by-weekday-bar?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
+      })
+  })
+
+  it('Does not fail when empty dates passed', () => {
+    return request(app)
+      .get('/reports/external-movements-by-weekday-bar?filters.date.start=&filters.date.end=')
+      .expect('Content-Type', /text\/html/)
+      .expect(200)
+      .then((res) => {
+        expect(res.text).toContain('External movements')
       })
   })
 })
