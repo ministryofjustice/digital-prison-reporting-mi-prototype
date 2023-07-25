@@ -7,7 +7,6 @@ $(function () {
       event.stopPropagation()
 
       const show = $(element).data('toggle-button') !== 'true'
-
       const target = $($(element).data('toggle-button-target-selector'))
 
       target.css('display', show ? '' : 'none')
