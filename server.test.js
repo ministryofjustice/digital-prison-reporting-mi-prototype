@@ -81,18 +81,6 @@ describe('GET /lists/external-movements', () => {
   })
 })
 
-describe('GET /lists/locations/summary', () => {
-  it('Locations list returns successfully', () => {
-    return request(app)
-      .get('/lists/locations/summary')
-      .expect('Content-Type', /text\/html/)
-      .expect(200)
-      .then((res) => {
-        expect(res.text).toContain('Summary')
-      })
-  })
-})
-
 describe('GET /reports/external-movements', () => {
   it('External movements report returns successfully', () => {
     return request(app)

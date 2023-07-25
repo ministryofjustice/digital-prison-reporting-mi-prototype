@@ -6,13 +6,14 @@ Digital Prison Reporting MI Prototype - Lists
 {% endblock %}
 
 {% block subHeader %}
-  {% set breadCrumbs = [ { text: "Lists", href: "/lists/" } ] | addMatchingBreadCrumbs(reportsNavItems, currentUrl) %}
-
-  <div class="govuk-width-container ">
-    {{ govukBreadcrumbs({
-      items: breadCrumbs
-    }) }}
-  </div>
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Lists", href: "/lists/" }
+    ]
+  }) }}
+</div>
 {% endblock %}
 
 {% block content %}

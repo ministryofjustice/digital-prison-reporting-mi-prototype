@@ -34,7 +34,7 @@ router.get('/lists/person-register', [
   (req, res, next) => {
     req.dataTableLayoutOptions = {
       dataFormat: dataFormats.personRegister,
-      template: 'lists-people-person-register',
+      title: 'Person register',
       listData: reportingService.listPersonRegister,
       countData: reportingService.countPersonRegister
     }
@@ -48,7 +48,7 @@ router.get('/lists/external-movements', [
   (req, res, next) => {
     req.dataTableLayoutOptions = {
       dataFormat: dataFormats.externalMovements,
-      template: 'lists-people-external-movements',
+      title: 'External movements',
       listData: reportingService.listExternalMovements,
       countData: reportingService.countExternalMovements
     }
@@ -56,10 +56,6 @@ router.get('/lists/external-movements', [
   },
   ...filterTableLayoutHandlers
 ])
-
-router.get('/lists/locations/summary', [configureCurrentUrl, function (req, res) {
-  res.render('lists-locations-summary', req.renderOptions)
-}])
 
 router.get('/reports/', [configureCurrentUrl, function (req, res) {
   res.render('reports-home', req.renderOptions)

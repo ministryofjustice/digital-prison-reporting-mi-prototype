@@ -1,5 +1,17 @@
 {% extends "./reports-layout.html" %}
 
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Reports", href: "/reports/" },
+      { text: title, href: "#" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
 {% block reportBody %}
 {% set showFiltersButton = {
   text: 'Show filters',
