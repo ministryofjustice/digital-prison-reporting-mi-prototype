@@ -2,7 +2,7 @@ const { getFilters } = require('./components/filters/utils')
 const { getCreateUrlForParametersFunction } = require('./utils/urlHelper')
 const { queryParameterPrefix } = require('./components/filters/handlers')
 
-const renderReport = (req, res) => {
+const renderVisualisation = (req, res) => {
   const {
     dataFormat,
     reportData,
@@ -21,7 +21,7 @@ const renderReport = (req, res) => {
     { text: data[d] }
   ])
 
-  res.render('reports-chart', {
+  res.render('visualisations-chart', {
     ...req.renderOptions,
     head: groupField.header,
     rows,
@@ -38,5 +38,5 @@ const renderReport = (req, res) => {
 }
 
 module.exports = {
-  renderReport
+  renderVisualisation
 }
