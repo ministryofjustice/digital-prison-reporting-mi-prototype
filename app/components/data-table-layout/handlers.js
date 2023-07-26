@@ -13,7 +13,7 @@ module.exports = {
     (req, res) => {
       const {
         dataFormat,
-        template,
+        title,
         listData,
         countData
       } = req.dataTableLayoutOptions
@@ -25,8 +25,9 @@ module.exports = {
         dataFormat
       })
 
-      res.render(template, {
+      res.render('lists-list', {
         ...req.renderOptions,
+        title,
         head: getHeaders(dataFormat),
         rows: mapData(personRegisterData, dataFormat),
         filters: getFilters(dataFormat, req.renderOptions.filterValues),

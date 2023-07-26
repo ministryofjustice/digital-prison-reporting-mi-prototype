@@ -96,5 +96,48 @@ module.exports = {
     )
   },
 
-  countExternalMovements: (filters, dataFormat) => filter(fakeExternalMovementsData.data, filters, dataFormat).length
+  countExternalMovements: (filters, dataFormat) => filter(fakeExternalMovementsData.data, filters, dataFormat).length,
+
+  reportExternalMovements: ({
+    filters,
+    dataFormat,
+    groupFieldName
+  }) => {
+    const data = filter(fakeExternalMovementsData.data.map(d => adjustExternalMovementDate(d)), filters, dataFormat)
+    const groupField = dataFormat.find(field => field.name === groupFieldName)
+
+    const groupedData = {}
+    if (groupField.grouping && groupField.grouping.groups) {
+      groupField.grouping.groups.forEach(g => {
+        groupedData[g.value] = 0
+      })
+    }
+
+    data.forEach(d => {
+      const value = d[groupFieldName]
+      if (groupedData[value]) {
+        groupedData[value]++
+      } else {
+        groupedData[value] = 1
+      }
+    })
+
+    let groupedDataByHeader = {}
+
+    if (groupField.grouping && groupField.grouping.groups) {
+      Object.keys(groupedData).forEach(name => {
+        const groupOption = groupField.grouping.groups.find(g => g.value === name)
+
+        if (groupOption) {
+          groupedDataByHeader[groupOption.text] = groupedData[name]
+        } else {
+          groupedDataByHeader[name] = groupedData[name]
+        }
+      })
+    } else {
+      groupedDataByHeader = groupedData
+    }
+
+    return groupedDataByHeader
+  }
 }

@@ -1,0 +1,156 @@
+{% extends "./reports-layout.html" %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Reports", href: "/reports/" },
+      { text: title, href: "#" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block reportBody %}
+{% set showFiltersButton = {
+  text: 'Show filters',
+  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  attributes: {
+    'data-toggle-button': 'false',
+    'data-toggle-button-target-selector': '.sidebar-filter',
+    'data-toggle-button-caption-show': 'Show filters',
+    'data-toggle-button-caption-hide': 'Hide filters'
+  }
+} %}
+
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
+{% if (selectedFilters.length > 0) %}
+  {% set selectedFilters = [
+    showFiltersButton,
+    {
+      text: 'Clear all',
+      href: createUrlForParametersFilters(),
+      classes: 'govuk-button--primary'
+    }
+  ].concat(selectedFilters) %}
+{% else %}
+  {% set selectedFilters = [ showFiltersButton ].concat(selectedFilters) %}
+{% endif %}
+
+<h2 class="govuk-heading-m">
+  {{ title }} by {{ head }}
+</h2>
+<div class="moj-filter-layout">
+  <div class="moj-filter-layout__filter sidebar-filter" style="display: none">
+    {{ appFilters(
+    filters,
+    "onApplyFilters()"
+    ) }}
+  </div>
+  <div class="moj-filter-layout__content">
+    <div class="moj-action-bar">
+      {{ mojButtonMenu({
+      items: selectedFilters
+      }) }}
+    </div>
+    <div class="moj-scrollable-pane">
+      {% set chartHtml %}
+        <div class="moj-scrollable-pane">
+          <canvas id="dataTableChart"></canvas>
+        </div>
+      {% endset %}
+
+      {% set tableHtml %}
+        <div class="moj-scrollable-pane">
+          {{ govukTable({
+            firstCellIsHeader: true,
+            head: [
+              {
+                text: head
+              },
+              {
+                text: "Count"
+              }
+            ],
+            rows: rows
+          }) }}
+        </div>
+      {% endset %}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Chart",
+            id: "chart",
+            panel: {
+            html: chartHtml
+            }
+          },
+          {
+            label: "Table",
+            id: "data",
+            panel: {
+              html: tableHtml
+            }
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script lang="js">
+
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("#.+"), "");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".moj-filter-layout__filter input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  $(function () {
+    const ctx = document.getElementById('dataTableChart');
+
+    new Chart(ctx, {
+      type: '{{ chart.type }}',
+      data: {
+        labels: [
+          {% for label in  chart.labels %}
+            '{{ label }}',
+          {% endfor %}
+        ],
+        datasets: [{
+          label: 'Movements',
+          data: [{{ chart.data }}],
+          borderWidth: {{ chart.borderWidth }}
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        borderColor: '#5694ca',
+        backgroundColor: '#5694ca',
+        indexAxis: '{{ chart.indexAxis }}'
+      }
+    });
+  });
+
+</script>
+{% endblock %}

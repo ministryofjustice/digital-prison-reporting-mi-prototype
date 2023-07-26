@@ -4,6 +4,8 @@ const router = express.Router()
 const reportingService = require('./services/reportingService')
 const dataFormats = require('./reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
+const { configureFilterOptions } = require('./components/filters/handlers')
+const { renderReport } = require('./reportHandlers')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -13,20 +15,26 @@ const configureCurrentUrl = (req, res, next) => {
   next()
 }
 
+const getFieldByName = (name, format) => {
+  const field = format.find(f => f.name === name)
+
+  return field || {}
+}
+
 router.get('/', [configureCurrentUrl, function (req, res) {
   res.render('index', req.renderOptions)
 }])
 
-router.get('/reports/', [configureCurrentUrl, function (req, res) {
-  res.render('reports-home', req.renderOptions)
+router.get('/lists/', [configureCurrentUrl, function (req, res) {
+  res.render('lists-home', req.renderOptions)
 }])
 
-router.get('/reports/person-register', [
+router.get('/lists/person-register', [
   configureCurrentUrl,
   (req, res, next) => {
     req.dataTableLayoutOptions = {
       dataFormat: dataFormats.personRegister,
-      template: 'reports-people-person-register',
+      title: 'Person register',
       listData: reportingService.listPersonRegister,
       countData: reportingService.countPersonRegister
     }
@@ -35,12 +43,12 @@ router.get('/reports/person-register', [
   ...filterTableLayoutHandlers
 ])
 
-router.get('/reports/prisoner-movements', [
+router.get('/lists/external-movements', [
   configureCurrentUrl,
   (req, res, next) => {
     req.dataTableLayoutOptions = {
       dataFormat: dataFormats.externalMovements,
-      template: 'reports-people-prisoner-movements',
+      title: 'External movements',
       listData: reportingService.listExternalMovements,
       countData: reportingService.countExternalMovements
     }
@@ -49,8 +57,31 @@ router.get('/reports/prisoner-movements', [
   ...filterTableLayoutHandlers
 ])
 
-router.get('/reports/locations/summary', [configureCurrentUrl, function (req, res) {
-  res.render('reports-locations-summary', req.renderOptions)
+router.get('/reports/', [configureCurrentUrl, function (req, res) {
+  res.render('reports-home', req.renderOptions)
 }])
+
+router.get('/reports/external-movements-by-:groupField-:chartType', [
+  configureCurrentUrl,
+  (req, res, next) => {
+    const groupField = getFieldByName(req.params.groupField, dataFormats.externalMovements)
+    const chartType = req.params.chartType
+
+    req.reportOptions = {
+      dataFormat: dataFormats.externalMovements,
+      reportData: reportingService.reportExternalMovements,
+      countData: reportingService.countExternalMovements,
+      groupField,
+      chartType
+    }
+    req.renderOptions = {
+      ...req.renderOptions,
+      title: 'External movements'
+    }
+    next()
+  },
+  configureFilterOptions,
+  renderReport
+])
 
 module.exports = router
