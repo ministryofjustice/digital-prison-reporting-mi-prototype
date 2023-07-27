@@ -6,28 +6,22 @@
 {% endblock %}
 
 {% block content %}
+  <h1 class="govuk-heading-xl">
+    Digital Prison Reporting MI Prototype
+    <span class="govuk-caption-xl">{{releaseVersion}}</span>
+  </h1>{{releaseVersion | log }}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column">
-      <h1 class="govuk-heading-xl">
-        Digital Prison Reporting MI Prototype
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-
-      {{ appCardGroup([
-        {
-          text: 'Lists',
-          href: '/lists/',
-          description: 'This is where you can view lists data.'
-        },
-        {
-          text: 'Visualisations',
-          href: '/visualisations/',
-          description: 'This is where you can view reports on your data.'
-        }
-      ]) }}
-
-    </div>
-  </div>
+  {{ appCardGroup([
+    {
+      text: 'Lists',
+      href: '/lists/',
+      description: 'This is where you can view lists data.'
+    },
+    {
+      text: 'Visualisations',
+      href: '/visualisations/',
+      description: 'This is where you can view reports on your data.'
+    }
+  ]) }}
 
 {% endblock %}
