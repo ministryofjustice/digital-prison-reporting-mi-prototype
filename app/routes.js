@@ -5,7 +5,7 @@ const reportingService = require('./services/reportingService')
 const dataFormats = require('./reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
 const { configureFilterOptions } = require('./components/filters/handlers')
-const { renderReport } = require('./reportHandlers')
+const { renderVisualisation } = require('./visualisationHandlers')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -57,11 +57,11 @@ router.get('/lists/external-movements', [
   ...filterTableLayoutHandlers
 ])
 
-router.get('/reports/', [configureCurrentUrl, function (req, res) {
-  res.render('reports-home', req.renderOptions)
+router.get('/visualisations/', [configureCurrentUrl, function (req, res) {
+  res.render('visualisations-home', req.renderOptions)
 }])
 
-router.get('/reports/external-movements-by-:groupField-:chartType', [
+router.get('/visualisations/external-movements-by-:groupField-:chartType', [
   configureCurrentUrl,
   (req, res, next) => {
     const groupField = getFieldByName(req.params.groupField, dataFormats.externalMovements)
@@ -81,7 +81,7 @@ router.get('/reports/external-movements-by-:groupField-:chartType', [
     next()
   },
   configureFilterOptions,
-  renderReport
+  renderVisualisation
 ])
 
 module.exports = router

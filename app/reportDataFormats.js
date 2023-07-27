@@ -67,6 +67,7 @@ module.exports = {
 
   externalMovements: [
     { header: 'Prison Number', name: 'prisonNumber' },
+    { header: 'Name', name: 'name', data: d => (`${d.lastName}, ${d.firstName[0]}`) },
     { header: 'Date', name: 'date', data: d => dataTableUtils.mapDate(d.date), format: 'numeric', filter: { type: 'date-range' } },
     { header: 'Time', name: 'time' },
     { header: 'From', name: 'from' },
