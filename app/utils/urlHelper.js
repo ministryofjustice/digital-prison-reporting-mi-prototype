@@ -7,7 +7,7 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
 
   if (updateQueryParams) {
     Object.keys(updateQueryParams).forEach(q => {
-      if (updateQueryParams[q]) {
+      if (updateQueryParams[q] || updateQueryParams[q] === false) {
         queryParams[prefix + q] = updateQueryParams[q]
       } else {
         Object.keys(queryParams)
@@ -28,7 +28,7 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
   const nonEmptyQueryParams = {}
 
   Object.keys(queryParams)
-    .filter(key => queryParams[key])
+    .filter(key => queryParams[key] || queryParams[key] === false)
     .forEach(key => {
       nonEmptyQueryParams[key] = queryParams[key]
     })
