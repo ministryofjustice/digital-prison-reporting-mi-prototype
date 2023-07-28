@@ -18,7 +18,7 @@ const renderVisualisation = (req, res) => {
 
   const rows = Object.keys(data).map(d => [
     { text: d },
-    { text: data[d] }
+    { text: data[d], format: 'numeric' }
   ])
 
   res.render('visualisations-chart', {

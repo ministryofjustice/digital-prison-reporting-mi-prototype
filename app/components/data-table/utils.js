@@ -28,8 +28,9 @@ module.exports = {
     .filter(f => f.display !== false)
     .map(f => ({
       text: f.data ? f.data(d) : d[f.name],
-      format: f.format
+      format: f.format,
+      classes: f.wrap ? `data-table-cell-wrap-${f.wrap}` : ''
     }))))),
 
-  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE)
+  mapDate: isoDate => new Date(isoDate).toLocaleDateString(LOCALE).replace(/\/20(\d\d)/, '/$1')
 }
