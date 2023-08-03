@@ -42,7 +42,7 @@
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^5.1.0",
-    "inquirer": "^8.2.4",
+    "inquirer": "^8.2.6",
     "lodash": "^4.17.21",
     "marked": "^5.1.2",
     "notifications-node-client": "^7.0.3",
