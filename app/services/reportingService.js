@@ -21,8 +21,13 @@ const sortPageAndFilter = (
   dataFormat
 ) => filter(data, filters, dataFormat)
   .sort((a, b) => {
-    const aVal = a[sortColumnName]
-    const bVal = b[sortColumnName]
+    let aVal = a[sortColumnName]
+    let bVal = b[sortColumnName]
+
+    if (sortColumnName === 'name') {
+      aVal = a.lastName + a.firstName
+      bVal = b.lastName + b.firstName
+    }
 
     if (aVal === bVal) {
       return 0
