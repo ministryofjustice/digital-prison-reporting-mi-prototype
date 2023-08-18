@@ -62,7 +62,8 @@
 
   const onApplyFilters = function() {
     let url = decodeURI(window.location.href)
-      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"");
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
     if (url.indexOf("?") === -1) {
       url += "?";
     } else {
