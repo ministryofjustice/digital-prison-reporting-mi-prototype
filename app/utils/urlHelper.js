@@ -15,6 +15,7 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
           .forEach(key => {
             queryParams[key] = null
           })
+        queryParams['paging.selectedPage'] = 1
       }
     })
   } else {
@@ -23,6 +24,7 @@ const createUrlForParameters = (currentQueryParams, prefix, updateQueryParams) =
       .forEach(key => {
         queryParams[key] = null
       })
+    queryParams['paging.selectedPage'] = 1
   }
 
   const nonEmptyQueryParams = {}
