@@ -24,12 +24,14 @@
     }
   ].concat(selectedFilters) %}
 {% else %}
-  {% set selectedFilters = [ showFiltersButton ].concat(selectedFilters) %}
+  {% set selectedFilters = [ showFiltersButton ] %}
 {% endif %}
-
   <h2 class="govuk-heading-m">
     {% block pageTitle %}{% endblock %}
   </h2>
+  <div class="govuk-body header-updated">
+    Updated: 2001-02-03 04:05:06
+  </div>
   <div class="moj-filter-layout">
     <div class="moj-filter-layout__filter" style="display: none">
       {{ appFilters(
