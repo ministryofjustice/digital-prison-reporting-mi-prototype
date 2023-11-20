@@ -59,26 +59,20 @@
         }
       ] %}
 
-{% set sdtChangeLog1 %}
-  {% include 'safetyDiagnosticTool/versions/v1/changeLog.html' %}
-{% endset %}
-
-{% set sdtChangeLog2 %}
-  {% include 'safetyDiagnosticTool/versions/v2/changeLog.html' %}
-{% endset %}
-
 {% set sdtVersions = {
       path: '/safety-diagnostic-tool', 
       items: [
         {
           versionNumber: 2,
           status: 'in design',
-          description: sdtChangeLog2
+          description: sdtChangeLog2,
+          changeLogPath: 'safetyDiagnosticTool/versions/v2/changeLog.html'
         },
         {
           versionNumber: 1,
           status: 'closed',
-          description: sdtChangeLog1
+          description: sdtChangeLog1,
+          changeLogPath: 'safetyDiagnosticTool/versions/v1/changeLog.html'
         }
       ] | setCurrentToActive(currentUrl)
     }
