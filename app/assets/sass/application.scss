@@ -76,6 +76,10 @@ table.govuk-table {
   min-width: 40%;
 }
 
+.govuk-table__row--versions:hover {
+  background-color: unset !important;
+}
+
 .govuk-table__row:hover {
   background-color: govuk-colour("light-grey");
 }
