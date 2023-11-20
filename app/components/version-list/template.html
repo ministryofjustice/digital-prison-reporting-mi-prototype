@@ -13,7 +13,7 @@
     {% for version in versions.items %}
     <tr class="govuk-table__row govuk-table__row--versions">
       <td class="govuk-table__cell">
-        <a href='{{ versions.path }}{{version.versionNumber}}' class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Version {{ version.versionNumber }}</a>
+        <a href='{{ versions.path }}/v{{version.versionNumber}}' class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Version {{ version.versionNumber }}</a>
       </td>
       <td class="govuk-table__cell">
         {% if version.status != 'in design' %}

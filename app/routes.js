@@ -89,8 +89,12 @@ router.get('/safety-diagnostic-tool/', [configureCurrentUrl, function (req, res)
   res.render('safetyDiagnosticTool/sdt-home', req.renderOptions)
 }])
 
-router.get('/safety-diagnostic-tool/versions/:versionNumber', [configureCurrentUrl, function (req, res) {
-  res.render('safetyDiagnosticTool/versions/' + req.params.versionNumber + '/home', req.renderOptions)
+router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, res) {
+  res.render('safetyDiagnosticTool/versions/v1/home', req.renderOptions)
+}])
+
+router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
+  res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
 }])
 
 module.exports = router

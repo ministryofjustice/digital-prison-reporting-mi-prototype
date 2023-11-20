@@ -60,15 +60,15 @@
       ] %}
 
 {% set sdtChangeLog1 %}
-  {% include 'safetyDiagnosticTool/versions/1/changeLog.html' %}
+  {% include 'safetyDiagnosticTool/versions/v1/changeLog.html' %}
 {% endset %}
 
 {% set sdtChangeLog2 %}
-  {% include 'safetyDiagnosticTool/versions/2/changeLog.html' %}
+  {% include 'safetyDiagnosticTool/versions/v2/changeLog.html' %}
 {% endset %}
 
 {% set sdtVersions = {
-      path: '/safety-diagnostic-tool/versions/', 
+      path: '/safety-diagnostic-tool', 
       items: [
         {
           versionNumber: 2,
