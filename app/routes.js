@@ -84,7 +84,7 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
   renderVisualisation
 ])
 
-// Safety Diagnostic Tool 
+// Safety Diagnostic Tool
 router.get('/safety-diagnostic-tool/', [configureCurrentUrl, function (req, res) {
   res.render('safetyDiagnosticTool/sdt-home', req.renderOptions)
 }])

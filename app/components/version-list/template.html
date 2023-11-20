@@ -1,3 +1,5 @@
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
 <table class="govuk-table">
   <caption class="govuk-table__caption govuk-caption-xl">Prototype versions</caption>
   <thead class="govuk-table__head">
@@ -7,21 +9,26 @@
       <th scope="col" class="govuk-table__header" width="60%">What changed</th>
     </tr>
   </thead>
-    <tbody class="govuk-table__body">
-      {% for version in versions.items %}
-      <tr class="govuk-table__row govuk-table__row--versions">
-        <td class="govuk-table__cell">
-          <a href='{{ versions.path }}{{version.versionNumber}}' class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Version {{ version.versionNumber }}</a>
-        </td>
-        <td class="govuk-table__cell">
-          <span class="govuk-tag {% if version.status != 'in design' %}govuk-tag--grey{% endif %}">
-            {{ version.status }}
-          </span>
-        </td>
-        <td class="govuk-table__cell">
-          {{ version.description|safe }}   
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
+  <tbody class="govuk-table__body">
+    {% for version in versions.items %}
+    <tr class="govuk-table__row govuk-table__row--versions">
+      <td class="govuk-table__cell">
+        <a href='{{ versions.path }}{{version.versionNumber}}' class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Version {{ version.versionNumber }}</a>
+      </td>
+      <td class="govuk-table__cell">
+        {% if version.status != 'in design' %}
+          {{govukTag({ text: version.status })}}
+        {% else %}
+          {{govukTag({
+            text: version.status,
+            classes: "govuk-tag--grey"
+          })}}
+        {% endif %}
+      </td>
+      <td class="govuk-table__cell">
+        {{ version.description|safe }}   
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
