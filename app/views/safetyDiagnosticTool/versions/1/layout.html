@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Digital Prison Reporting MI Prototype - Safety Diagnostic Tool
+{% endblock %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Safety Diagnostic Tools", href: "/sdt/" },
+      { text: "Version 1", href: "/sdt/versions/1" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+{% endblock %}
