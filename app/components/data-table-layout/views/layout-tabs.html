@@ -26,32 +26,35 @@
 
 {% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
 
-{% if (selectedFilters.length > 0) %}
-  {% set controlButtons = [
-    showFiltersButton,
-    {
-      text: 'Clear all',
-      href: createUrlForParametersFilters(),
-      classes: 'govuk-button--primary'
-    },
-    chooseColumnsButton
-  ] %}
-{% else %}
-  {% set controlButtons = [ showFiltersButton, chooseColumnsButton ] %}
-{% endif %}
+{% set tableHtml %}
+  <div class="moj-action-bar">
+    {{ mojButtonMenu({
+    items: selectedFilters
+    }) }}
+  </div>
+  <div class="moj-scrollable-pane">
+    {{ appDataTable(
+    null,
+    head,
+    rows,
+    totalRowCount,
+    dataTable,
+    createUrlForParametersPaging,
+    columns
+    ) }}
+  </div>
+{% endset -%}
 
-  <h2 class="govuk-heading-m">
-    {% block pageTitle %}{% endblock %}
-  </h2>
-  <div class="moj-filter-layout">
-    <div class="moj-filter-layout__filter sidebar-filters" style="display: none">
+{% set settingsHtml %}
+  <div style="min-height:650px">
+    <div class="sidebar-filters govuk-grid-column-one-half">
       {{ appFilters(
         "Filter",
         filters,
         "onApplyFilters()"
       ) }}
     </div>
-    <div class="moj-filter-layout__filter sidebar-columns" style="display: none">
+    <div class="sidebar-columns govuk-grid-column-one-half">
       {{ appFilters(
         "Columns",
         [
@@ -65,30 +68,30 @@
         "onApplyColumns()"
       ) }}
     </div>
-    <div class="moj-filter-layout__content">
-      <div class="moj-action-bar">
-        {{ mojButtonMenu({
-        items: controlButtons
-        }) }}
-      </div>
-      <div class="moj-action-bar">
-        {{ mojButtonMenu({
-          items: selectedFilters
-        }) }}
-      </div>
-      <div class="moj-scrollable-pane">
-        {{ appDataTable(
-          null,
-          head,
-          rows,
-          totalRowCount,
-          dataTable,
-          createUrlForParametersPaging,
-          columns
-        ) }}
-      </div>
-    </div>
   </div>
+{% endset -%}
+
+  <h2 class="govuk-heading-m">
+    {% block pageTitle %}{% endblock %}
+  </h2>
+  {{ govukTabs({
+  items: [
+    {
+      label: "Table",
+      id: "table",
+      panel: {
+        html: tableHtml
+      }
+    },
+    {
+      label: "Settings",
+      id: "settings",
+      panel: {
+        html: settingsHtml
+      }
+    }
+  ]
+  }) }}
 {% endblock %}
 
 {% block pageScripts %}
@@ -97,7 +100,9 @@
   const onApplyFilters = function() {
     let url = decodeURI(window.location.href)
       .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
-      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1")
+      .replace(new RegExp("#.+"),"")
+
     if (url.indexOf("?") === -1) {
       url += "?";
     } else {
@@ -113,6 +118,8 @@
   const onApplyColumns = function() {
     let url = decodeURI(window.location.href)
       .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+      .replace(new RegExp("#.+"),"")
+
     if (url.indexOf("?") === -1) {
       url += "?";
     } else {

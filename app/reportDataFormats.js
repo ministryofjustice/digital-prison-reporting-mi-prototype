@@ -54,17 +54,6 @@ const weekdayGroups = [
 ]
 
 module.exports = {
-  personRegister: [
-    { header: 'Book Number', name: 'bookNumber' },
-    { header: 'Agency Location Code', name: 'agencyLocationCode' },
-    { header: 'Prison Number', name: 'prisonNumber' },
-    { header: 'First Name', name: 'firstName' },
-    { header: 'Last Name', name: 'lastName' },
-    { header: 'Date Of Birth', name: 'dateOfBirth', data: d => dataTableUtils.mapDate(d.dateOfBirth), format: 'numeric', filter: { type: 'date-range' } },
-    { header: 'Establishment', name: 'establishment' },
-    { header: 'Cell', name: 'cell' }
-  ],
-
   externalMovements: [
     { header: 'Prison Number', name: 'prisonNumber' },
     { header: 'Name', name: 'name', data: d => (`${d.lastName}, ${d.firstName[0]}`), wrap: 'none' },

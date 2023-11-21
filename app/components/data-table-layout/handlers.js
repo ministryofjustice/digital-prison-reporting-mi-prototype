@@ -15,25 +15,46 @@ module.exports = {
         dataFormat,
         title,
         listData,
-        countData
+        countData,
+        tabs = false
       } = req.dataTableLayoutOptions
 
-      const personRegisterData = listData({
+      const data = listData({
         ...req.renderOptions.dataTable,
         sortColumnName: dataFormat[req.renderOptions.dataTable.sortColumn].name,
         filters: req.renderOptions.filterValues,
         dataFormat
       })
 
+      const columnOptions = dataFormat
+        .map(column => ({
+          value: column.name,
+          text: column.header
+        }))
+
+      let columns = req.query.columns
+
+      if (!columns || columns.length === 0) {
+        columns = dataFormat
+          .filter(column => column.display !== false)
+          .map(column => column.name)
+      }
+
+      let dataTableLayout = '../components/data-table-layout/views/layout'
+      dataTableLayout += tabs ? '-tabs.html' : '.html'
+
       res.render('lists-list', {
         ...req.renderOptions,
         title,
-        head: getHeaders(dataFormat),
-        rows: mapData(personRegisterData, dataFormat),
+        head: getHeaders(dataFormat, columns),
+        rows: mapData(data, dataFormat, columns),
         filters: getFilters(dataFormat, req.renderOptions.filterValues),
         totalRowCount: countData(req.renderOptions.filterValues, dataFormat),
         createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
-        createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix)
+        createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix),
+        columnOptions,
+        columns,
+        dataTableLayout
       })
     }
   ]

@@ -1,4 +1,3 @@
-const fakePersonRegisterData = require('../data/fakePersonRegisterData')
 const fakeExternalMovementsData = require('../data/fakeExternalMovementsData')
 
 const maxExternalMovementDate = new Date('2023-06-06')
@@ -47,6 +46,9 @@ const filter = (data, filters, dataFormat) => data
       }
 
       const filterFormat = dataFormat.find(f => f.name === filter && f.filter)
+      if (!filterFormat) {
+        return false
+      }
 
       if (filterFormat.filter.type === 'date-range') {
         const dataDate = new Date(row[filter])
@@ -60,28 +62,6 @@ const filter = (data, filters, dataFormat) => data
   })
 
 module.exports = {
-
-  listPersonRegister: ({
-    selectedPage,
-    pageSize,
-    sortColumnName,
-    sortedAsc,
-    filters,
-    dataFormat
-  }) => {
-    return sortPageAndFilter(
-      fakePersonRegisterData.data,
-      selectedPage,
-      pageSize,
-      sortColumnName,
-      sortedAsc,
-      filters,
-      dataFormat
-    )
-  },
-
-  countPersonRegister: (filters, dataFormat) => filter(fakePersonRegisterData.data, filters, dataFormat).length,
-
   listExternalMovements: ({
     selectedPage,
     pageSize,

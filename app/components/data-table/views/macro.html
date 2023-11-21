@@ -9,7 +9,8 @@
     sortColumn,     // The column the data is sorted on (e.g. '0')
     sortedAsc,      // The sort order of the data
   },
-  createUrlForParameters // A function accepting a parameter object that maps to the target URL
+  createUrlForParameters, // A function accepting a parameter object that maps to the target URL
+  columns
 #}
 {% macro appDataTable(caption, head, rows, totalRowCount, dataTableOptions, createUrlForParameters) %}
   {%- set selectedPage = dataTableOptions.selectedPage %}

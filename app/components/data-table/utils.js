@@ -17,15 +17,15 @@ const personRegisterDataFormat = [
 const LOCALE = 'en-GB'
 
 module.exports = {
-  getHeaders: format => (format
-    .filter(f => f.display !== false)
+  getHeaders: (format, columns) => (format
+    .filter(f => columns.includes(f.name))
     .map(f => ({
       text: f.header,
       format: f.format
     }))),
 
-  mapData: (data, format) => (data.map(d => (format
-    .filter(f => f.display !== false)
+  mapData: (data, format, columns) => (data.map(d => (format
+    .filter(f => columns.includes(f.name))
     .map(f => ({
       text: f.data ? f.data(d) : d[f.name],
       format: f.format,
