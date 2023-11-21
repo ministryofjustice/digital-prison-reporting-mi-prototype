@@ -3,7 +3,6 @@
 {%- set today = getTodayMinusDays(0) -%}
 {%- set yesterday = getTodayMinusDays(1) -%}
 {%- set lastWeek = getTodayMinusDays(8) -%}
-
 {% set reportsNavItems = [
         {
           heading: {
@@ -68,6 +67,25 @@
         }
       ] %}
 
+{% set sdtVersions = {
+      path: '/safety-diagnostic-tool', 
+      items: [
+        {
+          versionNumber: 2,
+          status: 'in design',
+          description: sdtChangeLog2,
+          changeLogPath: 'safetyDiagnosticTool/versions/v2/changeLog.html'
+        },
+        {
+          versionNumber: 1,
+          status: 'closed',
+          description: sdtChangeLog1,
+          changeLogPath: 'safetyDiagnosticTool/versions/v1/changeLog.html'
+        }
+      ] | setCurrentToActive(currentUrl)
+    }
+%}
+
 {% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
@@ -102,6 +120,7 @@
 {% from "../components/card-group/macro.html"            import appCardGroup %}
 {% from "../components/data-table/views/macro.html"      import appDataTable %}
 {% from "../components/filters/views/macro.html"         import appFilters %}
+{% from "../components/version-list/macro.html"          import appVersionList %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -135,6 +154,10 @@
       {
         text: 'Visualisations',
         href: '/visualisations/'
+      },
+      {
+        text: 'Safety Diagnostic Tool',
+        href: '/safety-diagnostic-tool/'
       }
     ] | setCurrentToActive(currentUrl)
   }) }}
