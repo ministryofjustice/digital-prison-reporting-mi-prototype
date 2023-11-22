@@ -49,12 +49,20 @@
         },
         {
           heading: {
-            text: 'Person register'
+            text: 'External movements (with Tabs)'
           },
           items: [{
-            text: 'Person register',
-            href: '/lists/person-register',
-            description: 'A register of all people.'
+            text: 'All',
+            href: '/lists/external-movements-tabs',
+            description: 'A record of all prisoner external movements.'
+          }, {
+            text: 'Admissions last week',
+            href: '/lists/external-movements-tabs?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission',
+            description: 'A list of admissions in the past week.'
+          }, {
+            text: 'Yesterday\'s transfers out',
+            href: '/lists/external-movements-tabs?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer',
+            description: 'A list of yesterday\'s transfers out.'
           }] | setCurrentToActive(currentUrl)
         }
       ] %}

@@ -37,18 +37,6 @@ describe('GET /visualisations/', () => {
   })
 })
 
-describe('GET /lists/person-register', () => {
-  it('Person register report returns successfully', () => {
-    return request(app)
-      .get('/lists/person-register')
-      .expect('Content-Type', /text\/html/)
-      .expect(200)
-      .then((res) => {
-        expect(res.text).toContain('Person register')
-      })
-  })
-})
-
 describe('GET /lists/external-movements', () => {
   it('External movements list returns successfully', () => {
     return request(app)
