@@ -55,7 +55,7 @@ const weekdayGroups = [
 
 module.exports = {
   externalMovements: [
-    { header: 'Prison Number', name: 'prisonNumber' },
+    { header: 'Prison Number', name: 'prisonNumber', mandatoryDisplay: true },
     { header: 'Name', name: 'name', data: d => (`${d.lastName}, ${d.firstName[0]}`), wrap: 'none' },
     { header: 'Date', name: 'date', data: d => dataTableUtils.mapDate(d.date), format: 'numeric', filter: { type: 'date-range' } },
     { header: 'Time', name: 'time' },
