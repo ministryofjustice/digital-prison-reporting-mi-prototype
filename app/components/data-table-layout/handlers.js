@@ -30,10 +30,10 @@ const columnFilterOptions = (req, res, next) => {
       }
     })
 
-  let columns = req.query.columns ? [].concat(req.query.columns) : []
+  let columns = (req.query.columns && req.query.columns !== 'reset') ? [].concat(req.query.columns) : []
 
   if (columns.length === 0) {
-    if (cache.has(cacheKey)) {
+    if (cache.has(cacheKey) && req.query.columns !== 'reset') {
       columns = cache.get(cacheKey)
     } else {
       columns = req.dataTableLayoutOptions.dataFormat

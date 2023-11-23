@@ -24,6 +24,14 @@
   }
 } %}
 
+{% set resetColumnsButton = {
+  text: 'Reset columns',
+  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  attributes: {
+    'onclick': 'onResetColumns()'
+  }
+} %}
+
 {% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
 
 {% if (selectedFilters.length > 0) %}
@@ -34,10 +42,11 @@
       href: createUrlForParametersFilters(),
       classes: 'govuk-button--primary'
     },
-    chooseColumnsButton
+    chooseColumnsButton,
+    resetColumnsButton
   ] %}
 {% else %}
-  {% set controlButtons = [ showFiltersButton, chooseColumnsButton ] %}
+  {% set controlButtons = [ showFiltersButton, chooseColumnsButton, resetColumnsButton ] %}
 {% endif %}
 
   <h2 class="govuk-heading-m">
@@ -122,6 +131,18 @@
     url = url
       .replaceAll("?&","?")
       .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
     window.location.href = url
   }
 
