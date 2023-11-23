@@ -43,21 +43,6 @@ router.get('/lists/external-movements', [
   ...filterTableLayoutHandlers
 ])
 
-router.get('/lists/external-movements-tabs', [
-  configureCurrentUrl,
-  (req, res, next) => {
-    req.dataTableLayoutOptions = {
-      dataFormat: dataFormats.externalMovements,
-      title: 'External movements',
-      listData: reportingService.listExternalMovements,
-      countData: reportingService.countExternalMovements,
-      tabs: true
-    }
-    next()
-  },
-  ...filterTableLayoutHandlers
-])
-
 router.get('/visualisations/', [configureCurrentUrl, function (req, res) {
   res.render('visualisations-home', req.renderOptions)
 }])
