@@ -1,7 +1,4 @@
 // Global styles for all chart types
-Chart.register(ChartDataLabels)
-Chart.defaults.font.family = 'GDS Transport'
-
 const chartConfig = {
   colours: [
     '#1d70b8',
@@ -19,7 +16,7 @@ const chartConfig = {
     bodyFontSize: 16,
     displayColors: true,
     borderWidth: 1,
-    borderColor: "#b1b4b6",
+    borderColor: '#b1b4b6',
     cornerRadius: 0,
     padding: 15,
   }
