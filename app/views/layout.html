@@ -68,6 +68,26 @@
     }
 %}
 
+{% set chartTypes = [ 'doughnut', 'pie' ] %}
+{% set chartTypeData = [] %}
+{% for type in chartTypes %}
+  {% set chartTypeData = (chartTypeData.push({
+    text: type,
+    href: '/charts/' + type,
+    description: 'Example of a ' + type + ' chart'
+  }), chartTypeData) %}
+{% endfor %}
+
+{% set chartTypeItems = [
+  {
+    heading: {
+      text: 'Chart types'
+    },
+    items: chartTypeData | setCurrentToActive(currentUrl)
+    }
+] %}
+
+
 {% extends "govuk/template.njk" %}
 
 {% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
@@ -103,6 +123,9 @@
 {% from "../components/data-table/views/macro.html"      import appDataTable %}
 {% from "../components/filters/views/macro.html"         import appFilters %}
 {% from "../components/version-list/macro.html"          import appVersionList %}
+{% from "../components/chart/doughnut/macro.html"        import doughnutChart %}
+{% from "../components/chart-card/macro.html"            import chartCard %}
+{% from "../components/chart-card-group/macro.html"      import chartCardGroup %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -136,6 +159,10 @@
       {
         text: 'Visualisations',
         href: '/visualisations/'
+      },
+      {
+        text: 'Charts',
+        href: '/charts/'
       },
       {
         text: 'Safety Diagnostic Tool',

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Digital Prison Reporting MI Prototype - Charts
+{% endblock %}
+
+{% block subHeader %}
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: [
+        { text: "Home", href: "/" },
+        { text: "charts", href: "/charts/" }
+      ]
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+{% endblock %}
