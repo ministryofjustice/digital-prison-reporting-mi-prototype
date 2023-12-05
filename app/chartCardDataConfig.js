@@ -61,7 +61,7 @@ const barCharts = [
     type: 'bar',
     title: 'Assault Totals',
     description: 'Total assaults during this time period',
-    labels: ['Serious', 'On Staff', 'Serious On Staff', 'On Prisoner', 'Serious On Prisoner' ],
+    labels: ['Serious', 'On Staff', 'Serious On Staff', 'On Prisoner', 'Serious On Prisoner'],
     data: [19, 36, 3, 104, 16]
   },
   {
@@ -71,7 +71,7 @@ const barCharts = [
     description: 'Total Self Harm incidents during this time period',
     labels: ['Individuals', 'Incidents', 'Repeat (2+/week)', 'Dual harmers', 'First-time incidents'],
     data: [156, 323, 13, 22, 25]
-  },
+  }
 ]
 
 module.exports = [
