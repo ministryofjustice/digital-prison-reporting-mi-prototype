@@ -9,7 +9,16 @@
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
-            backgroundColor: chartConfig.colours,
+            backgroundColor: [
+              '#1d70b8',
+              '#5694ca',
+              '#28a197',
+              '#d53880',
+              '#00703c',
+              '#f499be',
+              '#f47738',
+              '#b58840'
+            ],
             hoverOffset: 4,
             ...('{{ type }}' === 'pie' && { 
               datalabels: {
@@ -46,7 +55,14 @@
               height: 50,
             },
             tooltip: { 
-              ...chartConfig.tooltip,
+              backgroundColor: '#FFF',
+              bodyColor: '#000',
+              bodyFontSize: 16,
+              displayColors: true,
+              borderWidth: 1,
+              borderColor: '#b1b4b6',
+              cornerRadius: 0,
+              padding: 15,
               callbacks: {
                 label: function(context) {
                     let label = context.label;

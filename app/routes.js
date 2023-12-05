@@ -84,25 +84,24 @@ router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, re
   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
 }])
 
-
 // Charts
 router.get('/charts/', [configureCurrentUrl, function (req, res) {
   res.render('charts/charts-home', req.renderOptions)
 }])
 
 router.get('/charts/:chartType', [
-  configureCurrentUrl, 
+  configureCurrentUrl,
   function (req, res, next) {
     const type = req.params.chartType
     req.renderOptions = {
-      type, 
+      type,
       chartData: chartCardDataConfig.filter(c => c.type === type)
     }
     next()
   },
   function (req, res) {
     res.render('charts/chart', {
-      ...req.renderOptions,
+      ...req.renderOptions
     })
   }
 ])
