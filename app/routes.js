@@ -6,6 +6,7 @@ const dataFormats = require('./reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
 const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')
+const chartCardDataConfig = require('./chartCardDataConfig')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -82,5 +83,27 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
 router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
 }])
+
+// Charts
+router.get('/charts/', [configureCurrentUrl, function (req, res) {
+  res.render('charts/charts-home', req.renderOptions)
+}])
+
+router.get('/charts/:chartType', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const type = req.params.chartType
+    req.renderOptions = {
+      type,
+      chartData: chartCardDataConfig.filter(c => c.type === type)
+    }
+    next()
+  },
+  function (req, res) {
+    res.render('charts/chart', {
+      ...req.renderOptions
+    })
+  }
+])
 
 module.exports = router

@@ -8,3 +8,11 @@
 {% for stylesheetUrl in extensionConfig.stylesheets %}
   <link href="{{ stylesheetUrl }}" rel="stylesheet" type="text/css" />
 {% endfor %}
+
+{# Chart.js - meed to be in the Head in order for the chart components to work #}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script>
+  Chart.register(ChartDataLabels)
+  Chart.defaults.font.family = 'GDS Transport'
+</script>

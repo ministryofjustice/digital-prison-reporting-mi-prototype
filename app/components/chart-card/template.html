@@ -1,0 +1,13 @@
+{% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
+
+<div class="chart-card">
+  <h1 class="govuk-heading-s">{{chartCardData.title}}</h1>
+  <div class="chart">
+    {% if chartCardData.type === 'doughnut' %}
+      {{ donutChart(chartCardData.id, chartCardData.labels, chartCardData.data ) }}
+    {% endif %}
+    {% if chartCardData.type === 'pie' %}
+      {{ donutChart(chartCardData.id, chartCardData.labels, chartCardData.data, 'pie') }}
+    {% endif %}
+  </div> 
+</div>

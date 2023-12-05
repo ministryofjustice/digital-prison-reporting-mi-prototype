@@ -1,0 +1,67 @@
+.chart-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.chart-group__item {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.chart {
+  margin: auto;
+}
+
+.chart-card {
+    margin-bottom: 20px;
+    background: #fff;
+    position: relative;
+    width: 100%;
+    padding: 15px;
+
+    .govuk-tabs__panel {
+      min-height: 375px;
+      max-height: 500px;
+      border: none;
+    }
+
+    .chart__bar--y {
+      height: 250px;
+    }
+
+    .chart__bar--x {
+      height: 400px;
+    }
+  }
+
+
+.chart-legend {
+  padding-top: 15px;
+  font-family: 'GDS Transport';
+  font-size: 12px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+    li { 
+      display: inline-flex;
+      min-width: 49%;
+      span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 15px;
+        color: #fff;
+        font-size: 12px;
+        margin-bottom: 4px;
+        margin-right: 4px;
+      }
+    }
+  }
+}
