@@ -6,7 +6,7 @@ const dataFormats = require('./reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
 const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')
-const chartConfig = require('./chartConfig')
+const chartCardDataConfig = require('./chartCardDataConfig')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -96,7 +96,7 @@ router.get('/charts/:chartType', [
     const type = req.params.chartType
     req.renderOptions = {
       type, 
-      chartData: chartConfig.filter(c => c.type === type)
+      chartData: chartCardDataConfig.filter(c => c.type === type)
     }
     next()
   },

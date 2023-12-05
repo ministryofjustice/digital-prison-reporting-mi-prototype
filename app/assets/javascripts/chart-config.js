@@ -1,3 +1,7 @@
+// Global styles for all chart types
+Chart.register(ChartDataLabels)
+Chart.defaults.font.family = 'GDS Transport'
+
 const chartConfig = {
   colours: [
     '#1d70b8',

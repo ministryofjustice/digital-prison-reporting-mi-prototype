@@ -82,7 +82,6 @@ app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
 app.locals.appScripts = config.scripts
 app.locals.appStylesheets = config.stylesheets
-
 // extensionConfig sets up variables used to add the scripts and stylesheets to each page.
 app.locals.extensionConfig = extensions.getAppConfig()
 

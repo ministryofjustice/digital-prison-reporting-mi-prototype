@@ -1,3 +1,20 @@
+.chart-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.chart-group__item {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.chart {
+  margin: auto;
+}
+
 .chart-card {
     margin-bottom: 20px;
     background: #fff;

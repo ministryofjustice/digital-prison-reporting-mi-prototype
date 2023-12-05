@@ -1,12 +1,9 @@
 {% from "../chart-card/macro.html" import chartCard as chartDataCard %}
+
 <div class="govuk-grid-row chart-group">
   {% for chartData in chartGroupData.items %}
     <div 
-      class="card-group__item 
-        {% if chartGroupData.columns === 'third' %} govuk-grid-column-one-third"{% endif %} 
-        {% if chartGroupData.columns === 'half' %} govuk-grid-column-one-half"{% endif %} 
-        {% if chartGroupData.columns === 'quarter' %} govuk-grid-column-one-quarter"{% endif %} 
-      >
+      class="card-group__item govuk-grid-column-one-{{ chartGroupData.columns }}">
       {{ chartDataCard(chartData) }}
     </div>
   {% endfor %}

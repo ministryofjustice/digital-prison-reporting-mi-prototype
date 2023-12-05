@@ -1,3 +1,6 @@
+// Config for each chart card
+// TODO: data + labels to be transformed from raw data for each chart card
+
 const doughnutCharts = [
   {
     id:'chart1',
