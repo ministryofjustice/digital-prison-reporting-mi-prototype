@@ -3,18 +3,25 @@
   <div id="js-legend-{{ chartId }}" class="chart-legend"></div>
   <script>
     new Chart(document.getElementById('{{ chartId }}'), {
-        type: 'doughnut',
+        type: '{{ type }}',
         data: {
           labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
             backgroundColor: chartConfig.colours,
-            hoverOffset: 4
-          }]
+            hoverOffset: 4,
+            ...('{{ type }}' === 'pie' && { 
+              datalabels: {
+                anchor: 'end',
+                align: 'end',
+                offset: -50
+              }
+            }),
+          }],
         },
         options: {
-          cutout: "60%",
+          ...('{{ type }}' === 'doughnut' && { cutout: "60%" }),
           plugins: {
             datalabels: {
               color: '#FFF',
@@ -23,13 +30,6 @@
                 const total = context.dataset.data.reduce((a, c) => a + c, 0);
                 const percentage = (value/total) * 100
                 return percentage > 4;
-              },
-              formatter: function(value, context) {
-                const dValue = context.dataset.data[context.dataIndex]
-                const dLabel = context.chart.data.labels[context.dataIndex]
-                const fullLabel = dValue 
-                {# + ' \n' + dLabel #}
-                return fullLabel;
               },
               textAlign: 'center',
               labels: {
@@ -63,7 +63,8 @@
             }
           }
         },
-        plugins:  [{
+        plugins:  [
+        ('{{ type }}' === 'doughnut' && {
           // Put the total in the center of the donut
           id: 'text',
           beforeDraw: function(chart, a, b) {
@@ -85,7 +86,7 @@
             ctx.fillText(text, textX, textY);
             ctx.save();
           }
-        },
+        }),
         {
           id: 'legend',
           beforeInit: function(chart, args, options) {
