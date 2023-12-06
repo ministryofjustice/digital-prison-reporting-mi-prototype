@@ -1,10 +1,12 @@
 {% from "../chart-card/macro.html" import chartCard as chartDataCard %}
 
 <div class="govuk-grid-row chart-group">
-  {% for chartData in chartGroupData.items %}
+
+  {% for chartData in chartGroupData %}
+    {% set colsSpan = chartData.columns %}
     <div 
-      class="card-group__item govuk-grid-column-one-{{ chartGroupData.columns }}">
-      {{ chartDataCard(chartData) }}
+      class="card-group__item govuk-grid-column-one-{{ colsSpan }}">
+      {{ chartDataCard(chartData, loop.index) }}
     </div>
   {% endfor %}
 </div>

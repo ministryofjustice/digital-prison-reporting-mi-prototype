@@ -1,13 +1,46 @@
 {% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
+{% from "./../chart/line/macro.html" import lineChart as lineChart %}
 
 <div class="chart-card">
-  <h1 class="govuk-heading-s">{{chartCardData.title}}</h1>
-  <div class="chart">
-    {% if chartCardData.type === 'doughnut' %}
-      {{ donutChart(chartCardData.id, chartCardData.labels, chartCardData.data ) }}
+  {% set type = chartCardData.chartType %}
+  {% set id = chartCardData.id + chartId %}
+  {% set description = chartCardData.description %}
+  {% set labels = chartCardData.labels %}
+  {% set data = chartCardData.data %}
+
+  <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{chartCardData.title}}</h1>
+
+  {% if description %}
+    <p class="govuk-body-xs govuk-!-margin-bottom-1">
+      <span>{{ description }}</span>
+    </p>
+  {% endif %}
+
+  {% if type === 'doughnut' %}
+    <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
+      {{ donutChart(id, labels, data ) }}
+    </div>
+  
+  {% elif type === 'pie' %}
+    <p class="govuk-body-s govuk-!-margin-bottom-1">
+      Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chartCardData.total }}</span>
+    </p>
+    <div class="chart-card__pie-wrapper">
+      {{ donutChart(id, labels, data, 'pie') }}
+    </div>
+  
+  {% elif type === 'line' %}
+    {% if data[0].total %}
+      <div class='chart-card-totals govuk-!-margin-bottom-2'> 
+        {% for set in data %}
+          {% if set.total %}
+            <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
+              {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
+            </p>
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif %}
-    {% if chartCardData.type === 'pie' %}
-      {{ donutChart(chartCardData.id, chartCardData.labels, chartCardData.data, 'pie') }}
-    {% endif %}
-  </div> 
+    {{ lineChart(id, labels, data) }}
+  {% endif %}
 </div>

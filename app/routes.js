@@ -92,10 +92,10 @@ router.get('/charts/', [configureCurrentUrl, function (req, res) {
 router.get('/charts/:chartType', [
   configureCurrentUrl,
   function (req, res, next) {
-    const type = req.params.chartType
+    const chartType = req.params.chartType
     req.renderOptions = {
-      type,
-      chartData: chartCardDataConfig.filter(c => c.type === type)
+      chartType,
+      chartData: chartCardDataConfig.filter(c => c.chartType === chartType)
     }
     next()
   },
