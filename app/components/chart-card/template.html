@@ -9,6 +9,7 @@
   {% set data = chartCardData.data %}
 
   <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{chartCardData.title}}</h1>
+  
   {% if description %}
     <p class="govuk-body-xs govuk-!-margin-bottom-1">
       <span>{{ description }}</span>
@@ -35,9 +36,9 @@
       <div class='chart-card-totals govuk-!-margin-bottom-2'> 
         {% for set in data %}
           {% if set.total %}
-          <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
-            {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
-          </p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
+              {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
+            </p>
           {% endif %}
         {% endfor %}
       </div>
