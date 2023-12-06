@@ -33,16 +33,15 @@
   {% if type === 'line' %}
     {% if data[0].total %}
       <div class='chart-card-totals govuk-!-margin-bottom-2'> 
-          {% for set in data %}
-              {% if set.total %}
-              <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
-                {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
-              </p>
-              {% endif %}
-          {% endfor %}
+        {% for set in data %}
+          {% if set.total %}
+          <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
+            {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
+          </p>
+          {% endif %}
+        {% endfor %}
       </div>
     {% endif %}
     {{ lineChart(id, labels, data) }}
   {% endif %}
-
 </div>

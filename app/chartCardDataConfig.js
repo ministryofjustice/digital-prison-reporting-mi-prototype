@@ -91,7 +91,7 @@ const doughnutCharts = [
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
     data: [141, 130, 37, 47],
     total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-  },
+  }
 ]
 
 const pieCharts = [
@@ -212,7 +212,7 @@ const lineCharts = [
         title: 'Serious',
         data: lineChartData[1],
         total: lineChartData[1].reduce((a, c) => a + c, 0)
-      },
+      }
     ]
   },
   {
@@ -232,7 +232,7 @@ const lineCharts = [
         title: 'Serious',
         data: lineChartData[3],
         total: lineChartData[3].reduce((a, c) => a + c, 0)
-      },
+      }
     ]
   },
   {
@@ -262,7 +262,7 @@ const lineCharts = [
         title: 'Other',
         data: [2, 4, 8],
         total: [2, 4, 8].reduce((a, c) => a + c, 0)
-      },
+      }
     ]
   },
   {
@@ -281,7 +281,7 @@ const lineCharts = [
         title: 'Serious',
         data: lineChartData[3],
         total: lineChartData[3].reduce((a, c) => a + c, 0)
-      },
+      }
     ]
   },
   {
@@ -311,7 +311,7 @@ const lineCharts = [
         title: 'Other',
         data: [2, 4, 8],
         total: [2, 4, 8].reduce((a, c) => a + c, 0)
-      },
+      }
     ]
   }
 ]
