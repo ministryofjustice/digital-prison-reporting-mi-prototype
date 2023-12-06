@@ -16,7 +16,6 @@
 }
 
 .chart-card {
-    margin-bottom: 20px;
     background: #fff;
     position: relative;
     width: 100%;
@@ -35,8 +34,27 @@
     .chart__bar--x {
       height: 400px;
     }
+
+    .chart--line {
+      height: 350px;
+    }
   }
 
+.chart-card__pie-wrapper {
+  padding: 0 govuk-spacing(6)
+}
+
+.chart--doughnut {
+}
+
+.chart-card-totals {
+  display: flex;
+  flex-wrap: wrap;
+
+  .chart-totals__total {
+    display: flex;
+  }
+}
 
 .chart-legend {
   padding-top: 15px;

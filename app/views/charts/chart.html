@@ -17,11 +17,5 @@
     {{ type | capitalize }} Chart
   </h2>
 
-  {% set chartGroupData = {
-      columns: 'third',
-      items: chartData
-    }
-  %} 
-
-  {{ chartCardGroup(chartGroupData) }}
+  {{ chartCardGroup(chartData) }}
 {% endblock %}

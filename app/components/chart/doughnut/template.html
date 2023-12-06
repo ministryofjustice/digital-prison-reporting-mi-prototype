@@ -1,4 +1,9 @@
-<div class="chart">
+{% set colours = [
+  ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'],
+  ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5']
+]%}
+
+<div class="chart chart--doughnut">
   <canvas id="{{ chartId }}"></canvas>
   <div id="js-legend-{{ chartId }}" class="chart-legend"></div>
   <script>
@@ -9,16 +14,7 @@
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
-            backgroundColor: [
-              '#1d70b8',
-              '#5694ca',
-              '#28a197',
-              '#d53880',
-              '#00703c',
-              '#f499be',
-              '#f47738',
-              '#b58840'
-            ],
+            backgroundColor: [{% for colour in colours[0] %}'{{ colour }}',{% endfor %}],
             hoverOffset: 4,
             ...('{{ type }}' === 'pie' && { 
               datalabels: {
@@ -44,15 +40,14 @@
               labels: {
                 title: {
                   font: {
-                    weight: 'bold'
+                    weight: 'bold',
+                    size: 14
                   }
                 },
               }
             },
             legend: {
-              display:false,
-              position: 'bottom',
-              height: 50,
+              display: false,
             },
             tooltip: { 
               backgroundColor: '#FFF',
