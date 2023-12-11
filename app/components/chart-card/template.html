@@ -2,18 +2,8 @@
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
 
-{# {% set type = chartCardData.chartType %}
-{% set id = chartCardData.id + chartId %}
-{% set description = chartCardData.description %}
-{% set labels = chartCardData.labels %}
-{% set data = chartCardData.data %}
-{% set date = chartCardData.date %}
-{% set href = chartCardData.href %}
-{% set axis = chartCardData.axis %} #}
-
 {% set halfWidth = ['line', 'bar'] %}
 
-{# NEW #}
 {% set card = chartCardData.card %}
 {% set title = card.title %}
 {% set description = card.description %}
