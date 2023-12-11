@@ -1,5 +1,6 @@
 {% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
+{% from "./../chart/bar/macro.html" import barChart as barChart %}
 
 {% set type = chartCardData.chartType %}
 {% set id = chartCardData.id + chartId %}
@@ -21,12 +22,20 @@
       </p>
     {% endif %}
 
-    {% if type === 'doughnut' %}
+    {% if type === 'bar' %}
+
       <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
-        {{ donutChart(id, labels, data ) }}
+        {{ barChart(id, labels, data) }}
+      </div>
+
+    {% elif type === 'doughnut' %}
+
+      <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
+        {{ donutChart(id, labels, data) }}
       </div>
     
     {% elif type === 'pie' %}
+
       <p class="govuk-body-s govuk-!-margin-bottom-1">
         Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chartCardData.total }}</span>
       </p>
@@ -35,6 +44,7 @@
       </div>
     
     {% elif type === 'line' %}
+
       {% if data[0].total %}
         <div class='chart-card-totals govuk-!-margin-bottom-2'> 
           {% for set in data %}
@@ -46,8 +56,10 @@
           {% endfor %}
         </div>
       {% endif %}
+
       {{ lineChart(id, labels, data) }}
-    {% endif %}
+
+    {% endif %} 
   </div>
 
   {% if date or href %}

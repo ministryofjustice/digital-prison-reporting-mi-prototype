@@ -1,0 +1,41 @@
+{% set colours = ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f'] %}
+
+<div class="chart">
+  <canvas id="{{ chartId }}" class="chart-canvas"></canvas>
+  <script>
+    new Chart(document.getElementById('{{ chartId }}'), {
+      type: 'bar',
+      data: {
+        labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
+        datasets: [{
+          label: 'Finds Dataset',
+          data: [{{ data }}],
+          backgroundColor: ['{{ colours[0] }}'],
+          hoverOffset: 4,
+        }],
+      },
+      options: {
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: { 
+            backgroundColor: '#FFF',
+            bodyColor: '#000',
+            bodyFontSize: 16,
+            titleColor: '#000',
+            displayColors: false,
+            borderWidth: 1,
+            borderColor: '#b1b4b6',
+            cornerRadius: 0,
+            padding: 15,
+            footerFont: {
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</div>

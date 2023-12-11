@@ -5,7 +5,6 @@ const doughnutCharts = [
   {
     id: 'chart1',
     chartType: 'doughnut',
-    columns: 'third',
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -17,7 +16,6 @@ const doughnutCharts = [
   {
     id: 'chart2',
     chartType: 'doughnut',
-    columns: 'third',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -28,7 +26,6 @@ const doughnutCharts = [
   {
     id: 'chart3',
     chartType: 'doughnut',
-    columns: 'third',
     title: 'Assault Incidents',
     description: 'Total assaults in this time period',
     labels: ['Serious', 'General'],
@@ -39,7 +36,6 @@ const doughnutCharts = [
   {
     id: 'chart4',
     chartType: 'doughnut',
-    columns: 'half',
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -49,7 +45,6 @@ const doughnutCharts = [
   {
     id: 'chart5',
     chartType: 'doughnut',
-    columns: 'half',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -59,7 +54,6 @@ const doughnutCharts = [
   {
     id: 'chart6',
     chartType: 'doughnut',
-    columns: 'quarter',
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -69,7 +63,6 @@ const doughnutCharts = [
   {
     id: 'chart3',
     chartType: 'doughnut',
-    columns: 'quarter',
     title: 'Population Overview',
     description: 'Total Population breakdown',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -79,7 +72,6 @@ const doughnutCharts = [
   {
     id: 'chart4',
     chartType: 'doughnut',
-    columns: 'quarter',
     title: 'Assault Incidents',
     description: 'Total assaults in this time period',
     labels: ['Serious', 'General'],
@@ -89,7 +81,6 @@ const doughnutCharts = [
   {
     id: 'chart1',
     chartType: 'doughnut',
-    columns: 'quarter',
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -102,7 +93,6 @@ const pieCharts = [
   {
     id: 'chart1',
     chartType: 'pie',
-    columns: 'third',
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -112,7 +102,6 @@ const pieCharts = [
   {
     id: 'chart3',
     chartType: 'pie',
-    columns: 'third',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -122,7 +111,6 @@ const pieCharts = [
   {
     id: 'chart4',
     chartType: 'pie',
-    columns: 'third',
     title: 'Assault Incidents',
     description: 'Total Assaults in this time period',
     labels: ['Serious', 'General'],
@@ -132,7 +120,6 @@ const pieCharts = [
   {
     id: 'chart3',
     chartType: 'pie',
-    columns: 'half',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -142,7 +129,6 @@ const pieCharts = [
   {
     id: 'chart4',
     chartType: 'pie',
-    columns: 'half',
     title: 'Assault Incidents',
     description: 'Total Assaults in this time period',
     labels: ['Serious', 'General'],
@@ -152,7 +138,6 @@ const pieCharts = [
   {
     id: 'chart3',
     chartType: 'pie',
-    columns: 'quarter',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -162,7 +147,6 @@ const pieCharts = [
   {
     id: 'chart4',
     chartType: 'pie',
-    columns: 'quarter',
     title: 'Assault Incidents',
     description: 'Total Assaults in this time period',
     labels: ['Serious', 'General'],
@@ -172,7 +156,6 @@ const pieCharts = [
   {
     id: 'chart3',
     chartType: 'pie',
-    columns: 'quarter',
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -182,7 +165,6 @@ const pieCharts = [
   {
     id: 'chart4',
     chartType: 'pie',
-    columns: 'quarter',
     title: 'Assault Incidents',
     description: 'Total Assaults in this time period',
     labels: ['Serious', 'General'],
@@ -202,7 +184,6 @@ const lineCharts = [
   {
     id: 'chart1',
     chartType: 'line',
-    columns: 'third',
     title: 'Prisoner on Prisoner Assaults',
     description: 'Prisoner on prisoner assault totals',
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -222,7 +203,6 @@ const lineCharts = [
   {
     id: 'chart2',
     chartType: 'line',
-    columns: 'third',
     title: 'Prisoner on Staff Assaults',
     description: 'Prisoner on staff assault totals',
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -242,7 +222,6 @@ const lineCharts = [
   {
     id: 'chart3',
     chartType: 'line',
-    columns: 'third',
     title: 'Self Harm Methods',
     description: 'Self harm methods over time',
     labels: ['Jan 21', 'Jan 22', 'jan 23'],
@@ -272,7 +251,6 @@ const lineCharts = [
   {
     id: 'chart2',
     chartType: 'line',
-    columns: 'half',
     title: 'Prisoner on Staff Assaults',
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     data: [
@@ -291,7 +269,6 @@ const lineCharts = [
   {
     id: 'chart3',
     chartType: 'line',
-    columns: 'half',
     title: 'Self Harm Methods',
     description: 'Self harm methods over time',
     labels: ['Jan 21', 'Jan 22', 'jan 23'],
@@ -320,8 +297,43 @@ const lineCharts = [
   }
 ]
 
+const barCharts = [
+  {
+    id: 'chart1',
+    chartType: 'bar',
+    title: 'Finds Incidents',
+    description: 'Total finds during this time period',
+    labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
+    data: [141, 130, 37, 47],
+    total: [141, 130, 37, 47].reduce((a, c) => a + c, 0),
+    date: '22/23',
+    href: '#'
+  },
+  {
+    id: 'chart2',
+    chartType: 'bar',
+    title: 'Assault Incidents',
+    description: 'Total assaults in this time period',
+    labels: ['Serious', 'General'],
+    data: [300, 467],
+    total: [300, 467].reduce((a, c) => a + c, 0),
+    date: '22/23'
+  },
+  {
+    id: 'chart3',
+    chartType: 'bar',
+    title: 'Population Overview',
+    description: 'Total Population breakdown in this time period',
+    labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
+    data: [0, 2270, 3380, 360, 101, 0],
+    total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0),
+    href: '#'
+  },
+]
+
 module.exports = [
   ...doughnutCharts,
   ...pieCharts,
-  ...lineCharts
+  ...lineCharts,
+  ...barCharts
 ]
