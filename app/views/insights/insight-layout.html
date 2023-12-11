@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% set insightTypes = [ 'impact' ] %}
+{% set insightTypeData = [] %}
+{% for type in insightTypes %}
+  {% set insightTypeData = (insightTypeData.push({
+    text: type,
+    href: '/insights/' + type,
+    description: 'Example of a ' + type + ' insight'
+  }), insightTypeData) %}
+{% endfor %}
+
+{% set insightTypeItems = [
+  {
+    heading: {
+      text: 'Insight types'
+    },
+    items: insightTypeData | setCurrentToActive(currentUrl)
+    }
+] %}
+
+{% block pageTitle %}
+  Digital Prison Reporting MI Prototype - Insights
+{% endblock %}
+
+{% block subHeader %}
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: [
+        { text: "Home", href: "/" },
+        { text: "insights", href: "/insights/" }
+      ]
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+{% endblock %}

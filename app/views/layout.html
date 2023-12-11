@@ -106,6 +106,7 @@
 {% from "../components/filters/views/macro.html"         import appFilters %}
 {% from "../components/version-list/macro.html"          import appVersionList %}
 {% from "../components/chart-card-group/macro.html"      import chartCardGroup %}
+{% from "../components/insight-card-group/macro.html"    import insightCardGroup %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -143,6 +144,10 @@
       {
         text: 'Charts',
         href: '/charts/'
+      },
+      {
+        text: 'Insights',
+        href: '/insights/'
       },
       {
         text: 'Safety Diagnostic Tool',

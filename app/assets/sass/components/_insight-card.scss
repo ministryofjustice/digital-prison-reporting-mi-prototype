@@ -1,0 +1,46 @@
+// Insights
+.insight-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+    flex-direction: row;
+  
+    .inight-card-group__item {
+      flex-grow: 4;
+      flex-shrink: 1;
+      flex-basis: 30%;
+      min-width: 220px;
+      position: relative;
+    }
+  }
+  
+  .inight-card-group__item {
+    background-color: #f3f2f1;
+    padding: govuk-spacing(3);
+    padding-bottom: govuk-spacing(5);
+  
+    table.app-table--constrained {
+      width: 100%;
+    }
+  
+    .value-date {
+      position: absolute;
+      bottom: 12px;
+      margin-bottom: 0px;
+    }
+  }
+  
+  .measure-headline {
+    border-top: dotted 2px #b1b4b6;
+  }
+  
+  .impact-number {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.0416666667;
+    margin-top: 10px;
+    display: block;
+  }

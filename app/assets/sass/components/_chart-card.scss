@@ -1,50 +1,59 @@
-.chart-group {
+.chart-card-container {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 15px;
-  padding: 0;
+  row-gap: 10px;
+  column-gap: 10px;
+  flex-direction: row;
+
+  .chart-group__item {
+    flex-grow: 4;
+    flex-shrink: 1;
+    flex-basis: 30%;
+    list-style-type: none;
+    position: relative;
+    min-width: 0;
+    background-color: #f3f2f1;
+    padding: govuk-spacing(3);
+  }
+
+  .chart-group__item--half {
+    min-width: 40%;
+  }
+  
+  .chart-group__item--date {
+    padding-bottom: govuk-spacing(6);
+  
+    .value-meta {
+      position: absolute;
+      bottom: 12px;
+      margin-bottom: 0px;
+    }
+  }
 }
 
-.chart-group__item {
-  display: flex;
-  list-style-type: none;
-  margin-bottom: 0;
+
+.chart-canvas {
+  max-width: 100%;
+  height: 100% !important
 }
 
 .chart {
   margin: auto;
+  width: 100%;
+  position: relative;
 }
 
 .chart-card {
-    background: #fff;
-    position: relative;
-    width: 100%;
-    padding: 15px;
+  position: relative;
 
-    .govuk-tabs__panel {
-      min-height: 375px;
-      max-height: 500px;
-      border: none;
-    }
-
-    .chart__bar--y {
-      height: 250px;
-    }
-
-    .chart__bar--x {
-      height: 400px;
-    }
-
-    .chart--line {
-      height: 350px;
-    }
+  .chart--line {
+    height: 350px;
   }
-
-.chart-card__pie-wrapper {
-  padding: 0 govuk-spacing(6)
 }
 
-.chart--doughnut {
+.chart-card__pie-wrapper {
+  padding: 0 govuk-spacing(6);
+  padding-bottom: govuk-spacing(3)
 }
 
 .chart-card-totals {

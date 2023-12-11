@@ -1,12 +1,12 @@
-{% extends "./charts-layout.html" %}
+{% extends "./insight-layout.html" %}
 
 {% block subHeader %}
 <div class="govuk-width-container ">
   {{ govukBreadcrumbs({
     items: [
       { text: "Home", href: "/" },
-      { text: "Charts", href: "/Charts/" },
-      { text: chartType | capitalize, href: "#" }
+      { text: "Insights", href: "/insights/" },
+      { text: insightType | capitalize, href: "#" }
     ]
   }) }}
 </div>
@@ -14,8 +14,8 @@
 
 {% block reportBody %}
   <h2 class="govuk-heading-m">
-    {{ chartType | capitalize }} Chart
+    {{ insightType | capitalize }} Insight
   </h2>
-
-  {{ chartCardGroup(chartData) }}
+  
+  {{ insightCardGroup(insightsData) }}
 {% endblock %}

@@ -2,7 +2,6 @@
 
 <div class="chart chart--line">
   <canvas id="{{ chartId }}"></canvas>
-  <div id="js-legend-{{ chartId }}-line" class="chart-legend"></div>
   <script>
     new Chart(document.getElementById('{{ chartId }}'), {
     type: 'line',
@@ -28,6 +27,7 @@
     options: {
       animation: false,
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         datalabels: {
           display: false
@@ -51,7 +51,6 @@
           }
         }
       },
-      maintainAspectRatio: false
     },
   })
   </script>
