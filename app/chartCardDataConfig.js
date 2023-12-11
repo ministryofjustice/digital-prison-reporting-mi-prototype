@@ -1,25 +1,6 @@
 // Config for each chart card
 // TODO: data + labels to be transformed from raw data for each chart card
 
-const ChartData = {
-  card: {
-    title: 'Finds Incidents',
-    description: 'Total finds during this time period',    
-    date: '22/23',
-    href: '#'
-  },
-  chart: {
-    id: 'chart1',
-    type: 'doughnut',
-    labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-    data: [141, 130, 37, 47],
-    total: [141, 130, 37, 47].reduce((a, c) => a + c, 0),
-    axis: 'y',
-  }
-}
-
-
-
 const doughnutCharts = [
   {
     card: {
@@ -33,7 +14,7 @@ const doughnutCharts = [
       type: 'doughnut',
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
       data: [141, 130, 37, 47],
-      total: [141, 130, 37, 47].reduce((a, c) => a + c, 0),
+      total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
     }
   },
   {
@@ -47,7 +28,7 @@ const doughnutCharts = [
       type: 'doughnut',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
       data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0),
+      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
     }
   },
   {    
@@ -61,13 +42,13 @@ const doughnutCharts = [
       type: 'doughnut',
       labels: ['Serious', 'General'],
       data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0),
-    },
+      total: [300, 467].reduce((a, c) => a + c, 0)
+    }
   },
   {
     card: {
       title: 'Finds Incidents',
-      description: 'Total finds during this time period',
+      description: 'Total finds during this time period'
     },
     chart: {
       id: 'chart4',
@@ -80,7 +61,7 @@ const doughnutCharts = [
   {    
     card: {
       title: 'Population Overview',
-      description: 'Total Population breakdown in this time period',
+      description: 'Total Population breakdown in this time period'
     },
     chart: {
       id: 'chart5',
@@ -93,7 +74,7 @@ const doughnutCharts = [
   {     
     card: {
       title: 'Finds Incidents',
-      description: 'Total finds during this time period',
+      description: 'Total finds during this time period'
     },
     chart: {
       id: 'chart6',
@@ -106,7 +87,7 @@ const doughnutCharts = [
   {
     card: {
       title: 'Population Overview',
-      description: 'Total Population breakdown',
+      description: 'Total Population breakdown'
     },
     chart: {
       id: 'chart7',
@@ -119,7 +100,7 @@ const doughnutCharts = [
   {
     card: {
       title: 'Assault Incidents',
-      description: 'Total assaults in this time period',
+      description: 'Total assaults in this time period'
     },
     chart: {
       id: 'chart8',
@@ -132,7 +113,7 @@ const doughnutCharts = [
   {
     card: {
       title: 'Finds Incidents',
-      description: 'Total finds during this time period',
+      description: 'Total finds during this time period'
     },
     chart: {
       id: 'chart9',
@@ -276,7 +257,8 @@ const lineCharts = [
     card: {
       title: 'Prisoner on Prisoner Assaults',
       description: 'Prisoner on prisoner assault totals'
-    }, chart: {
+    }, 
+    chart: {
       id: 'chart1',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -425,13 +407,13 @@ const barCharts = [
           data: [141, 130, 37, 47],
         }
       ],
-      indexAxis: 'x',
+      indexAxis: 'x'
     }
   },
   {
     card: {
       title: 'Assault Incidents',
-      description: 'Total assaults in this time period',
+      description: 'Total assaults in this time period'
     },
     chart: {
       id: 'chart2',
@@ -482,7 +464,7 @@ const barCharts = [
           data: [0, 2270, 3380, 360, 101, 0],
         }
       ],
-      axis: 'y',
+      axis: 'y'
     }
   },
   {
