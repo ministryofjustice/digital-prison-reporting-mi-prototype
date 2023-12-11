@@ -31,8 +31,8 @@ const doughnutCharts = [
       total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
     }
   },
-  {    
-    card: {    
+  {
+    card: {
       title: 'Assault Incidents',
       description: 'Total assaults in this time period',
       date: '22/23'
@@ -58,7 +58,7 @@ const doughnutCharts = [
       total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
     }
   },
-  {    
+  {
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period'
@@ -71,7 +71,7 @@ const doughnutCharts = [
       total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
     }
   },
-  {     
+  {
     card: {
       title: 'Finds Incidents',
       description: 'Total finds during this time period'
@@ -82,7 +82,7 @@ const doughnutCharts = [
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
       data: [141, 130, 37, 47],
       total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-  }
+    }
   },
   {
     card: {
@@ -201,7 +201,7 @@ const pieCharts = [
       type: 'pie',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
       data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)  
+      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
     }
   },
   {
@@ -214,7 +214,7 @@ const pieCharts = [
       type: 'pie',
       labels: ['Serious', 'General'],
       data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0)   
+      total: [300, 467].reduce((a, c) => a + c, 0)
     }
   },
   {
@@ -257,7 +257,7 @@ const lineCharts = [
     card: {
       title: 'Prisoner on Prisoner Assaults',
       description: 'Prisoner on prisoner assault totals'
-    }, 
+    },
     chart: {
       id: 'chart1',
       type: 'line',
@@ -401,10 +401,10 @@ const barCharts = [
       id: 'chart1',
       type: 'bar',
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-      data: [ 
+      data: [
         {
           title: 'Assaults',
-          data: [141, 130, 37, 47],
+          data: [141, 130, 37, 47]
         }
       ],
       indexAxis: 'x'
@@ -419,10 +419,10 @@ const barCharts = [
       id: 'chart2',
       type: 'bar',
       labels: ['Serious', 'General'],
-      data: [ 
+      data: [
         {
           title: 'Assaults',
-          data: [300, 467],
+          data: [300, 467]
         }
       ],
       indexAxis: 'x'
@@ -438,10 +438,10 @@ const barCharts = [
       id: 'chart3',
       type: 'bar',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [ 
+      data: [
         {
           title: 'Assaults',
-          data: [0, 2270, 3380, 360, 101, 0],
+          data: [0, 2270, 3380, 360, 101, 0]
         }
       ],
       axis: 'y'
@@ -458,10 +458,10 @@ const barCharts = [
       id: 'chart4',
       type: 'bar',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [ 
+      data: [
         {
           title: 'Assaults',
-          data: [0, 2270, 3380, 360, 101, 0],
+          data: [0, 2270, 3380, 360, 101, 0]
         }
       ],
       axis: 'y'
@@ -489,7 +489,7 @@ const barCharts = [
           total: lineChartData[3].reduce((a, c) => a + c, 0)
         }
       ]
-    } 
+    }
   },
   {
     card: {
