@@ -7,10 +7,15 @@
   '#505a5f'
 ] %}
 
+{% set id = chartData.id %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+{% set axis = chartData.axis %}
+
 <div class="chart">
-  <canvas id="{{ chartId }}" class="chart-canvas"></canvas>
+  <canvas id="{{ id }}" class="chart-canvas"></canvas>
   <script>
-    new Chart(document.getElementById('{{ chartId }}'), {
+    new Chart(document.getElementById('{{ id }}'), {
       type: 'bar',
       data: {
         labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 

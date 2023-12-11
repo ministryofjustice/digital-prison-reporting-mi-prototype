@@ -1,9 +1,14 @@
 {% set defaultColours = ['#1d70b8', '#d53880', '#228980', '#f47738'] %}
 
+{% set id = chartData.id %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+
+
 <div class="chart chart--line">
-  <canvas id="{{ chartId }}"></canvas>
+  <canvas id="{{ id }}"></canvas>
   <script>
-    new Chart(document.getElementById('{{ chartId }}'), {
+    new Chart(document.getElementById('{{ id }}'), {
     type: 'line',
     data: {
       labels: [{% for label in labels %}'{{ label }}',{% endfor %}],
