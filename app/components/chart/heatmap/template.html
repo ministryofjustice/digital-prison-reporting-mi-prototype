@@ -16,59 +16,43 @@
   <canvas id="{{ id }}" class="chart-canvas"></canvas>
   <script>
     new Chart(document.getElementById('{{ id }}'), {
-      type: 'bar',
+      type: 'matrix',
       data: {
-        labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
-        datasets: [
-        {% for set in data %}
-          {
-            label: '{{ set.title }}',
-            data: [{{ set.data }}],
-            borderColor: '{{ defaultColours[loop.index-1] }}',
-            backgroundColor: '{{ defaultColours[loop.index-1] }}',
-            datalabels: {
-              align: 'end',
-              anchor: 'end'
-            }
-          },
-        {% endfor %}
-        ],
+        datasets: [{
+          data: {{ data | dump | safe }},
+          borderWidth: 1,
+          borderColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(200,200,0,0.3)',
+          width: ({chart}) => (chart.chartArea || {}).width / 24 - 1,
+          height: ({chart}) =>(chart.chartArea || {}).height / 7 - 1
+        }],
       },
       options: {
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true
+        plugins: {
+          datalabels: { 
+            display: false
           }
         },
-        indexAxis: '{{ axis }}',
-        maintainAspectRatio: true,
-        plugins: {
-          datalabels: {
-            color: 'white',
-            display: false,
-            font: {
-              size: 14
+        scales: {
+          x: {
+            type: 'category',
+            labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+            ticks: {
+              stepSize: 1
             },
-            formatter: Math.round
+            grid: {
+              display: false
+            }
           },
-          legend: {
-            display: {% if data.length > 1 %} true {% else %} false {% endif %},
-          },
-          tooltip: { 
-            backgroundColor: '#FFF',
-            bodyColor: '#000',
-            bodyFontSize: 16,
-            titleColor: '#000',
-            displayColors: false,
-            borderWidth: 1,
-            borderColor: '#b1b4b6',
-            cornerRadius: 0,
-            padding: 15,
-            footerFont: {
-              weight: 'bold'
+          y: {
+            type: 'category',
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            offset: true,
+            ticks: {
+              stepSize: 1
+            },
+            grid: {
+              display: false
             }
           }
         }
