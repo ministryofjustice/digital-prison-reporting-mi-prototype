@@ -304,9 +304,14 @@ const barCharts = [
     title: 'Finds Incidents',
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-    data: [141, 130, 37, 47],
-    total: [141, 130, 37, 47].reduce((a, c) => a + c, 0),
+    data: [ 
+      {
+        title: 'Assaults',
+        data: [141, 130, 37, 47],
+      }
+    ],
     date: '22/23',
+    indexAxis: 'x',
     href: '#'
   },
   {
@@ -315,8 +320,13 @@ const barCharts = [
     title: 'Assault Incidents',
     description: 'Total assaults in this time period',
     labels: ['Serious', 'General'],
-    data: [300, 467],
-    total: [300, 467].reduce((a, c) => a + c, 0),
+    data: [ 
+      {
+        title: 'Assaults',
+        data: [300, 467],
+      }
+    ],
+    indexAxis: 'x',
     date: '22/23'
   },
   {
@@ -325,9 +335,66 @@ const barCharts = [
     title: 'Population Overview',
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-    data: [0, 2270, 3380, 360, 101, 0],
-    total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0),
+    data: [ 
+      {
+        title: 'Assaults',
+        data: [0, 2270, 3380, 360, 101, 0],
+      }
+    ],
+    axis: 'y',
     href: '#'
+  },
+  {
+    id: 'chart3',
+    chartType: 'bar',
+    title: 'Population Overview',
+    description: 'Total Population breakdown in this time period',
+    labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
+    data: [ 
+      {
+        title: 'Assaults',
+        data: [0, 2270, 3380, 360, 101, 0],
+      }
+    ],
+    axis: 'y',
+    href: '#'
+  },
+  {
+    id: 'chart2',
+    chartType: 'bar',
+    title: 'Prisoner on Staff Assaults',
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    data: [
+      {
+        title: 'Assaults',
+        data: lineChartData[2],
+        total: lineChartData[2].reduce((a, c) => a + c, 0)
+      },
+      {
+        title: 'Serious',
+        data: lineChartData[3],
+        total: lineChartData[3].reduce((a, c) => a + c, 0)
+      }
+    ]
+  },
+  {
+    id: 'chart4',
+    chartType: 'bar',
+    title: 'Prisoner on Staff Assaults',
+    axis: 'y',
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    data: [
+      {
+        title: 'Assaults',
+        data: lineChartData[2],
+        total: lineChartData[2].reduce((a, c) => a + c, 0)
+      },
+      {
+        title: 'Serious',
+        data: lineChartData[3],
+        total: lineChartData[3].reduce((a, c) => a + c, 0)
+      }
+    ]
   },
 ]
 

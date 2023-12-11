@@ -1,4 +1,11 @@
-{% set colours = ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f'] %}
+{% set defaultColours = [
+  '#1d70b8',
+  '#28a197',
+  '#d4351c',
+  '#912b88',
+  '#f47738',
+  '#505a5f'
+] %}
 
 <div class="chart">
   <canvas id="{{ chartId }}" class="chart-canvas"></canvas>
@@ -7,18 +14,43 @@
       type: 'bar',
       data: {
         labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
-        datasets: [{
-          label: 'Finds Dataset',
-          data: [{{ data }}],
-          backgroundColor: ['{{ colours[0] }}'],
-          hoverOffset: 4,
-        }],
+        datasets: [
+        {% for set in data %}
+          {
+            label: '{{ set.title }}',
+            data: [{{ set.data }}],
+            borderColor: '{{ defaultColours[loop.index-1] }}',
+            backgroundColor: '{{ defaultColours[loop.index-1] }}',
+            datalabels: {
+              align: 'end',
+              anchor: 'end'
+            }
+          },
+        {% endfor %}
+        ],
       },
       options: {
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true
+          }
+        },
+        indexAxis: '{{ axis }}',
         maintainAspectRatio: true,
         plugins: {
-          legend: {
+          datalabels: {
+            color: 'white',
             display: false,
+            font: {
+              size: 14
+            },
+            formatter: Math.round
+          },
+          legend: {
+            display: {% if data.length > 1 %} true {% else %} false {% endif %},
           },
           tooltip: { 
             backgroundColor: '#FFF',

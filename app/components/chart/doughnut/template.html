@@ -1,4 +1,4 @@
-{% set colours = [
+{% set defaultColours = [
   ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'],
   ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5'],
   ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f']
@@ -15,7 +15,7 @@
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
-            backgroundColor: [{% for colour in colours[2] %}'{{ colour }}',{% endfor %}],
+            backgroundColor: [{% for colour in defaultColours[2] %}'{{ colour }}',{% endfor %}],
             hoverOffset: 4,
             ...('{{ type }}' === 'pie' && { 
               datalabels: {

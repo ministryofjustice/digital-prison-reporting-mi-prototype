@@ -1,4 +1,4 @@
-{% set colours = ['#1d70b8', '#d53880', '#228980', '#f47738'] %}
+{% set defaultColours = ['#1d70b8', '#d53880', '#228980', '#f47738'] %}
 
 <div class="chart chart--line">
   <canvas id="{{ chartId }}"></canvas>
@@ -12,8 +12,8 @@
           {
             label: '{{ set.title }}',
             data: [{{ set.data }}],
-            borderColor: '{{ colours[loop.index-1] }}',
-            backgroundColor: '{{ colours[loop.index-1] }}',
+            borderColor: '{{ defaultColours[loop.index-1] }}',
+            backgroundColor: '{{ defaultColours[loop.index-1] }}',
             pointStyle: 'circle',
             pointRadius: 4,
             pointHoverRadius: 10,
@@ -21,7 +21,8 @@
               align: 'end',
               anchor: 'end'
             }
-          },{% endfor %}
+          },
+        {% endfor %}
       ]
     },
     options: {

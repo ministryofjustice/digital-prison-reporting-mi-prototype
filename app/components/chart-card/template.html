@@ -9,6 +9,7 @@
 {% set data = chartCardData.data %}
 {% set date = chartCardData.date %}
 {% set href = chartCardData.href %}
+{% set axis = chartCardData.axis %}
 {% set halfWidth = ['line', 'bar'] %}
 
 <div class="chart-group__item {% if date or href %}chart-group__item--date {% endif %} {% if type in halfWidth %} chart-group__item--half {% endif %}">
@@ -25,7 +26,7 @@
     {% if type === 'bar' %}
 
       <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
-        {{ barChart(id, labels, data) }}
+        {{ barChart(id, labels, data, axis) }}
       </div>
 
     {% elif type === 'doughnut' %}
