@@ -14,7 +14,7 @@ const insightCardData = [
     type: 'basic',
     title: 'Estimated total cost of crime in England and Wales',
     value: '£58.9bn',
-    date: '2015/16',
+    date: '2015/16'
   },
   {
     type: 'basic',
@@ -29,7 +29,7 @@ const insightCardData = [
         value: '3,570 prisoners'
       }
     ],
-    date: '2015/16',
+    date: '2015/16'
   },
   {
     type: 'basic',
@@ -55,8 +55,8 @@ const insightCardData = [
         value: '3,570 prisoners'
       }
     ],
-    date: '2015/16',
-  }, 
+    date: '2015/16'
+  }
 ]
 
 module.exports = [
