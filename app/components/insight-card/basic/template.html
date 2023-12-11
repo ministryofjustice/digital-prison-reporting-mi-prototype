@@ -1,0 +1,43 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% set title = insightData.title %}
+{% set value = insightData.value %}
+{% set values = insightData.values %}
+{% set date = insightData.date %}
+{% set diff = insightData.diff %}
+
+<div class="inight-card-group__item measure-headline">
+  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 app-heading-fixed-height-s-none" id="hm-jin-headline-cost-of-crime">
+    {{ title }}
+  </h4>
+  {% if value %}
+    <div>
+      <p class="impact-number">
+        {{ value }}
+      </p>
+    </div>
+   {% elif values %} 
+
+    {% set rows = [] %}
+    {% for v in values %}
+      {% set rows = (rows.push([{ text: v.label, classes: 'govuk-body-s' },{ text: v.value, classes: 'govuk-body-s' }]), rows) %}
+    {% endfor %}
+
+    {{ govukTable({
+      classes: 'app-table--constrained',
+      firstCellIsHeader: true,
+      rows: rows
+    }) }}
+
+  {% endif %}
+
+  {% if diff %}
+    <p  class="govuk-body-s govuk-!-margin-bottom-3">
+      {{ diff.direction }} {{ diff.value }} from {{ diff.from }}
+    </p>
+  {% endif %}
+
+  <p class="govuk-body-xs value-date">
+    Value for {{ date }}. <a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>
+  </p>
+
+</div>

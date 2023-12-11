@@ -7,6 +7,7 @@ const { filterTableLayoutHandlers } = require('./components/data-table-layout/ha
 const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')
 const chartCardDataConfig = require('./chartCardDataConfig')
+const insightCardDataConfig = require('./insightCardDataConfig')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -101,6 +102,28 @@ router.get('/charts/:chartType', [
   },
   function (req, res) {
     res.render('charts/chart', {
+      ...req.renderOptions
+    })
+  }
+])
+
+// Insights
+router.get('/insights/', [configureCurrentUrl, function (req, res) {
+  res.render('insights/insight-home', req.renderOptions)
+}])
+
+router.get('/insights/:insightType', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const insightType = req.params.insightType
+    req.renderOptions = {
+      insightType,
+      insightsData: insightCardDataConfig
+    }
+    next()
+  },
+  function (req, res) {
+    res.render('insights/insight', {
       ...req.renderOptions
     })
   }

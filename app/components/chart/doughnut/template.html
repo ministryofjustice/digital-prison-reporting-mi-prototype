@@ -1,10 +1,11 @@
 {% set colours = [
   ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'],
-  ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5']
+  ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5'],
+  ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f']
 ]%}
 
 <div class="chart chart--doughnut">
-  <canvas id="{{ chartId }}"></canvas>
+  <canvas id="{{ chartId }}" class="chart-canvas"></canvas>
   <div id="js-legend-{{ chartId }}" class="chart-legend"></div>
   <script>
     new Chart(document.getElementById('{{ chartId }}'), {
@@ -14,7 +15,7 @@
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
-            backgroundColor: [{% for colour in colours[0] %}'{{ colour }}',{% endfor %}],
+            backgroundColor: [{% for colour in colours[2] %}'{{ colour }}',{% endfor %}],
             hoverOffset: 4,
             ...('{{ type }}' === 'pie' && { 
               datalabels: {
@@ -26,6 +27,7 @@
           }],
         },
         options: {
+          maintainAspectRatio: true,
           ...('{{ type }}' === 'doughnut' && { cutout: "60%" }),
           plugins: {
             datalabels: {

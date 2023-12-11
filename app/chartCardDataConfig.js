@@ -10,7 +10,9 @@ const doughnutCharts = [
     description: 'Total finds during this time period',
     labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
     data: [141, 130, 37, 47],
-    total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
+    total: [141, 130, 37, 47].reduce((a, c) => a + c, 0),
+    date: '22/23',
+    href: '#'
   },
   {
     id: 'chart2',
@@ -20,7 +22,8 @@ const doughnutCharts = [
     description: 'Total Population breakdown in this time period',
     labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
     data: [0, 2270, 3380, 360, 101, 0],
-    total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
+    total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0),
+    href: '#'
   },
   {
     id: 'chart3',
@@ -30,7 +33,8 @@ const doughnutCharts = [
     description: 'Total assaults in this time period',
     labels: ['Serious', 'General'],
     data: [300, 467],
-    total: [300, 467].reduce((a, c) => a + c, 0)
+    total: [300, 467].reduce((a, c) => a + c, 0),
+    date: '22/23',
   },
   {
     id: 'chart4',
