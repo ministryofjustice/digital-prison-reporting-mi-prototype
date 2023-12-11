@@ -34,7 +34,7 @@ const doughnutCharts = [
     labels: ['Serious', 'General'],
     data: [300, 467],
     total: [300, 467].reduce((a, c) => a + c, 0),
-    date: '22/23',
+    date: '22/23'
   },
   {
     id: 'chart4',
