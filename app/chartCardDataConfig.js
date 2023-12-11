@@ -518,9 +518,139 @@ const barCharts = [
   }
 ]
 
+const heatmapCharts = [
+  {
+    card: {
+      title: 'Finds Incidents',
+      description: 'Total finds during this time period',
+      date: '22/23',
+      href: '#'
+    },
+    chart: {
+      id: 'chart1',
+      type: 'heatmap',
+      labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [141, 130, 37, 47]
+        }
+      ],
+      indexAxis: 'x'
+    }
+  },
+  {
+    card: {
+      title: 'Assault Incidents',
+      description: 'Total assaults in this time period'
+    },
+    chart: {
+      id: 'chart2',
+      type: 'heatmap',
+      labels: ['Serious', 'General'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [300, 467]
+        }
+      ],
+      indexAxis: 'x'
+    }
+  },
+  {
+    card: {
+      title: 'Population Overview',
+      description: 'Total Population breakdown in this time period',
+      href: '#'
+    },
+    chart: {
+      id: 'chart3',
+      type: 'heatmap',
+      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [0, 2270, 3380, 360, 101, 0]
+        }
+      ],
+      axis: 'y'
+    }
+  },
+  {
+
+    card: {
+      title: 'Population Overview',
+      description: 'Total Population breakdown in this time period',
+      href: '#'
+    },
+    chart: {
+      id: 'chart4',
+      type: 'heatmap',
+      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [0, 2270, 3380, 360, 101, 0]
+        }
+      ],
+      axis: 'y'
+    }
+  },
+  {
+    card: {
+      title: 'Prisoner on Staff Assaults',
+      date: '22/23',
+      href: '#'
+    },
+    chart: {
+      id: 'chart5',
+      type: 'heatmap',
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      data: [
+        {
+          title: 'Assaults',
+          data: lineChartData[2],
+          total: lineChartData[2].reduce((a, c) => a + c, 0)
+        },
+        {
+          title: 'Serious',
+          data: lineChartData[3],
+          total: lineChartData[3].reduce((a, c) => a + c, 0)
+        }
+      ]
+    }
+  },
+  {
+    card: {
+      title: 'Prisoner on Staff Assaults',
+      date: '22/23',
+      href: '#'
+    },
+    chart: {
+      id: 'chart6',
+      type: 'heatmap',
+      axis: 'y',
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      data: [
+        {
+          title: 'Assaults',
+          data: lineChartData[2],
+          total: lineChartData[2].reduce((a, c) => a + c, 0)
+        },
+        {
+          title: 'Serious',
+          data: lineChartData[3],
+          total: lineChartData[3].reduce((a, c) => a + c, 0)
+        }
+      ]
+    }
+  }
+]
+
 module.exports = [
   ...doughnutCharts,
   ...pieCharts,
   ...lineCharts,
-  ...barCharts
+  ...barCharts,
+  ...heatmapCharts
 ]
