@@ -1,21 +1,26 @@
-{% set colours = [
+{% set defaultColours = [
   ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'],
   ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5'],
   ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f']
 ]%}
 
+{% set id = chartData.id %}
+{% set type = chartData.type %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+
 <div class="chart chart--doughnut">
-  <canvas id="{{ chartId }}" class="chart-canvas"></canvas>
-  <div id="js-legend-{{ chartId }}" class="chart-legend"></div>
+  <canvas id="{{ id }}" class="chart-canvas"></canvas>
+  <div id="js-legend-{{ id }}" class="chart-legend"></div>
   <script>
-    new Chart(document.getElementById('{{ chartId }}'), {
+    new Chart(document.getElementById('{{ id }}'), {
         type: '{{ type }}',
         data: {
           labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
           datasets: [{
             label: 'Finds Dataset',
             data: [{{ data }}],
-            backgroundColor: [{% for colour in colours[2] %}'{{ colour }}',{% endfor %}],
+            backgroundColor: [{% for colour in defaultColours[2] %}'{{ colour }}',{% endfor %}],
             hoverOffset: 4,
             ...('{{ type }}' === 'pie' && { 
               datalabels: {
@@ -103,7 +108,7 @@
         {
           id: 'legend',
           beforeInit: function(chart, args, options) {
-            if (chart.canvas.id === "{{ chartId }}") {
+            if (chart.canvas.id === "{{ id }}") {
               const ul = document.createElement('ul');
               chart.data.labels.forEach((label, i) => {
                 ul.innerHTML += `
@@ -114,7 +119,7 @@
                 `;
               });
 
-              return document.getElementById("js-legend-{{ chartId }}").appendChild(ul);
+              return document.getElementById("js-legend-{{ id }}").appendChild(ul);
             }
             return;
           }

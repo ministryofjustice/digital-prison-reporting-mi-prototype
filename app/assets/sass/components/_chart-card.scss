@@ -12,7 +12,7 @@
     list-style-type: none;
     position: relative;
     min-width: 0;
-    background-color: #f3f2f1;
+    border: 1px solid #d9dadb;
     padding: govuk-spacing(3);
   }
 
@@ -21,7 +21,7 @@
   }
   
   .chart-group__item--date {
-    padding-bottom: govuk-spacing(6);
+    padding-bottom: govuk-spacing(7);
   
     .value-meta {
       position: absolute;
@@ -53,7 +53,7 @@
 
 .chart-card__pie-wrapper {
   padding: 0 govuk-spacing(6);
-  padding-bottom: govuk-spacing(3)
+  padding-bottom: govuk-spacing(2)
 }
 
 .chart-card-totals {

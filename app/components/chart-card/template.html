@@ -1,19 +1,22 @@
 {% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
+{% from "./../chart/bar/macro.html" import barChart as barChart %}
 
-{% set type = chartCardData.chartType %}
-{% set id = chartCardData.id + chartId %}
-{% set description = chartCardData.description %}
-{% set labels = chartCardData.labels %}
-{% set data = chartCardData.data %}
-{% set date = chartCardData.date %}
-{% set href = chartCardData.href %}
 {% set halfWidth = ['line', 'bar'] %}
 
-<div class="chart-group__item {% if date or href %}chart-group__item--date {% endif %} {% if type in halfWidth %} chart-group__item--half {% endif %}">
+{% set card = chartCardData.card %}
+{% set title = card.title %}
+{% set description = card.description %}
+{% set date = card.date %}
+{% set href = card.href %}
+
+{% set chart = chartCardData.chart %}
+{% set type = chart.type %}
+
+<div class="chart-group__item {% if date or href %}chart-group__item--date {% endif %}{% if type in halfWidth %} chart-group__item--half {% endif %}">
   <div class="chart-card">
 
-    <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{chartCardData.title}}</h1>
+    <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{ title }}</h1>
 
     {% if description %}
       <p class="govuk-body-xs govuk-!-margin-bottom-1">
@@ -21,20 +24,29 @@
       </p>
     {% endif %}
 
-    {% if type === 'doughnut' %}
+    {% if type === 'bar' %}
+
+      {{ barChart(chart) }}
+
+    {% elif type === 'doughnut' %}
+
       <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
-        {{ donutChart(id, labels, data ) }}
+        {{ donutChart(chart) }}
       </div>
     
     {% elif type === 'pie' %}
+
       <p class="govuk-body-s govuk-!-margin-bottom-1">
-        Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chartCardData.total }}</span>
+        Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chart.total }}</span>
       </p>
       <div class="chart-card__pie-wrapper">
-        {{ donutChart(id, labels, data, 'pie') }}
+        {{ donutChart(chart) }}
       </div>
-    
+
     {% elif type === 'line' %}
+
+      {% set data = chart.data %}
+      
       {% if data[0].total %}
         <div class='chart-card-totals govuk-!-margin-bottom-2'> 
           {% for set in data %}
@@ -46,8 +58,10 @@
           {% endfor %}
         </div>
       {% endif %}
-      {{ lineChart(id, labels, data) }}
-    {% endif %}
+
+      {{ lineChart(chart) }}
+
+    {% endif %} 
   </div>
 
   {% if date or href %}
