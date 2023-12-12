@@ -1,16 +1,10 @@
-{% set defaultColours = [
-  '#1d70b8',
-  '#28a197',
-  '#d4351c',
-  '#912b88',
-  '#f47738',
-  '#505a5f'
-] %}
+{% set defaultColours = ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'] %}
 
 {% set id = chartData.id %}
 {% set labels = chartData.labels %}
 {% set data = chartData.data %}
-{% set axis = chartData.axis %}
+{% set xLabels = chartData.xLabels %}
+{% set yLabels = chartData.yLabels %}
 
 <div class="chart">
   <canvas id="{{ id }}" class="chart-canvas"></canvas>
@@ -20,23 +14,45 @@
       data: {
         datasets: [{
           data: {{ data | dump | safe }},
-          borderWidth: 1,
-          borderColor: 'rgba(0,0,0,0.5)',
-          backgroundColor: 'rgba(200,200,0,0.3)',
-          width: ({chart}) => (chart.chartArea || {}).width / 24 - 1,
-          height: ({chart}) =>(chart.chartArea || {}).height / 7 - 1
+          backgroundColor: '{{ defaultColours[0] }}',
+          width: ({chart}) => (chart.chartArea || {}).width / [{{xLabels}}].length - 1,
+          height: ({chart}) => {
+            const yLabels = [{% for label in yLabels %}'{{ label }}',{% endfor %}]
+            return (chart.chartArea || {}).height / yLabels.length - 1
+          },
+          backgroundColor({raw}) {
+            const value = raw.v;
+            if(value === 0) { return '#FFF' }
+            if(value < 2) { return '{{ defaultColours[5] }}' }
+            if(value < 6) { return '{{ defaultColours[4] }}' }
+            if(value < 9) { return '{{ defaultColours[3] }}' }
+            if(value < 12) { return'{{ defaultColours[2] }}' }
+            if(value < 15) { return'{{ defaultColours[2] }}' }
+            return '{{ defaultColours[0] }}';
+          },
+          datalabels: {
+            anchor: 'center',
+            align: 'bottom',
+          }
         }],
       },
       options: {
+        animation: false,
         plugins: {
+          legend: false,
           datalabels: { 
-            display: false
+            display: false,
+            color: '#FFF',
+            formatter: function(value, context) {
+              return value.v
+            },
+            textAlign: 'right'
           }
         },
         scales: {
           x: {
             type: 'category',
-            labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],
+            labels: [{{ xLabels }}],
             ticks: {
               stepSize: 1
             },
@@ -46,7 +62,7 @@
           },
           y: {
             type: 'category',
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            labels: [{% for label in yLabels %}'{{ label }}',{% endfor %}],
             offset: true,
             ticks: {
               stepSize: 1
