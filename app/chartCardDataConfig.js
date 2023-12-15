@@ -362,10 +362,10 @@ const barCharts = [
 
 const generateHeatmapData = () => {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  const data = [];
+  const data = []
   for (let day = 0; day < days.length; day++) {
     for (let hour = 0; hour < 24; hour++) {
-      const randomValue = Math.floor(Math.random() * 15);
+      const randomValue = Math.floor(Math.random() * 15)
       data.push({ y: days[day], x: hour + 1, v: randomValue})
     }
   }
