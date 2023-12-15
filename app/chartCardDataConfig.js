@@ -366,7 +366,7 @@ const generateHeatmapData = () => {
   for (let day = 0; day < days.length; day++) {
     for (let hour = 0; hour < 24; hour++) {
       const randomValue = Math.floor(Math.random() * 15)
-      data.push({ y: days[day], x: hour + 1, v: randomValue})
+      data.push({ y: days[day], x: hour + 1, v: randomValue })
     }
   }
   return data
@@ -409,7 +409,7 @@ const heatmapCharts = [
       yLabels: [
         'Sun',
         'Sat',
-        'Fri', 
+        'Fri',
         'Thu',
         'Wed',
         'Tue',
