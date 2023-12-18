@@ -1,9 +1,9 @@
 {% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
+{% from "./../chart/heatmap/macro.html" import heatmapChart as heatmapChart %}
 
-{% set halfWidth = ['line', 'bar'] %}
-
+{% set halfWidth = ['line', 'bar', 'heatmap'] %}
 {% set card = chartCardData.card %}
 {% set title = card.title %}
 {% set description = card.description %}
@@ -60,6 +60,10 @@
       {% endif %}
 
       {{ lineChart(chart) }}
+
+    {% elif type === 'heatmap' %}
+
+      {{ heatmapChart(chart) }}
 
     {% endif %} 
   </div>
