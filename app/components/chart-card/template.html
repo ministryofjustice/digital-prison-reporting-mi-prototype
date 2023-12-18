@@ -2,19 +2,18 @@
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
 
-{% set halfWidth = ['line', 'bar'] %}
-
 {% set card = chartCardData.card %}
 {% set title = card.title %}
 {% set description = card.description %}
 {% set date = card.date %}
 {% set href = card.href %}
+{% set width = card.width %}
 
 {% set chart = chartCardData.chart %}
 {% set type = chart.type %}
 
-<div class="chart-group__item {% if date or href %}chart-group__item--date {% endif %}{% if type in halfWidth %} chart-group__item--half {% endif %}">
-  <div class="chart-card">
+<div class="chart-group__item {% if width %} chart-group__item--{{ width }} {% endif %} {% if date or href %}chart-group__item--date {% endif %}">
+  <div class="chart-card {% if date or href %}chart-card--padding{% endif%}">
 
     <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{ title }}</h1>
 
@@ -24,11 +23,7 @@
       </p>
     {% endif %}
 
-    {% if type === 'bar' %}
-
-      {{ barChart(chart) }}
-
-    {% elif type === 'doughnut' %}
+    {% if type === 'doughnut' %}
 
       <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
         {{ donutChart(chart) }}
@@ -37,13 +32,13 @@
     {% elif type === 'pie' %}
 
       <p class="govuk-body-s govuk-!-margin-bottom-1">
-        Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chart.total }}</span>
+        Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{ chart.total }}</span>
       </p>
       <div class="chart-card__pie-wrapper">
         {{ donutChart(chart) }}
       </div>
 
-    {% elif type === 'line' %}
+    {% elif type === 'line' or type === 'bar'  %}
 
       {% set data = chart.data %}
       
@@ -59,7 +54,11 @@
         </div>
       {% endif %}
 
-      {{ lineChart(chart) }}
+      {% if type === 'line'  %}
+        {{ lineChart(chart) }}
+      {%  elif type === 'bar' %}
+        {{ barChart(chart) }}
+      {% endif %} 
 
     {% endif %} 
   </div>

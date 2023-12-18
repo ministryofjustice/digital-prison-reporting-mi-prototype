@@ -448,7 +448,6 @@ const barCharts = [
     }
   },
   {
-
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period',

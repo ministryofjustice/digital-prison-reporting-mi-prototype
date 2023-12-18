@@ -3,7 +3,12 @@
 {% set value = insightData.value %}
 {% set values = insightData.values %}
 {% set date = insightData.date %}
+{% set href = insightData.href %}
+
 {% set diff = insightData.diff %}
+{% set diffDir = diff.direction %}
+{% set diffValue = diff.value %}
+{% set diffFrom = diff.from %}
 
 <div class="inight-card-group__item measure-headline">
   <h4 class="govuk-heading-s govuk-!-margin-bottom-1 app-heading-fixed-height-s-none" id="hm-jin-headline-cost-of-crime">
@@ -32,12 +37,12 @@
 
   {% if diff %}
     <p  class="govuk-body-s govuk-!-margin-bottom-3">
-      {{ diff.direction }} {{ diff.value }} from {{ diff.from }}
+      {% if diffDir === 'up' %} ▲ {% elif diffDir === 'down' %} ▼ {% endif %} {{ diffValue }} from {{ diffFrom }}
     </p>
   {% endif %}
 
   <p class="govuk-body-xs value-date">
-    Value for {{ date }}. <a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>
+    Value for {{ date }}. {% if href %} <a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>{% endif %}
   </p>
 
 </div>

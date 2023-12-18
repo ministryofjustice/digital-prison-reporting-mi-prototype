@@ -8,6 +8,7 @@ const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')
 const chartCardDataConfig = require('./chartCardDataConfig')
 const insightCardDataConfig = require('./insightCardDataConfig')
+const mockMetricData = require('./views/safetyDiagnosticTool/mockMetricData')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -84,6 +85,41 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
 router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
 }])
+
+router.get('/safety-diagnostic-tool/v2/category/:category', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const category = req.params.category
+    req.renderOptions = {
+      category,
+      data: mockMetricData.filter(c => c.type === category)
+    }
+    next()
+  },
+  function (req, res) {
+    res.render(`safetyDiagnosticTool/versions/v2/category/${req.params.category}/home`, {
+      ...req.renderOptions
+    })
+  }
+])
+
+router.get('/safety-diagnostic-tool/v2/category/:category/breakdown/:metric', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const metric = req.params.metric
+    const category = req.params.category
+    req.renderOptions = {
+      metric,
+      category,
+    }
+    next()
+  },
+  function (req, res) {
+    res.render(`safetyDiagnosticTool/versions/v2/category/${req.params.category}/breakdown/${req.params.metric}`, {
+      ...req.renderOptions
+    })
+  }
+])
 
 // Charts
 router.get('/charts/', [configureCurrentUrl, function (req, res) {
