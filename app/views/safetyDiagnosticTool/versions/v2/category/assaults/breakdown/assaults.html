@@ -1,0 +1,100 @@
+{% extends "../../../layout.html" %}
+
+{% block contentBody %}
+  {{ chartCardGroup([
+    {
+      card: {
+        title: 'Assault Incidents',
+        description: 'Total assaults in this time period',
+        width: 'full',
+        date: 'last 7 days'
+      },
+      chart: {
+        id: 'chart5',
+        type: 'bar',
+        labels: ['Assaults'],
+        data: [
+          {
+            title: 'Serious',
+            data: [60],
+            total: 60
+          },
+          {
+            title: 'General',
+            data: [100],
+            total: 100
+          }
+        ],
+        axis: 'y'
+      }
+    },
+    {
+      card: {
+        title: 'Reason for assault',
+        width: 'full'
+      },
+      chart: {
+        id: 'chart342',
+        type: 'bar',
+        labels: ['Retaliation', 'Uncategorised', 'Bullying', 'No Data', 'Non-comliance', 'Debt', 'Gang related', 'Food and Queuing', 'Drugs and Alcohol', 'Unauthorised Item', 'Tobacco'],
+        data: [
+          {
+            title: 'Assaults',
+            data: [467, 300, 287, 245, 200, 135, 120, 60, 34, 20, 12],
+            total: 1168
+          }
+        ],
+        axis: 'y'
+      }
+    },
+    {
+    card: {
+      title: 'Prisoner on Prisoner Assaults',
+      description: 'Prisoner on prisoner assault totals',
+      width: 'full'
+    },
+    chart: {
+      id: 'chart1',
+      type: 'line',
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [100, 130, 80, 60, 99, 50, 65, 100, 130, 80, 60, 99, 50, 65],
+          total: 1168
+        },
+        {
+          title: 'Serious',
+          data: [60, 70, 50, 40, 5, 20, 43, 60, 70, 50, 40, 5, 20, 43],
+          total: 576
+        }
+      ]
+    }
+  },
+  {
+    card: {
+      title: 'Prisoner on Staff Assaults',
+      description: 'Prisoner on staff assault totals',
+      width: 'full'
+    },
+    chart: {
+      id: 'chart2',
+      type: 'line',
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      data: [
+        {
+          title: 'Assaults',
+          data: [18, 50, 45, 90, 120, 59, 72, 110, 32, 28, 57, 45, 80, 124],
+          total: 930
+        },
+        {
+          title: 'Serious',
+          data: [5, 32, 23, 40, 70, 32, 43, 60, 7, 12, 8, 21, 50, 43],
+          total: 446
+        }
+      ]
+    }
+  }
+  ])}}
+
+{% endblock %}

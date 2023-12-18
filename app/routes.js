@@ -82,9 +82,26 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
   res.render('safetyDiagnosticTool/versions/v1/home', req.renderOptions)
 }])
 
-router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
-  res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
-}])
+// router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
+//   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
+// }])
+
+router.get('/safety-diagnostic-tool/v2', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const category = req.params.category
+    req.renderOptions = {
+      category,
+      data: mockMetricData
+    }
+    next()
+  },
+  function (req, res) {
+    res.render(`safetyDiagnosticTool/versions/v2/home`, {
+      ...req.renderOptions
+    })
+  }
+])
 
 router.get('/safety-diagnostic-tool/v2/category/:category', [
   configureCurrentUrl,

@@ -86,7 +86,7 @@ const incidentsInsights = [{
     title: 'Total Assaults',
     value: '139',
     date: 'last 7 days',
-    href: '/safety-diagnostic-tool/v2/category/incidents/breakdown/assaults'
+    href: '/safety-diagnostic-tool/v2/category/assaults/breakdown/assaults'
   },
   {
     type: 'incidents',
@@ -126,7 +126,51 @@ const incidentsInsights = [{
   },
 ]
 
+const assaultInsights = [{
+    type: 'assaults',
+    title: 'Total Assaults',
+    value: '139',
+    date: 'last 7 days',
+    href: '/safety-diagnostic-tool/v2/category/assaults/breakdown/assaults',
+    diff: {
+      direction: 'up', // up | down
+      value: '12',
+      from: 'last week'
+    }
+  },
+  {
+    type: 'assaults',
+    title: 'Total Serious Assaults',
+    value: '89',
+    date: 'last 7 days',
+    href: '/safety-diagnostic-tool/v2/category/assaults/breakdown/assaults',
+    diff: {
+      direction: 'down', // up | down
+      value: '6',
+      from: 'last week'
+    }
+  },
+  {
+    type: 'assaults',
+    title: 'Serious on staff',
+    value: '10',
+    date: 'last 7 days',
+    href: '/safety-diagnostic-tool/v2/category/assaults/breakdown/assaults'
+  }
+]
+
   const homepageInsights = [
+  {
+    type: 'basic',
+    title: 'Estimated total cost of crime in England and Wales',
+    value: '£58.9bn',
+    date: '2015/16',
+    diff: {
+      direction: 'up', // up | down
+      value: '0.4 million',
+      from: '2021/22'
+    }
+  },
   {
     type: 'basic',
     title: 'Estimated total cost of crime in England and Wales',
@@ -143,6 +187,7 @@ const incidentsInsights = [{
 module.exports = [
   ...prisonerInsights,
   ...incidentsInsights,
-  ...homepageInsights
+  ...homepageInsights,
+  ...assaultInsights
 ]
 
