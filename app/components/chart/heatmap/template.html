@@ -1,0 +1,78 @@
+{% set defaultColours = ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'] %}
+
+{% set id = chartData.id %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+{% set xLabels = chartData.xLabels %}
+{% set yLabels = chartData.yLabels %}
+
+<div class="chart">
+  <canvas id="{{ id }}" class="chart-canvas"></canvas>
+  <script>
+    new Chart(document.getElementById('{{ id }}'), {
+      type: 'matrix',
+      data: {
+        datasets: [{
+          data: {{ data | dump | safe }},
+          backgroundColor: '{{ defaultColours[0] }}',
+          width: ({chart}) => (chart.chartArea || {}).width / [{{xLabels}}].length - 1,
+          height: ({chart}) => {
+            const yLabels = [{% for label in yLabels %}'{{ label }}',{% endfor %}]
+            return (chart.chartArea || {}).height / yLabels.length - 1
+          },
+          backgroundColor({raw}) {
+            const value = raw.v;
+            if(value === 0) { return '#FFF' }
+            if(value < 2) { return '{{ defaultColours[5] }}' }
+            if(value < 6) { return '{{ defaultColours[4] }}' }
+            if(value < 9) { return '{{ defaultColours[3] }}' }
+            if(value < 12) { return'{{ defaultColours[2] }}' }
+            if(value < 15) { return'{{ defaultColours[2] }}' }
+            return '{{ defaultColours[0] }}';
+          },
+          datalabels: {
+            anchor: 'center',
+            align: 'bottom',
+          }
+        }],
+      },
+      options: {
+        animation: false,
+        plugins: {
+          legend: false,
+          datalabels: { 
+            display: false,
+            color: '#FFF',
+            formatter: function(value, context) {
+              return value.v
+            },
+            textAlign: 'right'
+          }
+        },
+        scales: {
+          x: {
+            type: 'category',
+            labels: [{{ xLabels }}],
+            ticks: {
+              stepSize: 1
+            },
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            type: 'category',
+            labels: [{% for label in yLabels %}'{{ label }}',{% endfor %}],
+            offset: true,
+            ticks: {
+              stepSize: 1
+            },
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  </script>
+</div>

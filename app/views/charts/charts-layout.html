@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set chartTypes = [ 'bar', 'line', 'doughnut', 'pie' ] %}
+{% set chartTypes = [ 'bar', 'line', 'doughnut', 'pie', 'heatmap'] %}
 {% set chartTypeData = [] %}
 {% for type in chartTypes %}
   {% set chartTypeData = (chartTypeData.push({

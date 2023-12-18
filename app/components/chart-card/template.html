@@ -1,6 +1,7 @@
 {% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
+{% from "./../chart/heatmap/macro.html" import heatmapChart as heatmapChart %}
 
 {% set card = chartCardData.card %}
 {% set title = card.title %}
@@ -59,6 +60,10 @@
       {%  elif type === 'bar' %}
         {{ barChart(chart) }}
       {% endif %} 
+
+    {% elif type === 'heatmap' %}
+
+      {{ heatmapChart(chart) }}
 
     {% endif %} 
   </div>
