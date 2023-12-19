@@ -1,7 +1,7 @@
 .chart-card-container {
   display: flex;
   flex-wrap: wrap;
-  row-gap: govuk-spacing(5);
+  row-gap: govuk-spacing(6);
   flex-direction: row;
 
   .chart-group__item {
@@ -11,6 +11,7 @@
     list-style-type: none;
     position: relative;
     min-width: 0;
+    border-bottom: 1px solid govuk-colour("mid-grey");
   }
 
   .chart-group__item--quarter {
@@ -53,14 +54,11 @@
 
 .chart-card {
   position: relative;
+  padding-bottom: govuk-spacing(7);
 
   .chart--line {
     height: 350px;
   }
-}
-
-.chart-card--padding {
-  padding-bottom: govuk-spacing(7);
 }
 
 .chart-card__pie-wrapper {

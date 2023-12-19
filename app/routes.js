@@ -182,4 +182,5 @@ router.get('/insights/:insightType', [
   }
 ])
 
+
 module.exports = router
