@@ -115,7 +115,30 @@ router.get('/safety-diagnostic-tool/v2/category/:category', [
   },
   function (req, res) {
     const category = req.renderOptions.category
-    res.render(`safetyDiagnosticTool/versions/v2/category/${category}/home`, {
+    let path
+    switch (category) {
+      case 'prisoners':
+        path = 'prisoners'
+        break;
+      case 'incidents':
+        break;
+      case 'self-harm':
+        path = 'self-harm'
+        break;
+      case 'self-harm':
+        path = 'self-harm'
+        break;
+      case 'assaults':
+        path = 'assaults'
+        break;
+      case 'use-of-force':
+        path = 'use-of-force'
+        break;
+      default:
+        path = 'prisoners'
+        break;
+    }
+    res.render(`safetyDiagnosticTool/versions/v2/category/${path}/home`, {
       ...req.renderOptions
     })
   }

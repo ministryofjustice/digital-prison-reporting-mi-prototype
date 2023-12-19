@@ -127,7 +127,8 @@ const incidentsInsights = [
   },
 ]
 
-const assaultInsights = [{
+const assaultInsights = [
+  {
     type: 'assaults',
     title: 'Total Assaults',
     value: '139',
