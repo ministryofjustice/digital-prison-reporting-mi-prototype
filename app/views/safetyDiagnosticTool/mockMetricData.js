@@ -81,7 +81,8 @@ const prisonerInsights = [
   },   
 ]
 
-const incidentsInsights = [{
+const incidentsInsights = [
+  {
     type: 'incidents',
     title: 'Total Assaults',
     value: '139',
