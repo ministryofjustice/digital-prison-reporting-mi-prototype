@@ -25,25 +25,25 @@ const prisonerInsights = [
     type: 'prisoners',
     title: 'Number of prisoners up for release',
     value: '36',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'prisoners',
     title: 'Self Harmers in population',
     value: '36%',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'prisoners',
     title: 'Number at risk of self harm',
     value: '205',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'prisoners',
     title: 'Prisoners at risk of committing serious assault',
     value: '8%',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'prisoners',
@@ -93,37 +93,37 @@ const incidentsInsights = [
     type: 'incidents',
     title: 'Total Finds',
     value: '369',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'incidents',
     title: 'Total Self Harm',
     value: '323',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'incidents',
     title: 'Total First time Self Harm',
     value: '35',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'incidents',
     title: 'Repeat Self Harm',
     value: '13',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'incidents',
     title: 'Total Disorder',
     value: '184',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
   {
     type: 'incidents',
     title: 'Day most incidents occur',
     value: 'Monday',
-    date: 'last 7 days',
+    date: 'last 7 days'
   },
 ]
 

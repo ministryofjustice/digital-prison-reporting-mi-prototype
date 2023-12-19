@@ -112,7 +112,7 @@ const categoryRouteMap = [
 ]
 
 const metricRouteMap = [
-  { key: 'assaults', path: 'assaults' },
+  { key: 'assaults', path: 'assaults' }
 ]
 
 router.get('/safety-diagnostic-tool/v2/category/:category', [
@@ -141,7 +141,7 @@ router.get('/safety-diagnostic-tool/v2/category/:category/breakdown/:metric', [
     const category = req.params.category
     req.renderOptions = {
       metric,
-      category,
+      category
     }
     next()
   },
