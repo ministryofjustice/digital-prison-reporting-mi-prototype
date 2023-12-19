@@ -114,7 +114,8 @@ router.get('/safety-diagnostic-tool/v2/category/:category', [
     next()
   },
   function (req, res) {
-    res.render(`safetyDiagnosticTool/versions/v2/category/${req.params.category}/home`, {
+    const category = req.renderOptions.category
+    res.render(`safetyDiagnosticTool/versions/v2/category/${category}/home`, {
       ...req.renderOptions
     })
   }
@@ -132,7 +133,9 @@ router.get('/safety-diagnostic-tool/v2/category/:category/breakdown/:metric', [
     next()
   },
   function (req, res) {
-    res.render(`safetyDiagnosticTool/versions/v2/category/${req.params.category}/breakdown/${req.params.metric}`, {
+    const metric = req.renderOptions.metric
+    const category = req.renderOptions.category
+    res.render(`safetyDiagnosticTool/versions/v2/category/${category}/breakdown/${metric}`, {
       ...req.renderOptions
     })
   }
