@@ -78,7 +78,7 @@ const prisonerInsights = [
       }
     ],
     date: 'last 7 days'
-  },
+  }
 ]
 
 const incidentsInsights = [
@@ -124,7 +124,7 @@ const incidentsInsights = [
     title: 'Day most incidents occur',
     value: 'Monday',
     date: 'last 7 days'
-  },
+  }
 ]
 
 const assaultInsights = [
@@ -161,7 +161,7 @@ const assaultInsights = [
   }
 ]
 
-  const homepageInsights = [
+const homepageInsights = [
   {
     type: 'basic',
     title: 'Estimated total cost of crime in England and Wales',
@@ -192,4 +192,3 @@ module.exports = [
   ...homepageInsights,
   ...assaultInsights
 ]
-
