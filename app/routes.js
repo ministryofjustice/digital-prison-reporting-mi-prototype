@@ -97,11 +97,23 @@ router.get('/safety-diagnostic-tool/v2', [
     next()
   },
   function (req, res) {
-    res.render(`safetyDiagnosticTool/versions/v2/home`, {
+    res.render('safetyDiagnosticTool/versions/v2/home', {
       ...req.renderOptions
     })
   }
 ])
+
+const categoryRouteMap = [
+  { key: 'prisoners', path: 'prisoners' },
+  { key: 'incidents', path: 'incidents' },
+  { key: 'self-harm', path: 'self-harm' },
+  { key: 'assaults', path: 'assaults' },
+  { key: 'use-of-force', path: 'use-of-force' }
+]
+
+const metricRouteMap = [
+  { key: 'assaults', path: 'assaults' },
+]
 
 router.get('/safety-diagnostic-tool/v2/category/:category', [
   configureCurrentUrl,
@@ -115,29 +127,7 @@ router.get('/safety-diagnostic-tool/v2/category/:category', [
   },
   function (req, res) {
     const category = req.renderOptions.category
-    let path
-    switch (category) {
-      case 'prisoners':
-        path = 'prisoners'
-        break;
-      case 'incidents':
-        break;
-      case 'self-harm':
-        path = 'self-harm'
-        break;
-      case 'self-harm':
-        path = 'self-harm'
-        break;
-      case 'assaults':
-        path = 'assaults'
-        break;
-      case 'use-of-force':
-        path = 'use-of-force'
-        break;
-      default:
-        path = 'prisoners'
-        break;
-    }
+    const path = categoryRouteMap.find((item) => item.key === category).path || 'assaults'
     res.render(`safetyDiagnosticTool/versions/v2/category/${path}/home`, {
       ...req.renderOptions
     })
@@ -157,8 +147,11 @@ router.get('/safety-diagnostic-tool/v2/category/:category/breakdown/:metric', [
   },
   function (req, res) {
     const metric = req.renderOptions.metric
+    const metricPath = metricRouteMap.find((item) => item.key === metric).path || 'assaults'
     const category = req.renderOptions.category
-    res.render(`safetyDiagnosticTool/versions/v2/category/${category}/breakdown/${metric}`, {
+    const categoryPath = categoryRouteMap.find((item) => item.key === category).path || 'assaults'
+
+    res.render(`safetyDiagnosticTool/versions/v2/category/${categoryPath}/breakdown/${metricPath}`, {
       ...req.renderOptions
     })
   }
@@ -207,6 +200,5 @@ router.get('/insights/:insightType', [
     })
   }
 ])
-
 
 module.exports = router

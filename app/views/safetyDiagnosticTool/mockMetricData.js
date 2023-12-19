@@ -9,7 +9,7 @@ const prisonerInsights = [
       value: '567',
       from: 'last week'
     }
-  }, 
+  },
   {
     type: 'prisoners',
     title: 'Average Viper Score',
@@ -20,19 +20,19 @@ const prisonerInsights = [
       value: '0.2',
       from: 'last week'
     }
-  },  
+  },
   {
     type: 'prisoners',
     title: 'Number of prisoners up for release',
     value: '36',
     date: 'last 7 days',
-  }, 
+  },
   {
     type: 'prisoners',
     title: 'Self Harmers in population',
     value: '36%',
     date: 'last 7 days',
-  },  
+  },
   {
     type: 'prisoners',
     title: 'Number at risk of self harm',
@@ -44,7 +44,7 @@ const prisonerInsights = [
     title: 'Prisoners at risk of committing serious assault',
     value: '8%',
     date: 'last 7 days',
-  }, 
+  },
   {
     type: 'prisoners',
     title: 'Population split by gender',
@@ -59,7 +59,7 @@ const prisonerInsights = [
       }
     ],
     date: 'last 7 days'
-  }, 
+  },
   {
     type: 'prisoners',
     title: 'Age range in population',
@@ -78,7 +78,7 @@ const prisonerInsights = [
       }
     ],
     date: 'last 7 days'
-  },   
+  },
 ]
 
 const incidentsInsights = [
@@ -118,7 +118,7 @@ const incidentsInsights = [
     title: 'Total Disorder',
     value: '184',
     date: 'last 7 days',
-  },  
+  },
   {
     type: 'incidents',
     title: 'Day most incidents occur',
