@@ -3,69 +3,71 @@
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
 {% from "./../chart/heatmap/macro.html" import heatmapChart as heatmapChart %}
 
-{% set halfWidth = ['line', 'bar', 'heatmap'] %}
 {% set card = chartCardData.card %}
 {% set title = card.title %}
 {% set description = card.description %}
 {% set date = card.date %}
 {% set href = card.href %}
+{% set width = card.width %}
 
 {% set chart = chartCardData.chart %}
 {% set type = chart.type %}
 
-<div class="chart-group__item {% if date or href %}chart-group__item--date {% endif %}{% if type in halfWidth %} chart-group__item--half {% endif %}">
-  <div class="chart-card">
+<div class="chart-group__item {% if width %} chart-group__item--{{ width }} {% endif %} {% if date or href %}chart-group__item--date {% endif %}">
+  <div class="chart-card chart-card--padding">
 
-    <h1 class="govuk-heading-s govuk-!-margin-bottom-1">{{ title }}</h1>
+    <h1 class="govuk-heading-m">{{ title }}</h1>
 
     {% if description %}
-      <p class="govuk-body-xs govuk-!-margin-bottom-1">
+      <p class="govuk-body">
         <span>{{ description }}</span>
       </p>
     {% endif %}
 
-    {% if type === 'bar' %}
+    <div class="chart-container">
+      {% if type === 'doughnut' %}
 
-      {{ barChart(chart) }}
-
-    {% elif type === 'doughnut' %}
-
-      <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
-        {{ donutChart(chart) }}
-      </div>
-    
-    {% elif type === 'pie' %}
-
-      <p class="govuk-body-s govuk-!-margin-bottom-1">
-        Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{  chart.total }}</span>
-      </p>
-      <div class="chart-card__pie-wrapper">
-        {{ donutChart(chart) }}
-      </div>
-
-    {% elif type === 'line' %}
-
-      {% set data = chart.data %}
-      
-      {% if data[0].total %}
-        <div class='chart-card-totals govuk-!-margin-bottom-2'> 
-          {% for set in data %}
-            {% if set.total %}
-              <p class="govuk-body-s govuk-!-margin-bottom-1 chart-card-totals__total">
-                {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
-              </p>
-            {% endif %}
-          {% endfor %}
+        <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
+          {{ donutChart(chart) }}
         </div>
-      {% endif %}
+      
+      {% elif type === 'pie' %}
 
-      {{ lineChart(chart) }}
+        <p class="govuk-body govuk-!-margin-bottom-1">
+          Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{ chart.total }}</span>
+        </p>
+        <div class="chart-card__pie-wrapper">
+          {{ donutChart(chart) }}
+        </div>
 
-    {% elif type === 'heatmap' %}
+      {% elif type === 'line' or type === 'bar'  %}
 
-      {{ heatmapChart(chart) }}
+        {% set data = chart.data %}
+        
+        {% if data[0].total %}
+          <div class='chart-card-totals govuk-!-margin-bottom-2'> 
+            {% for set in data %}
+              {% if set.total %}
+                <p class="govuk-body govuk-!-margin-bottom-1 chart-card-totals__total">
+                  {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
+                </p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
 
-    {% endif %} 
+        {% if type === 'line'  %}
+          {{ lineChart(chart) }}
+        {%  elif type === 'bar' %}
+          {{ barChart(chart) }}
+        {% endif %} 
+
+      {% elif type === 'heatmap' %}
+
+        {{ heatmapChart(chart) }}
+
+      {% endif %} 
+    </div>
   </div>
 
   {% if date or href %}
@@ -74,5 +76,4 @@
       {% if href %}<a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>{% endif %}
     </p>
   {% endif %}
-  
 </div>

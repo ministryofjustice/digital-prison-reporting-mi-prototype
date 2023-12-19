@@ -98,7 +98,8 @@ const lineCharts = [
   {
     card: {
       title: 'Prisoner on Prisoner Assaults',
-      description: 'Prisoner on prisoner assault totals'
+      description: 'Prisoner on prisoner assault totals',
+      width: 'half'
     },
     chart: {
       id: 'chart1',
@@ -121,7 +122,8 @@ const lineCharts = [
   {
     card: {
       title: 'Prisoner on Staff Assaults',
-      description: 'Prisoner on staff assault totals'
+      description: 'Prisoner on staff assault totals',
+      width: 'half'
     },
     chart: {
       id: 'chart2',
@@ -144,7 +146,8 @@ const lineCharts = [
   {
     card: {
       title: 'Self Harm Methods',
-      description: 'Self harm methods over time'
+      description: 'Self harm methods over time',
+      width: 'half'
     },
     chart: {
       id: 'chart3',
@@ -176,7 +179,8 @@ const lineCharts = [
   },
   {
     card: {
-      title: 'Prisoner on Staff Assaults'
+      title: 'Prisoner on Staff Assaults',
+      width: 'half'
     },
     chart: {
       id: 'chart4',
@@ -199,7 +203,8 @@ const lineCharts = [
   {
     card: {
       title: 'Self Harm Methods',
-      description: 'Self harm methods over time'
+      description: 'Self harm methods over time',
+      width: 'half'
     },
     chart: {
       id: 'chart5',
@@ -237,7 +242,8 @@ const barCharts = [
       title: 'Finds Incidents',
       description: 'Total finds during this time period',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart1',
@@ -255,7 +261,8 @@ const barCharts = [
   {
     card: {
       title: 'Assault Incidents',
-      description: 'Total assaults in this time period'
+      description: 'Total assaults in this time period',
+      width: 'half'
     },
     chart: {
       id: 'chart2',
@@ -274,7 +281,8 @@ const barCharts = [
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart3',
@@ -290,11 +298,11 @@ const barCharts = [
     }
   },
   {
-
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart4',
@@ -313,7 +321,8 @@ const barCharts = [
     card: {
       title: 'Prisoner on Staff Assaults',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart5',
@@ -337,7 +346,8 @@ const barCharts = [
     card: {
       title: 'Prisoner on Staff Assaults',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart6',

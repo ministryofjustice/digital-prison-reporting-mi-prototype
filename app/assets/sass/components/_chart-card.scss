@@ -1,31 +1,41 @@
 .chart-card-container {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 10px;
-  column-gap: 10px;
+  row-gap: govuk-spacing(6);
   flex-direction: row;
 
   .chart-group__item {
     flex-grow: 4;
     flex-shrink: 1;
-    flex-basis: 30%;
+    flex-basis: 33.3%; // deafault to one third width
     list-style-type: none;
     position: relative;
     min-width: 0;
-    border: 1px solid #d9dadb;
-    padding: govuk-spacing(3);
+    border-bottom: 1px solid govuk-colour("mid-grey");
+  }
+
+  .chart-group__item--quarter {
+    flex-basis: 25%;
+  }
+
+  .chart-group__item--third {
+    flex-basis: 33.3%;
   }
 
   .chart-group__item--half {
-    min-width: 40%;
+    flex-basis: 50%;
+  }
+
+  .chart-group__item--full {
+    flex-basis: 70%;
   }
   
   .chart-group__item--date {
-    padding-bottom: govuk-spacing(7);
   
     .value-meta {
       position: absolute;
       bottom: 12px;
+      left: 0;
       margin-bottom: 0px;
     }
   }
@@ -33,18 +43,18 @@
 
 
 .chart-canvas {
-  max-width: 100%;
+  width: 100%;
   height: 100% !important
 }
 
 .chart {
-  margin: auto;
-  width: 100%;
+  width: 95%;
   position: relative;
 }
 
 .chart-card {
   position: relative;
+  padding-bottom: govuk-spacing(7);
 
   .chart--line {
     height: 350px;
@@ -53,7 +63,6 @@
 
 .chart-card__pie-wrapper {
   padding: 0 govuk-spacing(6);
-  padding-bottom: govuk-spacing(2)
 }
 
 .chart-card-totals {

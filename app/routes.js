@@ -8,6 +8,7 @@ const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')
 const chartCardDataConfig = require('./chartCardDataConfig')
 const insightCardDataConfig = require('./insightCardDataConfig')
+const mockMetricData = require('./views/safetyDiagnosticTool/mockMetricData')
 
 const configureCurrentUrl = (req, res, next) => {
   req.renderOptions = {
@@ -81,9 +82,80 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
   res.render('safetyDiagnosticTool/versions/v1/home', req.renderOptions)
 }])
 
-router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
-  res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
-}])
+// router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
+//   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
+// }])
+
+router.get('/safety-diagnostic-tool/v2', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const category = req.params.category
+    req.renderOptions = {
+      category,
+      data: mockMetricData
+    }
+    next()
+  },
+  function (req, res) {
+    res.render('safetyDiagnosticTool/versions/v2/home', {
+      ...req.renderOptions
+    })
+  }
+])
+
+const categoryRouteMap = [
+  { key: 'prisoners', path: 'prisoners' },
+  { key: 'incidents', path: 'incidents' },
+  { key: 'self-harm', path: 'self-harm' },
+  { key: 'assaults', path: 'assaults' },
+  { key: 'use-of-force', path: 'use-of-force' }
+]
+
+const metricRouteMap = [
+  { key: 'assaults', path: 'assaults' }
+]
+
+router.get('/safety-diagnostic-tool/v2/category/:category', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const category = req.params.category
+    req.renderOptions = {
+      category,
+      data: mockMetricData.filter(c => c.type === category)
+    }
+    next()
+  },
+  function (req, res) {
+    const category = req.renderOptions.category
+    const path = categoryRouteMap.find((item) => item.key === category).path || 'assaults'
+    res.render(`safetyDiagnosticTool/versions/v2/category/${path}/home`, {
+      ...req.renderOptions
+    })
+  }
+])
+
+router.get('/safety-diagnostic-tool/v2/category/:category/breakdown/:metric', [
+  configureCurrentUrl,
+  function (req, res, next) {
+    const metric = req.params.metric
+    const category = req.params.category
+    req.renderOptions = {
+      metric,
+      category
+    }
+    next()
+  },
+  function (req, res) {
+    const metric = req.renderOptions.metric
+    const metricPath = metricRouteMap.find((item) => item.key === metric).path || 'assaults'
+    const category = req.renderOptions.category
+    const categoryPath = categoryRouteMap.find((item) => item.key === category).path || 'assaults'
+
+    res.render(`safetyDiagnosticTool/versions/v2/category/${categoryPath}/breakdown/${metricPath}`, {
+      ...req.renderOptions
+    })
+  }
+])
 
 // Charts
 router.get('/charts/', [configureCurrentUrl, function (req, res) {

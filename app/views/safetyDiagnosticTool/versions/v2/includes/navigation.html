@@ -1,0 +1,37 @@
+<div class='side-nav'>
+  {{ mojSideNavigation({
+    label: 'Side navigation',
+    items: [
+      {
+        text: 'Home',
+        href: '/safety-diagnostic-tool/v2',
+        active: category === undefined
+      },
+      {
+        text: 'Prisoners',
+        href: '/safety-diagnostic-tool/v2/category/prisoners',
+        active: category  === 'prisoners'
+      }, 
+      {
+        text: 'Incidents',
+        href: '/safety-diagnostic-tool/v2/category/incidents',
+        active: category === 'incidents'
+      },
+      {
+        text: 'Assaults',
+        href: '/safety-diagnostic-tool/v2/category/assaults',
+        active: category === 'assaults'
+      },
+      {
+        text: 'Self Harm',
+        href: '/safety-diagnostic-tool/v2/category/self-harm',
+        active: category === 'self-harm'
+      },
+      {
+        text: 'Use of Force',
+        href: '/safety-diagnostic-tool/v2/category/use-of-force',
+        active: category === 'use-of-force'
+      }
+    ]
+  }) }}
+</div>

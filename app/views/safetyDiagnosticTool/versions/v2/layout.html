@@ -1,3 +1,4 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% extends "layout.html" %}
 
@@ -18,9 +19,28 @@ Digital Prison Reporting MI Prototype - Safety Diagnostic Tool
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-width-container">
+    <div class='sdt-container'>
 
-  <div class="govuk-width-container ">
-    {% block reportBody %}{% endblock %}
-  </div>
+      {% include "./includes/navigation.html" %}
+      
+      <div class='sdt-main'>
+        {% if category %}
+          <span class="govuk-caption-l">Safety Diagnostic Tool</span>
+          <h2 class="govuk-heading-l">{{ category | capitalize  | replace("-", " ")}}</h2>
+        {% else %}
+          <h2 class="govuk-heading-l">Safety Diagnostic Tool</h2>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+        
+        {# Filter #}
+        {# {% include "./includes/filters.html" %} #}
+
+        {% block contentBody %}{% endblock %}
+      </div>
+    <div>
+
+</div>
 
 {% endblock %}

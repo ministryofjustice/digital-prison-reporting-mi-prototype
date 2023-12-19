@@ -85,3 +85,22 @@ table.govuk-table {
 .govuk-table__row:hover {
   background-color: govuk-colour("light-grey");
 }
+
+// SDT
+.sdt-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.side-nav {
+  position: sticky;
+  top: 4px;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  width: 150px;
+}
+
+.sdt-main {
+  width: 100%;
+  padding: govuk-spacing(4);
+}
