@@ -1,0 +1,95 @@
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {{ govukSelect({
+      id: "prisonSelect",
+      name: "prisonSelect",
+      label: {
+        text: "Prison Selection"
+      },
+      items: [
+        {
+          value: "1",
+          text: "Greater Manchester, Merseyside & Cheshire"
+        },
+        {
+          value: "2",
+          text: "Avon & Somerset",
+          selected: true
+        },
+        {
+          value: "3",
+          text: "Cumbria & Lancashire"
+        },
+        {
+          value: "4",
+          text: "Hertfordshire, Essex & Suffolk"
+        }
+      ]
+    }) }}
+  </div>
+  <div class="govuk-grid-column-full">
+    {{ govukRadios({
+      name: "duration",
+      fieldset: {
+        legend: {
+          text: "Duration",
+          isPageHeading: true,
+          classes: "govuk-body"
+        }
+      },
+      items: [
+        {
+          value: "1day",
+          text: "1 day"
+        },
+        {
+          value: "3days",
+          text: "3 day"
+        },
+        {
+          value: "7days",
+          text: "7 days"
+        },
+        {
+          value: "1year",
+          text: "1 year"
+        },
+        {
+          value: "custom",
+          text: "Custom"
+        }
+      ]
+    }) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {{ govukDateInput({
+      id: "passport-issued",
+      namePrefix: "passport-issued",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      }
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-half">
+    {{ govukDateInput({
+      id: "passport-issued",
+      namePrefix: "passport-issued",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      }
+    }) }}
+  </div>
+</div>

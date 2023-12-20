@@ -4,11 +4,8 @@
   <div class="govuk-grid-column-full insight-card-container">
     
     {% for insightData in insightsData %}
-      {% set type = insightData.type %}
       
-      {% if type === 'basic' %}
         {{ insightCardBasic(insightData) }}
-      {% endif %}
     
     {% endfor %}
   </div>

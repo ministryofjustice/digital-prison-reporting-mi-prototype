@@ -1,6 +1,4 @@
 // Config for each chart card
-// TODO: data + labels to be transformed from raw data for each chart card
-
 const doughnutCharts = [
   {
     card: {
@@ -44,84 +42,6 @@ const doughnutCharts = [
       data: [300, 467],
       total: [300, 467].reduce((a, c) => a + c, 0)
     }
-  },
-  {
-    card: {
-      title: 'Finds Incidents',
-      description: 'Total finds during this time period'
-    },
-    chart: {
-      id: 'chart4',
-      type: 'doughnut',
-      labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-      data: [141, 130, 37, 47],
-      total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Population Overview',
-      description: 'Total Population breakdown in this time period'
-    },
-    chart: {
-      id: 'chart5',
-      type: 'doughnut',
-      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Finds Incidents',
-      description: 'Total finds during this time period'
-    },
-    chart: {
-      id: 'chart6',
-      type: 'doughnut',
-      labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-      data: [141, 130, 37, 47],
-      total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Population Overview',
-      description: 'Total Population breakdown'
-    },
-    chart: {
-      id: 'chart7',
-      type: 'doughnut',
-      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Assault Incidents',
-      description: 'Total assaults in this time period'
-    },
-    chart: {
-      id: 'chart8',
-      type: 'doughnut',
-      labels: ['Serious', 'General'],
-      data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Finds Incidents',
-      description: 'Total finds during this time period'
-    },
-    chart: {
-      id: 'chart9',
-      type: 'doughnut',
-      labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
-      data: [141, 130, 37, 47],
-      total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-    }
   }
 ]
 
@@ -164,84 +84,6 @@ const pieCharts = [
       data: [300, 467],
       total: [300, 467].reduce((a, c) => a + c, 0)
     }
-  },
-  {
-    card: {
-      title: 'Population Overview',
-      description: 'Total Population breakdown in this time period'
-    },
-    chart: {
-      id: 'chart4',
-      type: 'pie',
-      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Assault Incidents',
-      description: 'Total Assaults in this time period'
-    },
-    chart: {
-      id: 'chart5',
-      type: 'pie',
-      labels: ['Serious', 'General'],
-      data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Population Overview',
-      description: 'Total Population breakdown in this time period'
-    },
-    chart: {
-      id: 'chart6',
-      type: 'pie',
-      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Assault Incidents',
-      description: 'Total Assaults in this time period'
-    },
-    chart: {
-      id: 'chart7',
-      type: 'pie',
-      labels: ['Serious', 'General'],
-      data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Population Overview',
-      description: 'Total Population breakdown in this time period'
-    },
-    chart: {
-      id: 'chart8',
-      type: 'pie',
-      labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
-      data: [0, 2270, 3380, 360, 101, 0],
-      total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
-  },
-  {
-    card: {
-      title: 'Assault Incidents',
-      description: 'Total Assaults in this time period'
-    },
-    chart: {
-      id: 'chart9',
-      type: 'pie',
-      labels: ['Serious', 'General'],
-      data: [300, 467],
-      total: [300, 467].reduce((a, c) => a + c, 0)
-    }
   }
 ]
 
@@ -256,7 +98,8 @@ const lineCharts = [
   {
     card: {
       title: 'Prisoner on Prisoner Assaults',
-      description: 'Prisoner on prisoner assault totals'
+      description: 'Prisoner on prisoner assault totals',
+      width: 'half'
     },
     chart: {
       id: 'chart1',
@@ -279,7 +122,8 @@ const lineCharts = [
   {
     card: {
       title: 'Prisoner on Staff Assaults',
-      description: 'Prisoner on staff assault totals'
+      description: 'Prisoner on staff assault totals',
+      width: 'half'
     },
     chart: {
       id: 'chart2',
@@ -302,7 +146,8 @@ const lineCharts = [
   {
     card: {
       title: 'Self Harm Methods',
-      description: 'Self harm methods over time'
+      description: 'Self harm methods over time',
+      width: 'half'
     },
     chart: {
       id: 'chart3',
@@ -334,7 +179,8 @@ const lineCharts = [
   },
   {
     card: {
-      title: 'Prisoner on Staff Assaults'
+      title: 'Prisoner on Staff Assaults',
+      width: 'half'
     },
     chart: {
       id: 'chart4',
@@ -357,7 +203,8 @@ const lineCharts = [
   {
     card: {
       title: 'Self Harm Methods',
-      description: 'Self harm methods over time'
+      description: 'Self harm methods over time',
+      width: 'half'
     },
     chart: {
       id: 'chart5',
@@ -395,7 +242,8 @@ const barCharts = [
       title: 'Finds Incidents',
       description: 'Total finds during this time period',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart1',
@@ -413,7 +261,8 @@ const barCharts = [
   {
     card: {
       title: 'Assault Incidents',
-      description: 'Total assaults in this time period'
+      description: 'Total assaults in this time period',
+      width: 'half'
     },
     chart: {
       id: 'chart2',
@@ -432,7 +281,8 @@ const barCharts = [
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart3',
@@ -448,11 +298,11 @@ const barCharts = [
     }
   },
   {
-
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart4',
@@ -471,7 +321,8 @@ const barCharts = [
     card: {
       title: 'Prisoner on Staff Assaults',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart5',
@@ -495,7 +346,8 @@ const barCharts = [
     card: {
       title: 'Prisoner on Staff Assaults',
       date: '22/23',
-      href: '#'
+      href: '#',
+      width: 'half'
     },
     chart: {
       id: 'chart6',
@@ -518,9 +370,69 @@ const barCharts = [
   }
 ]
 
+const generateHeatmapData = () => {
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  const data = []
+  for (let day = 0; day < days.length; day++) {
+    for (let hour = 0; hour < 24; hour++) {
+      const randomValue = Math.floor(Math.random() * 15)
+      data.push({ y: days[day], x: hour + 1, v: randomValue })
+    }
+  }
+  return data
+}
+
+const heatmapCharts = [
+  {
+    card: {
+      title: 'Time and day of the week of Self Harm incidents',
+      date: 'the last week',
+      href: '#'
+    },
+    chart: {
+      id: 'chart1',
+      type: 'heatmap',
+      data: generateHeatmapData(),
+      xLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+      yLabels: [
+        'Sun',
+        'Sat',
+        'Fri',
+        'Thu',
+        'Wed',
+        'Tue',
+        'Mon'
+      ]
+    }
+  },
+  {
+    card: {
+      title: 'Time and day of the week of Self Harm incidents',
+      date: 'the last week',
+      href: '#'
+    },
+    chart: {
+      id: 'chart2',
+      type: 'heatmap',
+      data: generateHeatmapData(),
+      xLabels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+      yLabels: [
+        'Sun',
+        'Sat',
+        'Fri',
+        'Thu',
+        'Wed',
+        'Tue',
+        'Mon'
+      ]
+    }
+  }
+]
+
 module.exports = [
   ...doughnutCharts,
   ...pieCharts,
   ...lineCharts,
-  ...barCharts
+  ...barCharts,
+  ...heatmapCharts
 ]
