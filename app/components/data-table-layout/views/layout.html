@@ -3,7 +3,7 @@
 {% block reportBody %}
 {% set showFiltersButton = {
   text: 'Show filters',
-  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  classes: 'govuk-button--primary filter-summary-show-filter-button filter-summary-controls',
   attributes: {
     'data-toggle-button': 'false',
     'data-toggle-button-target-selector': '.sidebar-filters',
@@ -14,7 +14,7 @@
 } %}
 {% set chooseColumnsButton = {
   text: 'Choose columns',
-  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  classes: 'govuk-button--secondary filter-summary-show-filter-button filter-summary-controls',
   attributes: {
     'data-toggle-button': 'false',
     'data-toggle-button-target-selector': '.sidebar-columns',
@@ -26,7 +26,7 @@
 
 {% set resetColumnsButton = {
   text: 'Reset columns',
-  classes: 'govuk-button--primary filter-summary-show-filter-button',
+  classes: 'govuk-button--secondary filter-summary-show-filter-button filter-summary-controls',
   attributes: {
     'onclick': 'onResetColumns()'
   }
@@ -40,7 +40,7 @@
     {
       text: 'Clear filters',
       href: createUrlForParametersFilters(),
-      classes: 'govuk-button--primary'
+      classes: 'govuk-button--primary filter-summary-controls'
     },
     chooseColumnsButton,
     resetColumnsButton
@@ -49,9 +49,6 @@
   {% set controlButtons = [ showFiltersButton, chooseColumnsButton, resetColumnsButton ] %}
 {% endif %}
 
-  <h2 class="govuk-heading-m">
-    {% block pageTitle %}{% endblock %}
-  </h2>
   <div class="moj-filter-layout">
     <div class="moj-filter-layout__filter sidebar-filters" style="display: none">
       {{ appFilters(
@@ -93,7 +90,7 @@
           totalRowCount,
           dataTable,
           createUrlForParametersPaging,
-          columns
+          classification
         ) }}
       </div>
     </div>
