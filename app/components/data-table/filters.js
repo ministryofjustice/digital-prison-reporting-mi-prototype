@@ -32,7 +32,8 @@ module.exports = {
           'aria-sort="' + ariaSort + '" ' +
           'class="data-table-header-button data-table-header-button-sort-' + ariaSort + '" ' +
           'onclick="window.location.href=\'' + url + '\'"' +
-          '>' + h.text + '</button>'
+          '>' + h.text + '</button>',
+        text: h.text
       }
     })
   }

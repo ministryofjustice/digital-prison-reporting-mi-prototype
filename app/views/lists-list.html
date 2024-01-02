@@ -2,15 +2,15 @@
 {% extends dataTableLayout %}
 
 {% block subHeader %}
-<div class="govuk-width-container ">
-  {{ govukBreadcrumbs({
-    items: [
-      { text: "Home", href: "/" },
-      { text: "Lists", href: "/lists/" },
-      { text: title, href: "#" }
-    ]
-  }) }}
-</div>
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: [
+        { text: "Home", href: "/" },
+        { text: "Lists", href: "/lists/" },
+        { text: title, href: "#" }
+      ]
+    }) }}
+  </div>
 {% endblock %}
 
 {% block pageTitle %}

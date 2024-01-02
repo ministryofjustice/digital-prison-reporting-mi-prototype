@@ -87,7 +87,9 @@ const dataTableLayoutOptions = (req, res) => {
     totalRowCount: countData(req.renderOptions.filterValues, dataFormat),
     createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
     createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix),
-    dataTableLayout
+    dataTableLayout,
+    classification: req.query.classification ?? 'OFFICIAL SENSITIVE',
+    printable: !(req.query.printable === 'false')
   })
 }
 
