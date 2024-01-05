@@ -60,9 +60,28 @@
 
     &:hover {
       color: govuk-colour("dark-grey");
+
+      .tooltiptext {
+        visibility: visible;
+      }
     }
 
     &:active {
       color: govuk-colour("light-blue");
+    }
+
+    .tooltiptext{
+      visibility: hidden;
+      width: 80px;
+      background-color: white;
+      text-align: center;
+      padding: govuk-spacing(1);
+      border: 1px solid govuk-colour("mid-grey");
+    
+      /* Position the tooltip */
+      position: absolute;
+      top: 30px;
+      left: -40px;
+      z-index: 1;
     }
   }
