@@ -185,7 +185,7 @@ router.get('/charts/:chartType', [
     const chartType = req.params.chartType
     req.renderOptions = {
       chartType,
-      chartData: chartCardDataConfig.filter(c => c.chart.type === chartType)
+      chartData: chartCardDataConfig.filter(c => c.chart[0].type === chartType)
     }
     next()
   },

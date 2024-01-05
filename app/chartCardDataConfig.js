@@ -7,27 +7,27 @@ const doughnutCharts = [
       date: '22/23',
       href: '#'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'doughnut',
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
       data: [141, 130, 37, 47],
       total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-    }
+    }]
   },
   {
     card: {
       title: 'Population Overview',
-      description: 'Total Population breakdown in this time period',
+      description: 'Total Population breakdown',
       href: '#'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'doughnut',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
       data: [0, 2270, 3380, 360, 101, 0],
       total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
+    }]
   },
   {
     card: {
@@ -35,13 +35,13 @@ const doughnutCharts = [
       description: 'Total assaults in this time period',
       date: '22/23'
     },
-    chart: {
+    chart: [{
       id: 'chart3',
       type: 'doughnut',
       labels: ['Serious', 'General'],
       data: [300, 467],
       total: [300, 467].reduce((a, c) => a + c, 0)
-    }
+    }]
   }
 ]
 
@@ -51,39 +51,39 @@ const pieCharts = [
       title: 'Finds Incidents',
       description: 'Total finds during this time period'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'pie',
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
       data: [141, 130, 37, 47],
       total: [141, 130, 37, 47].reduce((a, c) => a + c, 0)
-    }
+    }]
   },
   {
     card: {
       title: 'Population Overview',
       description: 'Total Population breakdown in this time period'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'pie',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
       data: [0, 2270, 3380, 360, 101, 0],
       total: [0, 2270, 3380, 360, 101, 0].reduce((a, c) => a + c, 0)
-    }
+    }]
   },
   {
     card: {
       title: 'Assault Incidents',
       description: 'Total Assaults in this time period'
     },
-    chart: {
+    chart: [{
       id: 'chart3',
       type: 'pie',
       labels: ['Serious', 'General'],
       data: [300, 467],
       total: [300, 467].reduce((a, c) => a + c, 0)
-    }
+    }]
   }
 ]
 
@@ -101,7 +101,7 @@ const lineCharts = [
       description: 'Prisoner on prisoner assault totals',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -117,7 +117,7 @@ const lineCharts = [
           total: lineChartData[1].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   },
   {
     card: {
@@ -125,7 +125,7 @@ const lineCharts = [
       description: 'Prisoner on staff assault totals',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -141,7 +141,7 @@ const lineCharts = [
           total: lineChartData[3].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   },
   {
     card: {
@@ -149,7 +149,7 @@ const lineCharts = [
       description: 'Self harm methods over time',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart3',
       type: 'line',
       labels: ['Jan 21', 'Jan 22', 'jan 23'],
@@ -175,14 +175,14 @@ const lineCharts = [
           total: [2, 4, 8].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   },
   {
     card: {
       title: 'Prisoner on Staff Assaults',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart4',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -198,7 +198,7 @@ const lineCharts = [
           total: lineChartData[3].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   },
   {
     card: {
@@ -206,7 +206,7 @@ const lineCharts = [
       description: 'Self harm methods over time',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart5',
       type: 'line',
       labels: ['Jan 21', 'Jan 22', 'jan 23'],
@@ -232,7 +232,7 @@ const lineCharts = [
           total: [2, 4, 8].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   }
 ]
 
@@ -245,7 +245,7 @@ const barCharts = [
       href: '#',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'bar',
       labels: ['Drugs', 'Phones', 'Weapons', 'Alcohol'],
@@ -256,7 +256,7 @@ const barCharts = [
         }
       ],
       indexAxis: 'x'
-    }
+    }]
   },
   {
     card: {
@@ -264,7 +264,7 @@ const barCharts = [
       description: 'Total assaults in this time period',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'bar',
       labels: ['Serious', 'General'],
@@ -275,7 +275,7 @@ const barCharts = [
         }
       ],
       indexAxis: 'x'
-    }
+    }]
   },
   {
     card: {
@@ -284,7 +284,7 @@ const barCharts = [
       href: '#',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart3',
       type: 'bar',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -295,7 +295,7 @@ const barCharts = [
         }
       ],
       axis: 'y'
-    }
+    }]
   },
   {
     card: {
@@ -304,7 +304,7 @@ const barCharts = [
       href: '#',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart4',
       type: 'bar',
       labels: ['Entry', 'Enhanced', 'Standard', 'Basic', 'Super Enhanced'],
@@ -315,7 +315,7 @@ const barCharts = [
         }
       ],
       axis: 'y'
-    }
+    }]
   },
   {
     card: {
@@ -324,7 +324,7 @@ const barCharts = [
       href: '#',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart5',
       type: 'bar',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -340,7 +340,7 @@ const barCharts = [
           total: lineChartData[3].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   },
   {
     card: {
@@ -349,7 +349,7 @@ const barCharts = [
       href: '#',
       width: 'half'
     },
-    chart: {
+    chart: [{
       id: 'chart6',
       type: 'bar',
       axis: 'y',
@@ -366,7 +366,7 @@ const barCharts = [
           total: lineChartData[3].reduce((a, c) => a + c, 0)
         }
       ]
-    }
+    }]
   }
 ]
 
@@ -389,7 +389,7 @@ const heatmapCharts = [
       date: 'the last week',
       href: '#'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'heatmap',
       data: generateHeatmapData(),
@@ -403,7 +403,7 @@ const heatmapCharts = [
         'Tue',
         'Mon'
       ]
-    }
+    }]
   },
   {
     card: {
@@ -411,7 +411,7 @@ const heatmapCharts = [
       date: 'the last week',
       href: '#'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'heatmap',
       data: generateHeatmapData(),
@@ -425,7 +425,7 @@ const heatmapCharts = [
         'Tue',
         'Mon'
       ]
-    }
+    }]
   }
 ]
 

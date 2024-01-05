@@ -12,8 +12,7 @@
 {% set href = card.href %}
 {% set width = card.width %}
 
-{% set chart = chartCardData.chart %}
-{% set type = chart.type %}
+{% set charts = chartCardData.chart %}
 
 {% set table = chartCardData.table %}
 {% set values = table.values %}
@@ -30,55 +29,93 @@
       </p>
     {% endif %}
 
-    {% set chartHtml %}
-      {% include "./includes/chart.html" %}
-    {% endset -%}
+    {% set chart = charts[0] %}
+    {% set type = charts[0].type %}
+    {% set id = charts[0].id %}
+    {% set govukTabsItems = [] %}
+
+    {% for chart in charts %}
+      {% set type = chart.type %}
+      {% set id = chart.id %}
+
+      {% if type === 'pie' %}
+        
+        {% set pieChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Pie", id: "pie_" + id, panel: { html: pieChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'doughnut' %}
+        
+        {% set doughnutChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Doughnut", id: "doughnut" + id, panel: { html: doughnutChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'bar' %}
+        
+        {% set barChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Bar", id: "bar_" + id, panel: { html: barChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'line' %}
+
+        {% set lineChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Line", id: "line_" + id, panel: { html: lineChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'heatmap' %}
+
+        {% set heatmapChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Heatmap", id: "heatmap_" + id, panel: { html: heatmapChartHtml } }), govukTabsItems) %}
+
+      {% else %} 
+
+        {% set chartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+
+      {% endif %}
+    {% endfor %}
 
     {% if table %}
       {% set tableHtml %}
       
-      {% set rows = [] %}
-      {% for v in values %}
-        {% set rows = (rows.push([{ text: v.label, classes: 'govuk-body-s' },{ text: v.value, classes: 'govuk-body-s' }]), rows) %}
-      {% endfor %}
+        {% set rows = [] %}
+        {% for v in values %}
+          {% set rows = (rows.push([{ text: v.label, classes: 'govuk-body-s' },{ text: v.value, classes: 'govuk-body-s' }]), rows) %}
+        {% endfor %}
 
-      {% set head = [] %}
-      {% for h in headings %}
-        {% set head = (head.push({ text: h }), head) %}
-      {% endfor %}
+        {% set head = [] %}
+        {% for h in headings %}
+          {% set head = (head.push({ text: h }), head) %}
+        {% endfor %}
 
-      {{ govukTable({
-        firstCellIsHeader: true,
-        head: head,
-        rows: rows
-      }) }}
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: head,
+          rows: rows
+        }) }}
+      {% endset -%}
 
-    {% endset -%}
+      {% set govukTabsItems = (govukTabsItems.push({ label: "Table", id: "table_" + chart.id, panel: { html: tableHtml } }), govukTabsItems) %}
+    {% endif %}
 
     {{ govukTabs({
-      items: [
-        {
-          label: "Chart",
-          id: "chart_" + chart.id,
-          panel: {
-            html: chartHtml
-          }
-        },
-        {
-          label: "Table",
-          id: "table_" + chart.id,
-          panel: {
-            html: tableHtml
-          }
-        }
-      ]
+      items: govukTabsItems
     }) }}
 
-    {% else %}  
-
-      {% include "./includes/chart.html" %}
+      {# {% include "./includes/chart.html" %} #}
     
-    {% endif %}
   </div>
 
   {% if date or href %}

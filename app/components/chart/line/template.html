@@ -3,15 +3,16 @@
 {% set id = chartData.id %}
 {% set labels = chartData.labels %}
 {% set data = chartData.data %}
+{% set type = chartData.type %}
 
 
 <div class="chart chart--line">
-  <canvas id="{{ id }}"></canvas>
+  <canvas id="{{ id }}_{{ type }}"></canvas>
   <script>
-    new Chart(document.getElementById('{{ id }}'), {
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
     type: 'line',
     data: {
-      labels: [{% for label in labels %}'{{ label }}',{% endfor %}],
+      labels: [{% for label in labels %}'{{ label }}_{{ type }}',{% endfor %}],
       datasets: [
         {% for set in data %}
           {

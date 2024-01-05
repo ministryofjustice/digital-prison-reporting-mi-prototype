@@ -2,14 +2,15 @@
 
 {% set id = chartData.id %}
 {% set labels = chartData.labels %}
+{% set type = chartData.type %}
 {% set data = chartData.data %}
 {% set xLabels = chartData.xLabels %}
 {% set yLabels = chartData.yLabels %}
 
 <div class="chart">
-  <canvas id="{{ id }}" class="chart-canvas"></canvas>
+  <canvas id="{{ id }}_{{ type }}" class="chart-canvas"></canvas>
   <script>
-    new Chart(document.getElementById('{{ id }}'), {
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
       type: 'matrix',
       data: {
         datasets: [{
