@@ -1,4 +1,6 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% set id = insightData.id %}
+{% set added = insightData.added %}
 {% set title = insightData.title %}
 {% set value = insightData.value %}
 {% set values = insightData.values %}
@@ -11,6 +13,8 @@
 {% set diffFrom = diff.from %}
 
 <div class="inight-card-group__item measure-headline">
+  <div class="add" id="{{ id }}">{% if added %}-{% else %}+{% endif %}</div>
+
   <h4 class="govuk-heading-s govuk-!-margin-bottom-1 app-heading-fixed-height-s-none" id="hm-jin-headline-cost-of-crime">
     {{ title }}
   </h4>
@@ -44,5 +48,4 @@
   <p class="govuk-body-xs value-date">
     Value for {{ date }}. {% if href %} <a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>{% endif %}
   </p>
-
 </div>

@@ -2,15 +2,19 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: govuk-spacing(6);
+  column-gap: govuk-spacing(6);
   flex-direction: row;
 
   .chart-group__item {
     flex-grow: 4;
     flex-shrink: 1;
-    flex-basis: 33.3%; // deafault to one third width
+    flex-basis: 31.3%; // deafault to one third width
     list-style-type: none;
     position: relative;
     min-width: 0;
+  }
+
+  .chart-group__item--break {
     border-bottom: 1px solid govuk-colour("mid-grey");
   }
 
@@ -19,15 +23,15 @@
   }
 
   .chart-group__item--third {
-    flex-basis: 33.3%;
+    flex-basis: 31.3%;
   }
 
   .chart-group__item--half {
-    flex-basis: 50%;
+    flex-basis: 48%;
   }
 
   .chart-group__item--full {
-    flex-basis: 70%;
+    flex-basis: 49%;
   }
   
   .chart-group__item--date {

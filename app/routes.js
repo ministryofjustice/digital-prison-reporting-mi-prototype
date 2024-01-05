@@ -72,8 +72,10 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
   configureFilterOptions,
   renderVisualisation
 ])
+/**
+ * Safety Diagnostic Tool
+ */
 
-// Safety Diagnostic Tool
 router.get('/safety-diagnostic-tool/', [configureCurrentUrl, function (req, res) {
   res.render('safetyDiagnosticTool/sdt-home', req.renderOptions)
 }])
@@ -82,9 +84,24 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
   res.render('safetyDiagnosticTool/versions/v1/home', req.renderOptions)
 }])
 
-// router.get('/safety-diagnostic-tool/v2', [configureCurrentUrl, function (req, res) {
-//   res.render('safetyDiagnosticTool/versions/v2/home', req.renderOptions)
-// }])
+const insights = []
+
+router.post("/safety-diagnostic-tool/v2/addInsight/", (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = insights.find((insight) => insight.id === body.id)
+  if(!index) {
+    insights.push(body);
+  }
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults');
+});
+
+router.post("/safety-diagnostic-tool/v2/removeInsight/", (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = insights.find((insight) => insight.id === body.id)
+  insights.splice(index, 1)
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults');
+});
+
 
 router.get('/safety-diagnostic-tool/v2', [
   configureCurrentUrl,
@@ -92,7 +109,7 @@ router.get('/safety-diagnostic-tool/v2', [
     const category = req.params.category
     req.renderOptions = {
       category,
-      data: mockMetricData
+      data: insights
     }
     next()
   },

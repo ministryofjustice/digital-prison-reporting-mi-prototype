@@ -33,14 +33,42 @@ Digital Prison Reporting MI Prototype - Safety Diagnostic Tool
         {% endif %}
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-        
-        {# Filter #}
-        {# {% include "./includes/filters.html" %} #}
 
         {% block contentBody %}{% endblock %}
       </div>
     <div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
+  <script>
+    const data = {{ data | dump | safe }}
 
-</div>
+    data.forEach((insightData) => {
+      const { id } = insightData
+      const element = document.getElementById(id);
+      
+      element.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if(!insightData.added) {
+          insightData.added = true
+          await createInsight(insightData);
+        } else {
+          await removeInsight(insightData);
+          location.reload();
+        }
+      });
+    })
+  
+    async function createInsight(insight) {
+      const res = await axios.post('http://localhost:3000/safety-diagnostic-tool/v2/addInsight/', {
+        body: JSON.stringify(insight)
+      });
+    }
+
+    async function removeInsight(insight) {
+      const res = await axios.post('http://localhost:3000/safety-diagnostic-tool/v2/removeInsight/', {
+        body: JSON.stringify(insight)
+      });
+    }
+  </script>
 
 {% endblock %}

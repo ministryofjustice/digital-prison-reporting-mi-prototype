@@ -2,6 +2,8 @@
 {% from "./../chart/line/macro.html" import lineChart as lineChart %}
 {% from "./../chart/bar/macro.html" import barChart as barChart %}
 {% from "./../chart/heatmap/macro.html" import heatmapChart as heatmapChart %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 {% set card = chartCardData.card %}
 {% set title = card.title %}
@@ -13,61 +15,70 @@
 {% set chart = chartCardData.chart %}
 {% set type = chart.type %}
 
-<div class="chart-group__item {% if width %} chart-group__item--{{ width }} {% endif %} {% if date or href %}chart-group__item--date {% endif %}">
+{% set table = chartCardData.table %}
+{% set values = table.values %}
+{% set headings = table.headings %}
+
+<div class="chart-group__item {% if width %} chart-group__item--{{ width }} {% endif %} {% if date or href %}chart-group__item--date {% endif %} {% if width === 'full' %}chart-group__item--break{% endif %}">
   <div class="chart-card chart-card--padding">
 
     <h1 class="govuk-heading-m">{{ title }}</h1>
 
     {% if description %}
-      <p class="govuk-body">
+      <p class="govuk-body govuk-!-margin-bottom-6">
         <span>{{ description }}</span>
       </p>
     {% endif %}
 
-    <div class="chart-container">
-      {% if type === 'doughnut' %}
+    {% set chartHtml %}
+      {% include "./includes/chart.html" %}
+    {% endset -%}
 
-        <div class="chart-card__pie-wrapper govuk-!-margin-top-2">
-          {{ donutChart(chart) }}
-        </div>
+    {% if table %}
+      {% set tableHtml %}
       
-      {% elif type === 'pie' %}
+      {% set rows = [] %}
+      {% for v in values %}
+        {% set rows = (rows.push([{ text: v.label, classes: 'govuk-body-s' },{ text: v.value, classes: 'govuk-body-s' }]), rows) %}
+      {% endfor %}
 
-        <p class="govuk-body govuk-!-margin-bottom-1">
-          Total: <span class="govuk-!-font-weight-bold govuk-!-padding-right-3">{{ chart.total }}</span>
-        </p>
-        <div class="chart-card__pie-wrapper">
-          {{ donutChart(chart) }}
-        </div>
+      {% set head = [] %}
+      {% for h in headings %}
+        {% set head = (head.push({ text: h }), head) %}
+      {% endfor %}
 
-      {% elif type === 'line' or type === 'bar'  %}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: head,
+        rows: rows
+      }) }}
 
-        {% set data = chart.data %}
-        
-        {% if data[0].total %}
-          <div class='chart-card-totals govuk-!-margin-bottom-2'> 
-            {% for set in data %}
-              {% if set.total %}
-                <p class="govuk-body govuk-!-margin-bottom-1 chart-card-totals__total">
-                  {{ set.title }}: <span class="govuk-!-font-weight-bold govuk-!-padding-right-2">{{ set.total }}</span>
-                </p>
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endif %}
+    {% endset -%}
 
-        {% if type === 'line'  %}
-          {{ lineChart(chart) }}
-        {%  elif type === 'bar' %}
-          {{ barChart(chart) }}
-        {% endif %} 
+    {{ govukTabs({
+      items: [
+        {
+          label: "Chart",
+          id: "chart_" + chart.id,
+          panel: {
+            html: chartHtml
+          }
+        },
+        {
+          label: "Table",
+          id: "table_" + chart.id,
+          panel: {
+            html: tableHtml
+          }
+        }
+      ]
+    }) }}
 
-      {% elif type === 'heatmap' %}
+    {% else %}  
 
-        {{ heatmapChart(chart) }}
-
-      {% endif %} 
-    </div>
+      {% include "./includes/chart.html" %}
+    
+    {% endif %}
   </div>
 
   {% if date or href %}
