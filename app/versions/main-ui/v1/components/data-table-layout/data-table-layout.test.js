@@ -12,7 +12,7 @@ const env = nunjucks.configure([
   path.join(__dirname, '..')
 ], { autoescape: true })
 
-const filters = require('../../filters')()
+const filters = require('../../../../../filters')()
 Object.keys(filters).forEach((filterName) => {
   env.addFilter(filterName, filters[filterName])
 })

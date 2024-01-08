@@ -1,0 +1,15 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ appCardGroup(cards) }}
+
+{% endblock %}

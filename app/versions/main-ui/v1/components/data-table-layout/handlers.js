@@ -4,7 +4,7 @@ const { configureDataTableOptions, queryParameterPrefix: dataTableQueryParameter
 const { configureFilterOptions, queryParameterPrefix: filtersQueryParameterPrefix } = require('../filters/handlers')
 const { getHeaders, mapData } = require('../data-table/utils')
 const { getFilters } = require('../filters/utils')
-const { getCreateUrlForParametersFunction } = require('../../utils/urlHelper')
+const { getCreateUrlForParametersFunction } = require('../../../../../utils/urlHelper')
 const NodeCache = require('node-cache')
 
 const cache = new NodeCache({ stdTTL: 300 })
@@ -66,7 +66,8 @@ const dataTableLayoutOptions = (req, res) => {
     dataFormat,
     title,
     listData,
-    countData
+    countData,
+    version
   } = req.dataTableLayoutOptions
 
   const data = listData({
@@ -78,7 +79,7 @@ const dataTableLayoutOptions = (req, res) => {
 
   const dataTableLayout = '../components/data-table-layout/views/layout.html'
 
-  res.render('lists-list', {
+  res.render(`main-ui/${version}/views/lists-list`, {
     ...req.renderOptions,
     title,
     head: getHeaders(dataFormat, req.renderOptions.columns),
