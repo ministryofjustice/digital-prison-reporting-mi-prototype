@@ -86,22 +86,21 @@ router.get('/safety-diagnostic-tool/v1', [configureCurrentUrl, function (req, re
 
 const insights = []
 
-router.post("/safety-diagnostic-tool/v2/addInsight/", (req, res) => {
+router.post('/safety-diagnostic-tool/v2/addInsight/', (req, res) => {
   const body = JSON.parse(req.body.body)
   const index = insights.find((insight) => insight.id === body.id)
-  if(!index) {
-    insights.push(body);
+  if ( !index ) {
+    insights.push(body)
   }
-  res.redirect('/safety-diagnostic-tool/v2/category/assaults');
-});
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults')
+})
 
-router.post("/safety-diagnostic-tool/v2/removeInsight/", (req, res) => {
+router.post('/safety-diagnostic-tool/v2/removeInsight/', (req, res) => {
   const body = JSON.parse(req.body.body)
   const index = insights.find((insight) => insight.id === body.id)
   insights.splice(index, 1)
-  res.redirect('/safety-diagnostic-tool/v2/category/assaults');
-});
-
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults')
+})
 
 router.get('/safety-diagnostic-tool/v2', [
   configureCurrentUrl,
