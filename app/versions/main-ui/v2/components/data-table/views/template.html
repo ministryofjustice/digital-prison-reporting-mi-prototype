@@ -1,4 +1,4 @@
-{% from "govuk/components/table/macro.njk"       import govukTable %}
+{% from "./gov-fork/macro.njk"       import govukTable %}
 {% from "govuk/components/pagination/macro.njk"  import govukPagination %}
 {% from "govuk/components/select/macro.njk"      import govukSelect %}
 
@@ -24,7 +24,7 @@
     }) }}
   </div>
 </div>
-<div>
+<div class="data-table-paging">
   <div class="govuk-grid-column-two-thirds">
   {{ govukPagination({
     previous: {
@@ -61,6 +61,10 @@
           {
             value: "200",
             text: "200"
+          },
+          {
+            value: "1000",
+            text: "All"
           }
         ]
       }) }}

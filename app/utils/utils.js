@@ -1,8 +1,8 @@
 const getBreadcrumbs = breadcrumbTitles => {
-  let href = ''
+  let href = '/'
   return breadcrumbTitles.map(t => {
-    href += '/'
     href += t.toLowerCase().replace(/ /g, '-')
+    href += '/'
     return {
       text: t,
       href

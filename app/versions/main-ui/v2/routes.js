@@ -4,12 +4,12 @@ const router = express.Router()
 const reportingService = require('../../../services/reportingService')
 const dataFormats = require('../../../reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
-const { configureFilterOptions } = require('./components/filters/handlers')
-const { renderVisualisation } = require('./visualisationHandlers')
+const { configureFilterOptions } = require('../v1/components/filters/handlers')
+const { renderVisualisation } = require('../v1/visualisationHandlers')
 const handlers = require('../../../utils/handlers')
 const { getBreadcrumbs } = require('../../../utils/utils')
 
-const version = 'v1'
+const version = 'v2'
 
 const getFieldByName = (name, format) => {
   const field = format.find(f => f.name === name)
@@ -26,7 +26,7 @@ const getTodayMinusDays = days => {
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render('cards', {
     ...req.renderOptions,
-    title: 'Version 1',
+    title: 'Version 2',
     cards: [{
       text: 'Lists',
       href: './lists/',
@@ -50,12 +50,12 @@ router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigatio
       description: 'A record of all prisoner external movements.'
     }, {
       text: 'Admissions last week',
-      href: './external-movements?filters.date.start=' + getTodayMinusDays(8) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=in&filters.type=admission',
-      description: 'A list of admissions in the past week.'
+      href: './external-movements?filters.date.start=' + getTodayMinusDays(8) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=in&filters.type=admission&classification=OFFICIAL',
+      description: 'A list of admissions in the past week. Classified as OFFICIAL.'
     }, {
       text: 'Yesterday\'s transfers out',
-      href: './external-movements?filters.date.start=' + getTodayMinusDays(1) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=out&filters.type=transfer',
-      description: 'A list of yesterday\'s transfers out.'
+      href: './external-movements?filters.date.start=' + getTodayMinusDays(1) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=out&filters.type=transfer&printable=false',
+      description: 'A list of yesterday\'s transfers out. Not printable.'
     }],
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase()])
   })
@@ -125,7 +125,7 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
     next()
   },
   configureFilterOptions,
-  (req, res) => renderVisualisation(req, res, version)
+  (req, res) => renderVisualisation(req, res, 'v1')
 ])
 
 module.exports = router

@@ -1,9 +1,9 @@
 /* Request handler methods to be used in an app's routes.js */
 
-const { configureDataTableOptions, queryParameterPrefix: dataTableQueryParameterPrefix } = require('../data-table/handlers')
-const { configureFilterOptions, queryParameterPrefix: filtersQueryParameterPrefix } = require('../filters/handlers')
-const { getHeaders, mapData } = require('../data-table/utils')
-const { getFilters } = require('../filters/utils')
+const { configureDataTableOptions, queryParameterPrefix: dataTableQueryParameterPrefix } = require('../../../v1/components/data-table/handlers')
+const { configureFilterOptions, queryParameterPrefix: filtersQueryParameterPrefix } = require('../../../v1/components/filters/handlers')
+const { getHeaders, mapData } = require('../../../v1/components/data-table/utils')
+const { getFilters } = require('../../../v1/components/filters/utils')
 const { getCreateUrlForParametersFunction } = require('../../../../../utils/urlHelper')
 const NodeCache = require('node-cache')
 
@@ -88,7 +88,9 @@ const dataTableLayoutOptions = (req, res) => {
     totalRowCount: countData(req.renderOptions.filterValues, dataFormat),
     createUrlForParametersPaging: getCreateUrlForParametersFunction(req.query, dataTableQueryParameterPrefix),
     createUrlForParametersFilters: getCreateUrlForParametersFunction(req.query, filtersQueryParameterPrefix),
-    dataTableLayout
+    dataTableLayout,
+    classification: req.query.classification ?? 'OFFICIAL SENSITIVE',
+    printable: !(req.query.printable === 'false')
   })
 }
 

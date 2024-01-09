@@ -1,0 +1,42 @@
+{% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+{% from "../components/data-table/views/macro.html"    import appDataTable %}
+{% from "../../v1/components/filters/views/macro.html" import appFilters %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  {% block pageHeader %}
+    {% if (printable) %}
+      {% set actions = [{
+        text: 'Print displayed results',
+        attributes: {
+          'onclick': 'window.print()'
+        },
+        classes: 'filter-summary-controls'
+      }] %}
+    {% else %}
+      {% set actions = [] %}
+    {% endif %}
+
+    {{ mojPageHeaderActions({
+      heading: {
+        text: title,
+        classes: 'govuk-heading-m'
+      },
+      items: actions
+    }) }}
+  {% endblock %}
+
+  <div class="govuk-width-container {% if (printable == false) %}print-hide{% endif %}">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+  {% if (printable == false) %}
+  <h3 class="screen-hide">
+    Printing this report has been disabled due to time or content sensitivity.<br />
+    Please speak to your report administrator for further details.
+  </h3>
+  {% endif %}
+
+{% endblock %}
