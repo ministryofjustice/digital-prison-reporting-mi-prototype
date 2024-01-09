@@ -28,7 +28,7 @@ describe('GET /', () => {
 describe('GET /visualisations/', () => {
   it('Visualisations page returns successfully', () => {
     return request(app)
-      .get('/visualisations/')
+      .get('/main-ui/v1/visualisations/')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -40,7 +40,7 @@ describe('GET /visualisations/', () => {
 describe('GET /lists/external-movements', () => {
   it('External movements list returns successfully', () => {
     return request(app)
-      .get('/lists/external-movements')
+      .get('/main-ui/v1/lists/external-movements')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -50,7 +50,7 @@ describe('GET /lists/external-movements', () => {
 
   it('Does not fail when valid filters passed', () => {
     return request(app)
-      .get('/lists/external-movements?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
+      .get('/main-ui/v1/lists/external-movements?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -60,7 +60,7 @@ describe('GET /lists/external-movements', () => {
 
   it('Does not fail when empty dates passed', () => {
     return request(app)
-      .get('/lists/external-movements?filters.date.start=&filters.date.end=')
+      .get('/main-ui/v1/lists/external-movements?filters.date.start=&filters.date.end=')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -72,7 +72,7 @@ describe('GET /lists/external-movements', () => {
 describe('GET /visualisations/external-movements', () => {
   it('External movements report returns successfully', () => {
     return request(app)
-      .get('/visualisations/external-movements-by-weekday-bar')
+      .get('/main-ui/v1/visualisations/external-movements-by-weekday-bar')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -82,7 +82,7 @@ describe('GET /visualisations/external-movements', () => {
 
   it('Does not fail when valid filters passed', () => {
     return request(app)
-      .get('/visualisations/external-movements-by-weekday-bar?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
+      .get('/main-ui/v1/visualisations/external-movements-by-weekday-bar?filters.date.start=01%2F06%2F2023&filters.date.end=09%2F06%2F2023&filters.direction=in')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
@@ -92,7 +92,7 @@ describe('GET /visualisations/external-movements', () => {
 
   it('Does not fail when empty dates passed', () => {
     return request(app)
-      .get('/visualisations/external-movements-by-weekday-bar?filters.date.start=&filters.date.end=')
+      .get('/main-ui/v1/visualisations/external-movements-by-weekday-bar?filters.date.start=&filters.date.end=')
       .expect('Content-Type', /text\/html/)
       .expect(200)
       .then((res) => {
