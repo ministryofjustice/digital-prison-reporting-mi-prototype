@@ -39,12 +39,12 @@
             description: 'A record of all prisoner external movements.'
           }, {
             text: 'Admissions last week',
-            href: '/lists/external-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission',
-            description: 'A list of admissions in the past week.'
+            href: '/lists/external-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission&classification=OFFICIAL',
+            description: 'A list of admissions in the past week. Classified as OFFICIAL.'
           }, {
             text: 'Yesterday\'s transfers out',
-            href: '/lists/external-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer',
-            description: 'A list of yesterday\'s transfers out.'
+            href: '/lists/external-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer&printable=false',
+            description: 'A list of yesterday\'s transfers out. Not printable.'
           }] | setCurrentToActive(currentUrl)
         }
       ] %}

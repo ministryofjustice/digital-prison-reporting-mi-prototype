@@ -15,6 +15,10 @@
   }
 
   .chart-group__item--break {
+    flex-basis: 33.3%; // deafault to one third width
+    list-style-type: none;
+    position: relative;
+    min-width: 0;
     border-bottom: 1px solid govuk-colour("mid-grey");
   }
 
