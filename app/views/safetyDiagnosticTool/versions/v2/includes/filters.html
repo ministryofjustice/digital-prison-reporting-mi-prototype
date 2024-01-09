@@ -2,94 +2,153 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    {{ govukSelect({
-      id: "prisonSelect",
-      name: "prisonSelect",
-      label: {
-        text: "Prison Selection"
-      },
-      items: [
-        {
-          value: "1",
-          text: "Greater Manchester, Merseyside & Cheshire"
-        },
-        {
-          value: "2",
-          text: "Avon & Somerset",
-          selected: true
-        },
-        {
-          value: "3",
-          text: "Cumbria & Lancashire"
-        },
-        {
-          value: "4",
-          text: "Hertfordshire, Essex & Suffolk"
-        }
-      ]
-    }) }}
-  </div>
-  <div class="govuk-grid-column-full">
-    {{ govukRadios({
-      name: "duration",
-      fieldset: {
-        legend: {
-          text: "Duration",
-          isPageHeading: true,
-          classes: "govuk-body"
-        }
-      },
-      items: [
-        {
-          value: "1day",
-          text: "1 day"
-        },
-        {
-          value: "3days",
-          text: "3 day"
-        },
-        {
-          value: "7days",
-          text: "7 days"
-        },
-        {
-          value: "1year",
-          text: "1 year"
-        },
-        {
-          value: "custom",
-          text: "Custom"
-        }
-      ]
+<div class="selected-filters">
+  <div class="selected-filters-info">
+    {{ govukButton({
+      id: "filter-button",
+      text: "Show filters",
+      classes: "govuk-button--primary"
     }) }}
   </div>
 </div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ govukDateInput({
-      id: "passport-issued",
-      namePrefix: "passport-issued",
-      fieldset: {
-        legend: {
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--l"
-        }
-      }
-    }) }}
+<div id="filter-section" class="data-filter-section">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukSelect({
+        id: "prisonSelect",
+        name: "prisonSelect",
+        label: {
+          text: "Prison Selection"
+        },
+        items: [
+          {
+            value: "9",
+            text: "All regions"
+          },
+          {
+            value: "1",
+            text: "Greater Manchester, Merseyside & Cheshire"
+          },
+          {
+            value: "2",
+            text: "Avon & Somerset",
+            selected: true
+          },
+          {
+            value: "3",
+            text: "Cumbria & Lancashire"
+          },
+          {
+            value: "4",
+            text: "Hertfordshire, Essex & Suffolk"
+          }
+        ]
+      }) }}
+    </div>
+    <div class="govuk-grid-column-full">
+      {{ govukRadios({
+        name: "duration",
+        classes: "govuk-radios--small",
+        fieldset: {
+          legend: {
+            text: "Duration",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "1day",
+            text: "1 day"
+          },
+          {
+            value: "3days",
+            text: "3 day"
+          },
+          {
+            value: "7days",
+            text: "7 days",
+            checked: true
+          },
+          {
+            value: "1year",
+            text: "1 year"
+          },
+          {
+            value: "custom",
+            text: "Custom"
+          }
+        ]
+      }) }}
+    </div>
   </div>
-  <div class="govuk-grid-column-one-half">
-    {{ govukDateInput({
-      id: "passport-issued",
-      namePrefix: "passport-issued",
-      fieldset: {
-        legend: {
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--l"
+
+  <div class="custom-date-section" id="custom-date-section">
+      {{ govukDateInput({
+        id: "date-start",
+        namePrefix: "date-start",
+        fieldset: {
+          legend: {
+            text: "Date start:",
+            isPageHeading: false
+          }
         }
-      }
-    }) }}
+      }) }}
+      {{ govukDateInput({
+        id: "date-to",
+        namePrefix: "date-to",
+        fieldset: {
+          legend: {
+            text: "Date end:",
+            isPageHeading: false
+          }
+        }
+      }) }}
   </div>
+
+  {{ govukButton({
+    id: 'apply-button',
+    text: "Apply Filters"
+  }) }}
 </div>
+
+<script>
+  const filterToggle = document.getElementById('filter-button');
+  const applyButton = document.getElementById('apply-button');
+  const filterSection = document.getElementById('filter-section');
+  const customDateSection = document.getElementById('custom-date-section')
+
+  filterToggle.addEventListener('click', function() {
+    if (filterSection.classList.contains('data-filter-section--show')) {
+      filterSection.classList.remove('data-filter-section--show');
+    } else {
+      filterSection.classList.add('data-filter-section--show');
+    }
+  });
+
+  const durationRadioButtons = document.querySelectorAll('input[name="duration"]');
+  for (const radioButton of durationRadioButtons) {
+    radioButton.addEventListener('click', function() {
+      if (radioButton.checked) {
+        if(radioButton.value === 'custom') {
+          if (!customDateSection.classList.contains('custom-date-section--show')) {
+            customDateSection.classList.add('custom-date-section--show');
+          }
+        } else {
+          if (customDateSection.classList.contains('custom-date-section--show')) {
+            customDateSection.classList.remove('custom-date-section--show');
+          }
+        }
+      } 
+    })
+  }
+
+  // Apply Filters
+  applyButton.addEventListener('click', function() {
+    const value = document.querySelector('input[name="duration"]:checked').value
+    console.log(value)
+  })
+
+</script>

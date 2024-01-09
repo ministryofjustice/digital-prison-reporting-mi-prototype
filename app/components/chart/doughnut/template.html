@@ -32,6 +32,9 @@
           }],
         },
         options: {
+          animation: {
+              duration: 0
+          },
           maintainAspectRatio: true,
           ...('{{ type }}' === 'doughnut' && { cutout: "60%" }),
           plugins: {

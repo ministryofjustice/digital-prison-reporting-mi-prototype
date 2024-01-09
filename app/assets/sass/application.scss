@@ -104,3 +104,24 @@ table.govuk-table {
   width: 100%;
   padding: govuk-spacing(4);
 }
+
+.data-filter-section {
+  display: none;
+}
+
+.data-filter-section--show {
+  display: block;
+}
+
+.custom-date-section {
+  display: none;
+}
+
+.custom-date-section--show {
+  display: block;
+}
+
+.selected-filters-info {
+  display: inline-block;
+  padding-right: govuk-spacing(4);
+}
