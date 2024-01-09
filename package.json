@@ -48,7 +48,7 @@
     "lodash": "^4.17.21",
     "marked": "^11.1.0",
     "node-cache": "^5.1.2",
-    "notifications-node-client": "^7.0.6",
+    "notifications-node-client": "^8.0.0",
     "nunjucks": "^3.2.4",
     "portscanner": "^2.2.0",
     "require-dir": "^1.2.0",
