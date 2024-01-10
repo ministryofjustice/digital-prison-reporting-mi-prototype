@@ -9,7 +9,7 @@ const { renderVisualisation } = require('../v1/visualisationHandlers')
 const handlers = require('../../../utils/handlers')
 const { getBreadcrumbs } = require('../../../utils/utils')
 
-const version = 'v2'
+const version = 'v3'
 
 const getFieldByName = (name, format) => {
   const field = format.find(f => f.name === name)
@@ -26,7 +26,7 @@ const getTodayMinusDays = days => {
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render('cards', {
     ...req.renderOptions,
-    title: 'Version 2',
+    title: 'Version 3',
     cards: [{
       text: 'Lists',
       href: './lists/',
