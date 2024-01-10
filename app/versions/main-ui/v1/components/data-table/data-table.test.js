@@ -3,7 +3,7 @@ const path = require('path')
 const filters = require('./filters')
 
 const env = nunjucks.configure([
-  path.join(__dirname, '../../../node_modules/govuk-frontend'),
+  path.join(__dirname, '../../../../../../node_modules/govuk-frontend'),
   path.join(__dirname, '/views')
 ], { autoescape: true })
 

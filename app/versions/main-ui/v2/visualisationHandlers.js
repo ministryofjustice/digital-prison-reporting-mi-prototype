@@ -1,8 +1,8 @@
-const { getFilters } = require('./components/filters/utils')
-const { getCreateUrlForParametersFunction } = require('./utils/urlHelper')
-const { queryParameterPrefix } = require('./components/filters/handlers')
+const { getFilters } = require('../v1/components/filters/utils')
+const { getCreateUrlForParametersFunction } = require('../../../utils/urlHelper')
+const { queryParameterPrefix } = require('../v1/components/filters/handlers')
 
-const renderVisualisation = (req, res) => {
+const renderVisualisation = (req, res, version) => {
   const {
     dataFormat,
     reportData,
@@ -21,7 +21,7 @@ const renderVisualisation = (req, res) => {
     { text: data[d], format: 'numeric' }
   ])
 
-  res.render('visualisations-chart', {
+  res.render(`main-ui/${version}/views/visualisations-chart`, {
     ...req.renderOptions,
     head: groupField.header,
     rows,

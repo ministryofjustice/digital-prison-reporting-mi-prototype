@@ -1,53 +1,5 @@
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
-{%- set today = getTodayMinusDays(0) -%}
-{%- set yesterday = getTodayMinusDays(1) -%}
-{%- set lastWeek = getTodayMinusDays(8) -%}
-{% set reportsNavItems = [
-        {
-          heading: {
-            text: 'External movements by'
-          },
-          items: [
-            {
-              text: 'Day of the Week',
-              href: '/visualisations/external-movements-by-weekday-line',
-              description: 'External movements by Day of the Week.'
-            },
-            {
-              text: 'Direction',
-              href: '/visualisations/external-movements-by-direction-bar',
-              description: 'External movements by Direction.'
-            },
-            {
-              text: 'Reason',
-              href: '/visualisations/external-movements-by-reason-bar-y',
-              description: 'External movements by Reason.'
-            }
-          ] | setCurrentToActive(currentUrl)
-        }
-      ] %}
-
-{% set listsNavItems = [
-        {
-          heading: {
-            text: 'External movements'
-          },
-          items: [{
-            text: 'All',
-            href: '/lists/external-movements',
-            description: 'A record of all prisoner external movements.'
-          }, {
-            text: 'Admissions last week',
-            href: '/lists/external-movements?filters.date.start=' + lastWeek + '&filters.date.end=' + today + '&filters.direction=in&filters.type=admission&classification=OFFICIAL',
-            description: 'A list of admissions in the past week. Classified as OFFICIAL.'
-          }, {
-            text: 'Yesterday\'s transfers out',
-            href: '/lists/external-movements?filters.date.start=' + yesterday + '&filters.date.end=' + today + '&filters.direction=out&filters.type=transfer&printable=false',
-            description: 'A list of yesterday\'s transfers out. Not printable.'
-          }] | setCurrentToActive(currentUrl)
-        }
-      ] %}
 
 {% set sdtVersions = {
       path: '/safety-diagnostic-tool', 
@@ -102,8 +54,6 @@
 {% from "moj/components/primary-navigation/macro.njk"    import mojPrimaryNavigation %}
 {% from "moj/components/side-navigation/macro.njk"       import mojSideNavigation %}
 {% from "../components/card-group/macro.html"            import appCardGroup %}
-{% from "../components/data-table/views/macro.html"      import appDataTable %}
-{% from "../components/filters/views/macro.html"         import appFilters %}
 {% from "../components/version-list/macro.html"          import appVersionList %}
 {% from "../components/chart-card-group/macro.html"      import chartCardGroup %}
 {% from "../components/insight-card-group/macro.html"    import insightCardGroup %}
@@ -132,30 +82,19 @@
       {
         text: 'Home',
         href: '/'
-      },
-      {
-        text: 'Lists',
-        href: '/lists/'
-      },
-      {
-        text: 'Visualisations',
-        href: '/visualisations/'
-      },
-      {
-        text: 'Charts',
-        href: '/charts/'
-      },
-      {
-        text: 'Insights',
-        href: '/insights/'
-      },
-      {
-        text: 'Safety Diagnostic Tool',
-        href: '/safety-diagnostic-tool/'
       }
-    ] | setCurrentToActive(currentUrl)
+    ].concat(navigationOptions) | setCurrentToActive(currentUrl)
   }) }}
-  {% block subHeader %}{% endblock %}
+  {% block subHeader %}
+    {% set breadcrumbs = [{ text: "Home", href: "/" }].concat(breadcrumbs) %}
+
+    {% if title != "Home" %}
+      {% set breadcrumbs = breadcrumbs.concat([{ text: title, href: "#" }]) %}
+    {% endif %}
+    <div class="govuk-width-container ">
+      {{ govukBreadcrumbs({ items: breadcrumbs }) }}
+    </div>
+  {% endblock %}
 {% endblock %}
 
 {% if useAutoStoreData %}

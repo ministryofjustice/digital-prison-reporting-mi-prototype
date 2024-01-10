@@ -1,0 +1,21 @@
+{#
+  caption,        // The caption above the table, describing the data
+  head,           // A list of columns containing 'text', and optionally 'format' (e.g. numeric)
+  rows,           // A list (rows) of a list (cells) containing 'text', and optionally 'format' (e.g. numeric)
+  totalRowCount,  // The total number of rows
+  dataTableOptions: {
+    selectedPage,   // The currently selected page (e.g. '3', which would display rows 41-60 with a page size of 20)
+    pageSize,       // The number of rows on each page
+    sortColumn,     // The column the data is sorted on (e.g. '0')
+    sortedAsc,      // The sort order of the data
+  },
+  createUrlForParameters, // A function accepting a parameter object that maps to the target URL
+  columns
+#}
+{% macro appDataTable(caption, head, rows, totalRowCount, dataTableOptions, createUrlForParameters, classification) %}
+  {%- set selectedPage = dataTableOptions.selectedPage %}
+  {%- set pageSize = dataTableOptions.pageSize %}
+  {%- set sortColumn = dataTableOptions.sortColumn %}
+  {%- set sortedAsc = dataTableOptions.sortedAsc %}
+  {%- include "./template.html" -%}
+{% endmacro %}
