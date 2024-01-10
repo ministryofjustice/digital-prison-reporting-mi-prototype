@@ -14,60 +14,8 @@ router.get('/', [handlers.configureCurrentUrl, handlers.configureNavigation, fun
   })
 }])
 
-<<<<<<< HEAD
-router.get('/lists/', [configureCurrentUrl, function (req, res) {
-  res.render('lists-home', req.renderOptions)
-}])
-
-router.get('/lists/external-movements', [
-  configureCurrentUrl,
-  (req, res, next) => {
-    req.dataTableLayoutOptions = {
-      dataFormat: dataFormats.externalMovements,
-      title: 'External movements',
-      listData: reportingService.listExternalMovements,
-      countData: reportingService.countExternalMovements
-    }
-    next()
-  },
-  ...filterTableLayoutHandlers
-])
-
-router.get('/visualisations/', [configureCurrentUrl, function (req, res) {
-  res.render('visualisations-home', req.renderOptions)
-}])
-
-router.get('/visualisations/external-movements-by-:groupField-:chartType', [
-  configureCurrentUrl,
-  (req, res, next) => {
-    const groupField = getFieldByName(req.params.groupField, dataFormats.externalMovements)
-    const chartType = req.params.chartType
-
-    req.reportOptions = {
-      dataFormat: dataFormats.externalMovements,
-      reportData: reportingService.reportExternalMovements,
-      countData: reportingService.countExternalMovements,
-      groupField,
-      chartType
-    }
-    req.renderOptions = {
-      ...req.renderOptions,
-      title: 'External movements'
-    }
-    next()
-  },
-  configureFilterOptions,
-  renderVisualisation
-])
-/**
- * Safety Diagnostic Tool
- */
-
-router.get('/safety-diagnostic-tool/', [configureCurrentUrl, function (req, res) {
-=======
 // Safety Diagnostic Tool
 router.get('/safety-diagnostic-tool/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
->>>>>>> main
   res.render('safetyDiagnosticTool/sdt-home', req.renderOptions)
 }])
 
