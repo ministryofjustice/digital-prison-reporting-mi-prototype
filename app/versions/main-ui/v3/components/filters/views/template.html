@@ -3,8 +3,11 @@
 {% from "moj/components/filter/macro.njk"         import mojFilter -%}
 {% from "govuk/components/input/macro.njk"        import govukInput %}
 {% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 
 {%- for filter in filters %}
+
   {%- if filter.type === 'select' %}
 
     {{ govukSelect({
@@ -43,11 +46,12 @@
 
   {% elif filter.type === 'date-range' %}
     
-    <div class="govuk-form-group">
+    <div class="date-range-input govuk-form-group">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
           {{ filter.text }}
         </legend>
+
         {{ govukInput({
           id: 'filters.' + filter.name + '.start',
           label: {
@@ -63,6 +67,7 @@
             max: getTodayIsoDate()
           }
         }) }}
+
         {{ govukInput({
           id: 'filters.' + filter.name + '.end',
           label: {
@@ -80,11 +85,13 @@
 
   {% elif filter.type === 'checkboxes' %}
     <div class='checkbox-filter'> 
-
       {{ govukCheckboxes({
         id: 'filters.' + filter.name,
         name: 'filters.' + filter.name,
         classes: "govuk-checkboxes--small",
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
         fieldset: {
           legend: {
             text: filter.text,
@@ -98,3 +105,9 @@
 
   {% endif %}
 {%- endfor %}
+
+<div>
+  <button class="govuk-button" data-module="govuk-button" onclick="{{ onApplyFilters }}">
+    Apply {{ title }}
+  </button>
+</div>
