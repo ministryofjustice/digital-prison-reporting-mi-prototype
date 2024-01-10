@@ -9,7 +9,7 @@
         width: 'full',
         date: 'last 7 days'
       },
-      chart: {
+      chart: [{
         id: 'chart5',
         type: 'bar',
         labels: ['Assaults'],
@@ -26,6 +26,24 @@
           }
         ],
         axis: 'y'
+      },
+      {
+        id: 'chart2sss',
+        type: 'doughnut',
+        labels: ['Serious', 'General'],
+        data: [60, 100],
+        total: 160
+      }],
+      table: {
+        headings: ['Serious', 'General'],
+        values: [{
+            label: 'Serious',
+            value: '60'
+          },
+          {
+            label: 'General',
+            value: '100'
+          }]
       }
     },
     {
@@ -34,7 +52,7 @@
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         width: 'full'
       },
-      chart: {
+      chart: [{
         id: 'chart342',
         type: 'bar',
         labels: ['Retaliation', 'Uncategorised', 'Bullying', 'No Data', 'Non-comliance', 'Debt', 'Gang related', 'Food and Queuing', 'Drugs and Alcohol', 'Unauthorised Item', 'Tobacco'],
@@ -45,6 +63,55 @@
           }
         ],
         axis: 'y'
+      }],
+      table: {
+        headings: ['Reason', 'Count'],
+        values: [
+          {
+            label: 'Retaliation',
+            value: '467'
+          },
+          {
+            label: 'Uncategorised',
+            value: '300'
+          },
+          {
+            label: 'Bullying',
+            value: '287'
+          },
+          {
+            label: 'No Data',
+            value: '245'
+          },
+          {
+            label: 'Non-comliance',
+            value: '200'
+          },
+          {
+            label: 'Debt',
+            value: '135'
+          },
+          {
+            label: 'Gang related',
+            value: '120'
+          },
+          {
+            label: 'Food and Queuing',
+            value: '60'
+          },
+          {
+            label: 'Drugs and Alcohol',
+            value: '34'
+          },
+          {
+            label: 'Unauthorised Item',
+            value: '20'
+          },
+          {
+            label: 'Tobacco',
+            value: '12'
+          }
+        ]
       }
     },
     {
@@ -53,7 +120,7 @@
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       width: 'full'
     },
-    chart: {
+    chart: [{
       id: 'chart1',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -69,7 +136,7 @@
           total: 576
         }
       ]
-    }
+    }]
   },
   {
     card: {
@@ -77,7 +144,7 @@
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       width: 'full'
     },
-    chart: {
+    chart: [{
       id: 'chart2',
       type: 'line',
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -93,7 +160,7 @@
           total: 446
         }
       ]
-    }
+    }]
   }
   ])}}
 

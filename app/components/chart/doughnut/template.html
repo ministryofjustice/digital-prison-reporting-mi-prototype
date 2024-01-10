@@ -10,10 +10,10 @@
 {% set data = chartData.data %}
 
 <div class="chart chart--doughnut">
-  <canvas id="{{ id }}" class="chart-canvas"></canvas>
-  <div id="js-legend-{{ id }}" class="chart-legend"></div>
+  <canvas id="{{ id }}_{{ type }}" class="chart-canvas"></canvas>
+  <div id="js-legend-{{ id }}_{{ type }}" class="chart-legend"></div>
   <script>
-    new Chart(document.getElementById('{{ id }}'), {
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
         type: '{{ type }}',
         data: {
           labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
@@ -32,6 +32,9 @@
           }],
         },
         options: {
+          animation: {
+              duration: 0
+          },
           maintainAspectRatio: true,
           ...('{{ type }}' === 'doughnut' && { cutout: "60%" }),
           plugins: {
@@ -108,7 +111,7 @@
         {
           id: 'legend',
           beforeInit: function(chart, args, options) {
-            if (chart.canvas.id === "{{ id }}") {
+            if (chart.canvas.id === "{{ id }}_{{ type }}") {
               const ul = document.createElement('ul');
               chart.data.labels.forEach((label, i) => {
                 ul.innerHTML += `
@@ -119,7 +122,7 @@
                 `;
               });
 
-              return document.getElementById("js-legend-{{ id }}").appendChild(ul);
+              return document.getElementById("js-legend-{{ id }}_{{ type }}").appendChild(ul);
             }
             return;
           }
