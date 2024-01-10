@@ -161,3 +161,13 @@ table.govuk-table {
     display: none;
   }
 }
+
+.checkbox-filter .govuk-checkboxes__item {
+  display: inline-block;
+  width: 28%;
+  vertical-align:top
+}
+
+.checkbox-filter .govuk-checkboxes--small .govuk-checkboxes__item {
+  float: none
+}

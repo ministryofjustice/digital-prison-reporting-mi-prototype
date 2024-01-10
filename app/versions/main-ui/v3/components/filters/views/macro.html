@@ -1,0 +1,14 @@
+{#
+  title,            // The title in the header of the filter panel
+  filters: [{
+    text,           // The text to show next to the filter
+    id,             // The unique ID of the filter
+    type,           // The type of the filter (select)
+    options,        // The options to display if this filter is a select
+    value,          // The selected value of the filter.
+  }],
+  onApplyFilters,   // A function to call when the "Apply filters" button is clicked.
+#}
+{% macro appFilters(title, filters, onApplyFilters) %}
+  {%- include "./template.html" -%}
+{% endmacro %}

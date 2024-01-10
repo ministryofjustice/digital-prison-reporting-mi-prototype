@@ -1,0 +1,100 @@
+{% from "govuk/components/select/macro.njk"       import govukSelect %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "moj/components/filter/macro.njk"         import mojFilter -%}
+{% from "govuk/components/input/macro.njk"        import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+
+{%- for filter in filters %}
+  {%- if filter.type === 'select' %}
+
+    {{ govukSelect({
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      value: filter.value,
+      items: filter.options,
+      label: {
+        text: filter.text
+      }
+    }) }}
+  
+  {% elif filter.type === 'radio' %}
+
+    {% set radioClasses = 'govuk-radios--small' %}
+    {%- if filter.options.length === 2 %}
+      {% set radioClasses = 'govuk-radios--inline govuk-radios--small' %}
+    {% endif %}
+
+    {{ govukRadios({
+      classes: radioClasses,
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      formGroup: {
+        classes: "govuk-!-margin-bottom-3"
+      },
+      fieldset: {
+        legend: {
+          text: filter.text,
+          classes: "govuk-label govuk-!-font-weight-bold"
+        }
+      },
+      items: filter.options,
+      value: filter.value
+    }) }}
+
+  {% elif filter.type === 'date-range' %}
+    
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
+          {{ filter.text }}
+        </legend>
+        {{ govukInput({
+          id: 'filters.' + filter.name + '.start',
+          label: {
+            text: 'Start'
+          },
+           formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          name: 'filters.' + filter.name + '.start',
+          value: filter.value.start,
+          type: 'date',
+          attributes: {
+            max: getTodayIsoDate()
+          }
+        }) }}
+        {{ govukInput({
+          id: 'filters.' + filter.name + '.end',
+          label: {
+            text: 'End'
+          },
+          name: 'filters.' + filter.name + '.end',
+          value: filter.value.end,
+          type: 'date',
+          attributes: {
+            max: getTodayIsoDate()
+          }
+        }) }}
+      </fieldset>
+    </div>
+
+  {% elif filter.type === 'checkboxes' %}
+    <div class='checkbox-filter'> 
+
+      {{ govukCheckboxes({
+        id: 'filters.' + filter.name,
+        name: 'filters.' + filter.name,
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: filter.text,
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: filter.options,
+        values: filter.value
+      }) }}
+    </div>
+
+  {% endif %}
+{%- endfor %}

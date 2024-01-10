@@ -1,0 +1,91 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set detailsClasses = 'govuk-!-margin-0  govuk-!-margin-top-2 govuk-!-margin-bottom-2' %}
+
+{% set filterHtml %}
+<div class="data-table-filters">
+  {{ appFilters(
+    "Filter",
+    filters,
+    "onApplyFilters()"
+  ) }}
+</div>
+{% endset %}
+
+{% set columnsHtml %}
+<div class="data-table-columns">
+{{ appFilters(
+    "Columns",
+    [
+      {
+        name: "columns",
+        type: "checkboxes",
+        options: columnOptions,
+        value: columns
+      }
+    ],
+    "onApplyColumns()"
+  ) }}
+</div>
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Filters",
+  classes: detailsClasses,
+  html: filterHtml 
+}) }}
+
+{{ govukDetails({
+  summaryText: "Columns",
+  classes: detailsClasses,
+  html: columnsHtml 
+}) }}
+
+{% block pageScripts %}
+<script lang="js">
+
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-filters input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onApplyColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-columns input").serialize().replaceAll("filters.","");
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
+    window.location.href = url
+  }
+
+</script>
+{% endblock %}
