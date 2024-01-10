@@ -1,0 +1,148 @@
+{% extends parentLayout %}
+
+{% block reportBody %}
+{% set showFiltersButton = {
+  text: 'Show filters',
+  classes: 'govuk-button--primary filter-summary-show-filter-button filter-summary-controls',
+  attributes: {
+    'data-toggle-button': 'false',
+    'data-toggle-button-target-selector': '.sidebar-filters',
+    'data-toggle-button-target-group': '.filter-summary-show-filter-button',
+    'data-toggle-button-caption-show': 'Show filters',
+    'data-toggle-button-caption-hide': 'Hide filters'
+  }
+} %}
+{% set chooseColumnsButton = {
+  text: 'Choose columns',
+  classes: 'govuk-button--secondary filter-summary-show-filter-button filter-summary-controls',
+  attributes: {
+    'data-toggle-button': 'false',
+    'data-toggle-button-target-selector': '.sidebar-columns',
+    'data-toggle-button-target-group': '.filter-summary-show-filter-button',
+    'data-toggle-button-caption-show': 'Choose columns',
+    'data-toggle-button-caption-hide': 'Hide column panel'
+  }
+} %}
+
+{% set resetColumnsButton = {
+  text: 'Reset columns',
+  classes: 'govuk-button--secondary filter-summary-show-filter-button filter-summary-controls',
+  attributes: {
+    'onclick': 'onResetColumns()'
+  }
+} %}
+
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
+{% if (selectedFilters.length > 0) %}
+  {% set controlButtons = [
+    showFiltersButton,
+    {
+      text: 'Clear filters',
+      href: createUrlForParametersFilters(),
+      classes: 'govuk-button--primary filter-summary-controls'
+    },
+    chooseColumnsButton,
+    resetColumnsButton
+  ] %}
+{% else %}
+  {% set controlButtons = [ showFiltersButton, chooseColumnsButton, resetColumnsButton ] %}
+{% endif %}
+
+  <div class="moj-filter-layout">
+    <div class="moj-filter-layout__filter sidebar-filters" style="display: none">
+      {{ appFilters(
+        "Filter",
+        filters,
+        "onApplyFilters()"
+      ) }}
+    </div>
+    <div class="moj-filter-layout__filter sidebar-columns" style="display: none">
+      {{ appFilters(
+        "Columns",
+        [
+          {
+            name: "columns",
+            type: "checkboxes",
+            options: columnOptions,
+            value: columns
+          }
+        ],
+        "onApplyColumns()"
+      ) }}
+    </div>
+    <div class="moj-filter-layout__content">
+      <div class="moj-action-bar">
+        {{ mojButtonMenu({
+        items: controlButtons
+        }) }}
+      </div>
+      <div class="moj-action-bar">
+        {{ mojButtonMenu({
+          items: selectedFilters
+        }) }}
+      </div>
+      <div class="moj-scrollable-pane">
+        {{ appDataTable(
+          null,
+          head,
+          rows,
+          totalRowCount,
+          dataTable,
+          createUrlForParametersPaging,
+          classification
+        ) }}
+      </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script lang="js">
+
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".sidebar-filters input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onApplyColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".sidebar-columns input").serialize().replaceAll("filters.","");
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
+    window.location.href = url
+  }
+
+</script>
+{% endblock %}
