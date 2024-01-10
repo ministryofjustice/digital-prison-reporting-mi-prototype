@@ -89,7 +89,7 @@ const insights = []
 router.post('/safety-diagnostic-tool/v2/addInsight/', (req, res) => {
   const body = JSON.parse(req.body.body)
   const index = insights.find((insight) => insight.id === body.id)
-  if ( !index ) {
+  if (!index) {
     insights.push(body)
   }
   res.redirect('/safety-diagnostic-tool/v2/category/assaults')
