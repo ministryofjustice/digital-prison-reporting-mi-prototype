@@ -1,5 +1,4 @@
 // Core dependencies
-const fs = require('fs')
 const path = require('path')
 const url = require('url')
 
@@ -25,27 +24,12 @@ const documentationRoutes = require('./docs/documentation_routes.js')
 const prototypeAdminRoutes = require('./lib/prototype-admin-routes.js')
 const packageJson = require('./package.json')
 const routes = require('./app/routes.js')
+const addMainUiRoutes = require('./app/versions/main-ui/routes.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
-// Variables for v6 backwards compatibility
-// Set false by default, then turn on if we find /app/v6/routes.js
-let useV6 = false
-let v6App
-let v6Routes
-
-if (fs.existsSync('./app/v6/routes.js')) {
-  v6Routes = require('./app/v6/routes.js')
-  useV6 = true
-}
-
 const app = express()
 const documentationApp = express()
-
-if (useV6) {
-  console.log('/app/v6/routes.js detected - using v6 compatibility mode')
-  v6App = express()
-}
 
 // Set up configuration variables
 const releaseVersion = packageJson.version
@@ -122,7 +106,8 @@ middleware.forEach(func => app.use(func))
 const appViews = extensions.getAppViews([
   path.join(__dirname, '/app/views/'),
   path.join(__dirname, '/lib/'),
-  path.join(__dirname, '/app/components/')
+  path.join(__dirname, '/app/components/'),
+  path.join(__dirname, '/app/versions/')
 ])
 
 const nunjucksConfig = {
@@ -185,36 +170,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-let nunjucksV6Env
-
-// Set up v6 app for backwards compatibility
-if (useV6) {
-  const v6Views = [
-    path.join(__dirname, '/node_modules/govuk_template_jinja/views/layouts'),
-    path.join(__dirname, '/app/v6/views/'),
-    path.join(__dirname, '/lib/v6') // for old unbranded template
-  ]
-  nunjucksConfig.express = v6App
-  nunjucksV6Env = nunjucks.configure(v6Views, nunjucksConfig)
-
-  // Nunjucks filters
-  utils.addNunjucksFilters(nunjucksV6Env)
-
-  // Set views engine
-  v6App.set('view engine', 'html')
-
-  // Backward compatibility with GOV.UK Elements
-  app.use('/public/v6/', express.static(path.join(__dirname, '/node_modules/govuk_template_jinja/assets')))
-  app.use('/public/v6/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit')))
-  app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
-}
-
-nunjucksAppEnv.addGlobal('getTodayMinusDays', function (days) {
-  const date = new Date()
-  date.setDate(date.getDate() - days)
-  return date.toISOString().substring(0, 10)
-})
-
 nunjucksAppEnv.addGlobal('getTodayIsoDate', () => {
   const date = new Date()
   return date.toISOString().substring(0, 10)
@@ -226,9 +181,6 @@ if (useAutoStoreData === 'true') {
   utils.addCheckedFunction(nunjucksAppEnv)
   if (useDocumentation) {
     utils.addCheckedFunction(nunjucksDocumentationEnv)
-  }
-  if (useV6) {
-    utils.addCheckedFunction(nunjucksV6Env)
   }
 }
 
@@ -263,13 +215,8 @@ if (promoMode === 'true') {
 }
 
 // Load routes (found in app/routes.js)
-if (typeof (routes) !== 'function') {
-  console.log(routes.bind)
-  console.log('Warning: the use of bind in routes is deprecated - please check the Prototype Kit documentation for writing routes.')
-  routes.bind(app)
-} else {
-  app.use('/', routes)
-}
+app.use('/', routes)
+addMainUiRoutes(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals
@@ -283,18 +230,6 @@ if (useDocumentation) {
 
   // Docs under the /docs namespace
   documentationApp.use('/', documentationRoutes)
-}
-
-if (useV6) {
-  // Clone app locals to v6 app locals
-  v6App.locals = Object.assign({}, app.locals)
-  v6App.locals.asset_path = '/public/v6/'
-
-  // Create separate router for v6
-  app.use('/', v6App)
-
-  // Docs under the /docs namespace
-  v6App.use('/', v6Routes)
 }
 
 // Strip .html and .htm if provided
@@ -319,13 +254,6 @@ if (useDocumentation) {
     if (!utils.matchMdRoutes(req, res)) {
       utils.matchRoutes(req, res, next)
     }
-  })
-}
-
-if (useV6) {
-  // App folder routes get priority
-  v6App.get(/^([^.]+)$/, function (req, res, next) {
-    utils.matchRoutes(req, res, next)
   })
 }
 

@@ -1,17 +1,8 @@
 {% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+{% from "../components/data-table/views/macro.html"    import appDataTable %}
+{% from "../../v1/components/filters/views/macro.html" import appFilters %}
 
 {% extends "layout.html" %}
-
-{% block subHeader %}
-<div class="govuk-width-container ">
-  {{ govukBreadcrumbs({
-    items: [
-      { text: "Home", href: "/" },
-      { text: "Lists", href: "/lists/" }
-    ]
-  }) }}
-</div>
-{% endblock %}
 
 {% block content %}
 

@@ -1,0 +1,16 @@
+{% from "../components/data-table/views/macro.html"    import appDataTable %}
+{% from "../components/filters/views/macro.html"       import appFilters %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+{% endblock %}

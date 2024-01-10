@@ -1,5 +1,5 @@
-const dataTableFilters = require('./components/data-table/filters')
-const filtersFilters = require('./components/filters/filters')
+const dataTableFilters = require('./versions/main-ui/v1/components/data-table/filters')
+const filtersFilters = require('./versions/main-ui/v1/components/filters/filters')
 
 module.exports = function () {
   /**
