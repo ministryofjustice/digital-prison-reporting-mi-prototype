@@ -11,11 +11,12 @@
 {% set labels = chartData.labels %}
 {% set data = chartData.data %}
 {% set axis = chartData.axis %}
+{% set type = chartData.type %}
 
 <div class="chart">
-  <canvas id="{{ id }}" class="chart-canvas"></canvas>
+  <canvas id="{{ id }}_{{ type }}" class="chart-canvas"></canvas>
   <script>
-    new Chart(document.getElementById('{{ id }}'), {
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
       type: 'bar',
       data: {
         labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 

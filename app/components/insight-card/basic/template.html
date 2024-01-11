@@ -1,4 +1,6 @@
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% set id = insightData.id %}
+{% set added = insightData.added %}
 {% set title = insightData.title %}
 {% set value = insightData.value %}
 {% set values = insightData.values %}
@@ -11,6 +13,14 @@
 {% set diffFrom = diff.from %}
 
 <div class="inight-card-group__item measure-headline">
+  <div class="add" id="{{ id }}">
+    {% if added %}- 
+      <span class="tooltiptext tooltiptext--remove"><p class="govuk-body-xs govuk-!-margin-bottom-0">Remove</p></span>
+    {% else %}+ 
+      <span class="tooltiptext tooltiptext--add"><p class="govuk-body-xs govuk-!-margin-bottom-0">Add to homepage</p></span>
+    {% endif %}
+  </div>
+
   <h4 class="govuk-heading-s govuk-!-margin-bottom-1 app-heading-fixed-height-s-none" id="hm-jin-headline-cost-of-crime">
     {{ title }}
   </h4>
@@ -44,5 +54,12 @@
   <p class="govuk-body-xs value-date">
     Value for {{ date }}. {% if href %} <a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>{% endif %}
   </p>
-
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
+  <script>      
+    document.getElementById('{{ id }}').addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.target.innerHTML = ''
+    });
+  </script>

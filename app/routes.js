@@ -23,13 +23,31 @@ router.get('/safety-diagnostic-tool/v1', [handlers.configureCurrentUrl, handlers
   res.render('safetyDiagnosticTool/versions/v1/home', req.renderOptions)
 }])
 
+const insights = []
+
+router.post('/safety-diagnostic-tool/v2/addInsight/', (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = insights.find((insight) => insight.id === body.id)
+  if (!index) {
+    insights.push(body)
+  }
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults')
+})
+
+router.post('/safety-diagnostic-tool/v2/removeInsight/', (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = insights.find((insight) => insight.id === body.id)
+  insights.splice(index, 1)
+  res.redirect('/safety-diagnostic-tool/v2/category/assaults')
+})
+
 router.get('/safety-diagnostic-tool/v2', [
   handlers.configureCurrentUrl,
   function (req, res, next) {
     const category = req.params.category
     req.renderOptions = {
       category,
-      data: mockMetricData
+      data: insights
     }
     next()
   },
@@ -105,7 +123,7 @@ router.get('/charts/:chartType', [
     const chartType = req.params.chartType
     req.renderOptions = {
       chartType,
-      chartData: chartCardDataConfig.filter(c => c.chart.type === chartType)
+      chartData: chartCardDataConfig.filter(c => c.chart[0].type === chartType)
     }
     next()
   },

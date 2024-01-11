@@ -44,3 +44,44 @@
     margin-top: 10px;
     display: block;
   }
+
+  .add {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    padding-top: 5px;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    text-align: center;
+    color: govuk-colour("mid-grey");
+    font-size: 18px;
+    font-weight: 700;
+
+    &:hover {
+      color: govuk-colour("dark-grey");
+
+      .tooltiptext {
+        visibility: visible;
+      }
+    }
+
+    &:active {
+      color: govuk-colour("light-blue");
+    }
+
+    .tooltiptext{
+      visibility: hidden;
+      width: 80px;
+      background-color: white;
+      text-align: center;
+      padding: govuk-spacing(1);
+      border: 1px solid govuk-colour("mid-grey");
+    
+      /* Position the tooltip */
+      position: absolute;
+      top: 30px;
+      left: -40px;
+      z-index: 1;
+    }
+  }
