@@ -107,17 +107,18 @@
 {%- endfor %}
 
 <div>
-  <button class="govuk-button" data-module="govuk-button" onclick="{{ onApplyFilters }}">
+  <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" onclick="{{ onApplyFilters }}">
     Apply {{ title }}
   </button>
 
   {% if title === 'Filter' %}
     {{ govukButton({
       text: "Clear Filters",
-      href: "?classification=OFFICIAL&amp;paging.selectedPage=1"
+      href: "?classification=OFFICIAL&amp;paging.selectedPage=1",
+      classes: "govuk-!-margin-bottom-0"
     }) }}
   {% else %}
-    <button class="govuk-button" data-module="govuk-button" onclick="{{ onReset }}">
+    <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" onclick="{{ onReset }}">
       Reset {{ title }}
     </button>
   {% endif %}

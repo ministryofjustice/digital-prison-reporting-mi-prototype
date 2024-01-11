@@ -32,28 +32,42 @@
 
 <div class="filter-section">
   <div class="filter-section-row">
-    <div class="filter-section-column filter-section-column--button">
+    
+    <div class="filter-section-button">
       {{ govukDetails({
         summaryText: "Filters",
         classes: detailsClasses,
         html: filterHtml 
       }) }}
     </div>
-    <div class="filter-section-column">
-      <p class="govuk-body">details</p>
+
+    <div class="filter-section-details">
+      {%- for filter in filters %}
+    
+        {% if filter.text === "Date" %}
+          {% set value = filter.value.start + ' - ' +  filter.value.end  %}
+        {% else %}
+          {% set value = filter.value | capitalize %}
+        {% endif %}
+          
+        <div class="filter-section-details__text">
+          <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
+        </div>
+
+      {%- endfor %}
     </div>
   </div>  
 
   <div class="filter-section-row">
-    <div class="filter-section-column filter-section-column--button">
+    <div class="filter-section-button">
       {{ govukDetails({
         summaryText: "Columns",
         classes: detailsClasses,
         html: columnsHtml 
       }) }}
     </div>
-    <div class="filter-section-column">
-      <p class="govuk-body">details</p>
+    <div class="filter-section-details">
+      <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
     </div>
   </div>  
 

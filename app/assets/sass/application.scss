@@ -174,7 +174,7 @@ table.govuk-table {
 
 
 .filter-section {
-  margin-bottom: govuk-spacing(6);
+  margin-bottom: govuk-spacing(8);
 
   .filters-accordion {
     padding-top: govuk-spacing(3);
@@ -188,13 +188,21 @@ table.govuk-table {
 
 .filter-section-row {
   border-bottom: solid 1px govuk-colour("mid-grey");
+  position: relative;
 }
 
-.filter-section-column {
+.filter-section-details {
+  position: absolute;
+  top: govuk-spacing(3);
+  left: 160px;
+}
+
+.filter-section-details__text {
   display: inline-block;
+  padding-right: govuk-spacing(4);
 }
 
-.filter-section-column--button {
+.filter-section-button {
   min-width: 130px;
   padding-right: govuk-spacing(3);
 }
