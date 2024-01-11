@@ -5,8 +5,24 @@
 {% extends "layout.html" %}
 
 {% block content %}
+  <div class="header-wrapper">
+  <h2 class="govuk-heading-m">
+    {% block pageTitle %}{% endblock %}
+  </h2>
 
-  {% block pageHeader %}
+  <div class='report-actions'>
+      {{ govukButton({
+        id: 'actions-button',
+        text: "Actions",  
+        attributes: {
+          'onclick': onApplyFilters
+        },
+        classes: "govuk-button govuk-!-margin-bottom-0"
+      }) }}
+  </div>
+  </div>
+
+  {# {% block pageHeader %}
     {% if (printable) %}
       {% set actions = [{
         text: 'Print displayed results',
@@ -26,7 +42,7 @@
       },
       items: actions
     }) }}
-  {% endblock %}
+  {% endblock %} #}
 
   <div class="govuk-width-container {% if (printable == false) %}print-hide{% endif %}">
     {% block reportBody %}{% endblock %}
@@ -39,4 +55,14 @@
   </h3>
   {% endif %}
 
+{% endblock %}
+
+{% block pageScripts %}
+<script lang="js">
+
+  const onActionsCloicFilters = function() {
+
+  }
+
+</script>
 {% endblock %}

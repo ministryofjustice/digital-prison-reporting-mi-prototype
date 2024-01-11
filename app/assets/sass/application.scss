@@ -206,3 +206,13 @@ table.govuk-table {
   min-width: 130px;
   padding-right: govuk-spacing(3);
 }
+
+.header-wrapper {
+  position: relative;
+}
+
+.report-actions {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
