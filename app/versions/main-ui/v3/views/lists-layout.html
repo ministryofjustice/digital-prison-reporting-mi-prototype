@@ -6,43 +6,30 @@
 
 {% block content %}
   <div class="header-wrapper">
-  <h2 class="govuk-heading-m">
-    {% block pageTitle %}{% endblock %}
-  </h2>
+    <h2 class="govuk-heading-m">
+      {% block pageTitle %}{% endblock %}
+    </h2>
 
-  <div class='report-actions'>
-      {{ govukButton({
-        id: 'actions-button',
-        text: "Actions",  
-        attributes: {
-          'onclick': onApplyFilters
-        },
-        classes: "govuk-button govuk-!-margin-bottom-0"
-      }) }}
+    <div class='report-actions'>
+      <div class='report-actions-button'>
+          {{ govukButton({
+            id: 'actions-button',
+            text: "Actions", 
+            disabled: true, 
+            classes: "actions-button govuk-button govuk-!-margin-bottom-0"
+          }) }}
+      </div>
+      
+      <div id="actions-list-container" class="actions-list-container">
+        <ul class="actions-list">
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+        </ul> 
+      </div>
+    </div>
+
   </div>
-  </div>
-
-  {# {% block pageHeader %}
-    {% if (printable) %}
-      {% set actions = [{
-        text: 'Print displayed results',
-        attributes: {
-          'onclick': 'window.print()'
-        },
-        classes: 'filter-summary-controls'
-      }] %}
-    {% else %}
-      {% set actions = [] %}
-    {% endif %}
-
-    {{ mojPageHeaderActions({
-      heading: {
-        text: title,
-        classes: 'govuk-heading-m'
-      },
-      items: actions
-    }) }}
-  {% endblock %} #}
 
   <div class="govuk-width-container {% if (printable == false) %}print-hide{% endif %}">
     {% block reportBody %}{% endblock %}
@@ -55,14 +42,4 @@
   </h3>
   {% endif %}
 
-{% endblock %}
-
-{% block pageScripts %}
-<script lang="js">
-
-  const onActionsCloicFilters = function() {
-
-  }
-
-</script>
 {% endblock %}

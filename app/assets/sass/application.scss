@@ -236,3 +236,42 @@ table.govuk-table {
   right: 0px;
   top: 0px;
 }
+
+.actions-button {
+  min-width: 160px;
+}
+
+.actions-button.govuk-button--disabled, .actions-button.govuk-button[disabled=disabled], .actions-button.govuk-button[disabled] {
+  opacity: 1;
+  cursor: pointer;
+  background-color: govuk-colour("green");
+}
+
+.actions-list-container {
+  width: 158px;
+  z-index: 1;
+  position: absolute;
+  right: 0px;
+  top: 40px;
+  border: solid 1px govuk-colour("mid-grey");
+  display: none;
+  background-color: white;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 160px;
+
+    li {
+      padding: govuk-spacing(3);
+      width: 130px;
+      border-bottom: solid 1px govuk-colour("mid-grey");
+    }
+  }
+}
+
+
+.report-actions:hover .actions-list-container {display: block}
+.report-actions:hover .actions-button {background-color: #005a30}
+
