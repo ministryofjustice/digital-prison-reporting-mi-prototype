@@ -107,19 +107,32 @@
 {%- endfor %}
 
 <div>
-  <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" onclick="{{ onApplyFilters }}">
-    Apply {{ title }}
-  </button>
+
+  {{ govukButton({
+    text: "Apply " + title,  
+    attributes: {
+      'onclick': onApplyFilters
+    },
+    classes: "govuk-button govuk-!-margin-bottom-0"
+  }) }}
 
   {% if title === 'Filter' %}
+
     {{ govukButton({
       text: "Clear Filters",
       href: "?classification=OFFICIAL&amp;paging.selectedPage=1",
       classes: "govuk-!-margin-bottom-0"
     }) }}
+
   {% else %}
-    <button class="govuk-button govuk-!-margin-bottom-0" data-module="govuk-button" onclick="{{ onReset }}">
-      Reset {{ title }}
-    </button>
+
+    {{ govukButton({
+      text: "Reset " + title,  
+      attributes: {
+        'onclick': onReset
+      },
+      classes: "govuk-button govuk-!-margin-bottom-0"
+    }) }}
+
   {% endif %}
 </div>
