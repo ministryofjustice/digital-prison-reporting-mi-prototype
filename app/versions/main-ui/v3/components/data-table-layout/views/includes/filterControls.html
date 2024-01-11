@@ -43,17 +43,32 @@
 
     <div class="filter-section-details">
       {%- for filter in filters %}
-    
+      {% if filter.value %}
         {% if filter.text === "Date" %}
-          {% set value = filter.value.start + ' - ' +  filter.value.end  %}
+
+          {% set startValue = filter.value.start  %}
+          {% set endValue = filter.value.end  %}
+          {% if not endValue %}
+            {% set endValue = 'Now'  %}
+          {% endif %}
+          {% if not startValue %}
+            {% set startValue = 'All past'  %}
+          {% endif %}
+
+          {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
+            {% set value = startValue + ' - ' +  endValue %}
+            <div class="filter-section-details__text">
+              <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
+            </div>
+          {% endif %}
+        
         {% else %}
           {% set value = filter.value | capitalize %}
+          <div class="filter-section-details__text">
+            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
+          </div>
         {% endif %}
-          
-        <div class="filter-section-details__text">
-          <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
-        </div>
-
+      {% endif %}
       {%- endfor %}
     </div>
   </div>  
