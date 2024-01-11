@@ -9,6 +9,6 @@
   }],
   onApplyFilters,   // A function to call when the "Apply filters" button is clicked.
 #}
-{% macro appFilters(title, filters, onApplyFilters) %}
+{% macro appFilters(title, filters, onApplyFilters, onReset) %}
   {%- include "./template.html" -%}
 {% endmacro %}

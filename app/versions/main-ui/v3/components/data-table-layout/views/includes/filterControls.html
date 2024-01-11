@@ -24,23 +24,39 @@
         value: columns
       }
     ],
-    "onApplyColumns()"
+    "onApplyColumns()",
+    "onResetColumns()"
   ) }}
 </div>
 {% endset %}
 
 <div class="filter-section">
-  {{ govukDetails({
-    summaryText: "Filters",
-    classes: detailsClasses,
-    html: filterHtml 
-  }) }}
+  <div class="filter-section-row">
+    <div class="filter-section-column filter-section-column--button">
+      {{ govukDetails({
+        summaryText: "Filters",
+        classes: detailsClasses,
+        html: filterHtml 
+      }) }}
+    </div>
+    <div class="filter-section-column">
+      <p class="govuk-body">details</p>
+    </div>
+  </div>  
 
-  {{ govukDetails({
-    summaryText: "Columns",
-    classes: detailsClasses,
-    html: columnsHtml 
-  }) }}
+  <div class="filter-section-row">
+    <div class="filter-section-column filter-section-column--button">
+      {{ govukDetails({
+        summaryText: "Columns",
+        classes: detailsClasses,
+        html: columnsHtml 
+      }) }}
+    </div>
+    <div class="filter-section-column">
+      <p class="govuk-body">details</p>
+    </div>
+  </div>  
+
 </div>
 
 {% block pageScripts %}

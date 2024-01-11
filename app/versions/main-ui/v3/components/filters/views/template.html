@@ -3,7 +3,7 @@
 {% from "moj/components/filter/macro.njk"         import mojFilter -%}
 {% from "govuk/components/input/macro.njk"        import govukInput %}
 {% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/button/macro.njk"       import govukButton %}
 
 
 {%- for filter in filters %}
@@ -110,4 +110,15 @@
   <button class="govuk-button" data-module="govuk-button" onclick="{{ onApplyFilters }}">
     Apply {{ title }}
   </button>
+
+  {% if title === 'Filter' %}
+    {{ govukButton({
+      text: "Clear Filters",
+      href: "?classification=OFFICIAL&amp;paging.selectedPage=1"
+    }) }}
+  {% else %}
+    <button class="govuk-button" data-module="govuk-button" onclick="{{ onReset }}">
+      Reset {{ title }}
+    </button>
+  {% endif %}
 </div>
