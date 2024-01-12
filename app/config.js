@@ -33,7 +33,8 @@ module.exports = {
 
   scripts: [
     { path: '/app/jquery.min.js', location: '/node_modules/jquery/dist/jquery.min.js' },
-    { path: '/app/data-table-layout.js', location: '/app/versions/main-ui/v1/components/data-table-layout/init.js' }
+    { path: '/app/data-table-layout.js', location: '/app/versions/main-ui/v1/components/data-table-layout/init.js' },
+    { path: '/app/v3-dropdown.js', location: '/app/versions/main-ui/v3/components/dropdown-button/init.js' }
   ],
 
   stylesheets: []

@@ -2,7 +2,8 @@ module.exports = {
   configureCurrentUrl: (req, res, next) => {
     req.renderOptions = {
       ...req.renderOptions,
-      currentUrl: req.route.path
+      currentUrl: req.route.path,
+      originalUrl: req.originalUrl
     }
     next()
   },
