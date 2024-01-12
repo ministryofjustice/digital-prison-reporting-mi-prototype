@@ -13,30 +13,13 @@
 {% endset %}
 
 {% set columnsHtml %}
+
 <div class="data-table-columns">
   {{ appFilters(
     "Columns",
     [
       {
         name: "columns",
-        type: "checkboxes",
-        options: columnOptions,
-        value: columns
-      }
-    ],
-    "onApplyColumns()",
-    "onResetColumns()"
-  ) }}
-</div>
-{% endset %}
-
-{% set sortingHtml %}
-<div class="data-table-columns">
-  {{ appFilters(
-    "Columns",
-    [
-      {
-        name: "Sorting",
         type: "checkboxes",
         options: columnOptions,
         value: columns
@@ -108,6 +91,30 @@
 
 {% block pageScripts %}
 <script lang="js">
+  const maxColumns = 9
+  const inputs = document.querySelectorAll(".data-table-columns input[type='checkbox']");
+
+  const disableColumnCheckboxes = function() {
+    let selected = 0;
+    inputs.forEach( ( i ) => {
+      if( i.checked ) selected++
+    })
+    if( selected >= maxColumns) {
+      inputs.forEach( ( x ) => {
+        if( !x.checked ) x.disabled = true
+      })
+    } else {
+      inputs.forEach( ( y ) => y.disabled = false
+    }
+  }
+
+  disableColumnCheckboxes()
+
+  inputs.forEach((input)=> {
+    input.addEventListener("click", () => {
+      disableColumnCheckboxes()
+    })
+  })
 
   const onApplyFilters = function() {
     let url = decodeURI(window.location.href)
