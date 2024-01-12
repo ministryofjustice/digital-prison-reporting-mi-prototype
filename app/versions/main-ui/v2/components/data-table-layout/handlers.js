@@ -67,7 +67,8 @@ const dataTableLayoutOptions = (req, res) => {
     title,
     listData,
     countData,
-    version
+    version,
+    currentVersion = version
   } = req.dataTableLayoutOptions
 
   const data = listData({
@@ -77,9 +78,9 @@ const dataTableLayoutOptions = (req, res) => {
     dataFormat
   })
 
-  const dataTableLayout = '../components/data-table-layout/views/layout.html'
+  const dataTableLayout = `../../${version}/components/data-table-layout/views/layout.html`
 
-  res.render(`main-ui/${version}/views/lists-list`, {
+  res.render(`main-ui/${currentVersion}/views/lists-list`, {
     ...req.renderOptions,
     title,
     head: getHeaders(dataFormat, req.renderOptions.columns),

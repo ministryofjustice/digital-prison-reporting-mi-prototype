@@ -16,16 +16,16 @@
         <a href='{{ versions.path }}/v{{version.versionNumber}}/' class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold">Version {{ version.versionNumber }}</a>
       </td>
       <td class="govuk-table__cell">
-        {% if version.status === 'in design' %}
+        {% if version.status == 'in design' %}
           {% set tagColour = 'grey' %}
-        {% elif version.status === 'Done' %}
+        {% elif version.status == 'Done' %}
           {% set tagColour = 'green' %}
         {% else %}
           {% set tagColour = 'blue' %}
         {% endif %}
         {{govukTag({
           text: version.status,
-          classes: "govuk-tag--{{ tagColour }}"
+          classes: "govuk-tag--" + tagColour
         })}}
       </td>
       <td class="govuk-table__cell">

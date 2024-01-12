@@ -1,0 +1,8 @@
+{% macro appDropdownButton(options) %}
+{%- set id = options.id %}
+{%- set text = options.text %}
+{%- set classes = options.classes %}
+{%- set items = options.items %}
+{%- set groups = options.groups %}
+  {%- include "./template.html" -%}
+{% endmacro %}
