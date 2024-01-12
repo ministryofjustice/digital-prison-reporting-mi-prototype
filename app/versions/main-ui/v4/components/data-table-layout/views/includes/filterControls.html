@@ -1,0 +1,156 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set detailsClasses = 'filters-accordion govuk-!-margin-0' %}
+
+{% set filterHtml %}
+<div class="data-table-filters">
+  {{ appFilters(
+    "Filter",
+    filters,
+    "onApplyFilters()"
+  ) }}
+</div>
+{% endset %}
+
+{% set columnsHtml %}
+<div class="data-table-columns">
+  {{ appFilters(
+    "Columns",
+    [
+      {
+        name: "columns",
+        type: "checkboxes",
+        options: columnOptions,
+        value: columns
+      }
+    ],
+    "onApplyColumns()",
+    "onResetColumns()"
+  ) }}
+</div>
+{% endset %}
+
+{% set sortingHtml %}
+<div class="data-table-columns">
+  {{ appFilters(
+    "Columns",
+    [
+      {
+        name: "Sorting",
+        type: "checkboxes",
+        options: columnOptions,
+        value: columns
+      }
+    ],
+    "onApplyColumns()",
+    "onResetColumns()"
+  ) }}
+</div>
+{% endset %}
+
+<div class="filter-section">
+  <div class="filter-section-row">
+    
+    <div class="filter-section-accordion-button">
+      {{ govukDetails({
+        summaryText: "Filters",
+        classes: detailsClasses,
+        html: filterHtml 
+      }) }}
+    </div>
+
+    <div class="filter-section-details">
+      {%- for filter in filters %}
+      {% if filter.value %}
+        {% if filter.text === "Date" %}
+
+          {% set startValue = filter.value.start  %}
+          {% set endValue = filter.value.end  %}
+          {% if not endValue %}
+            {% set endValue = 'Now'  %}
+          {% endif %}
+          {% if not startValue %}
+            {% set startValue = 'All past'  %}
+          {% endif %}
+
+          {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
+            {% set value = startValue + ' - ' +  endValue %}
+            <div class="filter-section-details__text">
+              <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
+            </div>
+          {% endif %}
+        
+        {% else %}
+          {% set value = filter.value | capitalize %}
+          <div class="filter-section-details__text">
+            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
+          </div>
+        {% endif %}
+      {% endif %}
+      {%- endfor %}
+    </div>
+  </div>  
+
+  <div class="filter-section-row">
+    <div class="filter-section-accordion-button">
+      {{ govukDetails({
+        summaryText: "Columns",
+        classes: detailsClasses,
+        html: columnsHtml 
+      }) }}
+    </div>
+    <div class="filter-section-details">
+      <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+    </div>
+  </div>   
+
+</div>
+
+{% block pageScripts %}
+<script lang="js">
+
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-filters input").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onApplyColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-columns input").serialize().replaceAll("filters.","");
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    window.location.href = url
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
+    window.location.href = url
+  }
+
+</script>
+{% endblock %}

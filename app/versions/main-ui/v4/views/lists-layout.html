@@ -1,0 +1,45 @@
+{% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+{% from "../components/data-table/views/macro.html"    import appDataTable %}
+{% from "../components/filters/views/macro.html" import appFilters %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="header-wrapper">
+    <h2 class="govuk-heading-m">
+      {% block pageTitle %}{% endblock %}
+    </h2>
+
+    <div class='report-actions'>
+      <div class='report-actions-button'>
+          {{ govukButton({
+            id: 'actions-button',
+            text: "Actions", 
+            disabled: true, 
+            classes: "actions-button govuk-button govuk-!-margin-bottom-0"
+          }) }}
+      </div>
+      
+      <div id="actions-list-container" class="actions-list-container">
+        <ul class="actions-list">
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+          <li><a href="#" onclick="window.print()">Print</a></li> 
+        </ul> 
+      </div>
+    </div>
+
+  </div>
+
+  <div class="govuk-width-container {% if (printable == false) %}print-hide{% endif %}">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+  {% if (printable == false) %}
+  <h3 class="screen-hide">
+    Printing this report has been disabled due to time or content sensitivity.<br />
+    Please speak to your report administrator for further details.
+  </h3>
+  {% endif %}
+
+{% endblock %}
