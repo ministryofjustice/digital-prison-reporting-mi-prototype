@@ -26,7 +26,7 @@ const getTodayMinusDays = days => {
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render('cards', {
     ...req.renderOptions,
-    title: 'Version 3',
+    title: 'Version 4',
     cards: [{
       text: 'Lists',
       href: './lists/',

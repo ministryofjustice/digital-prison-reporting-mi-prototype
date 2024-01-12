@@ -208,6 +208,7 @@ table.govuk-table {
   max-width: 250px; 
 }
 
+// Filter accordion
 .filter-section-row {
   border-bottom: solid 1px govuk-colour("mid-grey");
   position: relative;
@@ -233,7 +234,6 @@ table.govuk-table {
   position: absolute;
   bottom: govuk-spacing(3);
   right: 0px;
-  // top: govuk-spacing(2);
 }
 
 .table-filter {
