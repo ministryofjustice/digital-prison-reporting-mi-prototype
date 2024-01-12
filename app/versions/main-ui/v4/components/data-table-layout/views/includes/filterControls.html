@@ -30,10 +30,28 @@
 </div>
 {% endset %}
 
+{% set sortingHtml %}
+<div class="data-table-columns">
+  {{ appFilters(
+    "Columns",
+    [
+      {
+        name: "Sorting",
+        type: "checkboxes",
+        options: columnOptions,
+        value: columns
+      }
+    ],
+    "onApplyColumns()",
+    "onResetColumns()"
+  ) }}
+</div>
+{% endset %}
+
 <div class="filter-section">
   <div class="filter-section-row">
     
-    <div class="filter-section-button">
+    <div class="filter-section-accordion-button">
       {{ govukDetails({
         summaryText: "Filters",
         classes: detailsClasses,
@@ -74,7 +92,7 @@
   </div>  
 
   <div class="filter-section-row">
-    <div class="filter-section-button">
+    <div class="filter-section-accordion-button">
       {{ govukDetails({
         summaryText: "Columns",
         classes: detailsClasses,
@@ -84,7 +102,7 @@
     <div class="filter-section-details">
       <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
     </div>
-  </div>  
+  </div>   
 
 </div>
 

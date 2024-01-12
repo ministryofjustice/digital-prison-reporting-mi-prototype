@@ -9,7 +9,7 @@ const { renderVisualisation } = require('../v1/visualisationHandlers')
 const handlers = require('../../../utils/handlers')
 const { getBreadcrumbs } = require('../../../utils/utils')
 
-const version = 'v3'
+const version = 'v4'
 
 const getFieldByName = (name, format) => {
   const field = format.find(f => f.name === name)

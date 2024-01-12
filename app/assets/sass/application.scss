@@ -182,6 +182,8 @@ table.govuk-table {
   }
 }
 
+
+// V4 Filter actions
 .checkbox-filter .govuk-checkboxes__item {
   display: inline-block;
   width: 28%;
@@ -222,10 +224,23 @@ table.govuk-table {
   padding-right: govuk-spacing(4);
 }
 
-.filter-section-button {
+.filter-section-accordion-button {
   min-width: 130px;
   padding-right: govuk-spacing(3);
 }
+
+.filter-section-action {
+  position: absolute;
+  bottom: govuk-spacing(3);
+  right: 0px;
+  // top: govuk-spacing(2);
+}
+
+.table-filter {
+  display: inline-block;
+  width: 28%;
+  vertical-align:top;
+} 
 
 .header-wrapper {
   position: relative;
@@ -271,7 +286,5 @@ table.govuk-table {
   }
 }
 
-
 .report-actions:hover .actions-list-container {display: block}
 .report-actions:hover .actions-button {background-color: #005a30}
-
