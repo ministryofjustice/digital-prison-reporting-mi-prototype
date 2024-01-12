@@ -243,6 +243,14 @@ table.govuk-table {
   vertical-align:top;
 } 
 
+.max-column-help-text {
+  display: none;
+}
+
+.max-column-help-text.show {
+  display: block;
+}
+
 .header-wrapper {
   position: relative;
 }

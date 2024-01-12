@@ -27,6 +27,8 @@
     "onApplyColumns()",
     "onResetColumns()"
   ) }}
+
+  <p id="maxColumnHelpText" class="govuk-body max-column-help-text">Max column allowance reached. Remove a column before selecting another</p>
 </div>
 {% endset %}
 
@@ -82,7 +84,12 @@
       }) }}
     </div>
     <div class="filter-section-details">
-      <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+      <div class="filter-section-details__text">
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+      </div>
+      <div class="filter-section-details__text">
+        <p class="govuk-body govuk-!-margin-bottom-0">( max columns: <span id="maxColumns"></span> )</p>
+      </div>
     </div>
   </div>   
 
@@ -91,6 +98,9 @@
 {% block pageScripts %}
 <script lang="js">
   const maxColumns = 9
+  const maxColumnsHtml = document.getElementById('maxColumns');
+  const maxColumnHelpText = document.getElementById('maxColumnHelpText');
+  maxColumnsHtml.innerHTML = maxColumns
   const inputs = document.querySelectorAll(".data-table-columns input[type='checkbox']");
 
   const disableColumnCheckboxes = function() {
@@ -102,8 +112,10 @@
       inputs.forEach( ( x ) => {
         if( !x.checked ) x.disabled = true
       })
+      maxColumnHelpText.classList.add('show')
     } else {
-      inputs.forEach( ( y ) => y.disabled = false
+      inputs.forEach( ( y ) => y.disabled = false )
+      maxColumnHelpText.classList.remove('show')
     }
   }
 
