@@ -47,29 +47,10 @@
 
     <div class="filter-section-details">
       {%- for filter in selectedFilters %}
-        {% if filter.text === "Date" %}
-
-          {% set startValue = filter.value.start  %}
-          {% set endValue = filter.value.end  %}
-          {% if not endValue %}
-            {% set endValue = 'Now'  %}
-          {% endif %}
-          {% if not startValue %}
-            {% set startValue = 'All past'  %}
-          {% endif %}
-
-          {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
-            {% set value = startValue + ' - ' +  endValue %}
-            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}</p>
-          {% endif %}
-        
-        {% else %}
-          {% set value = filter.value | capitalize %}
-            <p class="govuk-body filter-remove-button__text govuk-!-margin-bottom-0" onclick="willy('{{ filter.href }}')">
-              {{ filter.text }}
-              <span class="filter-remove-button-icon"></span>
-            </p>
-        {% endif %}
+        <p class="govuk-body filter-remove-button__text govuk-!-margin-bottom-0" onclick="removeFilter('{{ filter.href }}')">
+          {{ filter.text }}
+          <span class="filter-remove-button-icon"></span>
+        </p>
       {%- endfor %}
     </div>
   </div>  
@@ -93,11 +74,6 @@
 
 {% block pageScripts %}
 <script lang="js">
-  const willy = (url) => {
-    console.log(url)
-    window.location.href = url
-  }
-
   const maxColumns = 9
   const maxColumnsHtml = document.getElementById('maxColumns');
   const maxColumnHelpText = document.getElementById('maxColumnHelpText');
@@ -170,6 +146,10 @@
       url += "&";
     }
     url += "columns=reset";
+    window.location.href = url
+  }
+
+  const removeFilter = function(url) {
     window.location.href = url
   }
 
