@@ -2,6 +2,8 @@
 
 {% set detailsClasses = 'filters-accordion govuk-!-margin-0' %}
 
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
 {% set filterHtml %}
 <div class="data-table-filters">
   {{ appFilters(
@@ -33,7 +35,7 @@
 {% endset %}
 
 <div class="filter-section">
-  <div class="filter-section-row">
+  <div class="filter-section-row filter-section-row__filter">
     
     <div class="filter-section-accordion-button">
       {{ govukDetails({
@@ -44,8 +46,7 @@
     </div>
 
     <div class="filter-section-details">
-      {%- for filter in filters %}
-      {% if filter.value %}
+      {%- for filter in selectedFilters %}
         {% if filter.text === "Date" %}
 
           {% set startValue = filter.value.start  %}
@@ -59,23 +60,21 @@
 
           {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
             {% set value = startValue + ' - ' +  endValue %}
-            <div class="filter-section-details__text">
-              <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
-            </div>
+            <p class="govuk-body-s govuk-!-margin-bottom-0">{{ filter.text }}</p>
           {% endif %}
         
         {% else %}
           {% set value = filter.value | capitalize %}
-          <div class="filter-section-details__text">
-            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
-          </div>
+            <p class="govuk-body-s filter-remove-button__text govuk-!-margin-bottom-0" onclick="willy('{{ filter.href }}')">
+              {{ filter.text }}
+              <span class="filter-remove-button-icon"></span>
+            </p>
         {% endif %}
-      {% endif %}
       {%- endfor %}
     </div>
   </div>  
 
-  <div class="filter-section-row">
+  <div class="filter-section-row filter-section-row__columns">
     <div class="filter-section-accordion-button">
       {{ govukDetails({
         summaryText: "Columns",
@@ -85,10 +84,10 @@
     </div>
     <div class="filter-section-details">
       <div class="filter-section-details__text">
-        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
       </div>
       <div class="filter-section-details__text">
-        <p class="govuk-body govuk-!-margin-bottom-0">( max columns: <span id="maxColumns"></span> )</p>
+        <p class="govuk-body-xs govuk-!-margin-bottom-0">( max columns: <span id="maxColumns"></span> )</p>
       </div>
     </div>
   </div>   
@@ -97,6 +96,11 @@
 
 {% block pageScripts %}
 <script lang="js">
+  const willy = (url) => {
+    console.log(url)
+    window.location.href = url
+  }
+
   const maxColumns = 9
   const maxColumnsHtml = document.getElementById('maxColumns');
   const maxColumnHelpText = document.getElementById('maxColumnHelpText');
