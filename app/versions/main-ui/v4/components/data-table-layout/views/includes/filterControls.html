@@ -114,7 +114,9 @@
       })
       maxColumnHelpText.classList.add('show')
     } else {
-      inputs.forEach( ( y ) => y.disabled = false )
+      inputs.forEach( ( y ) => { 
+        if( !y.getAttribute("data-mandatory-field") ) y.disabled = false 
+      })
       maxColumnHelpText.classList.remove('show')
     }
   }
