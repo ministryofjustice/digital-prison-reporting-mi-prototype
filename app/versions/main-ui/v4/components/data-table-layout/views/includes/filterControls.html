@@ -60,12 +60,12 @@
 
           {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
             {% set value = startValue + ' - ' +  endValue %}
-            <p class="govuk-body-s govuk-!-margin-bottom-0">{{ filter.text }}</p>
+            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}</p>
           {% endif %}
         
         {% else %}
           {% set value = filter.value | capitalize %}
-            <p class="govuk-body-s filter-remove-button__text govuk-!-margin-bottom-0" onclick="willy('{{ filter.href }}')">
+            <p class="govuk-body filter-remove-button__text govuk-!-margin-bottom-0" onclick="willy('{{ filter.href }}')">
               {{ filter.text }}
               <span class="filter-remove-button-icon"></span>
             </p>
@@ -84,10 +84,7 @@
     </div>
     <div class="filter-section-details">
       <div class="filter-section-details__text">
-        <p class="govuk-body-s govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
-      </div>
-      <div class="filter-section-details__text">
-        <p class="govuk-body-xs govuk-!-margin-bottom-0">( max columns: <span id="maxColumns"></span> )</p>
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown <span class="govuk-body-xs">( max columns: <span id="maxColumns"></span> )</span></p>
       </div>
     </div>
   </div>   
