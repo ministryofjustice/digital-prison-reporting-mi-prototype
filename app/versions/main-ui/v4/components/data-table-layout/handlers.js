@@ -18,7 +18,7 @@ const columnFilterOptions = (req, res, next) => {
           value: column.name,
           text: column.header,
           disabled: column.mandatoryDisplay,
-          attributes: { 'data-mandatory-field': true },
+          attributes: { 'data-mandatory-field': true }
         }
       } else {
         return {
