@@ -2,6 +2,8 @@
 
 {% set detailsClasses = 'filters-accordion govuk-!-margin-0' %}
 
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
 {% set filterHtml %}
 <div class="data-table-filters">
   {{ appFilters(
@@ -33,7 +35,7 @@
 {% endset %}
 
 <div class="filter-section">
-  <div class="filter-section-row">
+  <div class="filter-section-row filter-section-row__filter">
     
     <div class="filter-section-accordion-button">
       {{ govukDetails({
@@ -44,38 +46,16 @@
     </div>
 
     <div class="filter-section-details">
-      {%- for filter in filters %}
-      {% if filter.value %}
-        {% if filter.text === "Date" %}
-
-          {% set startValue = filter.value.start  %}
-          {% set endValue = filter.value.end  %}
-          {% if not endValue %}
-            {% set endValue = 'Now'  %}
-          {% endif %}
-          {% if not startValue %}
-            {% set startValue = 'All past'  %}
-          {% endif %}
-
-          {% if (startValue and endValue) and (startValue !== 'All past' or endValue !== 'Now') %}
-            {% set value = startValue + ' - ' +  endValue %}
-            <div class="filter-section-details__text">
-              <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
-            </div>
-          {% endif %}
-        
-        {% else %}
-          {% set value = filter.value | capitalize %}
-          <div class="filter-section-details__text">
-            <p class="govuk-body govuk-!-margin-bottom-0">{{ filter.text }}: {{ value }},</p>
-          </div>
-        {% endif %}
-      {% endif %}
+      {%- for filter in selectedFilters %}
+        <p class="govuk-body filter-remove-button__text govuk-!-margin-bottom-0" onclick="removeFilter('{{ filter.href }}')">
+          {{ filter.text }}
+          <span class="filter-remove-button-icon"></span>
+        </p>
       {%- endfor %}
     </div>
   </div>  
 
-  <div class="filter-section-row">
+  <div class="filter-section-row filter-section-row__columns">
     <div class="filter-section-accordion-button">
       {{ govukDetails({
         summaryText: "Columns",
@@ -85,10 +65,7 @@
     </div>
     <div class="filter-section-details">
       <div class="filter-section-details__text">
-        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
-      </div>
-      <div class="filter-section-details__text">
-        <p class="govuk-body govuk-!-margin-bottom-0">( max columns: <span id="maxColumns"></span> )</p>
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown <span class="govuk-body-xs">( max columns: <span id="maxColumns"></span> )</span></p>
       </div>
     </div>
   </div>   
@@ -114,7 +91,9 @@
       })
       maxColumnHelpText.classList.add('show')
     } else {
-      inputs.forEach( ( y ) => y.disabled = false )
+      inputs.forEach( ( y ) => { 
+        if( !y.getAttribute("data-mandatory-field") ) y.disabled = false 
+      })
       maxColumnHelpText.classList.remove('show')
     }
   }
@@ -167,6 +146,10 @@
       url += "&";
     }
     url += "columns=reset";
+    window.location.href = url
+  }
+
+  const removeFilter = function(url) {
     window.location.href = url
   }
 
