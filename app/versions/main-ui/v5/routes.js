@@ -24,16 +24,12 @@ const getTodayMinusDays = days => {
   return date.toISOString().substring(0, 10)
 }
 
-const myLists = [{
-  id: 1,
-  text: 'Lists',
-  href: './lists/',
-  description: 'Data presented in tables.'
-}]
+const myLists = []
 
 router.post('/addToMyList/', (req, res) => {
-  const body = JSON.parse(req.body.body)
-  const index = myLists.find((list) => list.id === body.id)
+  const stringifiedJson = req.body.body
+  const body = JSON.parse(stringifiedJson)
+  const index = myLists.find((list) => JSON.stringify(list) === stringifiedJson)
   if (!index) {
     myLists.push(body)
   }
@@ -41,9 +37,10 @@ router.post('/addToMyList/', (req, res) => {
 })
 
 router.post('/removeFromMyList/', (req, res) => {
-  const body = JSON.parse(req.body.body)
-  const index = myLists.find((list) => list.id === body.id)
+  const stringifiedJson = req.body.body
+  const index = myLists.find((list) => JSON.stringify(list) === stringifiedJson)
   myLists.splice(index, 1)
+  res.end()
 })
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {

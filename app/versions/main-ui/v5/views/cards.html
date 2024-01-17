@@ -13,9 +13,13 @@
   {{ appCardGroup(cards) }}
 
   <h2 class="govuk-heading-m">
-    My saved lists
+    My saved lists ({{ myLists.length }})
   </h2>
 
-  {{ appCardGroup(myLists) }}
+  {% if myLists.length %}
+    {{ appCardGroup(myLists) }}
+  {% else %}
+    <p>Your saved lists will appear here. You currently have no saved lists</p>
+  {% endif %}
 
 {% endblock %}
