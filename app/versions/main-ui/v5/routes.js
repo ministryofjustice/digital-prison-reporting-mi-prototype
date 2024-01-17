@@ -8,6 +8,7 @@ const { configureFilterOptions } = require('../v1/components/filters/handlers')
 const { renderVisualisation } = require('../v1/visualisationHandlers')
 const handlers = require('../../../utils/handlers')
 const { getBreadcrumbs } = require('../../../utils/utils')
+const listEndpoints = require('express-list-endpoints')
 
 const version = 'v5'
 
@@ -24,20 +25,22 @@ const getTodayMinusDays = days => {
 }
 
 const myLists = [{
+  id: 1,
   text: 'Lists',
   href: './lists/',
   description: 'Data presented in tables.'
 }]
 
-router.post(`main-ui/${version}/addToMyList/`, (req, res) => {
+router.post('/addToMyList/', (req, res) => {
   const body = JSON.parse(req.body.body)
   const index = myLists.find((list) => list.id === body.id)
   if (!index) {
     myLists.push(body)
   }
+  res.end()
 })
 
-router.post(`main-ui/${version}/removeFromMyList/`, (req, res) => {
+router.post('/removeFromMyList/', (req, res) => {
   const body = JSON.parse(req.body.body)
   const index = myLists.find((list) => list.id === body.id)
   myLists.splice(index, 1)
@@ -148,5 +151,9 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
   configureFilterOptions,
   (req, res) => renderVisualisation(req, res, 'v1')
 ])
+
+router.get('/routes', (req, res) => {
+  res.status(200).send(listEndpoints(router));
+});
 
 module.exports = router

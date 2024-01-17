@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
   <script>
     const data = {{ insightsData | dump | safe }}
+    const base_url = window.location.origin
 
     data.forEach((insightData) => {
       const { id } = insightData
@@ -30,13 +31,13 @@
     })
   
     async function createInsight(insight) {
-      const res = await axios.post('http://localhost:3000/safety-diagnostic-tool/v2/addInsight/', {
+      const res = await axios.post(`${base_url}/safety-diagnostic-tool/v2/addInsight/`, {
         body: JSON.stringify(insight)
       });
     }
 
     async function removeInsight(insight) {
-      const res = await axios.post('http://localhost:3000/safety-diagnostic-tool/v2/removeInsight/', {
+      const res = await axios.post(`${base_url}/safety-diagnostic-tool/v2/removeInsight/`, {
         body: JSON.stringify(insight)
       });
     }
