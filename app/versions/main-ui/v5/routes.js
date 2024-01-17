@@ -23,8 +23,28 @@ const getTodayMinusDays = days => {
   return date.toISOString().substring(0, 10)
 }
 
+const myLists = [{
+  text: 'Lists',
+  href: './lists/',
+  description: 'Data presented in tables.'
+}]
+
+router.post(`main-ui/${version}/addToMyList/`, (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = myLists.find((list) => list.id === body.id)
+  if (!index) {
+    myLists.push(body)
+  }
+})
+
+router.post(`main-ui/${version}/removeFromMyList/`, (req, res) => {
+  const body = JSON.parse(req.body.body)
+  const index = myLists.find((list) => list.id === body.id)
+  myLists.splice(index, 1)
+})
+
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('cards', {
+  res.render(`main-ui/${version}/views/cards`, {
     ...req.renderOptions,
     title: 'Version 5',
     cards: [{
@@ -36,6 +56,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
       href: './visualisations/',
       description: 'Data presented as graphs.'
     }],
+    myLists: myLists,
     breadcrumbs: getBreadcrumbs(['Main UI'])
   })
 }])
