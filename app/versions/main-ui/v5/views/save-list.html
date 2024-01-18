@@ -3,6 +3,7 @@
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 
 {% extends "layout.html" %}
 
@@ -11,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-m">
     {{ title }}
   </h1>
 
@@ -70,26 +71,27 @@
         {{ govukInput({
           label: {
             text: "Title",
-            classes: "govuk-label--m",
+            classes: "govuk-label--s",
             isPageHeading: false
           },
           hint: {
-            text: "Create a useful title for your list."
+            text: "Create a meaningful title for your list."
           },
           id: "list-title",
           name: "listTitle"
         }) }}
 
-        {{ govukTextarea({
+        {{ govukCharacterCount({
           name: "description",
           id: "description",
+          maxlength: 100,
           label: {
             text: "Description",
-            classes: "govuk-label--m",
+            classes: "govuk-label--s",
             isPageHeading: false
           },
           hint: {
-            text: "Write a brief descrition about your list"
+            text: "Write a brief description about your list"
           }
         }) }}
 
@@ -100,52 +102,20 @@
             'onclick': 'saveList()'
           }
         }) }}
-
-
-      {# {{ govukRadios({
-        classes: "govuk-radios--small",
-        name: "changedName",
-        fieldset: {
-          legend: {
-            text: "Date Range",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        hint: {
-          text: "Select your preferred default date range"
-        },
-        items: [
-          {
-            value: "7days",
-            text: "Last 7 Days",
-            checked: true
-          },
-          {
-            value: "1month",
-            text: "Past Month"
-          },
-          {
-            value: "3months",
-            text: "Past 3 Month"
-          },
-          {
-            value: "1year",
-            text: "1 Year"
-          }
-        ]
-      }) }} #}
+      </div>
     </div>
-  </div>
-<div>
-
-
+  <div>
 {% endblock %}
 
 {% block pageScripts %}
   <script lang="js">
     const base_url = window.location.origin
-    const listUrl = new URL(document.referrer)
+    let listUrl = ''
+    try {
+      listUrl = new URL(document.referrer)  
+    } catch(e) {
+      window.location.href = '/main-ui/v5/'
+    }
 
     let title
     let description = '';
@@ -161,7 +131,6 @@
       filters.sort()
       appliedFilters = JSON.stringify(filters)
     }
-    extractFilters()
 
     const showSavedPanel = () => {
       document.getElementById('list-saved-panel').classList.add('list-saved-panel--show')
@@ -171,10 +140,7 @@
     const showExistingPanel = (savedList) => {
       document.getElementById('list-exists-panel').classList.add('list-exists-panel--show')
       document.getElementById('save-list-form').classList.add('save-list-form--hide')
-      console.log(savedList.text)
-      const existingNameEl = document.getElementById('existing-list-name')
-      console.log(existingNameEl)
-      existingNameEl.innerHTML = savedList.text
+      document.getElementById('existing-list-name').innerHTML = savedList.text
     }
 
     const checkIfDuplicate = () => {
@@ -186,7 +152,6 @@
         showExistingPanel(savedList)
       }
     }
-    checkIfDuplicate()
 
     // Extracts the search params in to a readable format
     // to prepopulate the description textarea
@@ -231,6 +196,8 @@
 
 
     const initForm = () => {
+      extractFilters()
+      checkIfDuplicate()
       extractTitle(listUrl);
       extractSearchParamsForDescription(listUrl)
       extractColumns(listUrl)
@@ -238,8 +205,6 @@
       document.getElementById('list-title').value = title
       document.getElementById('description').value = description
     }
-
-    initForm()
 
     const saveList = async () => {
       const saveData = {
@@ -259,6 +224,9 @@
         showSavedPanel()
       }
     }
+
+    initForm()
+
   </script>
 {% endblock %}
 

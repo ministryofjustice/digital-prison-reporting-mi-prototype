@@ -234,7 +234,6 @@ table.govuk-table {
 
   .filters-accordion {
     padding-top: govuk-spacing(3);
-    padding-bottom: govuk-spacing(2);
   }
 }
 
@@ -244,14 +243,13 @@ table.govuk-table {
 
 // Filter accordion
 .filter-section-row {
-  border-bottom: solid 1px govuk-colour("mid-grey");
   position: relative;
 }
 
 .filter-section-details {
   position: absolute;
   top: 5px;
-  left: 160px;
+  left: 120px;
 }
 
 .filter-section-details__text {
@@ -393,5 +391,11 @@ table.govuk-table {
 
 .v5-remove-list-button {
   display: inline-block;
+}
+
+.manage-lists-table {
+  .govuk-table__cell.vertical-center {
+    vertical-align: middle;
+  }
 }
 

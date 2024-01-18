@@ -36,8 +36,8 @@
 
         {% set rows = (
           rows.push([
-            { text: list.text, classes: 'govuk-body-s' },
-            { text: list.description | safe , classes: 'govuk-body-s' },
+            { text: list.text, classes: 'govuk-body-s vertical-center' },
+            { text: list.description | safe , classes: 'govuk-body-s vertical-center' },
             { html: listActionHtml }
           ]), rows) 
         %}

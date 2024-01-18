@@ -6,30 +6,29 @@
 
 {% block content %}
   {% block pageHeader %}
+
     {% if (printable) %}
-      {% set actions = [{
-        text: 'Print displayed results',
-        attributes: {
-          'onclick': 'window.print()'
-        },
-        classes: 'filter-summary-controls'
-      }] %}
+      {% set printAttributes = { 'onclick': 'window.print()' } %}
     {% else %}
-      {% set actions = [{
-        text: 'Print displayed results',
-        attributes: {
-          'disabled': 'true'
-        },
-        classes: 'filter-summary-controls'
-      }] %}
+      {% set printAttributes = { 'disabled': 'true' } %}
     {% endif %}
+
+    {% set actions = [
+      {
+        text: 'Print displayed results',
+        attributes: printAttributes,
+        classes: 'filter-summary-controls'
+      },
+      {
+        text: 'Save List',
+        href: './save',
+        classes: 'filter-summary-controls'
+      }
+    ] %}
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-m">{{ title }}</h1>
-      
-        <a href="./save" >save</a>
-        
       </div>
       <div class="govuk-grid-column-one-third" style="text-align: right">
         {%  set subject = title | urlencode %}
