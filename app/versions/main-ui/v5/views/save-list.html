@@ -1,0 +1,145 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }} - Save
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    {# <div class="govuk-grid-column-one-quarter">
+      <h2 class="govuk-heading-m">Summary<h2>
+      
+    </div> #}
+    <div class="govuk-grid-column-three-quarters">
+      <div class="save-list-form">
+        {{ govukInput({
+          label: {
+            text: "Title",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Create a useful title for your list."
+          },
+          id: "list-title",
+          name: "listTitle"
+        }) }}
+
+        {{ govukTextarea({
+          name: "moreDetail",
+          id: "more-detail",
+          label: {
+            text: "Description",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Write a brief descrition about your list"
+          }
+        }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        name: "changedName",
+        fieldset: {
+          legend: {
+            text: "Date Range",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Select your preferred default date range"
+        },
+        items: [
+          {
+            value: "7days",
+            text: "Last 7 Days",
+            checked: true
+          },
+          {
+            value: "1month",
+            text: "Past Month"
+          },
+          {
+            value: "3months",
+            text: "Past 3 Month"
+          },
+          {
+            value: "1year",
+            text: "1 Year"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+<div>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script lang="js">
+    const listUrl = new URL(document.referrer)
+    let title
+    let description = '';
+    let columns = '';
+
+    const extractSearchParams = (listUrl) => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const filters = Array.from(urlParams.entries())
+      const whitelist = ['date.start', 'date.end', 'columns', 'printable'];
+
+      const sanitizedFilters = filters
+        .map((filter) => { 
+          filter[0] = filter[0].replace('filters.','')
+          return filter
+        })
+        .filter((filter) => { 
+          if ( !whitelist.includes(filter[0]) ) return filter
+        })
+
+      for (const [key, value] of sanitizedFilters) {
+        description += `${key}: ${value}
+`
+      }
+    }
+
+    const extractColumns = (listUrl) => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const filters = Array.from(urlParams.entries())
+      const whitelist = ['columns'];
+
+      columns = filters
+        .filter((filter) => { 
+          if ( whitelist.includes(filter[0]) ) return filter
+        })
+        .map((filter) => filter[1] )
+    }
+
+    const extractTitle = (listUrl) => {
+      const pathnameArr = listUrl.pathname.split('/')
+      title = pathnameArr[pathnameArr.length - 1]
+    }
+
+    const initForm = () => {
+      document.getElementById('list-title').value = title
+      document.getElementById('more-detail').value = description
+    }
+
+    extractTitle(listUrl);
+    extractSearchParams(listUrl)
+    extractColumns(listUrl)
+    initForm()
+  </script>
+{% endblock %}
+

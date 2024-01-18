@@ -29,7 +29,10 @@ const myLists = []
 router.post('/addToMyList/', (req, res) => {
   const stringifiedJson = req.body.body
   const body = JSON.parse(stringifiedJson)
-  const index = myLists.find((list) => JSON.stringify(list) === stringifiedJson)
+  const index = myLists.find((list) => { 
+    return JSON.stringify(list) === stringifiedJson
+  })
+  body.id = myLists.length
   if (!index) {
     myLists.push(body)
   }
@@ -37,8 +40,8 @@ router.post('/addToMyList/', (req, res) => {
 })
 
 router.post('/removeFromMyList/', (req, res) => {
-  const stringifiedJson = req.body.body
-  const index = myLists.find((list) => JSON.stringify(list) === stringifiedJson)
+  const { id } = req.body
+  const index = myLists.find((list) => list.id === id)
   myLists.splice(index, 1)
   res.end()
 })
@@ -58,6 +61,24 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
     }],
     myLists: myLists,
     breadcrumbs: getBreadcrumbs(['Main UI'])
+  })
+}])
+
+router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
+  res.render(`main-ui/${version}/views/save-list`, {
+    ...req.renderOptions,
+    title: 'Save List',
+    myLists: myLists,
+    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
+  })
+}])
+
+router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
+  res.render(`main-ui/${version}/views/manage-lists`, {
+    ...req.renderOptions,
+    title: 'Manage Lists',
+    myLists: myLists,
+    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })
 }])
 

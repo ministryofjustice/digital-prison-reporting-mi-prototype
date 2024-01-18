@@ -13,7 +13,8 @@ $(function async () {
       const data = {
         text,
         href,
-        description
+        description,
+        filters: description
       }
 
       const res = await axios.post(`${base_url}/main-ui/v5/addToMyList/`, {

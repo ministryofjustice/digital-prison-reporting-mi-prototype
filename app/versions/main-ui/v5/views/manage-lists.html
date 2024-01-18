@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "../components/remove-button/views/macro.html" import removeButton %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <div class="govuk-grid-row govuk-!-padding-3">
+    <div class="govuk-grid-column">
+      {% set rows = [] %}
+      {% for list in myLists %}
+        {% set href = list.href %}
+        {% set id = list.id %}
+
+        {% set listActionHtml %}
+
+          {{ removeButton({
+            id: id,
+            text: "Remove"
+          }) }}
+
+          {{ govukButton({
+            id: id + "view",
+            text: "View",
+            href: href,
+            classes: 'govuk-!-margin-bottom-0'
+          }) }}
+
+        {% endset -%}
+
+        {% set rows = (
+          rows.push([
+            { text: list.text, classes: 'govuk-body-s' },
+            { text: list.description | safe , classes: 'govuk-body-s' },
+            { html: listActionHtml }
+          ]), rows) 
+        %}
+      {% endfor %}
+
+      {{ govukTable({
+        captionClasses: "govuk-table__caption--m",
+        classes: "manage-lists-table",
+        firstCellIsHeader: false,
+        head: [ { text: "Name" }, { text: "Description" }, { text: "Actions" } ],
+        rows: rows
+      }) }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script lang="js">
+    const removeList = (href) => {
+      console.log(href)
+    }
+  </script>
+{% endblock %}
+

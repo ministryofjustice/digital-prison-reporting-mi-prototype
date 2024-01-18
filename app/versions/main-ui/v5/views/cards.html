@@ -7,7 +7,7 @@
 
 {% block content %}
   <h1 class="govuk-heading-l">
-    {{ title }} cards
+    {{ title }}
   </h1>
 
   {{ appCardGroup(cards) }}
@@ -17,9 +17,10 @@
   </h2>
 
   {% if myLists.length %}
+    <a href="./lists/manage" class="govuk-link govuk-body-s">Manage Lists</a>
     {{ appCardGroup(myLists) }}
   {% else %}
-    <p>Your saved lists will appear here. You currently have no saved lists</p>
+    <p class="govuk-body">Your saved lists will appear here. You currently have no saved lists</p>
   {% endif %}
 
 {% endblock %}
