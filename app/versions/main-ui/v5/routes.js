@@ -27,15 +27,17 @@ const getTodayMinusDays = days => {
 const myLists = []
 
 router.post('/addToMyList/', (req, res) => {
-  const stringifiedJson = req.body.body
-  const body = JSON.parse(stringifiedJson)
-  const index = myLists.find((list) => { 
-    return JSON.stringify(list) === stringifiedJson
+  const data = JSON.parse(req.body.data)
+
+  const savedList = myLists.find((list) => { 
+    return list.appliedFilters === data.appliedFilters
   })
-  body.id = myLists.length
-  if (!index) {
-    myLists.push(body)
+
+  if (!savedList) {
+    data.id = myLists.length
+    myLists.push(data)
   }
+
   res.end()
 })
 

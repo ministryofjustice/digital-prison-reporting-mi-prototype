@@ -371,6 +371,27 @@ table.govuk-table {
   max-width: 75%;
 }
 
+.save-list-form--hide {
+  display: none;
+}
+
+.list-exists-panel {
+  display: none;
+} 
+
+.list-exists-panel--show {
+  display: block;
+}
+
+.list-saved-panel {
+  display: none;
+} 
+
+.list-saved-panel--show {
+  display: block;
+}
+
 .v5-remove-list-button {
   display: inline-block;
 }
+

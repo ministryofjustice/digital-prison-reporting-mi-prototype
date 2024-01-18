@@ -2,6 +2,7 @@
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 {% extends "layout.html" %}
 
@@ -15,12 +16,57 @@
   </h1>
 
   <div class="govuk-grid-row">
-    {# <div class="govuk-grid-column-one-quarter">
-      <h2 class="govuk-heading-m">Summary<h2>
-      
-    </div> #}
     <div class="govuk-grid-column-three-quarters">
-      <div class="save-list-form">
+
+      <div id="list-exists-panel" class="list-exists-panel">
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+        {% set listExistsHtml %}
+          <h3 class="govuk-notification-banner__heading">
+            A list with this configuration already exists:
+          </h3>
+          <p id="existing-list-name"class='govuk-body-l'></p>
+          <p class="govuk-body">You can manage your saved lists <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+
+          {{ govukButton({
+            text: "‹ Back",
+            classes: 'govuk-!-margin-bottom-0',
+            attributes: {
+              'onclick': 'history.back()'
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: listExistsHtml,
+          titleHtml: "<h2 class='govuk-notification-banner__title'>Note</h2>"
+        }) }}
+      </div> 
+
+      <div id="list-saved-panel" class="list-saved-panel">
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+        {% set listSavedHtml %}
+          <h3 class="govuk-notification-banner__heading">
+            List Saved
+          </h3>
+          <p class="govuk-body">You can manage your saved lists <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+          {{ govukButton({
+            text: "‹ Back",
+            classes: 'govuk-!-margin-bottom-0',
+            attributes: {
+              'onclick': 'history.back()'
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: listSavedHtml,
+          type: "success"
+        }) }}
+      </div> 
+
+      <div id="save-list-form"class="save-list-form">
         {{ govukInput({
           label: {
             text: "Title",
@@ -35,8 +81,8 @@
         }) }}
 
         {{ govukTextarea({
-          name: "moreDetail",
-          id: "more-detail",
+          name: "description",
+          id: "description",
           label: {
             text: "Description",
             classes: "govuk-label--m",
@@ -47,7 +93,16 @@
           }
         }) }}
 
-      {{ govukRadios({
+        {{ govukButton({
+          text: "Save List",
+          classes: 'govuk-!-margin-bottom-0',
+          attributes: {
+            'onclick': 'saveList()'
+          }
+        }) }}
+
+
+      {# {{ govukRadios({
         classes: "govuk-radios--small",
         name: "changedName",
         fieldset: {
@@ -79,7 +134,7 @@
             text: "1 Year"
           }
         ]
-      }) }}
+      }) }} #}
     </div>
   </div>
 <div>
@@ -89,12 +144,53 @@
 
 {% block pageScripts %}
   <script lang="js">
+    const base_url = window.location.origin
     const listUrl = new URL(document.referrer)
+
     let title
     let description = '';
-    let columns = '';
+    let columns = ''; 
+    let appliedFilters = ''  
 
-    const extractSearchParams = (listUrl) => {
+    const extractFilters = () => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const appliedFiltersArr = Array.from(urlParams.entries())
+      const filters = appliedFiltersArr.map((filterArr)=> {
+        return `${filterArr[0]}_${filterArr[1]}`
+      })
+      filters.sort()
+      appliedFilters = JSON.stringify(filters)
+    }
+    extractFilters()
+
+    const showSavedPanel = () => {
+      document.getElementById('list-saved-panel').classList.add('list-saved-panel--show')
+      document.getElementById('save-list-form').classList.add('save-list-form--hide')
+    }
+
+    const showExistingPanel = (savedList) => {
+      document.getElementById('list-exists-panel').classList.add('list-exists-panel--show')
+      document.getElementById('save-list-form').classList.add('save-list-form--hide')
+      console.log(savedList.text)
+      const existingNameEl = document.getElementById('existing-list-name')
+      console.log(existingNameEl)
+      existingNameEl.innerHTML = savedList.text
+    }
+
+    const checkIfDuplicate = () => {
+      const myLists =  {{ myLists | dump | safe }}
+      const savedList = myLists.find((list) => { 
+        return list.appliedFilters === appliedFilters
+      })
+      if ( savedList ) {
+        showExistingPanel(savedList)
+      }
+    }
+    checkIfDuplicate()
+
+    // Extracts the search params in to a readable format
+    // to prepopulate the description textarea
+    const extractSearchParamsForDescription = (listUrl) => {
       const urlParams = new URLSearchParams(listUrl.search);
       const filters = Array.from(urlParams.entries())
       const whitelist = ['date.start', 'date.end', 'columns', 'printable'];
@@ -114,6 +210,7 @@
       }
     }
 
+    // Extracts the selected columns in to a readable format
     const extractColumns = (listUrl) => {
       const urlParams = new URLSearchParams(listUrl.search);
       const filters = Array.from(urlParams.entries())
@@ -126,20 +223,42 @@
         .map((filter) => filter[1] )
     }
 
+    // Extracts the title to be used as default value in the title field
     const extractTitle = (listUrl) => {
       const pathnameArr = listUrl.pathname.split('/')
       title = pathnameArr[pathnameArr.length - 1]
     }
 
+
     const initForm = () => {
+      extractTitle(listUrl);
+      extractSearchParamsForDescription(listUrl)
+      extractColumns(listUrl)
+
       document.getElementById('list-title').value = title
-      document.getElementById('more-detail').value = description
+      document.getElementById('description').value = description
     }
 
-    extractTitle(listUrl);
-    extractSearchParams(listUrl)
-    extractColumns(listUrl)
     initForm()
+
+    const saveList = async () => {
+      const saveData = {
+        text: document.getElementById('list-title').value,
+        description: document.getElementById('description').value,
+        href: listUrl.href,
+        appliedFilters  
+      }
+
+      const res = await axios.post(`${base_url}/main-ui/v5/addToMyList/`, {
+        data: JSON.stringify(saveData)
+      }).catch(function (error) {
+        console.log(error)
+      });
+
+      if ( res.status === 200) {
+        showSavedPanel()
+      }
+    }
   </script>
 {% endblock %}
 
