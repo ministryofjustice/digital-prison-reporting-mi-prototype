@@ -69,7 +69,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
 router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`main-ui/${version}/views/save-list`, {
     ...req.renderOptions,
-    title: 'Save List',
+    title: 'Save view',
     myLists: myLists,
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })
@@ -78,7 +78,7 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
 router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`main-ui/${version}/views/manage-lists`, {
     ...req.renderOptions,
-    title: 'Manage Lists',
+    title: 'Manage my views',
     myLists: myLists,
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })

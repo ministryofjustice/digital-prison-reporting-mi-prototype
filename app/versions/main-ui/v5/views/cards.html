@@ -13,14 +13,22 @@
   {{ appCardGroup(cards) }}
 
   <h2 class="govuk-heading-m">
-    My saved lists ({{ myLists.length }})
+    My saved views ({{ myLists.length }})
   </h2>
 
   {% if myLists.length %}
-    <a href="./lists/manage" class="govuk-link govuk-body-s">Manage Lists</a>
+    <a href="./lists/manage" class="govuk-link govuk-body-s">Manage views</a>
     {{ appCardGroup(myLists) }}
   {% else %}
-    <p class="govuk-body">Your saved lists will appear here. You currently have no saved lists</p>
+    <p class="govuk-body">Customised reports can be saved as views. Your saved views will appear here </p>
+
+    {{ govukDetails({
+      summaryText: "What is saved in a view?",
+      classes: detailsClasses,
+      text: "Any filters you have applied, and columns you have selected will be saved for quick future access"
+    }) }}
+
+    <p><strong>You currently have no saved views</strong></p>
   {% endif %}
 
 {% endblock %}

@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-m">
+  <h1 class="govuk-heading-l">
     {{ title }}
   </h1>
 
@@ -24,10 +24,10 @@
 
         {% set listExistsHtml %}
           <h3 class="govuk-notification-banner__heading">
-            A list with this configuration already exists:
+            A view with this configuration already exists:
           </h3>
           <p id="existing-list-name"class='govuk-body-l'></p>
-          <p class="govuk-body">You can manage your saved lists <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+          <p class="govuk-body">You can manage your saved views <a class='govuk-notification-banner__link' href="./manage">here</a></p>
 
           {{ govukButton({
             text: "‹ Back",
@@ -49,9 +49,9 @@
 
         {% set listSavedHtml %}
           <h3 class="govuk-notification-banner__heading">
-            List Saved
+            View saved!
           </h3>
-          <p class="govuk-body">You can manage your saved lists <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+          <p class="govuk-body">You can manage your saved views <a class='govuk-notification-banner__link' href="./manage">here</a></p>
           {{ govukButton({
             text: "‹ Back",
             classes: 'govuk-!-margin-bottom-0',
@@ -68,6 +68,13 @@
       </div> 
 
       <div id="save-list-form"class="save-list-form">
+        <p class="govuk-body">Save this view to your homepage. </p>
+        {{ govukDetails({
+          summaryText: "What is saved in a view?",
+          classes: detailsClasses,
+          text: "Any filters you have applied, and columns you have selected will be saved in a view to your homepage for quick future access"
+        }) }}
+
         {{ govukInput({
           label: {
             text: "Title",
@@ -75,7 +82,7 @@
             isPageHeading: false
           },
           hint: {
-            text: "Create a meaningful title for your list."
+            text: "Create a meaningful title for your view."
           },
           id: "list-title",
           name: "listTitle"
@@ -91,12 +98,12 @@
             isPageHeading: false
           },
           hint: {
-            text: "Write a brief description about your list"
+            text: "Write a brief description about your view."
           }
         }) }}
 
         {{ govukButton({
-          text: "Save List",
+          text: "Save",
           classes: 'govuk-!-margin-bottom-0',
           attributes: {
             'onclick': 'saveList()'
