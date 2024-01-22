@@ -78,7 +78,7 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
 router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`main-ui/${version}/views/manage-lists`, {
     ...req.renderOptions,
-    title: 'Manage my views',
+    title: 'Manage pins',
     myLists,
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })

@@ -57,9 +57,8 @@
 {% block pageScripts %}
   <script lang="js">
     const myLists = {{ myLists | dump | safe }}
-    console.log('sdfs')
     if(!myLists.length) {
-      window.location.href = '/main-ui/v5/'
+      window.location.href = '/main-ui/v6/'
     }
   </script>
 {% endblock %}
