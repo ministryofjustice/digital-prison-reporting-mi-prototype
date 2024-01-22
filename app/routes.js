@@ -5,6 +5,7 @@ const chartCardDataConfig = require('./chartCardDataConfig')
 const insightCardDataConfig = require('./insightCardDataConfig')
 const mockMetricData = require('./views/safetyDiagnosticTool/mockMetricData')
 const handlers = require('./utils/handlers')
+const listEndpoints = require('express-list-endpoints')
 
 router.get('/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render('cards', {
@@ -155,5 +156,9 @@ router.get('/insights/:insightType', [
     })
   }
 ])
+
+router.get('/routes', (req, res) => {
+  res.status(200).send(listEndpoints(router))
+})
 
 module.exports = router
