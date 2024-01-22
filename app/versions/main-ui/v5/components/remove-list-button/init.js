@@ -14,7 +14,7 @@ $(function async () {
           console.log(error)
         })
 
-      location.reload()
+      window.location.reload()
     })
   })
 })

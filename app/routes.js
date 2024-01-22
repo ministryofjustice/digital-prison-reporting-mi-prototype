@@ -158,7 +158,7 @@ router.get('/insights/:insightType', [
 ])
 
 router.get('/routes', (req, res) => {
-  res.status(200).send(listEndpoints(router));
-});
+  res.status(200).send(listEndpoints(router))
+})
 
 module.exports = router

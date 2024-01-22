@@ -61,7 +61,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
       href: './visualisations/',
       description: 'Data presented as graphs.'
     }],
-    myLists: myLists,
+    myLists,
     breadcrumbs: getBreadcrumbs(['Main UI'])
   })
 }])
@@ -70,7 +70,7 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
   res.render(`main-ui/${version}/views/save-list`, {
     ...req.renderOptions,
     title: 'Save view',
-    myLists: myLists,
+    myLists,
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })
 }])
@@ -79,7 +79,7 @@ router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNav
   res.render(`main-ui/${version}/views/manage-lists`, {
     ...req.renderOptions,
     title: 'Manage my views',
-    myLists: myLists,
+    myLists,
     breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
   })
 }])
@@ -173,7 +173,7 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
 ])
 
 router.get('/routes', (req, res) => {
-  res.status(200).send(listEndpoints(router));
-});
+  res.status(200).send(listEndpoints(router))
+})
 
 module.exports = router

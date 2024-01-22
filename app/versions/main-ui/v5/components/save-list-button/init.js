@@ -18,16 +18,16 @@ $(function async () {
         filters: description
       }
 
-      const res = await axios.post(`${baseUrl}/main-ui/v5/addToMyList/`, {
+      await axios.post(`${baseUrl}/main-ui/v5/addToMyList/`, {
         body: JSON.stringify(data)
       }).catch(function (error) {
         console.log(error)
-      });
+      })
     })
   })
 })
 
-function extractFilters(href) {
+function extractFilters( href ) {
   let description = ''
   const urlParams = new URLSearchParams(window.location.search)
   const filters = Array.from(urlParams.entries())
