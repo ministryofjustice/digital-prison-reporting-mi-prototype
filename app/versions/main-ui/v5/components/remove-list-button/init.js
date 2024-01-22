@@ -8,13 +8,13 @@ $(function async () {
 
       const baseUrl = window.location.origin
       const id = $(element).attr('data-list-id')
-      
+
       await axios.post(`${baseUrl}/main-ui/v5/removeFromMyList/`, { id })
         .catch(function (error) {
           console.log(error)
-        });
-      
-      location.reload();
+        })
+
+      location.reload()
     })
   })
 })

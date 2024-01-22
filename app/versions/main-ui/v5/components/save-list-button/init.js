@@ -29,25 +29,22 @@ $(function async () {
 
 function extractFilters(href) {
   let description = ''
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(window.location.search)
   const filters = Array.from(urlParams.entries())
-  const whitelist = ['direction', 'type'];
+  const whitelist = ['direction', 'type']
 
   const sanitizedFilters = filters
-    .map((filter) => { 
-      filter[0] = filter[0].replace('filters.','')
+    .map((filter) => {
+      filter[0] = filter[0].replace('filters.', '')
       return filter
     })
-    .filter((filter) => { 
-      console.log(filter[0])
-      if ( whitelist.includes(filter[0]) ) return filter
+    .filter((filter) => {
+      if (whitelist.includes(filter[0])) return filter
     })
-
+    
   for (const [key, value] of sanitizedFilters) {
     description += `${key}: ${value} <br>`
   }
-
-  console.log(description)
 
   return description
 }
