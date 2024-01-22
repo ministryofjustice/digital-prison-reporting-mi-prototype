@@ -29,7 +29,7 @@ const myLists = []
 router.post('/addToMyList/', (req, res) => {
   const data = JSON.parse(req.body.data)
 
-  const savedList = myLists.find((list) => { 
+  const savedList = myLists.find((list) => {
     return list.appliedFilters === data.appliedFilters
   })
 

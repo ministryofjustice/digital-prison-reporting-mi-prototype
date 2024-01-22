@@ -27,7 +27,7 @@ $(function async () {
   })
 })
 
-function extractFilters( href ) {
+function extractFilters (href) {
   let description = ''
   const urlParams = new URLSearchParams(window.location.search)
   const filters = Array.from(urlParams.entries())
@@ -41,7 +41,7 @@ function extractFilters( href ) {
     .filter((filter) => {
       if (whitelist.includes(filter[0])) return filter
     })
-    
+
   for (const [key, value] of sanitizedFilters) {
     description += `${key}: ${value} <br>`
   }
