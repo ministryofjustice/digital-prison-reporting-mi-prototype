@@ -1,11 +1,12 @@
 /* global $ */
+/* global axios */
 
 $(function async () {
   $('[data-save-target]').each((index, element) => {
     $(element).on('click', async (event) => {
       event.stopPropagation()
 
-      const base_url = window.location.origin
+      const baseUrl = window.location.origin
       const text = $(element).attr('data-save-title')
       const href = window.location.href
       const description = extractFilters(href)
@@ -17,7 +18,7 @@ $(function async () {
         filters: description
       }
 
-      const res = await axios.post(`${base_url}/main-ui/v5/addToMyList/`, {
+      const res = await axios.post(`${baseUrl}/main-ui/v5/addToMyList/`, {
         body: JSON.stringify(data)
       }).catch(function (error) {
         console.log(error)
