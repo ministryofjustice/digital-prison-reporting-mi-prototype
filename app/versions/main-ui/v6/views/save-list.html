@@ -1,0 +1,238 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ title }} - Save
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <div id="list-exists-panel" class="list-exists-panel">
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+        {% set listExistsHtml %}
+          <h3 class="govuk-notification-banner__heading">
+            A Pin with this configuration already exists:
+          </h3>
+          <p id="existing-list-name"class='govuk-body-l'></p>
+          <p class="govuk-body">You can manage your pins <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+
+          {{ govukButton({
+            text: "‹ Back",
+            classes: 'govuk-!-margin-bottom-0',
+            attributes: {
+              'onclick': 'history.back()'
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: listExistsHtml,
+          titleHtml: "<h2 class='govuk-notification-banner__title'>Note</h2>"
+        }) }}
+      </div> 
+
+      <div id="list-saved-panel" class="list-saved-panel">
+        {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+        {% set listSavedHtml %}
+          <h3 class="govuk-notification-banner__heading">
+            Pinned to homepage
+          </h3>
+          <p class="govuk-body">You can manage your pins <a class='govuk-notification-banner__link' href="./manage">here</a></p>
+          {{ govukButton({
+            text: "‹ Back",
+            classes: 'govuk-!-margin-bottom-0',
+            attributes: {
+              'onclick': 'history.back()'
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: listSavedHtml,
+          type: "success"
+        }) }}
+      </div> 
+
+      <div id="save-list-form"class="save-list-form">
+        {{ govukDetails({
+          summaryText: "What is pinned?",
+          classes: detailsClasses,
+          text: "Any filters you have applied, and columns you have selected in a report are saved and pinned for quick access when you need them"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Title",
+            classes: "govuk-label--s",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Create a meaningful title for your view."
+          },
+          id: "list-title",
+          name: "listTitle"
+        }) }}
+
+        {{ govukCharacterCount({
+          name: "description",
+          id: "description",
+          maxlength: 100,
+          label: {
+            text: "Description",
+            classes: "govuk-label--s",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Write a brief description about your view."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Pin to homepage",
+          classes: 'govuk-!-margin-bottom-0',
+          attributes: {
+            'onclick': 'saveList()'
+          }
+        }) }}
+      </div>
+    </div>
+  <div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script lang="js">
+    const base_url = window.location.origin
+    let listUrl = ''
+    try {
+      listUrl = new URL(document.referrer)  
+    } catch(e) {
+      window.location.href = '/main-ui/v5/'
+    }
+
+    let title
+    let description = '';
+    let columns = ''; 
+    let appliedFilters = ''  
+
+    const extractFilters = () => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const appliedFiltersArr = Array.from(urlParams.entries())
+      const filters = appliedFiltersArr.map((filterArr)=> {
+        return `${filterArr[0]}_${filterArr[1]}`
+      })
+      filters.sort()
+      appliedFilters = JSON.stringify(filters)
+    }
+
+    const showSavedPanel = () => {
+      document.getElementById('list-saved-panel').classList.add('list-saved-panel--show')
+      document.getElementById('save-list-form').classList.add('save-list-form--hide')
+    }
+
+    const showExistingPanel = (savedList) => {
+      document.getElementById('list-exists-panel').classList.add('list-exists-panel--show')
+      document.getElementById('save-list-form').classList.add('save-list-form--hide')
+      document.getElementById('existing-list-name').innerHTML = savedList.text
+    }
+
+    const checkIfDuplicate = () => {
+      const myLists =  {{ myLists | dump | safe }}
+      const savedList = myLists.find((list) => { 
+        return list.appliedFilters === appliedFilters
+      })
+      if ( savedList ) {
+        showExistingPanel(savedList)
+      }
+    }
+
+    // Extracts the search params in to a readable format
+    // to prepopulate the description textarea
+    const extractSearchParamsForDescription = (listUrl) => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const filters = Array.from(urlParams.entries())
+      const whitelist = ['date.start', 'date.end', 'columns', 'printable'];
+
+      const sanitizedFilters = filters
+        .map((filter) => { 
+          filter[0] = filter[0].replace('filters.','')
+          return filter
+        })
+        .filter((filter) => { 
+          if ( !whitelist.includes(filter[0]) ) return filter
+        })
+
+      for (const [key, value] of sanitizedFilters) {
+        description += `${key}: ${value}
+`
+      }
+    }
+
+    // Extracts the selected columns in to a readable format
+    const extractColumns = (listUrl) => {
+      const urlParams = new URLSearchParams(listUrl.search);
+      const filters = Array.from(urlParams.entries())
+      const whitelist = ['columns'];
+
+      columns = filters
+        .filter((filter) => { 
+          if ( whitelist.includes(filter[0]) ) return filter
+        })
+        .map((filter) => filter[1] )
+    }
+
+    // Extracts the title to be used as default value in the title field
+    const extractTitle = (listUrl) => {
+      const pathnameArr = listUrl.pathname.split('/')
+      title = pathnameArr[pathnameArr.length - 1]
+    }
+
+
+    const initForm = () => {
+      extractFilters()
+      checkIfDuplicate()
+      extractTitle(listUrl);
+      extractSearchParamsForDescription(listUrl)
+      extractColumns(listUrl)
+
+      document.getElementById('list-title').value = title
+      document.getElementById('description').value = description
+    }
+
+    const saveList = async () => {
+      const saveData = {
+        text: document.getElementById('list-title').value,
+        description: document.getElementById('description').value,
+        href: listUrl.href,
+        appliedFilters  
+      }
+
+      const res = await axios.post(`${base_url}/main-ui/v6/addToMyList/`, {
+        data: JSON.stringify(saveData)
+      }).catch(function (error) {
+        console.log(error)
+      });
+
+      if ( res.status === 200) {
+        showSavedPanel()
+      }
+    }
+
+    initForm()
+
+  </script>
+{% endblock %}
+
