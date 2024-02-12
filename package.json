@@ -30,7 +30,7 @@
     "cookie-parser": "^1.4.6",
     "cross-spawn": "^7.0.2",
     "del": "^6.1.1",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.4.2",
     "eslint-plugin-cypress": "^2.15.1",
     "express": "^4.18.1",
     "express-list-endpoints": "^6.0.0",
