@@ -58,7 +58,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "cypress": "13.6.2",
+    "cypress": "13.6.5",
     "eslint-plugin-cypress": "^2.15.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
