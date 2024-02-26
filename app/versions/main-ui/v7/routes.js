@@ -49,7 +49,7 @@ router.post('/removeFromMyList/', (req, res) => {
 })
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/v6/views/cards`, {
+  res.render('main-ui/v6/views/cards', {
     ...req.renderOptions,
     title: 'Version 7',
     cards: [{
@@ -67,7 +67,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
 }])
 
 router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/v6/views/save-list`, {
+  res.render('main-ui/v6/views/save-list', {
     ...req.renderOptions,
     title: 'Pin to homepage',
     myLists,
@@ -76,7 +76,7 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
 }])
 
 router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/v6/views/manage-lists`, {
+  res.render('main-ui/v6/views/manage-lists', {
     ...req.renderOptions,
     title: 'Manage pins',
     myLists,
