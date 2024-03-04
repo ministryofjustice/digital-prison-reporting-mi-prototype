@@ -5,6 +5,8 @@ const v2Routes = require('./v2/routes')
 const v3Routes = require('./v3/routes')
 const v4Routes = require('./v4/routes')
 const v5Routes = require('./v5/routes')
+const v6Routes = require('./v6/routes')
+const v7Routes = require('./v7/routes')
 const handlers = require('../../utils/handlers')
 
 const addMainUiRoutes = (app) => {
@@ -17,6 +19,8 @@ const addMainUiRoutes = (app) => {
         versions: {
           path: '/main-ui',
           items: [
+            { versionNumber: '7', status: 'In Review', changeLogPath: 'main-ui/v7/views/changelog.html' },
+            { versionNumber: '6', status: 'In Review', changeLogPath: 'main-ui/v6/views/changelog.html' },
             { versionNumber: '5', status: 'In Review', changeLogPath: 'main-ui/v5/views/changelog.html' },
             { versionNumber: '4', status: 'In Review', changeLogPath: 'main-ui/v4/views/changelog.html' },
             { versionNumber: '3', status: 'In review', changeLogPath: 'main-ui/v3/views/changelog.html' },
@@ -34,6 +38,8 @@ const addMainUiRoutes = (app) => {
   app.use('/main-ui/v3', v3Routes)
   app.use('/main-ui/v4', v4Routes)
   app.use('/main-ui/v5', v5Routes)
+  app.use('/main-ui/v6', v6Routes)
+  app.use('/main-ui/v7', v7Routes)
 }
 
 module.exports = addMainUiRoutes
