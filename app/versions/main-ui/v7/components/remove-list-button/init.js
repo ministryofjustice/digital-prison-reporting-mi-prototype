@@ -1,7 +1,7 @@
 /* global $ */
 /* global axios */
 
-$(function async() {
+$(function async () {
   $('[data-remove-target]').each((index, element) => {
     $(element).on('click', async (event) => {
       event.stopPropagation()
