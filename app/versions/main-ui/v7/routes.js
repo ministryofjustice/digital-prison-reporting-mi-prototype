@@ -62,25 +62,66 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
       description: 'Data presented as graphs.'
     }],
     myLists,
-    breadcrumbs: getBreadcrumbs(['Main UI'])
+    breadcrumbs: [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    }]
   })
 }])
 
 router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v6/views/save-list', {
+  res.render('main-ui/v7/views/save-list', {
     ...req.renderOptions,
     title: 'Pin to homepage',
     myLists,
-    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
+    breadcrumbs: [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    },
+    {
+      text: version.toUpperCase() + ' Home',
+      href: '/main-ui/v7/'
+    }]
   })
 }])
 
 router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v6/views/manage-lists', {
+  res.render('main-ui/v7/views/manage-lists', {
     ...req.renderOptions,
-    title: 'Manage pins',
+    title: 'Manage pinss',
     myLists,
-    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
+    breadcrumbs: [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    },
+    {
+      text: version.toUpperCase() + ' Home',
+      href: '/main-ui/v7/'
+    }]
   })
 }])
 
@@ -101,7 +142,22 @@ router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigatio
       href: './external-movements?filters.date.start=' + getTodayMinusDays(1) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=out&filters.type=transfer&printable=false',
       description: 'A list of yesterday\'s transfers out. Not printable.'
     }],
-    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase()])
+    breadcrumbs: [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    },
+    {
+      text: version.toUpperCase() + ' Home',
+      href: '/main-ui/v7/'
+    }]
   })
 }])
 
@@ -116,7 +172,26 @@ router.get('/lists/external-movements', [
       countData: reportingService.countExternalMovements,
       version
     }
-    req.renderOptions.breadcrumbs = getBreadcrumbs(['Main UI', version.toUpperCase(), 'Lists'])
+    req.renderOptions.breadcrumbs = [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    },
+    {
+      text: version.toUpperCase() + ' Home',
+      href: '/main-ui/v7/'
+    },
+    {
+      text: 'External Movements',
+      href: '/main-ui/v7/lists'
+    }]
     next()
   },
   ...filterTableLayoutHandlers
@@ -143,7 +218,22 @@ router.get('/visualisations/', [handlers.configureCurrentUrl, handlers.configure
         description: 'External movements by Reason.'
       }
     ],
-    breadcrumbs: getBreadcrumbs(['Main UI', version.toUpperCase()])
+    breadcrumbs: [{
+      text: 'Home',
+      href: '/'
+    },
+    {
+      text: 'Main UI',
+      href: '/main-ui'
+    },
+    {
+      text: "Digital Prison Services",
+      href: 'https://dps.prison.service.justice.gov.uk/'
+    },
+    {
+      text: version.toUpperCase(),
+      href: '/main-ui/v7/'
+    }]
   })
 }])
 
