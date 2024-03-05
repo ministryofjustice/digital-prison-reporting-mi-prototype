@@ -19,7 +19,7 @@ const addMainUiRoutes = (app) => {
         versions: {
           path: '/main-ui',
           items: [
-            { versionNumber: '7', status: 'In Review', changeLogPath: 'main-ui/v7/views/changelog.html', },
+            { versionNumber: '7', status: 'In Review', changeLogPath: 'main-ui/v7/views/changelog.html' },
             { versionNumber: '6', status: 'In Review', changeLogPath: 'main-ui/v6/views/changelog.html' },
             { versionNumber: '5', status: 'In Review', changeLogPath: 'main-ui/v5/views/changelog.html' },
             { versionNumber: '4', status: 'In Review', changeLogPath: 'main-ui/v4/views/changelog.html' },
@@ -28,7 +28,7 @@ const addMainUiRoutes = (app) => {
             { versionNumber: '1', status: 'Done', changeLogPath: 'main-ui/v1/views/changelog.html' }
           ]
         },
-        breadcrumbs: [{ text: "Home", href: "/" }]
+        breadcrumbs: [{ text: 'Home', href: '/' }]
       })
     }])
 

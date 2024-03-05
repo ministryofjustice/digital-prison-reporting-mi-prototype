@@ -71,7 +71,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     }]
   })
@@ -91,7 +91,7 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     },
     {
@@ -115,7 +115,7 @@ router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNav
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     },
     {
@@ -151,7 +151,7 @@ router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigatio
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     },
     {
@@ -181,7 +181,7 @@ router.get('/lists/external-movements', [
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     },
     {
@@ -227,7 +227,7 @@ router.get('/visualisations/', [handlers.configureCurrentUrl, handlers.configure
       href: '/main-ui'
     },
     {
-      text: "Digital Prison Services",
+      text: 'Digital Prison Services',
       href: 'https://dps.prison.service.justice.gov.uk/'
     },
     {
