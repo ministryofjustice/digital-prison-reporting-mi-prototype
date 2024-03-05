@@ -86,7 +86,7 @@
     ].concat(navigationOptions) | setCurrentToActive(currentUrl)
   }) }}
   {% block subHeader %}
-    {% set breadcrumbs = [].concat(breadcrumbs) %}
+    {% set breadcrumbs = [{ text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' }].concat(breadcrumbs) %}
     <div class="govuk-width-container ">
       {{ govukBreadcrumbs({ items: breadcrumbs }) }}
     </div>
