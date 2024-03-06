@@ -28,7 +28,7 @@ const addMainUiRoutes = (app) => {
             { versionNumber: '1', status: 'Done', changeLogPath: 'main-ui/v1/views/changelog.html' }
           ]
         },
-        breadcrumbs: []
+        breadcrumbs: [{ text: 'Home', href: '/' }]
       })
     }])
 
