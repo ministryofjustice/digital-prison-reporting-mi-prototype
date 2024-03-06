@@ -167,10 +167,6 @@ router.get('/lists/external-movements', [
     {
       text: version.toUpperCase() + ' Home',
       href: '/main-ui/v7/'
-    },
-    {
-      text: 'External Movements',
-      href: '/main-ui/v7/lists/'
     }]
     next()
   },
