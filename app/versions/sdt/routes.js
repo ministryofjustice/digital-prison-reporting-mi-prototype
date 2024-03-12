@@ -18,7 +18,7 @@ const addSdtRoutes = (app) => {
             { versionNumber: '1', status: 'Done', changeLogPath: 'sdt/v1/changelog.html' }
           ]
         },
-        breadcrumbs: [{ text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' }, { text: 'Home', href: '/' }],
+        breadcrumbs: [{ text: 'Home', href: '/' }],
         navigationOptions: req.renderOptions.navigationOptions
       })
     }])
