@@ -14,7 +14,7 @@ const addSdtRoutes = (app) => {
         versions: {
           path: '/safety-diagnostic-tool',
           items: [
-            { versionNumber: '2', status: 'Done', changeLogPath: 'sdt/v2/changelog.html' },
+            { versionNumber: '2', status: 'Done', changeLogPath: 'sdt/v2/views/changelog.html' },
             { versionNumber: '1', status: 'Done', changeLogPath: 'sdt/v1/changelog.html' }
           ]
         },
