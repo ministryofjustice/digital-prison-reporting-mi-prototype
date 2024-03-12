@@ -16,7 +16,8 @@ const addChartsRoutes = (app) => {
             { versionNumber: '1', status: 'Done', changeLogPath: 'charts/v1/views/changelog.html' },
           ]
         },
-        breadcrumbs: [{ text: 'Home', href: '/' }]
+        breadcrumbs: [{ text: 'Home', href: '/' }],
+        navigationOptions: req.renderOptions.navigationOptions
       })
     }])
 

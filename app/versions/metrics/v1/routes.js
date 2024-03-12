@@ -11,6 +11,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
 
 router.get('/type/:metricType', [
   handlers.configureCurrentUrl,
+  handlers.configureNavigation,
   function (req, res, next) {
     const metricType = req.params.metricType
     req.renderOptions = {
@@ -21,7 +22,8 @@ router.get('/type/:metricType', [
   },
   function (req, res) {
     res.render(`metrics/${version}/views/metrics`, {
-      ...req.renderOptions
+      ...req.renderOptions,
+      navigationOptions: req.renderOptions.navigationOptions
     })
   }
 ])
