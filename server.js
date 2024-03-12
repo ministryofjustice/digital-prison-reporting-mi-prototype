@@ -26,6 +26,7 @@ const packageJson = require('./package.json')
 const routes = require('./app/routes.js')
 const addMainUiRoutes = require('./app/versions/main-ui/routes.js')
 const addSdtRoutes = require('./app/versions/sdt/routes.js')
+const addChartsRoutes = require('./app/versions/charts/routes.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -219,6 +220,7 @@ if (promoMode === 'true') {
 app.use('/', routes)
 addMainUiRoutes(app)
 addSdtRoutes(app)
+addChartsRoutes(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals

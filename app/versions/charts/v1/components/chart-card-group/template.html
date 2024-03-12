@@ -1,0 +1,7 @@
+{% from "../chart-card/macro.html" import chartCard as chartDataCard %}
+
+  <div class="chart-card-container">
+    {% for chartData in chartGroupData %}
+      {{ chartDataCard(chartData, loop.index) }}
+    {% endfor %}
+  </div>

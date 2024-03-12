@@ -22,10 +22,10 @@ const addMainUiRoutes = (app) => {
           items: [
             { versionNumber: '8', status: 'In Review', changeLogPath: 'main-ui/v8/views/changelog.html' },
             { versionNumber: '7', status: 'In Review', changeLogPath: 'main-ui/v7/views/changelog.html' },
-            { versionNumber: '6', status: 'In Review', changeLogPath: 'main-ui/v6/views/changelog.html' },
-            { versionNumber: '5', status: 'In Review', changeLogPath: 'main-ui/v5/views/changelog.html' },
-            { versionNumber: '4', status: 'In Review', changeLogPath: 'main-ui/v4/views/changelog.html' },
-            { versionNumber: '3', status: 'In review', changeLogPath: 'main-ui/v3/views/changelog.html' },
+            { versionNumber: '6', status: 'Done', changeLogPath: 'main-ui/v6/views/changelog.html' },
+            { versionNumber: '5', status: 'Done', changeLogPath: 'main-ui/v5/views/changelog.html' },
+            { versionNumber: '4', status: 'Done', changeLogPath: 'main-ui/v4/views/changelog.html' },
+            { versionNumber: '3', status: 'Done', changeLogPath: 'main-ui/v3/views/changelog.html' },
             { versionNumber: '2', status: 'Done', changeLogPath: 'main-ui/v2/views/changelog.html' },
             { versionNumber: '1', status: 'Done', changeLogPath: 'main-ui/v1/views/changelog.html' }
           ]

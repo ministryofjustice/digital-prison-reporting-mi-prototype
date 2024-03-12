@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const handlers = require('../../../utils/handlers')
-const mockMetricData = require('./../../../mockMetricData')
+const mockMetricData = require('./../../../data/mockMetricData')
 
 const version = 'v2'
 

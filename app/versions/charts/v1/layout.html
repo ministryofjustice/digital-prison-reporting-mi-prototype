@@ -5,7 +5,7 @@
 {% for type in chartTypes %}
   {% set chartTypeData = (chartTypeData.push({
     text: type,
-    href: '/charts/' + type,
+    href: '/charts/v1/type/' + type,
     description: 'Example of a ' + type + ' chart'
   }), chartTypeData) %}
 {% endfor %}
