@@ -13,7 +13,7 @@ const addChartsRoutes = (app) => {
         versions: {
           path: '/charts',
           items: [
-            { versionNumber: '1', status: 'Done', changeLogPath: 'charts/v1/changelog.html' },
+            { versionNumber: '1', status: 'Done', changeLogPath: 'charts/v1/views/changelog.html' },
           ]
         },
         breadcrumbs: [{ text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' }, { text: 'Home', href: '/' }]
