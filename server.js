@@ -27,6 +27,7 @@ const routes = require('./app/routes.js')
 const addMainUiRoutes = require('./app/versions/main-ui/routes.js')
 const addSdtRoutes = require('./app/versions/sdt/routes.js')
 const addChartsRoutes = require('./app/versions/charts/routes.js')
+const addMetricsRoutes = require('./app/versions/metrics/routes.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -221,6 +222,7 @@ app.use('/', routes)
 addMainUiRoutes(app)
 addSdtRoutes(app)
 addChartsRoutes(app)
+addMetricsRoutes(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals

@@ -24,9 +24,9 @@ module.exports = {
           description: 'Chart prototypes.'
         },
         {
-          text: 'Insights',
-          href: '/insights/',
-          description: 'Insights prototypes.'
+          text: 'Metrics',
+          href: '/metrics/',
+          description: 'Metrics prototypes.'
         },
         {
           text: 'Safety Diagnostic Tool',

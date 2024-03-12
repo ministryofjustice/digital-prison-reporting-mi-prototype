@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% from "./../components/metrics-card-group/macro.html"    import metricsCardGroup %}
+
+{% set metricTypes = [ 'impact' ] %}
+{% set metricTypeData = [] %}
+{% for type in metricTypes %}
+  {% set metricTypeData = (metricTypeData.push({
+    text: type,
+    href: '/metrics/v1/type/' + type,
+    description: 'Example of a ' + type + ' insight'
+  }), metricTypeData) %}
+{% endfor %}
+
+{% set metricTypeItems = [
+  {
+    heading: {
+      text: 'Metric types'
+    },
+    items: metricTypeData | setCurrentToActive(currentUrl)
+    }
+] %}
+
+{% block pageTitle %}
+  Digital Prison Reporting MI Prototype - Insights
+{% endblock %}
+
+{% block subHeader %}
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: [
+        { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+        { text: "Home", href: "/" },
+        { text: "Metrics", href: "/metrics/" }
+      ]
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+{% endblock %}

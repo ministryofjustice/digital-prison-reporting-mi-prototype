@@ -1,4 +1,4 @@
-{% extends "./../layout.html" %}
+{% extends "./layout.html" %}
 
 {% block subHeader %}
 <div class="govuk-width-container ">
@@ -6,8 +6,8 @@
     items: [
       { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
       { text: "Home", href: "/" },
-      { text: "Charts", href: "/Charts/" },
-      { text: "V1 Home", href: "/Charts/v1" }
+      { text: "Metrics", href: "/metrics/" },
+      { text: "V1 Home", href: "/metrics/v1" }
     ]
   }) }}
 </div>
@@ -15,8 +15,8 @@
 
 {% block reportBody %}
   <h2 class="govuk-heading-m">
-    {{ chartType | capitalize }} Chart
+    {{ metricType | capitalize }} Metric
   </h2>
-
-  {{ chartCardGroup(chartData) }}
+  
+  {{ metricsCardGroup(metricsData) }}
 {% endblock %}
