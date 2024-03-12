@@ -1,4 +1,4 @@
-const dataTableUtils = require('./versions/main-ui/v1/components/data-table/utils')
+const dataTableUtils = require('./../versions/main-ui/v1/components/data-table/utils')
 
 const movementDirectionOptions = [
   {

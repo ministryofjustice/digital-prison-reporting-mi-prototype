@@ -1,12 +1,13 @@
-{% extends "./charts-layout.html" %}
+{% extends "./../layout.html" %}
 
 {% block subHeader %}
 <div class="govuk-width-container ">
   {{ govukBreadcrumbs({
     items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
       { text: "Home", href: "/" },
       { text: "Charts", href: "/Charts/" },
-      { text: chartType | capitalize, href: "#" }
+      { text: "V1 Home", href: "/Charts/v1" }
     ]
   }) }}
 </div>

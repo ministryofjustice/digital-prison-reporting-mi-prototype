@@ -14,11 +14,12 @@ const addSdtRoutes = (app) => {
         versions: {
           path: '/safety-diagnostic-tool',
           items: [
-            { versionNumber: '2', status: 'Done', changeLogPath: 'sdt/v2/changelog.html' },
+            { versionNumber: '2', status: 'Done', changeLogPath: 'sdt/v2/views/changelog.html' },
             { versionNumber: '1', status: 'Done', changeLogPath: 'sdt/v1/changelog.html' }
           ]
         },
-        breadcrumbs: [{ text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' }, { text: 'Home', href: '/' }]
+        breadcrumbs: [{ text: 'Home', href: '/' }],
+        navigationOptions: req.renderOptions.navigationOptions
       })
     }])
 

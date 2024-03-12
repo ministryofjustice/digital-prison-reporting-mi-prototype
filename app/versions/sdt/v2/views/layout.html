@@ -1,6 +1,9 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% from "./../components/insight-card-group/macro.html"    import insightCardGroup %}
+{% from "./../../../charts/v1/components/chart-card-group/macro.html"    import chartCardGroup %}
+
 {% extends "layout.html" %}
 
 {% block pageTitle %}
@@ -12,8 +15,7 @@ Digital Prison Reporting MI Prototype - Safety Diagnostic Tool
   {{ govukBreadcrumbs({
     items: [
       { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
-      { text: "Home", href: "/" },
-      { text: "Safety Diagnostic Tool", href: "/safety-diagnostic-tool/" }
+      { text: "Home", href: "/" }
     ]
   }) }}
 </div>
