@@ -13,7 +13,7 @@ const addMetricsRoutes = (app) => {
         versions: {
           path: '/metrics',
           items: [
-            { versionNumber: '1', status: 'Done', changeLogPath: 'metrics/v1/views/changelog.html' },
+            { versionNumber: '1', status: 'Done', changeLogPath: 'metrics/v1/views/changelog.html' }
           ]
         },
         breadcrumbs: [{ text: 'Home', href: '/' }],
