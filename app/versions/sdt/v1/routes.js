@@ -5,7 +5,7 @@ const handlers = require('../../../utils/handlers')
 const version = 'v1'
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`safetyDiagnosticTool/versions/${version}/home`, req.renderOptions)
+  res.render(`sdt/${version}/home`, req.renderOptions)
 }])
 
 module.exports = router
