@@ -1,3 +1,5 @@
+/* global $ */
+
 $(function () {
   $('[data-card]').each((index, element) => {
     $(element).on('click', (event) => {
@@ -28,7 +30,7 @@ $(function () {
         $(loadingPanel).removeClass('show')
 
         window.location.href = url
-      }, 2000);
+      }, 5000);
     })
   })
 })
