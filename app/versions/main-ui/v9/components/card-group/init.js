@@ -30,7 +30,7 @@ $(function () {
         $(loadingPanel).removeClass('show')
 
         window.location.href = url
-      }, 5000)
+      }, 3000)
     })
   })
 })
