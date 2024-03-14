@@ -24,7 +24,6 @@ const getTodayMinusDays = days => {
   return date.toISOString().substring(0, 10)
 }
 
-
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render('main-ui/v9/views/cards', {
     ...req.renderOptions,
