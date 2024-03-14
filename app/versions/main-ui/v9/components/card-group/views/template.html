@@ -1,0 +1,19 @@
+<ul class="govuk-grid-row card-group">
+  {% for card in cards %}
+  <li class="govuk-grid-column-one-quarter card-group__item">
+    <div class="card card--clickable" data-card="true" data-href="{{ card.href }}">
+      {{ dprLoadingAnim() }}
+      <div class="card-content-wrapper">
+        <h2 class="govuk-heading-m card__heading">
+          <a class="govuk-link card__link govuk-link--no-visited-state" href="{{ card.href }}">
+            {{ card.text }}
+          </a>
+        </h2>
+        <p class="govuk-body card__description">
+          {{ card.description | safe }}
+        </p>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

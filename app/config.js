@@ -35,7 +35,8 @@ module.exports = {
     { path: '/app/jquery.min.js', location: '/node_modules/jquery/dist/jquery.min.js' },
     { path: '/app/data-table-layout.js', location: '/app/versions/main-ui/v1/components/data-table-layout/init.js' },
     { path: '/app/v3-dropdown.js', location: '/app/versions/main-ui/v3/components/dropdown-button/init.js' },
-    { path: '/app/v6-remove-button.js', location: '/app/versions/main-ui/v6/components/remove-list-button/init.js' }
+    { path: '/app/v6-remove-button.js', location: '/app/versions/main-ui/v6/components/remove-list-button/init.js' },
+    { path: '/app/v9-card-loading.js', location: '/app/versions/main-ui/v9/components/card-group/init.js' }
   ],
 
   stylesheets: []

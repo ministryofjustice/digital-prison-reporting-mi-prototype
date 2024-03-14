@@ -10,7 +10,7 @@ const handlers = require('../../../utils/handlers')
 const { getBreadcrumbs } = require('../../../utils/utils')
 const listEndpoints = require('express-list-endpoints')
 
-const version = 'v8'
+const version = 'v9'
 
 const getFieldByName = (name, format) => {
   const field = format.find(f => f.name === name)
@@ -24,34 +24,11 @@ const getTodayMinusDays = days => {
   return date.toISOString().substring(0, 10)
 }
 
-const myLists = []
-
-router.post('/addToMyList/', (req, res) => {
-  const data = JSON.parse(req.body.data)
-
-  const savedList = myLists.find((list) => {
-    return list.appliedFilters === data.appliedFilters
-  })
-
-  if (!savedList) {
-    data.id = myLists.length
-    myLists.push(data)
-  }
-
-  res.end()
-})
-
-router.post('/removeFromMyList/', (req, res) => {
-  const { id } = req.body
-  const index = myLists.find((list) => list.id === id)
-  myLists.splice(index, 1)
-  res.end()
-})
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v8/views/cards', {
+  res.render('main-ui/v9/views/cards', {
     ...req.renderOptions,
-    title: 'Version 8',
+    title: 'Version 9',
     cards: [{
       text: 'Lists',
       href: './lists/',
@@ -74,7 +51,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
 }])
 
 router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v8/views/save-list', {
+  res.render('main-ui/9/views/save-list', {
     ...req.renderOptions,
     title: 'Pin to homepage',
     myLists,
@@ -88,13 +65,13 @@ router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavig
     },
     {
       text: version.toUpperCase() + ' Home',
-      href: '/main-ui/v8/'
+      href: '/main-ui/v7/'
     }]
   })
 }])
 
 router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v8/views/manage-lists', {
+  res.render('main-ui/v9/views/manage-lists', {
     ...req.renderOptions,
     title: 'Manage pins',
     myLists,
@@ -108,13 +85,13 @@ router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNav
     },
     {
       text: version.toUpperCase() + ' Home',
-      href: '/main-ui/v8/'
+      href: '/main-ui/v9/'
     }]
   })
 }])
 
 router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v8/views/cards', {
+  res.render('main-ui/v9/views/cards', {
     ...req.renderOptions,
     title: 'External movements',
     cards: [{
@@ -140,7 +117,7 @@ router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigatio
     },
     {
       text: version.toUpperCase() + ' Home',
-      href: '/main-ui/v8/'
+      href: '/main-ui/v9/'
     }]
   })
 }])
@@ -166,7 +143,7 @@ router.get('/lists/external-movements', [
     },
     {
       text: version.toUpperCase() + ' Home',
-      href: '/main-ui/v8/'
+      href: '/main-ui/v9/'
     }]
     next()
   },
@@ -174,7 +151,7 @@ router.get('/lists/external-movements', [
 ])
 
 router.get('/visualisations/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v8/cards', {
+  res.render('main-ui/v9/cards', {
     ...req.renderOptions,
     title: 'External movements by',
     cards: [
@@ -204,7 +181,7 @@ router.get('/visualisations/', [handlers.configureCurrentUrl, handlers.configure
     },
     {
       text: version.toUpperCase() + ' Home',
-      href: '/main-ui/v8/'
+      href: '/main-ui/v9/'
     }]
   })
 }])
@@ -236,6 +213,30 @@ router.get('/visualisations/external-movements-by-:groupField-:chartType', [
 
 router.get('/routes', (req, res) => {
   res.status(200).send(listEndpoints(router))
+})
+
+const myLists = []
+
+router.post('/addToMyList/', (req, res) => {
+  const data = JSON.parse(req.body.data)
+
+  const savedList = myLists.find((list) => {
+    return list.appliedFilters === data.appliedFilters
+  })
+
+  if (!savedList) {
+    data.id = myLists.length
+    myLists.push(data)
+  }
+
+  res.end()
+})
+
+router.post('/removeFromMyList/', (req, res) => {
+  const { id } = req.body
+  const index = myLists.find((list) => list.id === id)
+  myLists.splice(index, 1)
+  res.end()
 })
 
 module.exports = router
