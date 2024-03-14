@@ -20,6 +20,13 @@
   border-bottom-width: 5px
 }
 
+.card--disabled {
+  pointer-events: none;
+  .card-content-wrapper {
+    opacity: 0.3;
+  }
+}
+
 .card--clickable:hover,.card--clickable:active {
   cursor: pointer
 }
