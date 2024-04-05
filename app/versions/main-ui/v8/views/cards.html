@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+{% from "../components/card-group/macro.html"    import appCardGroupLoading %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+  {{ appCardGroupLoading(cards) }}
+  
+  {% if title !== 'External movements' %}
+    <h2 class="govuk-heading-m">
+      My pins ({{ myLists.length }})
+    </h2>
+
+    {% if myLists.length %}
+      <a href="./lists/manage" class="govuk-link govuk-body-s">Manage views</a>
+      {{ appCardGroup(myLists) }}
+    {% else %}
+      <p class="govuk-body">Customised reports can be pinned to your homepage. Your saved views will appear here </p>
+
+      {{ govukDetails({
+        summaryText: "What is pinned?",
+        classes: detailsClasses,
+        text: "Any filters you have applied, and columns you have selected in a report are saved and pinned for quick access when you need them"
+      }) }}
+
+      <p><strong>You currently have no pins</strong></p>
+    {% endif %}
+  {% endif %}
+
+{% endblock %}

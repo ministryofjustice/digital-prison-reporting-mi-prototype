@@ -31,6 +31,7 @@ $moj-images-path: '/moj/assets/images/';
 @import "components/_chart-card";
 @import "components/_insight-card";
 @import "components/_dropdown-button";
+@import "components/_loading-anim";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
@@ -421,4 +422,8 @@ table.govuk-table {
 
 .data-table-page-size {
   float: right;
+}
+
+.report-wrapper {
+  position: relative;
 }

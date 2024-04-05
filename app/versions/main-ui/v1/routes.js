@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const reportingService = require('../../../services/reportingService')
-const dataFormats = require('../../../reportDataFormats')
+const dataFormats = require('../../../data/reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
 const { configureFilterOptions } = require('./components/filters/handlers')
 const { renderVisualisation } = require('./visualisationHandlers')

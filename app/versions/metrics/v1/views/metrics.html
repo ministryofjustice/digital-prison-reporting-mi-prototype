@@ -1,0 +1,22 @@
+{% extends "./layout.html" %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+      { text: "Home", href: "/" },
+      { text: "Metrics", href: "/metrics/" },
+      { text: "V1 Home", href: "/metrics/v1" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block reportBody %}
+  <h2 class="govuk-heading-m">
+    {{ metricType | capitalize }} Metric
+  </h2>
+  
+  {{ metricsCardGroup(metricsData) }}
+{% endblock %}

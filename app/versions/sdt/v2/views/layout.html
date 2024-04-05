@@ -1,0 +1,47 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% from "./../components/insight-card-group/macro.html"    import insightCardGroup %}
+{% from "./../../../charts/v1/components/chart-card-group/macro.html"    import chartCardGroup %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Digital Prison Reporting MI Prototype - Safety Diagnostic Tool
+{% endblock %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+      { text: "Home", href: "/" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <div class='sdt-container'>
+
+      {% include "./includes/navigation.html" %}
+      
+      <div class='sdt-main'>
+        {% if category %}
+          <span class="govuk-caption-m">Safety Diagnostic Tool</span>
+          <h2 class="govuk-heading-m">{{ category | capitalize  | replace("-", " ")}}</h2>
+        {% else %}
+          <h2 class="govuk-heading-l">Safety Diagnostic Tool</h2>
+        {% endif %}
+
+        {% include "./includes/filters.html" %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-top-0">
+
+        {% block contentBody %}{% endblock %}
+      </div>
+    <div>
+  </div>
+{% endblock %}
+

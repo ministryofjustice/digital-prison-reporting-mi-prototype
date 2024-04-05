@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% set chartTypes = [ 'bar', 'line', 'doughnut', 'pie', 'heatmap'] %}
+{% set chartTypeData = [] %}
+{% for type in chartTypes %}
+  {% set chartTypeData = (chartTypeData.push({
+    text: type,
+    href: '/charts/v1/type/' + type,
+    description: 'Example of a ' + type + ' chart'
+  }), chartTypeData) %}
+{% endfor %}
+
+{% set chartTypeItems = [
+  {
+    heading: {
+      text: 'Chart types'
+    },
+    items: chartTypeData | setCurrentToActive(currentUrl)
+    }
+] %}
+
+{% block pageTitle %}
+  Digital Prison Reporting MI Prototype - Charts
+{% endblock %}
+
+{% from "./components/chart-card-group/macro.html"      import chartCardGroup %}
+
+{% block subHeader %}
+  <div class="govuk-width-container ">
+    {{ govukBreadcrumbs({
+      items: [
+        { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+        { text: "Home", href: "/" },
+        { text: "charts", href: "/charts/" }
+      ]
+    }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+{% endblock %}
