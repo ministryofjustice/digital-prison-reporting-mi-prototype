@@ -32,6 +32,11 @@ module.exports = {
           text: 'Safety Diagnostic Tool',
           href: '/safety-diagnostic-tool/',
           description: 'Safety Diagnostic Tool\'s prototypes.'
+        },
+        {
+          text: 'Operational Reporting',
+          href: '/operational-reporting/',
+          description: 'Operational Reporting prototypes'
         }
       ]
     }

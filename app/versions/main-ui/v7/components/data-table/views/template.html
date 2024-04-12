@@ -15,6 +15,9 @@
 
 <div>
   <div class="govuk-grid-column">
+    {% set currentRangeStart = (selectedPage - 1) * pageSize %}
+    {% set currentRangeEnd = currentRangeStart + rows.length %}
+    {{ currentRangeStart + 1}}-{{ currentRangeEnd }} of {{ totalRowCount }}
     {{ govukTable({
       caption: caption,
       classes: 'dpr-data-table',
