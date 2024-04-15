@@ -1,0 +1,52 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% macro appSearchBox(tags, authors) %}
+
+<div class="search-box-section">
+  {{ govukInput({
+    id: 'v2-search-box',
+    name: 'search',
+    autocomplete: "off",
+    suffix: {
+      html: "&#x1F50D;"
+    }
+  }) }}
+  <div class="search-box-prompt">
+    <ul>
+      <li data-type="search-header" class="hidden">
+        {{ govukButton({
+          text: "Search for",
+          classes: "govuk-button--inverse"
+        }) }}
+      </li>
+
+      <li data-type="tag-header" class="hidden govuk-heading-s">
+        Tags:
+      </li>
+      {% for tag in tags %}
+      <li data-type="tag" data-content="{{ tag }}" class="hidden">
+        {{ govukButton({
+          html: "&rightarrow;&nbsp;" + tag,
+          classes: "govuk-button--inverse"
+        }) }}
+      </li>
+      {% endfor %}
+
+      <li data-type="author-header" class="hidden govuk-heading-s">
+        Authors:
+      </li>
+      {% for author in authors %}
+      <li data-type="author" data-content="{{ author }}" class="hidden">
+        {{ govukButton({
+          html: "&rightarrow;&nbsp;" + author,
+          classes: "govuk-button--inverse"
+        }) }}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endmacro %}

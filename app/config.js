@@ -36,7 +36,8 @@ module.exports = {
     { path: '/app/data-table-layout.js', location: '/app/versions/main-ui/v1/components/data-table-layout/init.js' },
     { path: '/app/v3-dropdown.js', location: '/app/versions/main-ui/v3/components/dropdown-button/init.js' },
     { path: '/app/v6-remove-button.js', location: '/app/versions/main-ui/v6/components/remove-list-button/init.js' },
-    { path: '/app/v9-card-loading.js', location: '/app/versions/main-ui/v9/components/card-group/init.js' }
+    { path: '/app/v9-card-loading.js', location: '/app/versions/main-ui/v9/components/card-group/init.js' },
+    { path: '/app/v2-search-box.js', location: '/app/versions/operational-reporting/v2/components/search-box/init.js' }
   ],
 
   stylesheets: []

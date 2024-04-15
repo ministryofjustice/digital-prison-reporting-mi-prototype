@@ -1,7 +1,76 @@
+{% from "./components/search-box/views/macro.html" import appSearchBox %}
+
 {% extends "./layout.html" %}
 
 {% block reportBody %}
 
 <h3 class="govuk-heading-m">Version 2</h3>
+
+<form method="get">
+  {{ appSearchBox(
+    tags,
+    authors
+  ) }}
+
+  <div class="search-results-section">
+    {% if searchValue %}
+      {% set hiddenSearchValue %}
+        <input type="hidden" name="prevSearch" value="{{ searchValue }}" />
+      {% endset %}
+
+      {{ govukTag({
+        html: "Report name: " + searchValue + " " + hiddenSearchValue,
+        attributes: {
+          "data-type": "list-filter"
+        }
+      }) }}
+    {% endif %}
+
+    {% for tag in selectedTags %}
+      {% set hiddenTagValue %}
+        <input type="hidden" name="tags" value="{{ tag }}" />
+      {% endset %}
+
+      {{ govukTag({
+        html: "Tag: " + tag + " " + hiddenTagValue,
+        attributes: {
+          "data-type": "list-filter"
+        }
+      }) }}
+    {% endfor %}
+
+    {% for author in selectedAuthors %}
+      {% set hiddenAuthorValue %}
+        <input type="hidden" name="authors" value="{{ author }}" />
+      {% endset %}
+
+      {{ govukTag({
+        html: "Author: " + author + " " + hiddenAuthorValue,
+        attributes: {
+          "data-type": "list-filter"
+        }
+      }) }}
+    {% endfor %}
+  </div>
+</form>
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  captionClasses: "govuk-table__caption--m",
+  head: [
+    {
+      text: "Report"
+    },
+    {
+      text: "Tags"
+    }
+  ],
+  rows: definitionRows
+}) }}
+
+<script type="text/javascript">
+  document.definitions = {{ definitions | json }}
+</script>
 
 {% endblock %}

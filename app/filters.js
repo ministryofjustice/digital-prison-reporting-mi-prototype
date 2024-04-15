@@ -1,5 +1,6 @@
 const dataTableFilters = require('./versions/main-ui/v1/components/data-table/filters')
 const filtersFilters = require('./versions/main-ui/v1/components/filters/filters')
+const { runtime } = require('nunjucks')
 
 module.exports = function () {
   /**
@@ -26,6 +27,14 @@ module.exports = function () {
         return n
       }
     })
+  }
+
+  filters.json = function (value, spaces) {
+    if (value instanceof runtime.SafeString) {
+      value = value.toString()
+    }
+    const jsonString = JSON.stringify(value, null, spaces).replace(/</g, '\\u003c')
+    return runtime.markSafe(jsonString)
   }
 
   return filters
