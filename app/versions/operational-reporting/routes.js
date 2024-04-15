@@ -25,10 +25,7 @@ const addOperationalReportingRoutes = (app) => {
 
   app.use('/operational-reporting', router)
   app.use('/operational-reporting/v1', v1Routes)
-<<<<<<< HEAD
-=======
   app.use('/operational-reporting/v2', v2Routes)
->>>>>>> main
 }
 
 module.exports = addOperationalReportingRoutes
