@@ -1,0 +1,113 @@
+{% from "../../../../../components/card-group/macro.html"    import appCardGroup %}
+{% from "../bookmark-toggle/macro.html" import bookmarkToggle %}
+{% from "govuk/components/table/macro.njk"       import govukTable %}
+
+<div class="my-bookmarks">
+  <h1 class="govuk-heading-s">My Bookmarks</h1>
+
+  {% set cards = [
+    { 
+      id: '1',
+      text: 'External Movements - All',
+      href: '#',
+      description: 'A record of all prisoner external movements.'
+    },
+    { 
+      id: '2',
+      text: 'External Movements - Admissions last week',
+      href: '#',
+      description: 'A list of admissions in the past week. Classified as OFFICIAL.'
+    },
+    { 
+      id: '3',
+      text: 'External Movements - Yesterdays transfers out',
+      href: '#',
+      description: 'A list of yesterdays transfers out'
+    },
+    { 
+      id: '4',
+      text: 'External Movements - Last Month',
+      href: '#',
+      description: 'All movements in the past month'
+    },
+    { 
+      id: '5',
+      text: 'External Movements - Last Week',
+      href: '#',
+      description: 'All movements in the past week'
+    },
+    { 
+      id: '6',
+      text: 'Bookmark 6',
+      href: '#',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+    },
+    { 
+      id: '7',
+      text: 'Bookmark 7',
+      href: '#',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+    },
+    { 
+      id: '8',
+      text: 'Bookmark 8',
+      href: '#',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+    }]
+  %}
+
+  <div>
+    <p class="govuk-!-margin-top-4">You have <span id='Bookmark-count'>0</span> reports bookmarked.</p>
+  </div>
+
+  <div class="view-controls">
+    <div id="toggle-card-view" class="view-cards active">
+      <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">Card view</p></span>
+    </div>
+    <div id="toggle-list-view" class="view-list">
+      <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">List view</p></span>
+    </div>
+  </div>
+
+  <div id="bookmark-card-view">
+    <ul class="govuk-grid-row card-group">
+      {% for card in cards %}
+        <li class="govuk-grid-column-one-quarter card-group__item card-group__item--bookmark" style="display: none" data-id='{{ card.id }}'>
+          <div class="card card--clickable" onclick="window.location.href = '{{ card.href }}'">
+            <div class="remove-bookmark" data-id='{{ card.id }}'>
+              <span class="tooltiptext"><p class="govuk-body-xs govuk-!-margin-bottom-0">Remove Bookmark</p></span>
+            </div>
+            <h2 class="govuk-heading-m card__heading">
+              <a class="govuk-link card__link govuk-link--no-visited-state" href="{{ card.href }}">
+                {{ card.text }}
+              </a>
+            </h2>
+            <p class="govuk-body card__description">
+              {{ card.description | safe }}
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div id="my-bookmarks-table" style="display:none">
+    {{ govukTable({
+      caption: caption,
+      captionClasses: "govuk-table__caption--m",
+      head: [
+        { text: "Name" },
+        { text: "Description" },
+        { text: "Bookmark" }
+      ],
+      rows: [
+        [{text: "External Movements - All"}, {text: "A record of all prisoner external movements."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='1'></div>" }],
+        [{text: "External Movements - Admissions last week"}, {text: "A list of admissions in the past week. Classified as OFFICIAL."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='2'></div>" }],
+        [{text: "External Movements - Yesterday's transfers out"}, {text: "A list of yesterday's transfers out. Not printable."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='3'></div>" }],
+        [{text: "External Movements - Last Month"}, {text: "All movements in the past month"}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='4'></div>" }],
+        [{text: "External Movements - Last Week"}, {text: "All movements in the past week"}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='5'></div>" }]
+      ]
+    }) }}
+  </div>
+
+</div>
