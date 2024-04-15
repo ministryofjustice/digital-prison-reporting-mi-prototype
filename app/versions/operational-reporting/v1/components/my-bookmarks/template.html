@@ -5,59 +5,27 @@
 <div class="my-bookmarks">
   <h1 class="govuk-heading-s">My Bookmarks</h1>
 
-  {% set cards = [
-    { 
-      id: '1',
-      text: 'External Movements - All',
+  {% set cards = [] %}
+  {% for row in data %}
+    {% set cards = (cards.push({
+      id: loop.index - 1,
+      text: row[0].text,
       href: '#',
-      description: 'A record of all prisoner external movements.'
-    },
-    { 
-      id: '2',
-      text: 'External Movements - Admissions last week',
-      href: '#',
-      description: 'A list of admissions in the past week. Classified as OFFICIAL.'
-    },
-    { 
-      id: '3',
-      text: 'External Movements - Yesterdays transfers out',
-      href: '#',
-      description: 'A list of yesterdays transfers out'
-    },
-    { 
-      id: '4',
-      text: 'External Movements - Last Month',
-      href: '#',
-      description: 'All movements in the past month'
-    },
-    { 
-      id: '5',
-      text: 'External Movements - Last Week',
-      href: '#',
-      description: 'All movements in the past week'
-    },
-    { 
-      id: '6',
-      text: 'Bookmark 6',
-      href: '#',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-    },
-    { 
-      id: '7',
-      text: 'Bookmark 7',
-      href: '#',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-    },
-    { 
-      id: '8',
-      text: 'Bookmark 8',
-      href: '#',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-    }]
-  %}
+      description: 'Description'
+    }), cards) %}
+  {% endfor %}
+
+  {% set listRows = [] %}
+  {% for row in data %}
+    {% set id = loop.index - 1 %}
+    {% set listRows = (listRows.push([
+      { text: row[0].text }, 
+      { html:"<div class='remove-bookmark remove-bookmark--table' data-id='" + id + "'></div>" }
+    ]), listRows) %}
+  {% endfor %}
 
   <div>
-    <p class="govuk-!-margin-top-4">You have <span id='Bookmark-count'>0</span> reports bookmarked.</p>
+    <p class="govuk-!-margin-top-4">You have <span id='Bookmark-count' data-total-rows={{ data.length }}>0</span> reports bookmarked.</p>
   </div>
 
   <div class="view-controls">
@@ -82,9 +50,6 @@
                 {{ card.text }}
               </a>
             </h2>
-            <p class="govuk-body card__description">
-              {{ card.description | safe }}
-            </p>
           </div>
         </li>
       {% endfor %}
@@ -97,16 +62,9 @@
       captionClasses: "govuk-table__caption--m",
       head: [
         { text: "Name" },
-        { text: "Description" },
         { text: "Bookmark" }
       ],
-      rows: [
-        [{text: "External Movements - All"}, {text: "A record of all prisoner external movements."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='1'></div>" }],
-        [{text: "External Movements - Admissions last week"}, {text: "A list of admissions in the past week. Classified as OFFICIAL."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='2'></div>" }],
-        [{text: "External Movements - Yesterday's transfers out"}, {text: "A list of yesterday's transfers out. Not printable."}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='3'></div>" }],
-        [{text: "External Movements - Last Month"}, {text: "All movements in the past month"}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='4'></div>" }],
-        [{text: "External Movements - Last Week"}, {text: "All movements in the past week"}, { html:"<div class='remove-bookmark remove-bookmark--table' data-id='5'></div>" }]
-      ]
+      rows: listRows
     }) }}
   </div>
 
