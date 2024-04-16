@@ -1,0 +1,232 @@
+.my-bookmarks {
+  position: relative;
+  background-color: govuk-colour("light-grey");
+  padding-top: govuk-spacing(6);
+  padding-left: govuk-spacing(6);
+  padding-right: govuk-spacing(6);
+  padding-bottom: govuk-spacing(3);
+  margin-bottom: govuk-spacing(6);
+}
+
+.bookmark {
+
+  [type="checkbox"]:not(:checked),
+  [type="checkbox"]:checked {
+    display: none;
+  }
+
+  [type="checkbox"]:not(:checked)+label,
+  [type="checkbox"]:checked+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+  }
+
+  [type="checkbox"]:not(:checked)+label:before,
+  [type="checkbox"]:checked+label:before {
+    font-family: 'Material Icons';
+    content: 'bookmark_border';
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1;
+    font-style: normal;
+    text-transform: none;
+    line-height: 26px;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    color: govuk-colour("blue");
+  }
+
+  [type="checkbox"]:not(:checked)+label:after,
+  [type="checkbox"]:checked+label:after {
+    font-family: 'Material Icons';
+    content: 'bookmark';
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1;
+    font-style: normal;
+    text-transform: none;
+    line-height: 26px;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: govuk-colour("blue");
+  }
+
+  [type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+#manage-bookmarks {
+  display: none;
+}
+
+.remove-bookmark:after {
+    z-index: 10;
+    font-family: 'Material Icons';
+    content: 'bookmark';
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1;
+    font-style: normal;
+    text-transform: none;
+    line-height: 41px;
+    font-size: 21px;
+    text-align: center;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: inline-block;
+    color: govuk-colour("blue");
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.remove-bookmark--table:after {
+  position: relative;
+    height: 26px;
+    line-height: 25px;
+    font-size: 30px;
+}
+
+.remove-bookmark:hover {
+  .tooltiptext {
+    opacity: 1;
+    visibility: visible;
+  }
+  &:after {
+    color: lighten(govuk-colour("blue"), 10%);
+    background-color: govuk-colour("light-grey");
+  }
+}
+
+
+#op-reports-table {
+  table {
+    width: 100%;
+    td:nth-of-type(3) {
+      text-align: center;
+    } 
+    th:nth-of-type(3) {
+      text-align: center;
+    }
+  }
+}
+
+#my-bookmarks-table {
+  table {
+    width: 100%;
+    margin-bottom: govuk-spacing(6);
+    th:nth-of-type(3) {
+        text-align: center;
+      }
+    .govuk-table__body {
+      tr.govuk-table__row {
+        display: none;
+      }
+      td:nth-of-type(3) {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.view-controls {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.view-list {
+  width: 35px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    .tooltiptext {
+      opacity: 1;
+      visibility: visible;
+    }
+    &:after {
+      color: govuk-colour("light-blue");
+    }
+  }
+  &:after {
+    font-family: 'Material Icons';
+    content: 'list';
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1;
+    font-style: normal;
+    text-transform: none;
+    font-size: 30px;
+    color: govuk-colour("mid-grey");
+  }
+}
+
+.view-list.active:after {
+  color: govuk-colour("blue");
+}
+
+.view-cards {
+  width: 35px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    .tooltiptext {
+      opacity: 1;
+      visibility: visible;
+    }
+    &:after {
+      color: govuk-colour("light-blue");
+    }
+  }
+  &:after {
+    width: 45px;
+    font-family: 'Material Icons';
+    content: 'view_agenda';
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga" 1;
+    font-style: normal;
+    text-transform: none;
+    font-size: 30px;
+    color: govuk-colour("mid-grey");
+  }
+}
+
+.view-cards.active:after {
+  color: govuk-colour("blue");
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: white;
+  text-align: center;
+  padding: govuk-spacing(1);
+  border: 1px solid govuk-colour("mid-grey");
+
+  /* Position the tooltip */
+  position: absolute;
+  top: 45px;
+  right: -20px;
+  z-index: 10000;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+  transition-delay: 250ms;
+}
+
+.tooltiptext--view-type {
+  top: 35px;
+}

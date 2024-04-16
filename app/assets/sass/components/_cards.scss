@@ -72,6 +72,11 @@
   margin-bottom: 0
 }
 
+.card-group__item--bookmark {
+  display: none;
+  position: relative;
+}
+
 @media(max-width: 48.0525em) {
   .card-group__item {
     flex:0 0 100%

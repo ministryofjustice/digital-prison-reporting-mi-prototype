@@ -1,0 +1,71 @@
+{% from "../../../../../components/card-group/macro.html"    import appCardGroup %}
+{% from "../bookmark-toggle/macro.html" import bookmarkToggle %}
+{% from "govuk/components/table/macro.njk"       import govukTable %}
+
+<div class="my-bookmarks">
+  <h1 class="govuk-heading-s">My Bookmarks</h1>
+
+  {% set cards = [] %}
+  {% for row in data %}
+    {% set cards = (cards.push({
+      id: loop.index - 1,
+      text: row[0].text,
+      href: '#',
+      description: 'Description'
+    }), cards) %}
+  {% endfor %}
+
+  {% set listRows = [] %}
+  {% for row in data %}
+    {% set id = loop.index - 1 %}
+    {% set listRows = (listRows.push([
+      { text: row[0].text }, 
+      { html:"<div class='remove-bookmark remove-bookmark--table' data-id='" + id + "'></div>" }
+    ]), listRows) %}
+  {% endfor %}
+
+  <div>
+    <p class="govuk-!-margin-top-4">You have <span id='Bookmark-count' data-total-rows={{ data.length }}>0</span> reports bookmarked.</p>
+  </div>
+
+  <div class="view-controls">
+    <div id="toggle-card-view" class="view-cards active">
+      <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">Card view</p></span>
+    </div>
+    <div id="toggle-list-view" class="view-list">
+      <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">List view</p></span>
+    </div>
+  </div>
+
+  <div id="bookmark-card-view">
+    <ul class="govuk-grid-row card-group">
+      {% for card in cards %}
+        <li class="govuk-grid-column-one-quarter card-group__item card-group__item--bookmark" style="display: none" data-id='{{ card.id }}'>
+          <div class="card card--clickable" onclick="window.location.href = '{{ card.href }}'">
+            <div class="remove-bookmark" data-id='{{ card.id }}'>
+              <span class="tooltiptext"><p class="govuk-body-xs govuk-!-margin-bottom-0">Remove Bookmark</p></span>
+            </div>
+            <h2 class="govuk-heading-m card__heading">
+              <a class="govuk-link card__link govuk-link--no-visited-state" href="{{ card.href }}">
+                {{ card.text }}
+              </a>
+            </h2>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div id="my-bookmarks-table" style="display:none">
+    {{ govukTable({
+      caption: caption,
+      captionClasses: "govuk-table__caption--m",
+      head: [
+        { text: "Name" },
+        { text: "Bookmark" }
+      ],
+      rows: listRows
+    }) }}
+  </div>
+
+</div>

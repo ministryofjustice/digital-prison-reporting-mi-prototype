@@ -4,4 +4,22 @@
 
 <h3 class="govuk-heading-m">Version 1</h3>
 
+{{ myBookmarks(definitionRows) }}
+
+
+<h3 class="govuk-heading-m">Operational Reports</h3>
+
+<div id="op-reports-table">
+  {{ govukTable({
+    caption: caption,
+    captionClasses: "govuk-table__caption--m",
+    head: [
+      { text: "Name" },
+      { text: "Description" },
+      { text: "Bookmark" }
+    ],
+    rows: definitionRows
+  }) }}
+</div>
+
 {% endblock %}
