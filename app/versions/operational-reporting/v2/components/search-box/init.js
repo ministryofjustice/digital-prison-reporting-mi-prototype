@@ -37,6 +37,7 @@ document.querySelector('#v2-search-box').addEventListener('keyup', e => {
 
     updateSectionVisibility('tag', searchValue)
     updateSectionVisibility('author', searchValue)
+    updateSectionVisibility('keyword', searchValue)
 
     const matchingReports = document.definitions.filter(d => d.name.toLowerCase().includes(searchValue)).length
 
@@ -65,3 +66,4 @@ document.querySelector('[data-type="search-header"]').addEventListener('click', 
 
 appendContentToUrlOnClick('tag')
 appendContentToUrlOnClick('author')
+appendContentToUrlOnClick('keyword')
