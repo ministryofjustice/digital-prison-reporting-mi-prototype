@@ -3,13 +3,13 @@ const router = express.Router()
 const v1Routes = require('./v1/routes')
 const handlers = require('../../utils/handlers')
 
-const addOperationalReportingRoutes = (app) => {
+const addMisRoutes = (app) => {
   router.get('/', [
     handlers.configureCurrentUrl,
     handlers.configureNavigation,
     function (req, res) {
       res.render('versions', {
-        title: 'MIS',
+        title: 'Management Information System',
         versions: {
           path: '/mis',
           items: [

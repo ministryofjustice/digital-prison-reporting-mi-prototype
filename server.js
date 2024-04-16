@@ -29,6 +29,7 @@ const addSdtRoutes = require('./app/versions/sdt/routes.js')
 const addOperationalReportingRoutes = require('./app/versions/operational-reporting/routes.js')
 const addChartsRoutes = require('./app/versions/charts/routes.js')
 const addMetricsRoutes = require('./app/versions/metrics/routes.js')
+const addMisRoutes = require('./app/versions/mis/routes.js')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -225,6 +226,7 @@ addSdtRoutes(app)
 addChartsRoutes(app)
 addMetricsRoutes(app)
 addOperationalReportingRoutes(app)
+addMisRoutes(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals
