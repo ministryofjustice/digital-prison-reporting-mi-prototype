@@ -19,5 +19,5 @@ $(function () {
       const hidden = $('li.card-group__item--bookmark[style*="display: none"]')
       $('#Bookmark-count').html(totalRows - hidden.length)
     })
-  });
+  })
 })
