@@ -6,11 +6,11 @@ $(function () {
     const id = removeBookmarkButton.attr('data-id')
     const totalRows = $('#Bookmark-count').attr('data-total-rows')
     removeBookmarkButton.click((event) => {
-      event.stopPropagation();
+      event.stopPropagation()
       let row = +id
-      $('#' + id).prop('checked', false);
-      $('.card-group__item[data-id=' + id + ']').css('display', 'none');
-      $('#my-bookmarks-table .govuk-table__body tr:eq(' + row + ')').css('display', 'none');
+      $('#' + id).prop('checked', false)
+      $('.card-group__item[data-id=' + id + ']').css('display', 'none')
+      $('#my-bookmarks-table .govuk-table__body tr:eq(' + row + ')').css('display', 'none')
 
       const hidden = $('li.card-group__item--bookmark[style*="display: none"]')
 
