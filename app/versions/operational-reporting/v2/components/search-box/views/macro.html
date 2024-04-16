@@ -2,7 +2,7 @@
 {%- from "govuk/components/tag/macro.njk" import govukTag -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
-{% macro appSearchBox(tags, authors) %}
+{% macro appSearchBox(tags, authors, keywords) %}
 
 <div class="search-box-section">
   {{ govukInput({
@@ -41,6 +41,18 @@
       <li data-type="author" data-content="{{ author }}" class="hidden">
         {{ govukButton({
           html: "&rightarrow;&nbsp;" + author,
+          classes: "govuk-button--inverse"
+        }) }}
+      </li>
+      {% endfor %}
+
+      <li data-type="keyword-header" class="hidden govuk-heading-s">
+        Keywords:
+      </li>
+      {% for keyword in keywords %}
+      <li data-type="keyword" data-content="{{ keyword.value }}" class="hidden">
+        {{ govukButton({
+          html: "&rightarrow;&nbsp;" + keyword.type + ": " + keyword.value,
           classes: "govuk-button--inverse"
         }) }}
       </li>
