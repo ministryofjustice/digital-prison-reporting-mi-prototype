@@ -456,7 +456,7 @@ table.govuk-table {
       padding: 0;
       position: absolute;
       top: 100%;
-      width: 100%;
+      width: 440px;
       z-index: 10000;
     }
 
@@ -464,7 +464,6 @@ table.govuk-table {
       border: #b1b4b6 1px solid;
       border-top: 0;
       text-align: left;
-      width: calc(100% - 2px);
 
       button, a {
         box-shadow: none;
