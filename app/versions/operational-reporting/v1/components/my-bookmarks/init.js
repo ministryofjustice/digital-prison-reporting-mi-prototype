@@ -7,7 +7,7 @@ $(function () {
     const totalRows = $('#Bookmark-count').attr('data-total-rows')
     removeBookmarkButton.click((event) => {
       event.stopPropagation()
-      let row = +id
+      const row = +id
       $('#' + id).prop('checked', false)
       $('.card-group__item[data-id=' + id + ']').css('display', 'none')
       $('#my-bookmarks-table .govuk-table__body tr:eq(' + row + ')').css('display', 'none')
@@ -16,7 +16,7 @@ $(function () {
 
       $('#Bookmark-count').html(totalRows - hidden.length)
     })
-  });
+  })
 
   $('#toggle-list-view').click(() => {
     $('#bookmark-card-view').css('display', 'none')

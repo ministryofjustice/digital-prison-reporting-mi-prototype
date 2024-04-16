@@ -15,7 +15,7 @@ const bookmarkToggle = (id) => {
 const filteredDefinitionRows = definitions.map((d, index) => ([
   { text: d.name },
   { html: d.tags.map(t => '<strong class="govuk-tag">' + t + '</strong>').join('&nbsp;') },
-  { html: bookmarkToggle(index) },
+  { html: bookmarkToggle(index) }
 ]))
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
@@ -23,7 +23,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
     {
       ...req.renderOptions,
       definitions,
-      definitionRows: filteredDefinitionRows,
+      definitionRows: filteredDefinitionRows
     })
 }])
 
