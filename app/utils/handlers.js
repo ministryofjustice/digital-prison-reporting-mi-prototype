@@ -29,14 +29,19 @@ module.exports = {
           description: 'Metrics prototypes.'
         },
         {
-          text: 'Safety Diagnostic Tool',
+          text: 'SDT',
           href: '/safety-diagnostic-tool/',
           description: 'Safety Diagnostic Tool\'s prototypes.'
         },
         {
-          text: 'Operational Reporting',
+          text: 'OR',
           href: '/operational-reporting/',
           description: 'Operational Reporting prototypes'
+        },
+        {
+          text: 'MIS',
+          href: '/mis/',
+          description: 'Management Information System'
         }
       ]
     }

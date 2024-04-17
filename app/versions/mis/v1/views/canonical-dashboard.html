@@ -1,0 +1,29 @@
+{% extends "./layout.html" %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+      { text: "Home", href: "/" },
+      { text: "MIS", href: "/mis/" },
+      { text: "Metrics Dashboard", href: "/mis/v1/" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block dashboardBody %}
+
+  <span class="govuk-caption-m">Visualisation Dashboard</span>
+  <h3 class="govuk-heading-l">{{ data.name }}</h3>
+
+  <pre id="json" data-dashboard='{{ data | dump | safe }}'></pre>
+  <script>
+    const data = document.getElementById("json").dataset.dashboard
+    const json = JSON.parse(data)
+    document.getElementById("json").textContent = JSON.stringify(json, null, 2);
+  </script>  
+
+{% endblock %}
+

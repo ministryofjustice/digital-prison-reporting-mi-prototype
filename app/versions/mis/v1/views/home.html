@@ -1,0 +1,25 @@
+{% extends "./layout.html" %}
+
+{% block dashboardBody %}
+
+<span class="govuk-caption-m">Version 1</span>
+<h3 class="govuk-heading-m">Management Information System</h3>
+
+<h3 class="govuk-heading-l">Curated Dashboard</h3>
+
+<div class="govuk-grid-row"> 
+  <div class="govuk-grid-column-full insight-card-container">
+    {% for metric in data %}
+        <div class="metric-card inight-card-group__item">
+          {{ removeBookmark(metric) }}
+          <p class="govuk-heading-m govuk-!-margin-bottom-1">{{ metric.name}}</p>
+          <p class="govuk-caption-m govuk-!-margin-bottom-1">{{ metric.category.displayName }}</p>
+          <p class="govuk-heading-l govuk-!-padding-top-1 govuk-!-margin-bottom-3">{{ metric.value}}</p>
+          <a href="metric/{{metric.id}}/dashboard">view insights for metric</a>
+        </div>
+    {% endfor %}
+    {% if data.length === 0 %}<p class="govuk-body">Your bookmarked metrics will show here. You currently have 0 bookmarks</p>{% endif %}
+  </div>
+</div>
+
+{% endblock %}
