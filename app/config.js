@@ -40,7 +40,9 @@ module.exports = {
     { path: '/app/bookmark-toggle-v1', location: '/app/versions/operational-reporting/v1/components/bookmark-toggle/init.js' },
     { path: '/app/my-bookmark-v1', location: '/app/versions/operational-reporting/v1/components/my-bookmarks/init.js' },
     { path: '/app/v2-search-box.js', location: '/app/versions/operational-reporting/v2/components/search-box/init.js' },
-    { path: '/app/mis-bookmarking.js', location: '/app/versions/mis/v1/components/bookmarkToggle/init.js' }
+    { path: '/app/mis-bookmarking.js', location: '/app/versions/mis/v1/components/bookmarkToggle/init.js' },
+    { path: '/app/v2-search-box.js', location: '/app/versions/operational-reporting/v2/components/search-box/init.js' },
+    { path: '/app/v3-search-box.js', location: '/app/versions/operational-reporting/v3/components/search-box/init.js' }
   ],
 
   stylesheets: []

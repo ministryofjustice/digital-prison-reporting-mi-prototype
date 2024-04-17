@@ -1,0 +1,33 @@
+{% from "./components/search-box/views/macro.html" import appSearchBox %}
+
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+
+<h3 class="govuk-heading-m">Version 3</h3>
+
+{{ appSearchBox(
+  tags,
+  authors,
+  keywords
+) }}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  captionClasses: "govuk-table__caption--m",
+  head: [
+    {
+      text: "Report"
+    },
+    {
+      text: "Match(es)"
+    }
+  ]
+}) }}
+
+<script type="text/javascript">
+  document.definitions = {{ definitions | json }}
+</script>
+
+{% endblock %}

@@ -29,28 +29,32 @@ const appendContentToUrlOnClick = section => {
   })
 }
 
-document.querySelector('#v2-search-box').addEventListener('keyup', e => {
-  const searchHeader = document.querySelector('[data-type="search-header"]')
+const searchBox = document.querySelector('#v2-search-box')
 
-  if (e.target.value) {
-    const searchValue = e.target.value.toLowerCase()
+if (searchBox) {
+  searchBox.addEventListener('keyup', e => {
+    const searchHeader = document.querySelector('[data-type="search-header"]')
 
-    updateSectionVisibility('tag', searchValue)
-    updateSectionVisibility('author', searchValue)
-    updateSectionVisibility('keyword', searchValue)
+    if (e.target.value) {
+      const searchValue = e.target.value.toLowerCase()
 
-    const matchingReports = document.definitions.filter(d => d.name.toLowerCase().includes(searchValue)).length
+      updateSectionVisibility('tag', searchValue)
+      updateSectionVisibility('author', searchValue)
+      updateSectionVisibility('keyword', searchValue)
 
-    searchHeader.classList.remove(hiddenClass)
-    searchHeader.querySelector('button').innerHTML = `Search report names for "${e.target.value}" <i>(${matchingReports} matches</i>)`
-  } else {
-    document.querySelectorAll('.search-box-prompt li').forEach(option => {
-      if (!option.classList.contains(hiddenClass)) {
-        option.classList.add(hiddenClass)
-      }
-    })
-  }
-})
+      const matchingReports = document.definitions.filter(d => d.name.toLowerCase().includes(searchValue)).length
+
+      searchHeader.classList.remove(hiddenClass)
+      searchHeader.querySelector('button').innerHTML = `Search report names for "${e.target.value}" <i>(${matchingReports} matches</i>)`
+    } else {
+      document.querySelectorAll('.search-box-prompt li').forEach(option => {
+        if (!option.classList.contains(hiddenClass)) {
+          option.classList.add(hiddenClass)
+        }
+      })
+    }
+  })
+}
 
 document.querySelectorAll('[data-type="list-filter"]').forEach(filter => {
   filter.addEventListener('click', () => {
@@ -60,9 +64,13 @@ document.querySelectorAll('[data-type="list-filter"]').forEach(filter => {
   })
 })
 
-document.querySelector('[data-type="search-header"]').addEventListener('click', e => {
-  e.target.closest('form').submit()
-})
+const searchHeader = document.querySelector('[data-type="search-header"]')
+
+if (searchHeader) {
+  document.querySelector('[data-type="search-header"]').addEventListener('click', e => {
+    e.target.closest('form').submit()
+  })
+}
 
 appendContentToUrlOnClick('tag')
 appendContentToUrlOnClick('author')
