@@ -1,3 +1,5 @@
+/* global $ */
+
 $(function () {
   $('.metric-bookmark-input:input[type=checkbox]').each(function () {
     const toggle = $(this)

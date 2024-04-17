@@ -6,7 +6,7 @@ const data = require('./data/data')
 const version = 'v1'
 const cats = data.metrics.map(item => JSON.stringify(item.category))
 const categoriesSet = [...new Set(cats)]
-var categories = Array.from(categoriesSet).map((c) => JSON.parse(c))
+const categories = Array.from(categoriesSet).map((c) => JSON.parse(c))
 const bookmarks = []
 
 router.post('/addBookmark/', (req, res) => {
@@ -22,7 +22,6 @@ router.post('/removeBookmark/', (req, res) => {
   const index = bookmarks.find((m) => m.id === metricData.id)
   bookmarks.splice(index, 1)
 })
-
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`mis/${version}/views/home`,
@@ -69,7 +68,7 @@ router.get('/metric/:id/dashboard', [
       {
         ...req.renderOptions,
         data: data.metrics.find((m) => m.id === metricId),
-        categories,
+        categories
       }
     )
   }])

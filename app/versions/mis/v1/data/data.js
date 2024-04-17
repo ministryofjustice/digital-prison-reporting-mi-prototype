@@ -3,7 +3,7 @@ module.exports = {
     {
       id: 'metric-1',
       name: 'Metric 1',
-      category: { id: 'category-1', displayName: "Category 1" },
+      category: { id: 'category-1', displayName: 'Category 1' },
       description: '',
       value: '100',
       meta: {
@@ -24,17 +24,17 @@ module.exports = {
               data: []
             }
           ]
-        },
+        }
       ]
     },
     {
       id: 'metric-2',
       name: 'Metric 2',
-      category: { id: 'category-1', displayName: "Category 1" },
+      category: { id: 'category-1', displayName: 'Category 1' },
       description: '',
       value: '200',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -72,10 +72,10 @@ module.exports = {
     {
       id: 'metric-3',
       name: 'Metric 3',
-      category: { id: 'category-1', displayName: "Category 1" },
+      category: { id: 'category-1', displayName: 'Category 1' },
       value: '300',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -99,7 +99,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -113,10 +113,10 @@ module.exports = {
     {
       id: 'metric-4',
       name: 'Metric 4',
-      category: { id: 'category-1', displayName: "Category 1" },
+      category: { id: 'category-1', displayName: 'Category 1' },
       value: '400',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -154,11 +154,11 @@ module.exports = {
     {
       id: 'metric-5',
       name: 'Metric 5',
-      category: { id: 'category-2', displayName: "Category 2" },
+      category: { id: 'category-2', displayName: 'Category 2' },
       description: '',
       value: '100',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -167,7 +167,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -181,11 +181,11 @@ module.exports = {
     {
       id: 'metric-6',
       name: 'Metric 6',
-      category: { id: 'category-2', displayName: "Category 2" },
+      category: { id: 'category-2', displayName: 'Category 2' },
       description: '',
       value: '200',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -209,7 +209,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -223,10 +223,10 @@ module.exports = {
     {
       id: 'metric-7',
       name: 'Metric 7',
-      category: { id: 'category-3', displayName: "Category 3" },
+      category: { id: 'category-3', displayName: 'Category 3' },
       value: '300',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -235,7 +235,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -250,7 +250,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -264,10 +264,12 @@ module.exports = {
     {
       id: 'metric-8',
       name: 'Metric 8',
-      category: { id: 'category-3', displayName: "Category 3" },
+      category: {
+        id: 'category-3', displayName: 'Category 3'
+      },
       value: '400',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -276,7 +278,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -291,7 +293,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -305,11 +307,11 @@ module.exports = {
     {
       id: 'metric-9',
       name: 'Metric 9',
-      category: { id: 'category-4', displayName: "Category 4" },
+      category: { id: 'category-4', displayName: 'Category 4' },
       description: '',
       value: '100',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -318,7 +320,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -332,11 +334,11 @@ module.exports = {
     {
       id: 'metric-10',
       name: 'Metric 10',
-      category: { id: 'category-4', displayName: "Category 4" },
+      category: { id: 'category-4', displayName: 'Category 4' },
       description: '',
       value: '200',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -345,7 +347,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -360,7 +362,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -374,10 +376,10 @@ module.exports = {
     {
       id: 'metric-11',
       name: 'Metric-11',
-      category: { id: 'category-4', displayName: "Category 4" },
+      category: { id: 'category-4', displayName: 'Category 4' },
       value: '300',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -386,7 +388,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -401,7 +403,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -415,10 +417,10 @@ module.exports = {
     {
       id: 'metric-12',
       name: 'Metric 12',
-      category: { id: 'category-4', displayName: "Category 4" },
+      category: { id: 'category-4', displayName: 'Category 4' },
       value: '400',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -442,7 +444,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
