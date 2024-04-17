@@ -7,7 +7,7 @@ module.exports = {
       description: '',
       value: '100',
       meta: {
-        lastUpdated: '',
+        lastUpdated: ''
       },
       dashboard: [
         {
@@ -16,7 +16,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -43,7 +43,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -58,7 +58,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -84,7 +84,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -125,7 +125,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -140,7 +140,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -175,7 +175,7 @@ module.exports = {
               data: []
             }
           ]
-        },
+        }
       ]
     },
     {
@@ -194,7 +194,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {
@@ -328,7 +328,7 @@ module.exports = {
               data: []
             }
           ]
-        },
+        }
       ]
     },
     {
@@ -429,7 +429,7 @@ module.exports = {
           description: '',
           data: {},
           meta: {
-            lastUpdated: '',
+            lastUpdated: ''
           },
           visualisations: [
             {

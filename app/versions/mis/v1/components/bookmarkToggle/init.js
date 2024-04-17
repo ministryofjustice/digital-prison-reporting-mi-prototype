@@ -30,9 +30,9 @@ $(function () {
 const base_url = window.location.origin
 
 async function addBookmark(metricData) {
-  await axios.post(`${base_url}/mis/v1/addBookmark/`, { metricData });
+  await axios.post(`${base_url}/mis/v1/addBookmark/`, { metricData })
 }
 
 async function removeBookmark(metricData) {
-  await axios.post(`${base_url}/mis/v1/removeBookmark/`, { metricData });
+  await axios.post(`${base_url}/mis/v1/removeBookmark/`, { metricData })
 }
