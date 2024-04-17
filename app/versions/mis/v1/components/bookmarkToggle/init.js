@@ -20,6 +20,7 @@ $(function () {
     const metricData = toggle.attr('data-metric')
     toggle.change(async () => {
       if (!toggle.is(':checked')) {
+        // eslint-disable-next-line no-undef
         location.reload()
         await removeBookmark(metricData)
       }
@@ -27,12 +28,14 @@ $(function () {
   })
 })
 
-const base_url = window.location.origin
+const baseUrl = window.location.origin
 
-async function addBookmark(metricData) {
-  await axios.post(`${base_url}/mis/v1/addBookmark/`, { metricData })
+const addBookmark = async (metricData) => {
+  // eslint-disable-next-line no-undef
+  await axios.post(`${baseUrl}/mis/v1/addBookmark/`, { metricData })
 }
 
-async function removeBookmark(metricData) {
-  await axios.post(`${base_url}/mis/v1/removeBookmark/`, { metricData })
+const removeBookmark = async (metricData) => {
+  // eslint-disable-next-line no-undef
+  await axios.post(`${baseUrl}/mis/v1/removeBookmark/`, { metricData })
 }
