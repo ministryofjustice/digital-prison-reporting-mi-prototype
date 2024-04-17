@@ -1,0 +1,23 @@
+.mis-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.mis-side-nav {
+  position: sticky;
+  top: 4px;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  width: 150px;
+}
+
+.mis-main {
+  width: 100%;
+  padding: govuk-spacing(4);
+}
+
+.bookmark--mis {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
