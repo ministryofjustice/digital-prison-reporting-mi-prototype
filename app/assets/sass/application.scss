@@ -491,3 +491,19 @@ table.govuk-table {
 .hidden {
   display: none;
 }
+
+.or-v3 {
+  #v3-search-box {
+    min-width: 400px;
+    width: auto;
+  }
+
+  .govuk-table__body{
+    margin-top: 20px;
+
+    b {
+      background-color: $govuk-focus-colour;
+      font-weight: normal;
+    }
+  }
+}
