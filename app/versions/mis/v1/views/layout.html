@@ -1,0 +1,55 @@
+
+{% from "../components/bookmarkToggle/macro.html" import bookmarkToggle %}
+{% from "../components/removeBookmark/macro.html" import removeBookmark %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Management Information System
+{% endblock %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+      { text: "Home", href: "/" },
+      { text: "MIS", href: "/mis/" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container ">
+  <div class="mis-container">
+    <div class='mis-side-nav'>
+      {% set navItems = [] %}
+      {% set navItems = (navItems.push({
+          text: 'Home',
+          href: '/mis/v1/',
+          active: category === undefined
+      }), navItems) %}
+      {% for cat in categories %}
+        {% set navItems = (navItems.push({
+          text: cat.displayName,
+          href: '/mis/v1/category/' + cat.id + '/metrics',
+          active: category === cat.id
+        }), navItems) %}
+      {% endfor %}
+
+      {{ mojSideNavigation({
+        label: 'Side navigation',
+        items: navItems
+        }) 
+      }}
+    </div>
+
+    <div class='mis-main'>
+      {% block dashboardBody %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
