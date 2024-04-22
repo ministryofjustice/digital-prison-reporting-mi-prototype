@@ -505,8 +505,8 @@ table.govuk-table {
   display: none;
 }
 
-.or-v3 {
-  #v3-search-box {
+.or-v3, .mu-v11 {
+  #v3-search-box, #v11-mu-search-box {
     min-width: 400px;
     width: auto;
   }
@@ -518,5 +518,39 @@ table.govuk-table {
       background-color: $govuk-focus-colour;
       font-weight: normal;
     }
+  }
+}
+
+.mu-v11 {
+  .insight-card-red {
+    background-color: #ffadad;
+  }
+
+  .insight-card-yellow {
+    background-color: #fdffb6;
+  }
+
+  .insight-card-green {
+    background-color: #caffbf;
+  }
+
+  .insight-card-value-red p {
+    color: darkred;
+  }
+
+  .insight-card-value-yellow p {
+    color: darkgoldenrod;
+  }
+
+  .insight-card-value-green p {
+    color: darkgreen;
+  }
+
+  .insight-chart-card {
+    background-color: white;
+  }
+
+  .mis-side-nav {
+    width: 250px;
   }
 }
