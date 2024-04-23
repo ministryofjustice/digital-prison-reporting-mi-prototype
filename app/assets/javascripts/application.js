@@ -1,11 +1,3 @@
-/* global $ */
+import { initAll } from '/extension-assets/govuk-frontend/dist/govuk/govuk-frontend.min.js'
 
-// Warn about using the kit in production
-if (window.console && window.console.info) {
-  window.console.info('GOV.UK Prototype Kit - do not use for production')
-}
-
-$(function () {
-  window.GOVUKFrontend.initAll()
-  window.MOJFrontend.initAll()
-})
+initAll()

@@ -154,8 +154,8 @@ let nunjucksDocumentationEnv
 // Set up documentation app
 if (useDocumentation) {
   const documentationViews = [
-    path.join(__dirname, '/node_modules/govuk-frontend/'),
-    path.join(__dirname, '/node_modules/govuk-frontend/components'),
+    path.join(__dirname, '/node_modules/govuk-frontend/dist/'),
+    path.join(__dirname, '/node_modules/govuk-frontend/dist/components'),
     path.join(__dirname, '/docs/views/'),
     path.join(__dirname, '/lib/')
   ]
