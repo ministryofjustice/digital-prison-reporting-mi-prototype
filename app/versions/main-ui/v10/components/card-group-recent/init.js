@@ -19,10 +19,10 @@ $(function () {
           })
         }).catch(function (error) {
           console.log(error)
-        });
+        })
       }
 
       window.location.href = href
-    });
+    })
   })
 })

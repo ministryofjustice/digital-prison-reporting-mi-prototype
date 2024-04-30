@@ -73,7 +73,7 @@ const dataTableLayoutOptions = (req, res) => {
     ...req.renderOptions.dataTable,
     sortColumnName: dataFormat[req.renderOptions.dataTable.sortColumn].name,
     filters: req.renderOptions.filterValues,
-    dataFormat,
+    dataFormat
   })
 
   const dataTableLayout = '../components/data-table-layout/views/layout.html'

@@ -159,7 +159,7 @@ router.post('/requestReport/', (req, res) => {
     requestedDate: new Date().toLocaleString()
   }
   requested.unshift(requestData)
-  res.end(JSON.stringify({ requestId }));
+  res.end(JSON.stringify({ requestId }))
 })
 
 const updateRequest = (data) => {
@@ -174,7 +174,7 @@ const updateRequest = (data) => {
 router.post('/updateRequest/', (req, res) => {
   const data = JSON.parse(req.body.data)
   updateRequest(data)
-  res.end();
+  res.end()
 })
 
 const cancelRequest = (data) => {
@@ -218,7 +218,7 @@ const updateRecentlyViewed = (data) => {
 router.post('/updateRecentlyViewed/', (req, res) => {
   const data = JSON.parse(req.body.data)
   updateRecentlyViewed(data)
-  res.end();
+  res.end()
 })
 
 const removeFromRecent = (data) => {

@@ -71,7 +71,7 @@ const variant2 = {
           type: 'Radio',
           staticOptions: [
             { name: 'in', display: 'In' },
-            { name: 'out', display: 'Out' },
+            { name: 'out', display: 'Out' }
           ],
           defaultValue: 'in'
         }
@@ -87,7 +87,7 @@ const variant2 = {
           type: 'Radio',
           staticOptions: [
             { name: 'transfer', display: 'Transfer' },
-            { name: 'admission', display: 'Admission' },
+            { name: 'admission', display: 'Admission' }
           ],
           defaultValue: 'admission'
         }
@@ -99,9 +99,9 @@ const variant2 = {
         type: 'string',
         mandatory: false,
         visible: true
-      },
-    ],
-  },
+      }
+    ]
+  }
 }
 
 const variant3 = {
@@ -177,7 +177,7 @@ const variant3 = {
           type: 'Radio',
           staticOptions: [
             { name: 'in', display: 'In' },
-            { name: 'out', display: 'Out' },
+            { name: 'out', display: 'Out' }
           ],
           defaultValue: 'out'
         }
@@ -193,7 +193,7 @@ const variant3 = {
           type: 'Radio',
           staticOptions: [
             { name: 'transfer', display: 'Transfer' },
-            { name: 'admission', display: 'Admission' },
+            { name: 'admission', display: 'Admission' }
           ],
           defaultValue: 'transfer'
         }
@@ -207,7 +207,7 @@ const variant3 = {
         visible: true
       }
     ]
-  },
+  }
 }
 
 const variant1 = {
@@ -282,7 +282,7 @@ const variant1 = {
           type: 'Radio',
           staticOptions: [
             { name: 'in', display: 'In' },
-            { name: 'out', display: 'Out' },
+            { name: 'out', display: 'Out' }
           ]
         }
       },
@@ -297,7 +297,7 @@ const variant1 = {
           type: 'Radio',
           staticOptions: [
             { name: 'transfer', display: 'Transfer' },
-            { name: 'admission', display: 'Admission' },
+            { name: 'admission', display: 'Admission' }
           ]
         }
       },
@@ -309,8 +309,8 @@ const variant1 = {
         mandatory: false,
         visible: true
       }
-    ],
-  },
+    ]
+  }
 }
 
 module.exports = {
