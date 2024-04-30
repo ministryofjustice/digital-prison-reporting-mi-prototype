@@ -8,10 +8,9 @@ const dataFormats = require('../../../data/reportDataFormats')
 const { filterTableLayoutHandlers } = require('./components/data-table-layout/handlers')
 const { configureFilterOptions } = require('../v1/components/filters/handlers')
 const handlers = require('../../../utils/handlers')
-const { getBreadcrumbs } = require('../../../utils/utils')
 const { getFilters, getSortedBy } = require('./components/filters/utils')
 const listEndpoints = require('express-list-endpoints')
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid')
 
 const getTodayMinusDays = days => {
   const date = new Date()
@@ -62,14 +61,12 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
   })
 }])
 
-
-
 router.get('/report/:id', [
   handlers.configureCurrentUrl,
   handlers.configureNavigation,
   (req, res, next) => {
     const report = reports.find((r) => r.id === req.params.id)
-    req.query = Object.fromEntries(new URLSearchParams(report.query.replace(/&amp;/g, "&")))
+    req.query = Object.fromEntries(new URLSearchParams(report.query.replace(/&amp;/g, '&')))
     next()
   },
   configureFilterOptions,
@@ -80,7 +77,7 @@ router.get('/report/:id', [
 
     res.render(`main-ui/${version}/views/list-query`, {
       ...req.renderOptions,
-      reportName: "External Movements",
+      reportName: 'External Movements',
       variantName: variant.name,
       filters: getFilters(fields, req.renderOptions.filterValues),
       sortedBy: getSortedBy(fields),
@@ -107,7 +104,7 @@ router.get('/expired/:id', [
   handlers.configureNavigation,
   (req, res, next) => {
     const report = recentlyViewed.find((r) => r.requestId === req.params.id)
-    req.query = Object.fromEntries(new URLSearchParams(report.query.replace(/&amp;/g, "&")))
+    req.query = Object.fromEntries(new URLSearchParams(report.query.replace(/&amp;/g, '&')))
     next()
   },
   configureFilterOptions,
@@ -119,7 +116,7 @@ router.get('/expired/:id', [
 
     res.render(`main-ui/${version}/views/list-query`, {
       ...req.renderOptions,
-      reportName: "External Movements",
+      reportName: 'External Movements',
       variantName: variant.name,
       filters: getFilters(fields, req.renderOptions.filterValues),
       sortedBy: getSortedBy(fields, report.sortedBy),
@@ -246,7 +243,7 @@ router.get('/requested/:requestId', [
     const requestData = requested.find((r) => r.requestId === requestId)
     res.render(`main-ui/${version}/views/list-polling`, {
       ...req.renderOptions,
-      reportName: "External Movements",
+      reportName: 'External Movements',
       requestData,
       filters: requestData.filters,
       sortedBy: requestData.sortedBy,
@@ -273,9 +270,9 @@ router.get('/requested/:requestId/report', [
     const requestId = req.params.requestId
     const requestData = recentlyViewed.find((r) => r.requestId === requestId)
     const columnsQuery = requestData.columnsQuery
-    req.query = Object.fromEntries(new URLSearchParams(requestData.query.replace(/&amp;/g, "&")))
+    req.query = Object.fromEntries(new URLSearchParams(requestData.query.replace(/&amp;/g, '&')))
     if (columnsQuery) {
-      let cols = columnsQuery.replaceAll('&columns=', ' ').trimStart()
+      const cols = columnsQuery.replaceAll('&columns=', ' ').trimStart()
       req.query.columns = cols.split(' ')
     }
 
@@ -303,7 +300,6 @@ router.get('/requested/:requestId/report', [
   },
   ...filterTableLayoutHandlers
 ])
-
 
 router.get('/routes', (req, res) => {
   res.status(200).send(listEndpoints(router))

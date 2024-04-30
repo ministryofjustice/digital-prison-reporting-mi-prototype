@@ -19,8 +19,8 @@ module.exports = {
     })),
 
   getSortedBy: (fields, sortedByData) => {
-    let defaultValue;
-    const sortableFields = [];
+    let defaultValue
+    const sortableFields = []
     let sortedBy
     let sortDirection
     if (sortedByData) {
@@ -32,7 +32,7 @@ module.exports = {
       if (field.sortable) {
         sortableFields.push({
           value: index,
-          text: field.display,
+          text: field.display
         })
       }
       if (sortedBy && sortedBy.value === field.display) {
