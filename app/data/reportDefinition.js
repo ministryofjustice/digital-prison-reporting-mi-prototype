@@ -13,7 +13,7 @@ const variant2 = {
         defaultsort: true,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'name',
@@ -21,7 +21,7 @@ const variant2 = {
         sortable: true,
         type: 'string',
         mandatory: true,
-        visible: true,
+        visible: true
       },
       {
         name: 'date',
@@ -35,14 +35,14 @@ const variant2 = {
           defaultValue: '2003-02-01 - 2006-05-04',
           min: '2003-02-01',
           max: '2007-05-04',
-        },
+        }
       },
       {
         name: 'time',
         display: 'Time',
         visible: false,
         sortable: false,
-        type: 'string',
+        type: 'string'
       },
       {
         name: 'from',
@@ -50,7 +50,7 @@ const variant2 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: false,
+        visible: false
       },
       {
         name: 'to',
@@ -58,7 +58,7 @@ const variant2 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'direction',
@@ -73,8 +73,8 @@ const variant2 = {
             { name: 'in', display: 'In' },
             { name: 'out', display: 'Out' },
           ],
-          defaultValue: 'in',
-        },
+          defaultValue: 'in'
+        }
       },
       {
         name: 'type',
@@ -89,8 +89,8 @@ const variant2 = {
             { name: 'transfer', display: 'Transfer' },
             { name: 'admission', display: 'Admission' },
           ],
-          defaultValue: 'admission',
-        },
+          defaultValue: 'admission'
+        }
       },
       {
         name: 'reason',
@@ -98,7 +98,7 @@ const variant2 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
     ],
   },
@@ -119,7 +119,7 @@ const variant3 = {
         defaultsort: true,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'name',
@@ -127,7 +127,7 @@ const variant3 = {
         sortable: true,
         type: 'string',
         mandatory: true,
-        visible: true,
+        visible: true
       },
       {
         name: 'date',
@@ -140,15 +140,15 @@ const variant3 = {
           type: 'daterange',
           defaultValue: '2003-02-01 - 2006-05-04',
           min: '2003-02-01',
-          max: '2007-05-04',
-        },
+          max: '2007-05-04'
+        }
       },
       {
         name: 'time',
         display: 'Time',
         visible: false,
         sortable: false,
-        type: 'string',
+        type: 'string'
       },
       {
         name: 'from',
@@ -156,7 +156,7 @@ const variant3 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: false,
+        visible: false
       },
       {
         name: 'to',
@@ -164,7 +164,7 @@ const variant3 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'direction',
@@ -179,8 +179,8 @@ const variant3 = {
             { name: 'in', display: 'In' },
             { name: 'out', display: 'Out' },
           ],
-          defaultValue: 'out',
-        },
+          defaultValue: 'out'
+        }
       },
       {
         name: 'type',
@@ -195,8 +195,8 @@ const variant3 = {
             { name: 'transfer', display: 'Transfer' },
             { name: 'admission', display: 'Admission' },
           ],
-          defaultValue: 'transfer',
-        },
+          defaultValue: 'transfer'
+        }
       },
       {
         name: 'reason',
@@ -204,9 +204,9 @@ const variant3 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
-      },
-    ],
+        visible: true
+      }
+    ]
   },
 }
 
@@ -225,7 +225,7 @@ const variant1 = {
         defaultsort: true,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'name',
@@ -233,7 +233,7 @@ const variant1 = {
         sortable: true,
         type: 'string',
         mandatory: true,
-        visible: true,
+        visible: true
       },
       {
         name: 'date',
@@ -245,15 +245,15 @@ const variant1 = {
         filter: {
           type: 'daterange',
           min: '2003-02-01',
-          max: '2007-05-04',
-        },
+          max: '2007-05-04'
+        }
       },
       {
         name: 'time',
         display: 'Time',
         visible: false,
         sortable: false,
-        type: 'string',
+        type: 'string'
       },
       {
         name: 'from',
@@ -261,7 +261,7 @@ const variant1 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: false,
+        visible: false
       },
       {
         name: 'to',
@@ -269,7 +269,7 @@ const variant1 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
+        visible: true
       },
       {
         name: 'direction',
@@ -283,8 +283,8 @@ const variant1 = {
           staticOptions: [
             { name: 'in', display: 'In' },
             { name: 'out', display: 'Out' },
-          ],
-        },
+          ]
+        }
       },
       {
         name: 'type',
@@ -298,8 +298,8 @@ const variant1 = {
           staticOptions: [
             { name: 'transfer', display: 'Transfer' },
             { name: 'admission', display: 'Admission' },
-          ],
-        },
+          ]
+        }
       },
       {
         name: 'reason',
@@ -307,8 +307,8 @@ const variant1 = {
         sortable: false,
         type: 'string',
         mandatory: false,
-        visible: true,
-      },
+        visible: true
+      }
     ],
   },
 }
@@ -317,6 +317,6 @@ module.exports = {
   report: {
     id: 'external-movements',
     name: 'External Movements',
-    variants: [variant1, variant2, variant3],
+    variants: [variant1, variant2, variant3]
   }
 }
