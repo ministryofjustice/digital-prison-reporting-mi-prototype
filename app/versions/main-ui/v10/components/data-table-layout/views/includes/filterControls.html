@@ -1,0 +1,160 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set detailsClasses = 'filters-accordion govuk-!-margin-0' %}
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
+{% set filterHtml %}
+<div class="data-table-filters">
+  {{ appFilters(
+    "Filter",
+    filters
+  ) }}
+</div>
+{% endset %}
+
+{% set columnsHtml %}
+{% set cols = {
+  name: "columns",
+  type: "checkboxes",
+  options: columnOptions,
+  value: columns
+}%}
+
+<div class="data-table-columns">
+  {{ appFilters(
+    "Columns",
+    [
+      cols
+    ],
+    "onApplyCols()",
+    "onReset()"
+  ) }}
+</div>
+{% endset %}
+ 
+<div class="filter-section"> 
+  <div class="filter-section-row filter-section-row__filter">
+    <div class="filter-section-details filter-section-details__static">
+        <p class="govuk-body filter--applied govuk-!-margin-bottom-0">
+          <span class="govuk-!-padding-right-4">Filters: </span>
+          {%- for filter in selectedFilters %}
+            <span class="govuk-!-padding-right-3">{{ filter.text }}</span>
+          {%- endfor %}
+        </p>
+    </div>
+  </div>  
+
+  <div class="filter-section-row filter-section-row__filter">
+    <div class="filter-section-details filter-section-details__static">
+        <p class="govuk-body filter--applied govuk-!-margin-bottom-0">
+          <span class="govuk-!-padding-right-3">Sorted by:</span>
+          {%- for s in sortedBy %}
+            <span class="govuk-!-padding-right-3">{{ s.name }}: {{ s.value }}</span>
+          {%- endfor %}
+        </p>
+    </div>
+  </div> 
+
+  <div class="filter-section-row filter-section-row__columns">
+    <div class="filter-section-accordion-button">
+      {{ govukDetails({
+        summaryText: "Columns",
+        classes: detailsClasses,
+        html: columnsHtml 
+      }) }}
+    </div>
+    <div class="filter-section-details">
+      <div class="filter-section-details__text">
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+      </div>
+    </div>
+  </div>   
+
+</div>
+
+{% block pageScripts %}
+<script lang="js">
+  const baseUrl = window.location.origin
+
+  const onApplyCols = async () => {
+    const columnsForm = document.getElementById('user-selected-filters-form-Columns')
+    const ampRexExp = /(&)\1+/g
+    const columnsformData = new FormData(columnsForm)
+
+    let columnsQuery = ''
+    columnsformData.forEach((n, v) => {
+      v = v.replaceAll('filters.', '')
+      columnsQuery += `&${v}=${n}`
+    })
+
+    columnsQuery = columnsQuery
+      .replaceAll('?&', '?')
+      .replaceAll(ampRexExp, '&')
+      .replaceAll('amp', '')
+      .replaceAll(';', '')
+
+    const res = await axios.post(`${baseUrl}/main-ui/v10/updateRecentlyViewed/`, {
+      data: JSON.stringify({ 
+        requestId: "{{ requestData.requestId }}",
+        columnsQuery
+      })
+    }).catch(function (error) {
+      console.log(error)
+    });
+
+    location.reload()
+  }
+
+  const onApplyColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-columns input").serialize().replaceAll("filters.","");
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
+
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+  const removeFilter = function(url) {
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+</script>
+{% endblock %}
