@@ -34,7 +34,7 @@ const variant2 = {
           type: 'daterange',
           defaultValue: '2003-02-01 - 2006-05-04',
           min: '2003-02-01',
-          max: '2007-05-04',
+          max: '2007-05-04'
         }
       },
       {
