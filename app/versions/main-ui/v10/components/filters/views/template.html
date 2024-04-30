@@ -115,7 +115,9 @@
     },
     classes: "govuk-button govuk-!-margin-bottom-0"
   }) }}
+{% endif %}
 
+{% if onReset %}
   {{ govukButton({
     text: "Reset Columns",  
     attributes: {
@@ -123,6 +125,6 @@
     },
     classes: "govuk-button govuk-!-margin-bottom-0"
   }) }}
-
+{% if onApply %}
 </div>
 {% endif %}

@@ -26,8 +26,7 @@
     [
       cols
     ],
-    "onApplyCols()",
-    "onReset()"
+    "onApplyCols()"
   ) }}
 </div>
 {% endset %}
@@ -103,57 +102,6 @@
     });
 
     location.reload()
-  }
-
-  const onApplyColumns = function() {
-    let url = decodeURI(window.location.href)
-      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
-    if (url.indexOf("?") === -1) {
-      url += "?";
-    } else {
-      url += "&";
-    }
-    url += $(".data-table-columns input").serialize().replaceAll("filters.","");
-    url = url
-      .replaceAll("?&","?")
-      .replaceAll("&&","&")
-    
-    document.querySelectorAll('.loading-panel').forEach((l) => {
-      l.classList.add('show')
-    })
-
-    setTimeout(() => {  
-      window.location.href = url
-     }, 2000);
-  }
-
-  const onResetColumns = function() {
-    let url = decodeURI(window.location.href)
-      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
-    if (url.indexOf("?") === -1) {
-      url += "?";
-    } else {
-      url += "&";
-    }
-    url += "columns=reset";
-
-    document.querySelectorAll('.loading-panel').forEach((l) => {
-      l.classList.add('show')
-    })
-
-    setTimeout(() => {  
-      window.location.href = url
-     }, 2000);
-  }
-
-  const removeFilter = function(url) {
-    document.querySelectorAll('.loading-panel').forEach((l) => {
-      l.classList.add('show')
-    })
-
-    setTimeout(() => {  
-      window.location.href = url
-     }, 2000);
   }
 
 </script>
