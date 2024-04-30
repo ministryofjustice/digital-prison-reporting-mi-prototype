@@ -15,18 +15,7 @@
         {% set printAttributes = { 'disabled': 'true' } %}
       {% endif %}
 
-      {% set actions = [
-        {
-          text: 'Print displayed results (' + dataTable.pageSize + ')',
-          attributes: printAttributes,
-          classes: 'filter-summary-controls'
-        },
-        {
-          text: 'Pin to homepage',
-          href: './save',
-          classes: 'filter-summary-controls'
-        }
-      ] %}
+      {% set actions = [] %}
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
