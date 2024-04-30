@@ -115,16 +115,15 @@
     },
     classes: "govuk-button govuk-!-margin-bottom-0"
   }) }}
-{% endif %}
 
-{% if onReset %}
-  {{ govukButton({
-    text: "Reset Columns",  
-    attributes: {
-      'onclick': onReset
-    },
-    classes: "govuk-button govuk-!-margin-bottom-0"
-  }) }}
-{% if onApply %}
+  {% if onReset %}
+    {{ govukButton({
+      text: "Reset Columns",  
+      attributes: {
+        'onclick': onReset
+      },
+      classes: "govuk-button govuk-!-margin-bottom-0"
+    }) }}
+  {% endif %}
 </div>
 {% endif %}
