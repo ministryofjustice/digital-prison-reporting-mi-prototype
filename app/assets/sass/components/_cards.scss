@@ -96,3 +96,50 @@
     margin-bottom: 0
   }
 }
+
+.dpr-card-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 20px;
+
+  @media(min-width: 769px) and (max-width: 1019px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+
+    a,
+    p {
+      font-size: 16px;
+    }
+  }
+
+
+  .dpr-card-group__item {
+    min-height: 120px;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .dpr-card-group__item-header {
+      width: calc(100% - 15px);
+
+      a:before {
+        content: "";
+        display: block;
+        height: 8px;
+        position: absolute;
+        right: 3px;
+        top: 29px;
+        transform: translateY(0px) rotate(45deg) scale(1);
+        width: 8px;
+        border-right: 2px solid #0b0c0c;
+        border-top: 2px solid #0b0c0c;
+      }
+    }
+  }
+}

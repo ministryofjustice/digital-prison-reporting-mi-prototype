@@ -17,7 +17,8 @@ const sortPageAndFilter = (
   sortColumnName,
   sortedAsc,
   filters,
-  dataFormat
+  dataFormat,
+  queryParams
 ) => filter(data, filters, dataFormat)
   .sort((a, b) => {
     let aVal = a[sortColumnName]
@@ -68,7 +69,8 @@ module.exports = {
     sortColumnName,
     sortedAsc,
     filters,
-    dataFormat
+    dataFormat,
+    queryParams
   }) => {
     return sortPageAndFilter(
       fakeExternalMovementsData.data.map(d => adjustExternalMovementDate(d)),
@@ -77,7 +79,8 @@ module.exports = {
       sortColumnName,
       sortedAsc,
       filters,
-      dataFormat
+      dataFormat,
+      queryParams
     )
   },
 

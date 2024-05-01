@@ -1,0 +1,23 @@
+{% extends parentLayout %}
+
+{% block reportBody %}
+  <div class="moj-filter-layout">
+    <div class="moj-filter-layout__content">
+
+      {% include "./includes/filterControls.html" %}
+
+      <div class="moj-scrollable-pane">
+        {{ appDataTable(
+          null,
+          head,
+          rows,
+          totalRowCount,
+          dataTable,
+          createUrlForParametersPaging,
+          classification
+        ) }}
+      </div>
+  
+    </div>
+  </div>
+{% endblock %}

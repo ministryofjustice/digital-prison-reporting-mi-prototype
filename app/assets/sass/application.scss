@@ -33,6 +33,7 @@ $moj-images-path: '/moj/assets/images/';
 @import "components/_dropdown-button";
 @import "components/_loading-anim";
 @import "components/_bookmarks";
+@import "components/_async";
 @import "components/_mis";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
@@ -255,9 +256,21 @@ table.govuk-table {
   left: 120px;
 }
 
+.filter-section-details__static {
+  position: relative;
+  left: 0px;
+}
+
 .filter-section-details__text {
   padding-left: govuk-spacing(2);
   padding-top: govuk-spacing(2);
+}
+
+.filter--applied {
+  display: inline-block;
+  padding-top: govuk-spacing(2);
+  padding-right: govuk-spacing(3);
+  padding-bottom: govuk-spacing(2);
 }
 
 .filter-remove-button__text {

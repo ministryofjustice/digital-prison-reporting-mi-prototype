@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <span class="govuk-caption-m">{{ reportName }}</span>
+  <h3 class="govuk-heading-l govuk-!-margin-bottom-3">{{ requestData.variantName  }}</h3>
+  {% set status = requestData.status %}
+  {% set classes = '' %}
+  {% if status === 'ready' %}
+    {% set classes = "govuk-tag--green" %}
+  {% endif %}
+  {% if status === 'failed' %}
+    {% set classes = "govuk-tag--red" %}
+  {% endif %}
+
+  {{ govukTag({
+    text: status,
+    classes: classes
+  }) }}
+
+
+  {% if status === 'requested' %}
+    
+    <h3 class="govuk-heading-s govuk-!-margin-top-5">We are generating your report...</h3>
+
+    <ul>
+    {% for filter in filters %}
+      <li class="govuk-body govuk-!-margin-bottom-1">{{ filter.name }} : {{ filter.value }}</li>
+    {% endfor %}
+    {% for s in sortedBy %}
+      <li class="govuk-body govuk-!-margin-bottom-1">{{ s.name }} : {{ s.value }}</li>
+    {% endfor %}
+    </ul>
+
+    {{ govukInsetText({
+      html: "<p>It can take up to 24hrs to generate a report.</p> <p>You can close and revisit this page at anytime, or navigate to the <a href='/main-ui/v10/'>homepage</a> to check on its status or your report</p>"
+    }) }}
+
+
+    {{ govukButton({
+      id: "cancel-request",
+      text: "Cancel Request",  
+      classes: "govuk-button--warning govuk-!-margin-bottom-0",
+      attributes: {
+        'onclick': 'cancelRequest()'
+      }
+    }) }}
+
+   {% endif %}
+   
+   {% if status === 'ready' %}
+
+      <p class="govuk-!-margin-top-5">Your report has been generated</p>
+
+      {{ govukButton({
+        id: "view-report",
+        text: "View report",  
+        classes: "govuk-button govuk-!-margin-top-5",
+        attributes: {
+          'onclick': 'viewReport()'
+        }
+      }) }}
+
+    {% endif %}
+
+     {% if status === 'failed' %}
+
+{{ govukErrorSummary({
+  titleText: "Your report has failed to generate. The issue has been reported to admin staff",
+  classes: "govuk-!-margin-top-6",
+  errorList: [
+    {
+      text: "Some error message describing the issue"
+    }
+  ]
+}) }}
+
+      {{ govukButton({
+        id: "view-report",
+        text: "Retry",  
+        classes: "govuk-button govuk-!-margin-top-5",
+        attributes: {
+          'onclick': 'retryRequest()'
+        }
+      }) }}
+
+    {% endif %}
+
+  <script>
+    const baseUrl = window.location.origin
+    const waitTime = 5
+    let i = 0
+    
+    if( '{{ requestData.status }}' === 'requested' ) {
+      let statusUpdateInterval = setInterval(() => {
+        updateRequest()
+      }, 1000);
+    }
+
+
+    const cancelRequest = async () => {
+      const res = await axios.post(`${baseUrl}/main-ui/v10/cancelRequest/`, {
+        data: JSON.stringify({ 
+          requestId: '{{ requestData.requestId }}'
+        })
+      }).catch(function (error) {
+        console.log(error)
+      });
+
+      window.location.href = `${baseUrl}/main-ui/v10/`
+    }
+
+    const updateRequest = async () => {
+      i++
+      let status = 'ready'
+
+      if (i === waitTime) {
+        let variantId = '{{ requestData.variantId }}'
+        if( variantId === 'admissions-last-week' ) status = 'failed'
+  
+        const res = await axios.post(`${baseUrl}/main-ui/v10/updateRequest/`, {
+          data: JSON.stringify({ 
+            requestId: '{{ requestData.requestId }}',
+            status
+          })
+        }).catch(function (error) {
+          console.log(error)
+        });
+
+        location.reload() 
+      } else {
+        console.log(i)
+      }
+    }
+
+    const retryRequest = async () => {
+        const res = await axios.post(`${baseUrl}/main-ui/v10/updateRequest/`, {
+          data: JSON.stringify({ 
+            requestId: '{{ requestData.requestId }}',
+            status: 'requested'
+          })
+        }).catch(function (error) {
+          console.log(error)
+        });
+        location.reload() 
+    }
+
+    const viewReport = async () => {
+      const requestId = '{{ requestData.requestId }}'
+      const query = '{{ requestData.query }}'.replace(/&amp;/g, "&");
+
+      await axios.post(`${baseUrl}/main-ui/v10/addToRecentlyViewed/`, {
+        data: JSON.stringify({
+          requestId,
+          status: '',
+          timestamp: Date.now(),
+          viewedDate: new Date().toLocaleString()
+        })
+      }).catch(function (error) {
+        console.log(error)
+      });
+      
+      window.location.href = `./${requestId}/report`
+    }
+  </script>
+
+{% endblock %}

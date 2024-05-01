@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "../components/filters/views/macro.html" import appFilters %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <span class="govuk-caption-m">{{ reportName }}</span>
+  <h3 class="govuk-heading-l">{{ variantName }}</h3>
+  <h3 class="govuk-heading-s">Filters</h3>
+  {{ appFilters(
+    "Filter",
+    filters
+  ) }}
+
+  <h3 class="govuk-heading-s">Sort By</h3>
+  {{ appFilters(
+    "SortedBy",
+    sortedBy
+  ) }}
+
+  {{ govukButton({
+    id: "apply-filters-button",
+    text: "Request Report",  
+    classes: "govuk-button govuk-!-margin-bottom-0 govuk-!-margin-top-5",
+    attributes: {
+      'onclick': 'requestReport()'
+    }
+  }) }}
+
+  <script>
+    const requestReport = async () => {
+      const baseUrl = window.location.origin
+      const filtersForm = document.getElementById('user-selected-filters-form-Filter')
+      const sortedByForm = document.getElementById('user-selected-filters-form-SortedBy')
+
+      const ampRexExp = /(&)\1+/g
+      const filtersformData = new FormData(filtersForm)
+      const sortedByformData = new FormData(sortedByForm)
+
+      let filters = []
+      let sortedBy = []
+      let serializedFormData = ''
+
+      // Filters
+      filtersformData.forEach((n, v) => {
+        serializedFormData += `&${v}=${n}`
+        let filtername = v.replaceAll('filters.', '').replaceAll('date.', '')
+
+        if(n) {
+          filters.push({
+            name: filtername[0].toUpperCase() + filtername.slice(1).toLowerCase(),
+            value: n[0].toUpperCase() + n.slice(1).toLowerCase()
+          })
+        }
+      })
+
+      // Sortedby
+      sortedByformData.forEach((n, v) => {
+        let filtername = v.replaceAll('filters.', 'paging.')
+        if(filtername === 'paging.sortedAsc') {
+          n = n === 'Asc'
+        }
+        serializedFormData += `&${filtername}=${n}`
+      })
+
+      sortedByformData.forEach((n, v) => {
+        if(v.includes('sortColumn')) { 
+          v = 'Sort By',
+          n = {{ fields | dump | safe }}[+n].display
+
+        }
+        if(v.includes('sortedAsc')) {
+          v = 'Sort direction'
+        }
+
+        if(n) {
+          sortedBy.push({
+            name: v[0].toUpperCase() + v.slice(1).toLowerCase(),
+            value: n[0].toUpperCase() + n.slice(1).toLowerCase()
+          })
+        } else {
+          console.log(n)
+        }
+      })
+
+      let query = serializedFormData
+      query = query.replaceAll('?&', '?').replaceAll(ampRexExp, '&')
+
+      const res = await axios.post(`${baseUrl}/main-ui/v10/requestReport/`, {
+        data: JSON.stringify({ 
+          variantId: '{{ variant.id }}',
+          variantName: '{{ variant.name }}',
+          query,
+          filters,
+          sortedBy
+        })
+      }).catch(function (error) {
+        console.log(error)
+      });
+
+      if('{{status}}' === 'expired') {
+        await axios.post(`${baseUrl}/main-ui/v10/removeFromRecent/`, {
+          data: JSON.stringify({
+            requestId: '{{ requestId }}'
+          })
+        }).catch(function (error) {
+          console.log(error)
+        });
+      }
+
+      const requestId = res.data.requestId
+      window.location.href = `${baseUrl}/main-ui/v10/requested/${requestId}`
+    }
+  </script>
+
+{% endblock %}
+
+
+
+{# yesterdays-transfers-out:587 {sortedBy: Array(1)}sortedBy: (2) [{…}, {…}][[Prototype]]: Object
+yesterdays-transfers-out:569 {n: 'Desc', v: 'filters.sortedAsc'}
+yesterdays-transfers-out:587 {sortedBy: Array(2)} #}

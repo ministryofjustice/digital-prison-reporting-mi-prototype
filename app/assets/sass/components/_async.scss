@@ -1,0 +1,44 @@
+.requested-reports {
+  position: relative;
+  margin: auto;
+  margin-bottom: govuk-spacing(8);
+  padding-top: govuk-spacing(6);
+  max-width: 1170px;
+}
+
+.slide-bg {
+  position: absolute;
+  width: 100%;
+  height: 275px;
+  left: 0px;
+  background-color: govuk-colour("light-grey");
+}
+
+.dpr-status-tag {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.dpr-card-group__item--status {
+  padding-bottom: 25px;
+}
+
+.dpr-card-timestamp {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  color: govuk-colour("dark-grey")
+}
+
+
+ul.card__filters-list {
+  list-style-type: none;
+  padding: 0;
+  li {
+    margin-bottom: 0px;
+  }
+}
