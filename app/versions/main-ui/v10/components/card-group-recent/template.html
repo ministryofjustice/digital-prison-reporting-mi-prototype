@@ -1,0 +1,56 @@
+
+
+<div class="dpr-card-group">
+  {% for card in cards %}
+      {% set classes = 'dpr-status-tag govuk-tag--yellow' %}
+      {% set href = card.href  %}
+      {% set status = card.status  %}
+      {% set requestId = card.requestId  %}
+
+      {% if card.status === 'expired' %}
+        {% set href = "./expired/" + requestId %}
+      {% elseif card.status | length %}
+        {% set href = card.href + card.query %}
+      {% endif %}
+
+      <div class="dpr-card-group__item dpr-card-group__item--recent card--recent {% if card.timestamp %} govuk-!-padding-bottom-5{% endif %}"
+        data-request-id="{{ card.requestId }}"
+        data-status="{{ status }}"
+        data-href="{{ href }}">
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-static-margin-top-0">
+        
+        {% if card.status | length %}
+          {{ govukTag({
+            text: card.status,
+            classes: classes
+          }) }}
+        {% endif %}
+
+        <div class="dpr-card-group__item-header">
+          <a class="govuk-link govuk-!-font-weight-bold govuk-link--no-visited-state govuk-body card__link" href="{{ href }}">
+            {{ card.text }}
+          </a>
+        </div>
+
+        {% if card.filters %}
+          <ul class="card__filters-list">
+          {% for filter in card.filters %}
+            <li class="govuk-body-s">{{ filter.name }} : {{ filter.value }}</li>
+          {% endfor %}
+          {% for s in card.sortedBy %}
+            <li class="govuk-body-s">{{ s.name }} : {{ s.value }}</li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <p class="govuk-!-static-margin-top-3 govuk-!-static-margin-bottom-0 card__description">
+            {{ card.description }}
+          </p>
+        {% endif %}
+
+        {% if card.viewedDate %}
+          <p class='dpr-card-timestamp'>Last viewed: {{ card.viewedDate }}</p>
+        {% endif %}
+      </div>
+  {% endfor %}
+</div>

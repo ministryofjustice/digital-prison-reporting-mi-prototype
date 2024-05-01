@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% from "../components/card-group-status/macro.html"               import appCardGroupStatus %}
+{% from "../components/card-group-recent/macro.html"               import appCardGroupRecent %}
+
+{% block pageTitle %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">
+    {{ title }}
+  </h1>
+
+{% if  requested.length > 0 %}
+  <div class='requested-reports'>
+    <h2 class="govuk-heading-m">
+      Requested Reports
+    </h2>
+    {{ appCardGroupStatus(requested) }}
+  </div>
+{% endif %}
+
+{% if  recentlyViewed.length > 0 %}
+<div class='requested-reports'>
+  <h2 class="govuk-heading-m">
+    Recently Viewed
+  </h2>
+  {{ appCardGroupRecent(recentlyViewed) }}
+  </div>
+{% endif %}
+
+<div class='requested-reports'>
+  <h2 class="govuk-heading-m">
+    External Movements
+  </h2>
+  {{ appCardGroupRecent(reports) }}
+</div>
+
+  <script>
+    const baseUrl = window.location.origin
+    let statusUpdateInterval = setInterval( async () => {
+      expireRecentlyViewed()
+    }, 10000);
+
+    const expireRecentlyViewed = async () => {
+      const recentlyViewed = {{ recentlyViewed | dump | safe }}
+      const index = recentlyViewed.length - 1
+
+      if( recentlyViewed[index] && !recentlyViewed[index].status) {
+        
+        const res = await axios.post(`${baseUrl}/main-ui/v10/updateRecentlyViewed/`, {
+          data: JSON.stringify({ 
+            requestId: recentlyViewed[index].requestId,
+            status: 'expired',
+            href: `expired/${ recentlyViewed[index].requestId }`
+          })
+        }).catch(function (error) {
+          console.log(error)
+        });
+
+        location.reload() 
+      }
+    }
+  </script>
+{% endblock %}

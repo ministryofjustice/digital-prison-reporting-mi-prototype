@@ -1,0 +1,68 @@
+{% from "../../v10/components/data-table/views/macro.html"    import appDataTable %}
+{% from "./../components/filters/views/macro.html" import appFilters %}
+{% from "../../v3/components/dropdown-button/views/macro.html" import appDropdownButton %}
+{% from "../../v8/components/loading-anim/macro.html"    import dprLoadingAnim %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="report-wrapper">
+    {% block pageHeader %}
+
+      {% if (printable) %}
+        {% set printAttributes = { 'onclick': 'window.print()' } %}
+      {% else %}
+        {% set printAttributes = { 'disabled': 'true' } %}
+      {% endif %}
+
+      {% set actions = [] %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-m govuk-!-margin-bottom-1">{{ title }}</h1>
+        </div>
+        <div class="govuk-grid-column-one-third" style="text-align: right">
+          {%  set subject = title | urlencode %}
+          {%  set body = ("Page URL: https://digital-prison-reporting-mi-prototype-main.apps.live.cloud-platform.service.justice.gov.uk" + originalUrl) | urlencode %}
+
+          {{ appDropdownButton({
+            id: "actions",
+            text: "Actions",
+            classes: "",
+            attributes: {},
+            items: actions,
+            groups: [{
+              title: "Share:",
+              items: [
+                {
+                  text: 'Copy URL',
+                  attributes: {
+                    'onclick': 'navigator.clipboard.writeText(window.location)'
+                  },
+                  classes: 'filter-summary-controls'
+                },
+                {
+                  text: 'Email',
+                  href: 'mailto:?subject=' + subject + '&body=' + body,
+                  classes: 'filter-summary-controls'
+                }
+              ]
+            }]
+          }) }}
+        </div>
+      </div>
+
+    {% endblock %}
+
+    <div class="govuk-grid-row govuk-!-padding-left-3 govuk-!-padding-right-3 {% if (printable == false) %}print-hide{% endif %}">
+      {% block reportBody %}{% endblock %}
+    </div>
+
+    {% if (printable == false) %}
+    <h3 class="screen-hide">
+      Printing this report has been disabled due to time or content sensitivity.<br />
+      Please speak to your report administrator for further details.
+    </h3>
+    {% endif %}
+  </div>
+{% endblock %}
