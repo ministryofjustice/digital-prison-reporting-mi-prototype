@@ -194,7 +194,11 @@ function getDashboard (dashboardId) {
 }
 
 router.get('/metrics/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  renderSearch(req, res, 'metrics', dashboardDefinitions)
+  const definitions = dashboardDefinitions.map(d => ({
+    ...d,
+    id: d.metrics ? d.id : false // Don't show a link for dashboards with no metrics
+  }))
+  renderSearch(req, res, 'metrics', definitions)
 }])
 
 router.get('/metrics/:dashboardId/', [
