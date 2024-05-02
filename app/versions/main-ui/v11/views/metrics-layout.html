@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-width-container mu-v11">
+  <div class="mis-container">
+    <div class='mis-side-nav'>
+      {% set navItems = [] %}
+
+      {% for cat in categories %}
+        {% set navItems = (navItems.push({
+          text: cat.name,
+          href: '/main-ui/v11/metrics/' + cat.id + '/',
+          active: category === cat.id
+        }), navItems) %}
+      {% endfor %}
+
+      {{ mojSideNavigation({
+        label: 'Side navigation',
+        sections: [{
+          items: navItems,
+          heading: {
+            text: metric.product + ' metrics'
+          }
+        }]
+        }) 
+      }}
+    </div>
+
+    <div class='mis-main'>
+      {% block dashboardBody %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

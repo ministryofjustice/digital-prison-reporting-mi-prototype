@@ -1,0 +1,127 @@
+{% from "./../chart/doughnut/macro.html" import doughnutChart as donutChart %}
+{% from "./../chart/line/macro.html" import lineChart as lineChart %}
+{% from "./../chart/bar/macro.html" import barChart as barChart %}
+{% from "./../chart/heatmap/macro.html" import heatmapChart as heatmapChart %}
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% set card = chartCardData.card %}
+{% set title = card.title %}
+{% set description = card.description %}
+{% set date = card.date %}
+{% set href = card.href %}
+{% set width = card.width %}
+
+{% set charts = chartCardData.chart %}
+
+{% set table = chartCardData.table %}
+{% set values = table.values %}
+{% set headings = table.headings %}
+
+<div class="chart-group__item {% if width %} chart-group__item--{{ width }} {% endif %} {% if date or href %}chart-group__item--date {% endif %} {% if width === 'full' %}chart-group__item--break{% endif %}">
+  <div class="chart-card chart-card--padding">
+
+    <h1 class="govuk-heading-m">{{ title }}</h1>
+
+    {% if description %}
+      <p class="govuk-body govuk-!-margin-bottom-6">
+        <span>{{ description }}</span>
+      </p>
+    {% endif %}
+
+    {% set chart = charts[0] %}
+    {% set type = charts[0].type %}
+    {% set id = charts[0].id %}
+    {% set govukTabsItems = [] %}
+
+    {% for chart in charts %}
+      {% set type = chart.type %}
+      {% set id = chart.id %}
+
+      {% if type === 'pie' %}
+        
+        {% set pieChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Pie", id: "pie_" + id, panel: { html: pieChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'doughnut' %}
+        
+        {% set doughnutChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Doughnut", id: "doughnut" + id, panel: { html: doughnutChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'bar' %}
+        
+        {% set barChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Bar", id: "bar_" + id, panel: { html: barChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'line' %}
+
+        {% set lineChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Line", id: "line_" + id, panel: { html: lineChartHtml } }), govukTabsItems) %}
+
+      {% elif type === 'heatmap' %}
+
+        {% set heatmapChartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+        
+        {% set govukTabsItems = (govukTabsItems.push({ label: "Heatmap", id: "heatmap_" + id, panel: { html: heatmapChartHtml } }), govukTabsItems) %}
+
+      {% else %} 
+
+        {% set chartHtml %}
+          {% include "./includes/chart.html" %}
+        {% endset -%}
+
+      {% endif %}
+    {% endfor %}
+
+    {% if table %}
+      {% set tableHtml %}
+      
+        {% set rows = [] %}
+        {% for v in values %}
+          {% set rows = (rows.push([{ html: v.label, classes: 'govuk-body-s' },{ html: v.value, classes: 'govuk-body-s' }]), rows) %}
+        {% endfor %}
+
+        {% set head = [] %}
+        {% for h in headings %}
+          {% set head = (head.push({ text: h }), head) %}
+        {% endfor %}
+
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: head,
+          rows: rows
+        }) }}
+      {% endset -%}
+
+      {% set govukTabsItems = (govukTabsItems.push({ label: "Table", id: "table_" + chart.id, panel: { html: tableHtml } }), govukTabsItems) %}
+    {% endif %}
+
+    {{ govukTabs({
+      items: govukTabsItems
+    }) }}
+
+      {# {% include "./includes/chart.html" %} #}
+    
+  </div>
+
+  {% if date or href %}
+    <p class="govuk-body-xs {% if date or href %} value-meta{% endif %}">
+      {% if date %}Value for {{ date }}. {% endif %}
+      {% if href %}<a href="{{ href }}" class="govuk-link govuk-link--no-visited-state">View measure<span class="govuk-visually-hidden"> </span></a>{% endif %}
+    </p>
+  {% endif %}
+</div>

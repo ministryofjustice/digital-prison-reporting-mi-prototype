@@ -1,0 +1,81 @@
+{% set defaultColours = [
+  '#1d70b8',
+  '#28a197',
+  '#d4351c',
+  '#912b88',
+  '#f47738',
+  '#505a5f'
+] %}
+
+{% set id = chartData.id %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+{% set axis = chartData.axis %}
+{% set type = chartData.type %}
+
+<div class="chart">
+  <canvas id="{{ id }}_{{ type }}" class="chart-canvas"></canvas>
+  <script>
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
+      type: 'bar',
+      data: {
+        labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
+        datasets: [
+        {% for set in data %}
+          {
+            label: '{{ set.title }}',
+            data: [{{ set.data }}],
+            borderColor: '{{ defaultColours[loop.index-1] }}',
+            backgroundColor: '{{ defaultColours[loop.index-1] }}',
+            datalabels: {
+              align: 'end',
+              anchor: 'end'
+            }
+          },
+        {% endfor %}
+        ],
+      },
+      options: {
+        animation: false,
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true
+          }
+        },
+        indexAxis: '{{ axis }}',
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          datalabels: {
+            color: 'white',
+            display: false,
+            font: {
+              size: 14
+            },
+            formatter: Math.round
+          },
+          legend: {
+            display: {% if data.length > 1 %} true {% else %} false {% endif %},
+          },
+          tooltip: { 
+            backgroundColor: '#FFF',
+            bodyColor: '#000',
+            bodyFontSize: 16,
+            titleColor: '#000',
+            displayColors: false,
+            borderWidth: 1,
+            borderColor: '#b1b4b6',
+            cornerRadius: 0,
+            padding: 15,
+            footerFont: {
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</div>
