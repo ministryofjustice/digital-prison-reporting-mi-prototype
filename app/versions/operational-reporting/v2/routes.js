@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const handlers = require('../../../utils/handlers')
-const definitions = require('../definitions')
+const definitions = require('../../../data/listDefinitions')
 
 const version = 'v2'
 

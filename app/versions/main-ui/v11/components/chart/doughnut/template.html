@@ -1,0 +1,132 @@
+{% set defaultColours = [
+  ['#195f9c', '#4b9ce3', '#1d70b8', '#72b2e9', '#2587dd', '#98c7ef'],
+  ['#1c716a', '#31c6ba', '#228980', '#52d4c9', '#28a197', '#77ddd5'],
+  ['#1d70b8', '#28a197', '#912b88', '#f47738', '#d4351c', '#505a5f']
+]%}
+
+{% set id = chartData.id %}
+{% set type = chartData.type %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+
+<div class="chart chart--doughnut">
+  <canvas id="{{ id }}_{{ type }}" class="chart-canvas"></canvas>
+  <div id="js-legend-{{ id }}_{{ type }}" class="chart-legend"></div>
+  <script>
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
+        type: '{{ type }}',
+        data: {
+          labels: [{% for label in labels %}'{{ label }}',{% endfor %}], 
+          datasets: [{
+            label: 'Finds Dataset',
+            data: [{{ data }}],
+            backgroundColor: [{% for colour in defaultColours[2] %}'{{ colour }}',{% endfor %}],
+            hoverOffset: 4,
+            ...('{{ type }}' === 'pie' && { 
+              datalabels: {
+                anchor: 'end',
+                align: 'end',
+                offset: -50
+              }
+            }),
+          }],
+        },
+        options: {
+          animation: {
+              duration: 0
+          },
+          maintainAspectRatio: true,
+          ...('{{ type }}' === 'doughnut' && { cutout: "60%" }),
+          plugins: {
+            datalabels: {
+              color: '#FFF',
+              display: function(context) {
+                const value = context.dataset.data[context.dataIndex]
+                const total = context.dataset.data.reduce((a, c) => a + c, 0);
+                const percentage = (value/total) * 100
+                return percentage > 4;
+              },
+              textAlign: 'center',
+              labels: {
+                title: {
+                  font: {
+                    weight: 'bold',
+                    size: 14
+                  }
+                },
+              }
+            },
+            legend: {
+              display: false,
+            },
+            tooltip: { 
+              backgroundColor: '#FFF',
+              bodyColor: '#000',
+              bodyFontSize: 16,
+              displayColors: true,
+              borderWidth: 1,
+              borderColor: '#b1b4b6',
+              cornerRadius: 0,
+              padding: 15,
+              callbacks: {
+                label: function(context) {
+                    let label = context.label;
+                    let value = context.chart.data.datasets[0].data[context.dataIndex];
+                    let sum = 0;
+                    let dataArr = context.chart.data.datasets[0].data;
+                    dataArr.map(data => {
+                        sum += Number(data);
+                    });
+                    let percentage = (value * 100 / sum).toFixed(2) + '%';
+                    return `${label}: ${value} (${percentage})`;
+                }
+              }
+            }
+          }
+        },
+        plugins:  [
+        ('{{ type }}' === 'doughnut' && {
+          // Put the total in the center of the donut
+          id: 'text',
+          beforeDraw: function(chart, a, b) {
+            let width = chart.width,
+                height = chart.height,
+                ctx = chart.ctx;
+
+            ctx.restore();
+
+            const total = chart.data.datasets[0].data.reduce((a, c) => a + c, 0);
+            let text = total
+            let textX = Math.round((width - ctx.measureText(text).width) / 2);
+            let textY = height / 2;
+
+            ctx.textBaseline = 'middle';
+            var fontSize = 1.3
+            ctx.font = "700 " + fontSize + "em GDS Transport";
+            ctx.fillStyle = "	#505a5f";
+            ctx.fillText(text, textX, textY);
+            ctx.save();
+          }
+        }),
+        {
+          id: 'legend',
+          beforeInit: function(chart, args, options) {
+            if (chart.canvas.id === "{{ id }}_{{ type }}") {
+              const ul = document.createElement('ul');
+              chart.data.labels.forEach((label, i) => {
+                ul.innerHTML += `
+                  <li class=''>
+                    <span style="background-color: ${ chart.data.datasets[0].backgroundColor[i] }">${ chart.data.datasets[0].data[i] }</span>
+                    ${ label }
+                  </li>
+                `;
+              });
+
+              return document.getElementById("js-legend-{{ id }}_{{ type }}").appendChild(ul);
+            }
+            return;
+          }
+        }]
+    });
+  </script>
+</div>
