@@ -1,22 +1,25 @@
 {% from "../components/chart-card/macro.html"      import chartCard %}
+{% from "../components/filters/views/macro.html" import appFilters %}
+{% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
 
 {% extends "./metrics-layout.html" %}
 
 {% block dashboardBody %}
 
 <h3 class="govuk-heading-l">{{ title }}</h3>
+{{ appFilters('dashboard', filters, null, null, true) }}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full insight-card-container">
-    {% for metric in data %}
+    {% for metric in metrics %}
       {% if metric.type == 'headline' %}
         <div class="metric-card inight-card-group__item">
-          <p class="govuk-heading-m govuk-!-margin-bottom-1">{{ metric.name}}</p>
+          <p class="govuk-heading-m govuk-!-margin-bottom-1">{{ metric.name }}</p>
           <p class="govuk-heading-l govuk-!-padding-top-1 govuk-!-margin-bottom-3">
             {% if metric.status %}
-            <span class="insight-card-value govuk-tag govuk-tag--{{ metric.status }}">{{ metric.value}}</span>
+            <span class="insight-card-value govuk-tag govuk-tag--{{ metric.status }}">{{ metric.value }}</span>
             {% else %}
-            {{ metric.value}}
+            {{ metric.value }}
             {% endif %}
           </p>
           {% if metric.breakdown %}

@@ -1,4 +1,7 @@
-const dashboardFilterValues = ['March 2024', 'April 2024']
+const dashboardFilterValues = [
+  { value: '2024-03', text: 'March 2024' },
+  { value: '2024-04', text: 'April 2024' }
+]
 
 module.exports = [
   { id: 'mis-accommodation', product: 'Accommodation', name: 'MIS Accommodation Metrics', author: 'Sophia Jefferson', keywords: { Origin: 'SAP Business Objects' }, lastUpdated: '2022-04-04', tags: ['MIS', 'Accommodation'] },
@@ -10,13 +13,16 @@ module.exports = [
     lastUpdated: '2023-06-05',
     tags: ['MIS', 'Activities', 'Movements'],
     author: 'Myles Padilla',
-    filter: { type: 'radio', options: dashboardFilterValues },
+    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
     metrics: [
       {
         id: 'to-activities',
         name: 'To Activities',
         type: 'headline',
-        value: '683',
+        values: {
+          '2024-03': '683',
+          '2024-04': '684'
+        },
         meta: {
           lastUpdated: ''
         }
@@ -26,7 +32,10 @@ module.exports = [
         name: 'From Activities',
         type: 'headline',
         description: '',
-        value: '683',
+        values: {
+          '2024-03': '683',
+          '2024-04': '684'
+        },
         meta: {
           lastUpdated: ''
         }
@@ -62,12 +71,16 @@ module.exports = [
     lastUpdated: '2024-01-18',
     tags: ['ORS', 'Movements'],
     author: 'Hoyt Morin',
+    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
     metrics: [
       {
         id: 'transfers-in',
         name: 'Transfers In',
         type: 'headline',
-        value: '23',
+        values: {
+          '2024-03': '23',
+          '2024-04': '57'
+        },
         meta: {
           lastUpdated: ''
         },
@@ -79,7 +92,10 @@ module.exports = [
         type: 'headline',
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
         description: '',
-        value: '200',
+        values: {
+          '2024-03': '134',
+          '2024-04': '200'
+        },
         meta: {
           lastUpdated: ''
         },
@@ -90,7 +106,10 @@ module.exports = [
         name: 'Disappearances',
         type: 'headline',
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
-        value: '1',
+        values: {
+          '2024-03': '0',
+          '2024-04': '1'
+        },
         status: 'red',
         meta: {
           lastUpdated: ''
@@ -101,7 +120,10 @@ module.exports = [
         id: 'releases',
         name: 'Releases',
         type: 'headline',
-        value: '50',
+        values: {
+          '2024-03': '61',
+          '2024-04': '50'
+        },
         status: 'yellow',
         meta: {
           lastUpdated: ''
@@ -112,7 +134,10 @@ module.exports = [
         id: 'admissions',
         name: 'Admissions',
         type: 'headline',
-        value: '1',
+        values: {
+          '2024-03': '3',
+          '2024-04': '1'
+        },
         status: 'green',
         meta: {
           lastUpdated: ''
@@ -137,7 +162,10 @@ module.exports = [
         id: 'today',
         name: 'Today',
         type: 'headline',
-        value: '1',
+        values: {
+          '2024-03': '0',
+          '2024-04': '1'
+        },
         status: 'red',
         meta: {
           lastUpdated: ''
@@ -147,7 +175,10 @@ module.exports = [
         id: 'this-week',
         name: 'This week',
         type: 'headline',
-        value: '3',
+        values: {
+          '2024-03': '3',
+          '2024-04': '3'
+        },
         status: 'yellow',
         meta: {
           lastUpdated: ''
@@ -157,7 +188,10 @@ module.exports = [
         id: 'this-month',
         name: 'This month',
         type: 'headline',
-        value: '24',
+        values: {
+          '2024-03': '30',
+          '2024-04': '24'
+        },
         status: 'green',
         meta: {
           lastUpdated: ''
@@ -167,86 +201,170 @@ module.exports = [
         id: 'disappearances',
         name: 'Disappearances by Day',
         type: 'chartCard',
-        value: {
-          card: {
-            title: 'Disappearances by day of week',
-            description: 'Based on newspaper articles.',
-            width: 'full',
-            date: 'last year'
+        values: {
+          '2024-03': {
+            card: {
+              title: 'Disappearances by day of week',
+              description: 'Based on newspaper articles.',
+              width: 'full',
+              date: 'last year'
+            },
+            chart: [{
+              id: 'chart5',
+              type: 'bar',
+              labels: ['Week day'],
+              data: [
+                {
+                  title: 'Monday',
+                  data: [1]
+                },
+                {
+                  title: 'Tuesday',
+                  data: [4]
+                },
+                {
+                  title: 'Wednesday',
+                  data: [15]
+                },
+                {
+                  title: 'Thursday',
+                  data: [2]
+                },
+                {
+                  title: 'Friday',
+                  data: [4]
+                },
+                {
+                  title: 'Saturday',
+                  data: [3]
+                },
+                {
+                  title: 'Sunday',
+                  data: [1]
+                }
+              ],
+              axis: 'y'
+            },
+            {
+              id: 'chart2sss',
+              type: 'doughnut',
+              labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+              data: [2, 5, 10, 1, 5, 1, 0],
+              total: 24
+            }],
+            table: {
+              headings: ['Day', 'Total'],
+              values: [{
+                label: '<a href="../../lists/external-movements/?filters.weekday=monday&filters.direction=out">Monday</a>',
+                value: 2
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=tuesday&filters.direction=out">Tuesday</a>',
+                value: 5
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=wednesday&filters.direction=out">Wednesday</a>',
+                value: 10
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=thursday&filters.direction=out">Thursday</a>',
+                value: 1
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=friday&filters.direction=out">Friday</a>',
+                value: 5
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=saturday&filters.direction=out">Saturday</a>',
+                value: 1
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=sunday&filters.direction=out">Sunday</a>',
+                value: 0
+              }]
+            }
           },
-          chart: [{
-            id: 'chart5',
-            type: 'bar',
-            labels: ['Week day'],
-            data: [
-              {
-                title: 'Monday',
-                data: [2]
-              },
-              {
-                title: 'Tuesday',
-                data: [5]
-              },
-              {
-                title: 'Wednesday',
-                data: [10]
-              },
-              {
-                title: 'Thursday',
-                data: [1]
-              },
-              {
-                title: 'Friday',
-                data: [5]
-              },
-              {
-                title: 'Saturday',
-                data: [1]
-              },
-              {
-                title: 'Sunday',
-                data: [0]
-              }
-            ],
-            axis: 'y'
-          },
-          {
-            id: 'chart2sss',
-            type: 'doughnut',
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            data: [2, 5, 10, 1, 5, 1, 0],
-            total: 24
-          }],
-          table: {
-            headings: ['Day', 'Total'],
-            values: [{
-              label: '<a href="../../lists/external-movements/?filters.weekday=monday&filters.direction=out">Monday</a>',
-              value: 2
+          '2024-04': {
+            card: {
+              title: 'Disappearances by day of week',
+              description: 'Based on newspaper articles.',
+              width: 'full',
+              date: 'last year'
+            },
+            chart: [{
+              id: 'chart5',
+              type: 'bar',
+              labels: ['Week day'],
+              data: [
+                {
+                  title: 'Monday',
+                  data: [2]
+                },
+                {
+                  title: 'Tuesday',
+                  data: [5]
+                },
+                {
+                  title: 'Wednesday',
+                  data: [10]
+                },
+                {
+                  title: 'Thursday',
+                  data: [1]
+                },
+                {
+                  title: 'Friday',
+                  data: [5]
+                },
+                {
+                  title: 'Saturday',
+                  data: [1]
+                },
+                {
+                  title: 'Sunday',
+                  data: [0]
+                }
+              ],
+              axis: 'y'
             },
             {
-              label: '<a href="../../lists/external-movements/?filters.weekday=tuesday&filters.direction=out">Tuesday</a>',
-              value: 5
-            },
-            {
-              label: '<a href="../../lists/external-movements/?filters.weekday=wednesday&filters.direction=out">Wednesday</a>',
-              value: 10
-            },
-            {
-              label: '<a href="../../lists/external-movements/?filters.weekday=thursday&filters.direction=out">Thursday</a>',
-              value: 1
-            },
-            {
-              label: '<a href="../../lists/external-movements/?filters.weekday=friday&filters.direction=out">Friday</a>',
-              value: 5
-            },
-            {
-              label: '<a href="../../lists/external-movements/?filters.weekday=saturday&filters.direction=out">Saturday</a>',
-              value: 1
-            },
-            {
-              label: '<a href="../../lists/external-movements/?filters.weekday=sunday&filters.direction=out">Sunday</a>',
-              value: 0
-            }]
+              id: 'chart2sss',
+              type: 'doughnut',
+              labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+              data: [2, 5, 10, 1, 5, 1, 0],
+              total: 24
+            }],
+            table: {
+              headings: ['Day', 'Total'],
+              values: [{
+                label: '<a href="../../lists/external-movements/?filters.weekday=monday&filters.direction=out">Monday</a>',
+                value: 2
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=tuesday&filters.direction=out">Tuesday</a>',
+                value: 5
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=wednesday&filters.direction=out">Wednesday</a>',
+                value: 10
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=thursday&filters.direction=out">Thursday</a>',
+                value: 1
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=friday&filters.direction=out">Friday</a>',
+                value: 5
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=saturday&filters.direction=out">Saturday</a>',
+                value: 1
+              },
+              {
+                label: '<a href="../../lists/external-movements/?filters.weekday=sunday&filters.direction=out">Sunday</a>',
+                value: 0
+              }]
+            }
           }
         },
         meta: {

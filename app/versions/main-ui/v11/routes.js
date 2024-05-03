@@ -8,6 +8,7 @@ const handlers = require('../../../utils/handlers')
 const listEndpoints = require('express-list-endpoints')
 const listDefinitions = require('../../../data/listDefinitions')
 const dashboardDefinitions = require('../../../data/dashboardDefinitions')
+const filterHandlers = require('./components/filters/handlers')
 
 const version = 'v11'
 
@@ -189,10 +190,6 @@ function getCategories (dashboard) {
     }))
 }
 
-function getDashboard (dashboardId) {
-  return dashboardDefinitions.find(definition => definition.id === dashboardId)
-}
-
 router.get('/metrics/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   const definitions = dashboardDefinitions.map(d => ({
     ...d,
@@ -201,21 +198,48 @@ router.get('/metrics/', [handlers.configureCurrentUrl, handlers.configureNavigat
   renderSearch(req, res, 'metrics', definitions)
 }])
 
+function getDashboard (dashboardId) {
+  return dashboardDefinitions.find(definition => definition.id === dashboardId)
+}
+
+function getMetrics (dashboard, filterValue) {
+  return dashboard.metrics.map(m => ({
+    ...m,
+    value: filterValue ? m.values[filterValue] : m.values
+  }))
+}
+
+function getFilterValue (req, dashboard) {
+  const filterValue = req.renderOptions.filterValues[dashboard.filter.name]
+
+  if (!filterValue && dashboard.filter.options) {
+    return dashboard.filter.options[0].value
+  }
+
+  return filterValue
+}
+
 router.get('/metrics/:dashboardId/', [
   handlers.configureCurrentUrl,
   handlers.configureNavigation,
+  filterHandlers.configureFilterOptions,
   function (req, res) {
     const dashboardId = req.params.dashboardId
     const dashboard = getDashboard(dashboardId)
+    const filterValue = getFilterValue(req, dashboard)
 
     res.render(`main-ui/${version}/views/metrics-dashboard`,
       {
         ...req.renderOptions,
-        data: dashboard.metrics,
+        metrics: getMetrics(dashboard, filterValue),
         categories: getCategories(dashboard),
         title: dashboard.name,
         category: dashboardId,
         metric: dashboard,
+        filters: [{
+          ...dashboard.filter,
+          value: filterValue
+        }],
         breadcrumbs: [
           {
             text: 'Home',

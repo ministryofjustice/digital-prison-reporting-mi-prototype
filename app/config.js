@@ -44,7 +44,8 @@ module.exports = {
     { path: '/app/v3-search-box.js', location: '/app/versions/operational-reporting/v3/components/search-box/init.js' },
     { path: '/app/v10-async-card-group', location: '/app/versions/main-ui/v10/components/card-group-status/init.js' },
     { path: '/app/v10-async-card-recent', location: '/app/versions/main-ui/v10/components/card-group-recent/init.js' },
-    { path: '/app/v11-search-box.js', location: '/app/versions/main-ui/v11/components/search-box/init.js' }
+    { path: '/app/v11-search-box.js', location: '/app/versions/main-ui/v11/components/search-box/init.js' },
+    { path: '/app/v11-filters.js', location: '/app/versions/main-ui/v11/components/filters/init.js' }
   ],
 
   stylesheets: []
