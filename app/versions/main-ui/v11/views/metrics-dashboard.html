@@ -6,8 +6,19 @@
 
 {% block dashboardBody %}
 
-<h3 class="govuk-heading-l">{{ title }}</h3>
-{{ appFilters('dashboard', filters, null, null, true) }}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h3 class="govuk-heading-l">
+      {{ title }}
+      <span class="govuk-caption-m">
+        Last updated: {{ metric.lastUpdated }} (sampled {{ metric.updateSchedule }})
+      </span>
+    </h3>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {{ appFilters('dashboard', filters, null, null, true) }}
+  </div>
+</div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full insight-card-container">

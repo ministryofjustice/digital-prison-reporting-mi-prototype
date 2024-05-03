@@ -210,10 +210,14 @@ function getMetrics (dashboard, filterValue) {
 }
 
 function getFilterValue (req, dashboard) {
+  if (!dashboard.filter) {
+    return null
+  }
+
   const filterValue = req.renderOptions.filterValues[dashboard.filter.name]
 
   if (!filterValue && dashboard.filter.options) {
-    return dashboard.filter.options[0].value
+    return dashboard.filter.options[dashboard.filter.options.length - 1].value
   }
 
   return filterValue
