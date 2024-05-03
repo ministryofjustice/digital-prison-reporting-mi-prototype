@@ -33,6 +33,18 @@
             {{ metric.value }}
             {% endif %}
           </p>
+          {% if metric.previousValue or metric.previousValue === 0 %}
+            {% set metricDifference = metric.value - metric.previousValue %}
+            <p class="govuk-body-s govuk-!-margin-bottom-3">
+            {% if metricDifference < 0 %}
+              ▼ Down {{ metricDifference | abs }}
+            {% elif metricDifference > 0 %}
+              ▲ Up {{ metricDifference }}
+            {% else %}
+              ◼ No change
+            {% endif %}
+            </p>
+          {% endif %}
           {% if metric.breakdown %}
           <a href="{{ metric.breakdown }}">view breakdown</a>
           {% endif %}

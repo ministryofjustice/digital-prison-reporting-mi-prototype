@@ -21,8 +21,8 @@ module.exports = [
         name: 'To Activities',
         type: 'headline',
         values: {
-          '2024-03': '683',
-          '2024-04': '684'
+          '2024-03': 683,
+          '2024-04': 684
         },
         meta: {
           lastUpdated: ''
@@ -34,8 +34,8 @@ module.exports = [
         type: 'headline',
         description: '',
         values: {
-          '2024-03': '683',
-          '2024-04': '684'
+          '2024-03': 683,
+          '2024-04': 684
         },
         meta: {
           lastUpdated: ''
@@ -80,8 +80,8 @@ module.exports = [
         name: 'Transfers In',
         type: 'headline',
         values: {
-          '2024-03': '23',
-          '2024-04': '57'
+          '2024-03': 23,
+          '2024-04': 57
         },
         meta: {
           lastUpdated: ''
@@ -95,8 +95,8 @@ module.exports = [
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
         description: '',
         values: {
-          '2024-03': '134',
-          '2024-04': '200'
+          '2024-03': 134,
+          '2024-04': 200
         },
         meta: {
           lastUpdated: ''
@@ -109,8 +109,8 @@ module.exports = [
         type: 'headline',
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
         values: {
-          '2024-03': '0',
-          '2024-04': '1'
+          '2024-03': 0,
+          '2024-04': 1
         },
         status: 'red',
         meta: {
@@ -123,8 +123,8 @@ module.exports = [
         name: 'Releases',
         type: 'headline',
         values: {
-          '2024-03': '61',
-          '2024-04': '50'
+          '2024-03': 61,
+          '2024-04': 50
         },
         status: 'yellow',
         meta: {
@@ -137,8 +137,8 @@ module.exports = [
         name: 'Admissions',
         type: 'headline',
         values: {
-          '2024-03': '3',
-          '2024-04': '1'
+          '2024-03': 3,
+          '2024-04': 1
         },
         status: 'green',
         meta: {
@@ -167,8 +167,8 @@ module.exports = [
         name: 'Today',
         type: 'headline',
         values: {
-          '2024-03': '0',
-          '2024-04': '1'
+          '2024-03': 0,
+          '2024-04': 1
         },
         status: 'red',
         meta: {
@@ -180,8 +180,8 @@ module.exports = [
         name: 'This week',
         type: 'headline',
         values: {
-          '2024-03': '3',
-          '2024-04': '3'
+          '2024-03': 3,
+          '2024-04': 3
         },
         status: 'yellow',
         meta: {
@@ -193,8 +193,8 @@ module.exports = [
         name: 'This month',
         type: 'headline',
         values: {
-          '2024-03': '30',
-          '2024-04': '24'
+          '2024-03': 30,
+          '2024-04': 24
         },
         status: 'green',
         meta: {
