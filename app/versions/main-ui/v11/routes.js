@@ -202,21 +202,39 @@ function getDashboard (dashboardId) {
   return dashboardDefinitions.find(definition => definition.id === dashboardId)
 }
 
-function getMetrics (dashboard, filterValue) {
+function getMetrics (dashboard, filterValue, previousFilterValue) {
   return dashboard.metrics.map(m => ({
     ...m,
-    value: filterValue ? m.values[filterValue] : m.values
+    value: filterValue ? m.values[filterValue] : m.values,
+    previousValue: previousFilterValue ? m.values[previousFilterValue] : null
   }))
 }
 
 function getFilterValue (req, dashboard) {
+  if (!dashboard.filter) {
+    return null
+  }
+
   const filterValue = req.renderOptions.filterValues[dashboard.filter.name]
 
   if (!filterValue && dashboard.filter.options) {
-    return dashboard.filter.options[0].value
+    return dashboard.filter.options[dashboard.filter.options.length - 1].value
   }
 
   return filterValue
+}
+
+function getPreviousFilterValue (filterValue, dashboard) {
+  if (filterValue && dashboard.filter.options) {
+    const filterValueIndex = dashboard.filter.options
+      .findIndex(o => o.value === filterValue)
+
+    if (filterValueIndex && filterValueIndex > 0) {
+      return dashboard.filter.options[filterValueIndex - 1].value
+    }
+  }
+
+  return null
 }
 
 router.get('/metrics/:dashboardId/', [
@@ -227,11 +245,12 @@ router.get('/metrics/:dashboardId/', [
     const dashboardId = req.params.dashboardId
     const dashboard = getDashboard(dashboardId)
     const filterValue = getFilterValue(req, dashboard)
+    const previousFilterValue = getPreviousFilterValue(filterValue, dashboard)
 
     res.render(`main-ui/${version}/views/metrics-dashboard`,
       {
         ...req.renderOptions,
-        metrics: getMetrics(dashboard, filterValue),
+        metrics: getMetrics(dashboard, filterValue, previousFilterValue),
         categories: getCategories(dashboard),
         title: dashboard.name,
         category: dashboardId,

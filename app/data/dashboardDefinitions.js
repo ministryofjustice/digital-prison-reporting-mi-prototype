@@ -10,7 +10,8 @@ module.exports = [
     product: 'Movements',
     name: 'MIS Activities Movements Metrics',
     keywords: { Origin: 'SAP Business Objects' },
-    lastUpdated: '2023-06-05',
+    lastUpdated: '30/04/24',
+    updateSchedule: 'Monthly',
     tags: ['MIS', 'Activities', 'Movements'],
     author: 'Myles Padilla',
     filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
@@ -20,8 +21,8 @@ module.exports = [
         name: 'To Activities',
         type: 'headline',
         values: {
-          '2024-03': '683',
-          '2024-04': '684'
+          '2024-03': 683,
+          '2024-04': 684
         },
         meta: {
           lastUpdated: ''
@@ -33,8 +34,8 @@ module.exports = [
         type: 'headline',
         description: '',
         values: {
-          '2024-03': '683',
-          '2024-04': '684'
+          '2024-03': 683,
+          '2024-04': 684
         },
         meta: {
           lastUpdated: ''
@@ -68,7 +69,8 @@ module.exports = [
     product: 'Movements',
     name: 'ORS Movements Metrics',
     keywords: { Origin: 'SAP Business Objects' },
-    lastUpdated: '2024-01-18',
+    lastUpdated: '30/04/24',
+    updateSchedule: 'Monthly',
     tags: ['ORS', 'Movements'],
     author: 'Hoyt Morin',
     filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
@@ -78,8 +80,8 @@ module.exports = [
         name: 'Transfers In',
         type: 'headline',
         values: {
-          '2024-03': '23',
-          '2024-04': '57'
+          '2024-03': 23,
+          '2024-04': 57
         },
         meta: {
           lastUpdated: ''
@@ -93,8 +95,8 @@ module.exports = [
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
         description: '',
         values: {
-          '2024-03': '134',
-          '2024-04': '200'
+          '2024-03': 134,
+          '2024-04': 200
         },
         meta: {
           lastUpdated: ''
@@ -107,8 +109,8 @@ module.exports = [
         type: 'headline',
         category: { id: 'ors-movements', displayName: 'ORS Movements' },
         values: {
-          '2024-03': '0',
-          '2024-04': '1'
+          '2024-03': 0,
+          '2024-04': 1
         },
         status: 'red',
         meta: {
@@ -121,8 +123,8 @@ module.exports = [
         name: 'Releases',
         type: 'headline',
         values: {
-          '2024-03': '61',
-          '2024-04': '50'
+          '2024-03': 61,
+          '2024-04': 50
         },
         status: 'yellow',
         meta: {
@@ -135,8 +137,8 @@ module.exports = [
         name: 'Admissions',
         type: 'headline',
         values: {
-          '2024-03': '3',
-          '2024-04': '1'
+          '2024-03': 3,
+          '2024-04': 1
         },
         status: 'green',
         meta: {
@@ -154,17 +156,19 @@ module.exports = [
     product: 'Movements',
     name: 'Disappearances by Day',
     keywords: { },
-    lastUpdated: '2023-11-18',
+    lastUpdated: '30/04/24',
+    updateSchedule: 'Monthly',
     tags: ['External', 'Movements'],
     author: 'Jeremiah Hugo',
+    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
     metrics: [
       {
         id: 'today',
         name: 'Today',
         type: 'headline',
         values: {
-          '2024-03': '0',
-          '2024-04': '1'
+          '2024-03': 0,
+          '2024-04': 1
         },
         status: 'red',
         meta: {
@@ -176,8 +180,8 @@ module.exports = [
         name: 'This week',
         type: 'headline',
         values: {
-          '2024-03': '3',
-          '2024-04': '3'
+          '2024-03': 3,
+          '2024-04': 3
         },
         status: 'yellow',
         meta: {
@@ -189,8 +193,8 @@ module.exports = [
         name: 'This month',
         type: 'headline',
         values: {
-          '2024-03': '30',
-          '2024-04': '24'
+          '2024-03': 30,
+          '2024-04': 24
         },
         status: 'green',
         meta: {
