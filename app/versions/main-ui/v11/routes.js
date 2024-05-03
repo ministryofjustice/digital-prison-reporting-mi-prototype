@@ -230,7 +230,7 @@ function getPreviousFilterValue (filterValue, dashboard) {
       .findIndex(o => o.value === filterValue)
 
     if (filterValueIndex && filterValueIndex > 0) {
-      return dashboard.filter.options[filterValueIndex-1].value
+      return dashboard.filter.options[filterValueIndex - 1].value
     }
   }
 
