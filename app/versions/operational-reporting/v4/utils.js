@@ -1,11 +1,11 @@
-const { products, domains, subDomains } = require('../domainMapping')
+const { products, domains, subDomains } = require('../../../data/domainMapping')
 
 const sanitizeStringIds = (str) => {
   return str.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('<', '')
     .replaceAll('(', '').replaceAll(')', '').toLowerCase()
 }
 
-const relatedArraySize = 3
+const relatedArraySize = 6
 
 const tagColors = [
   'govuk-tag--turquoise',
