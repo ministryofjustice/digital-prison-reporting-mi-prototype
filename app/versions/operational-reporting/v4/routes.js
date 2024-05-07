@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const { createRows, createHead, enhancedDefinitions, getRelatedByTags, getRelatedProducts } = require('./utils')
 const handlers = require('../../../utils/handlers')
+const definitions = require('../definitions')
 
 const version = 'v4'
-const enhancedDefinition = enhancedDefinitions()
+const enhancedDefinition = enhancedDefinitions(definitions)
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`operational-reporting/${version}/views/home`,

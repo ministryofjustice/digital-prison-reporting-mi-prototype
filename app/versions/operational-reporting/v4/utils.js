@@ -1,5 +1,4 @@
 const { products, domains, subDomains } = require('../domainMapping')
-const definitions = require('../definitions')
 
 const sanitizeStringIds = (str) => {
   return str.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('<', '')
@@ -23,7 +22,7 @@ const setTags = (tags) => {
   }))
 }
 
-const enhancedDefinitions = () => {
+const enhancedDefinitions = (definitions) => {
   return definitions.map((def, index) => {
     const { product, subDomain, domain } = generateDomainDataForDefinition()
 
