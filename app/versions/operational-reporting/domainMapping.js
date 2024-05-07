@@ -5,9 +5,9 @@ const domains = [
   'Running a Prison', // 3
   'Security', // 4
   'Person Plan', // 5
-  'Prisoner Specific',// 6
-  'CT/SOCT',// 7
-  'Intelligence & Corruption',// 8
+  'Prisoner Specific', // 6
+  'CT/SOCT', // 7
+  'Intelligence & Corruption', // 8
   'Interventions', // 9
   'Sentence/Offence', // 10
   'License/Breach/Parole', // 11

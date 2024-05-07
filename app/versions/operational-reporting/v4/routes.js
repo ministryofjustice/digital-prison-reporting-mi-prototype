@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const definitions = require('../definitions')
 const { createRows, createHead, enhancedDefinitions, getRelatedByTags, getRelatedProducts } = require('./utils')
 const handlers = require('../../../utils/handlers')
 

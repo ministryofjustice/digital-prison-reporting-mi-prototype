@@ -23,10 +23,6 @@ const setTags = (tags) => {
   }))
 }
 
-const getProductBySubDomain = (id) => {
-  return products.find((product) => product.subDomains.includes(id))
-}
-
 const enhancedDefinitions = () => {
   return definitions.map((def, index) => {
     const { product, subDomain, domain } = generateDomainDataForDefinition()
@@ -74,16 +70,15 @@ const getRelatedByTags = ({ tag, duplicates, definition }) => {
     .slice(0, relatedArraySize)
 }
 
-// 1. same sub domain - different product
-// 2. same domain - differenr sub domain
-// 3. same product
-
 const getRelatedProducts = (reportData, definition, filterIndex) => {
   const { product, subDomain, domain } = reportData
   const filters = [
+    // 1. same sub domain - different product
     (def) => def.subDomain.id === subDomain.id && def.product.id !== product.id,
+    // 2. same domain - differenr sub domain
     (def) => def.domain === domain && def.subDomain.id !== subDomain.id,
-    (def) => def.product.id === product.id,
+    // 3. same product
+    (def) => def.product.id === product.id
   ]
   return definition
     .filter(filters[filterIndex])
@@ -99,10 +94,6 @@ const createTagsCol = (tags) => {
   }).join('&nbsp;')
 }
 
-const createTaggedCol = (string) => {
-  return '<strong class="govuk-tag">' + string + '</strong>'
-}
-
 const createRows = (enhancedDefinitionsArray) => {
   return enhancedDefinitionsArray.map((d, index) => ([
     { html: '<a href="./report/' + d.id + '">' + d.name + '</a>' },
@@ -115,8 +106,8 @@ const createRows = (enhancedDefinitionsArray) => {
 
 const createHead = () => {
   return [
-    { text: "Name" },
-    { text: "Tags" }
+    { text: 'Name' },
+    { text: 'Tags' }
     // { text: 'Sub Domain ' },
     // { text: 'Domain ' },
     // { text: 'Product ' }
