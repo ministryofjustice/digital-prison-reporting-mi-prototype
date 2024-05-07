@@ -34,7 +34,6 @@ $moj-images-path: '/moj/assets/images/';
 @import "components/_loading-anim";
 @import "components/_bookmarks";
 @import "components/_async";
-@import "components/_tagging";
 @import "components/_mis";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
@@ -537,5 +536,17 @@ table.govuk-table {
 
   .mis-main #user-selected-filters-form-dashboard {
     text-align: right;
+  }
+}
+
+.report-placeholeder {
+  height: 200px;
+  background-color: govuk-colour("light-grey");
+  margin: 25px 0px;
+  padding: 30px;
+  text-align: center;
+
+  p {
+    color: govuk-colour("mid-grey");
   }
 }

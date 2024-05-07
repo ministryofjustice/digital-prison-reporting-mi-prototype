@@ -97,7 +97,7 @@ const createRows = (enhancedDefinitionsArray) => {
   return enhancedDefinitionsArray.map((d, index) => ([
     { html: '<a href="./report/' + d.id + '">' + d.name + '</a>' },
     { html: createTagsCol(d.tags) }
-    // { html: createTaggedCol(d.subDomain.name) },
+    // { html: createTaggedCol(d.subDomain.name) },  - leaving commented for easy debugging
     // { html: createTaggedCol(d.domain) },
     // { html: createTaggedCol(d.product.name) }
   ]))
@@ -107,7 +107,7 @@ const createHead = () => {
   return [
     { text: 'Name' },
     { text: 'Tags' }
-    // { text: 'Sub Domain ' },
+    // { text: 'Sub Domain ' }, - leaving commented for easy debugging
     // { text: 'Domain ' },
     // { text: 'Product ' }
   ]
