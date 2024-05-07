@@ -1,0 +1,55 @@
+  
+{% from "../card-group-related/macro.html" import appCardGroupRelated %}
+{% set tags = reportData.tags %}
+{% set subDomain = reportData.subDomain %}
+{% set domain = reportData.domain %}
+{% set product = reportData.product %}
+
+<div class="govuk-!-margin-top-6">
+
+  {% if relatedLevelOne.length %}
+    <span class="govuk-caption-m">Related content</span>
+    <h3 class="govuk-heading-s govuk-!-margin-top-1">
+      Also in tag: <strong class="govuk-tag {{ tags[1].class }}">{{ tags[1].text }}</strong>
+    </h3>
+    <div class="govuk-!-margin-bottom-8">
+      {{ appCardGroupRelated(relatedLevelOne) }}
+    </div>
+  {% endif %}
+
+  <span class="govuk-caption-m">Related content</span>
+  <h3 class="govuk-heading-s govuk-!-margin-top-1">
+    Also in tag: <strong class="govuk-tag {{ tags[0].class }}">{{ tags[0].text }}</strong>
+  </h3>
+  <div class="govuk-!-margin-bottom-6">
+    {{ appCardGroupRelated(relatedLevelZero) }}
+  </div>
+
+  {% if relatedProducts[0].length %}
+  <span class="govuk-caption-m">Related Products</span>
+  <h3 class="govuk-heading-s govuk-!-margin-top-2">
+    Also in sub domain: <strong class="govuk-tag govuk-tag--grey">{{ subDomain.name }}</strong>
+  </h3>
+  <div class="govuk-!-margin-bottom-6">
+    {{ appCardGroupRelated(relatedProducts[0]) }}
+  </div>
+  {% endif %}
+
+  {% if relatedProducts[1].length %} 
+  <h3 class="govuk-heading-s govuk-!-margin-top-2">
+    Also in domain: <strong class="govuk-tag govuk-tag--grey">{{ domain }}</strong>
+  </h3>
+  <div class="govuk-!-margin-bottom-6">
+    {{ appCardGroupRelated(relatedProducts[1]) }}
+  </div>
+  {% endif %}
+
+  {% if relatedProducts[2].length %} 
+  <h3 class="govuk-heading-s govuk-!-margin-top-3">
+    Also in product: <strong class="govuk-tag govuk-tag--grey">{{ product.name }}</strong>
+  </h3>
+  <div class="govuk-!-margin-bottom-6">
+    {{ appCardGroupRelated(relatedProducts[2]) }}
+  </div>
+  {% endif %}
+</div>

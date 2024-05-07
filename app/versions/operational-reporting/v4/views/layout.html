@@ -1,0 +1,30 @@
+{% from "govuk/components/table/macro.njk"       import govukTable %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "../components/card-group-related/macro.html" import appCardGroupRelated %}
+{% from "../components/discover-related-section/macro.html" import discoverRelatedSection %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Operational Reporting
+{% endblock %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: [
+      { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
+      { text: "Home", href: "/" },
+      { text: "Operational Reporting", href: "/operational-reporting/" }
+    ]
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+{% endblock %}

@@ -2,9 +2,7 @@
 
 {% block reportBody %}
 
-<h3 class="govuk-heading-m">Version 1</h3>
-
-{{ myBookmarks(definitionRows) }}
+<h3 class="govuk-heading-m">Version 4</h3>
 
 <h3 class="govuk-heading-m">Operational Reports</h3>
 
@@ -12,12 +10,8 @@
   {{ govukTable({
     caption: caption,
     captionClasses: "govuk-table__caption--m",
-    head: [
-      { text: "Name" },
-      { text: "Description" },
-      { text: "Bookmark" }
-    ],
-    rows: definitionRows
+    head: head,
+    rows: rows
   }) }}
 </div>
 
