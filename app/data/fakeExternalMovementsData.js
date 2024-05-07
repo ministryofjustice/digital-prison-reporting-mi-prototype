@@ -3,7 +3,7 @@ module.exports = {
   data: [{
     prisonNumber: 'N9980PJ',
     date: '2023-01-31',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '03:01',
     from: 'Cardiff',
     to: 'Kirkham',
@@ -15,7 +15,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q9660WX',
     date: '2023-04-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '12:19',
     from: 'Elmley',
     to: 'Pentonville',
@@ -27,7 +27,7 @@ module.exports = {
   }, {
     prisonNumber: 'L9600OY',
     date: '2023-02-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '10:31',
     from: 'Ranby',
     to: 'Hatfield',
@@ -39,7 +39,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2640NM',
     date: '2022-06-28',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:16',
     from: 'Wakefield',
     to: 'Bedford',
@@ -51,7 +51,7 @@ module.exports = {
   }, {
     prisonNumber: 'J3320FR',
     date: '2022-09-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '04:31',
     from: 'Isle of Wight',
     to: 'Kirkham',
@@ -63,7 +63,7 @@ module.exports = {
   }, {
     prisonNumber: 'F5380EW',
     date: '2022-10-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '15:04',
     from: 'Isle of Wight',
     to: 'Wakefield',
@@ -75,7 +75,7 @@ module.exports = {
   }, {
     prisonNumber: 'O9450IV',
     date: '2021-11-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '17:33',
     from: 'Usk',
     to: 'Dartmoor',
@@ -87,7 +87,7 @@ module.exports = {
   }, {
     prisonNumber: 'A8550JL',
     date: '2021-12-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '22:31',
     from: 'Send',
     to: 'Dartmoor',
@@ -99,7 +99,7 @@ module.exports = {
   }, {
     prisonNumber: 'P1450UP',
     date: '2023-01-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '10:55',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -111,7 +111,7 @@ module.exports = {
   }, {
     prisonNumber: 'C5830OP',
     date: '2023-01-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '08:26',
     from: 'Kirkham',
     to: 'Elmley',
@@ -123,7 +123,7 @@ module.exports = {
   }, {
     prisonNumber: 'A4400QN',
     date: '2021-10-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '08:10',
     from: 'Thameside',
     to: 'Cardiff',
@@ -135,7 +135,7 @@ module.exports = {
   }, {
     prisonNumber: 'T6440DY',
     date: '2023-04-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '05:58',
     from: 'Hatfield',
     to: 'Kirkham',
@@ -147,7 +147,7 @@ module.exports = {
   }, {
     prisonNumber: 'N7300GG',
     date: '2021-11-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '00:50',
     from: 'Lancaster Farms',
     to: 'Maidstone',
@@ -159,7 +159,7 @@ module.exports = {
   }, {
     prisonNumber: 'O0040EN',
     date: '2022-12-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '18:06',
     from: 'Usk',
     to: 'Wakefield',
@@ -171,7 +171,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1290MB',
     date: '2023-01-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '12:01',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -183,7 +183,7 @@ module.exports = {
   }, {
     prisonNumber: 'L8610MV',
     date: '2021-10-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '09:11',
     from: 'Cardiff',
     to: 'Elmley',
@@ -195,7 +195,7 @@ module.exports = {
   }, {
     prisonNumber: 'E8460NO',
     date: '2023-03-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '21:49',
     from: 'Pentonville',
     to: 'Pentonville',
@@ -207,7 +207,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y5870SD',
     date: '2023-04-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:19',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -219,7 +219,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q1500VW',
     date: '2022-11-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '07:04',
     from: 'Hatfield',
     to: 'Northumberland',
@@ -231,7 +231,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q9340WC',
     date: '2021-11-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '14:06',
     from: 'Altcourse',
     to: 'Isle of Wight',
@@ -243,7 +243,7 @@ module.exports = {
   }, {
     prisonNumber: 'D4180RG',
     date: '2021-09-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '06:52',
     from: 'Elmley',
     to: 'Ranby',
@@ -255,7 +255,7 @@ module.exports = {
   }, {
     prisonNumber: 'D6960UM',
     date: '2022-05-28',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:09',
     from: 'Wakefield',
     to: 'Ranby',
@@ -267,7 +267,7 @@ module.exports = {
   }, {
     prisonNumber: 'M3230RB',
     date: '2022-07-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '09:33',
     from: 'Kirkham',
     to: 'Elmley',
@@ -279,7 +279,7 @@ module.exports = {
   }, {
     prisonNumber: 'W5070BG',
     date: '2022-08-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '05:48',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -291,7 +291,7 @@ module.exports = {
   }, {
     prisonNumber: 'U3520ZK',
     date: '2022-05-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:57',
     from: 'Thameside',
     to: 'Wakefield',
@@ -303,7 +303,7 @@ module.exports = {
   }, {
     prisonNumber: 'U8230OU',
     date: '2022-01-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '13:42',
     from: 'Oakwood',
     to: 'Northumberland',
@@ -315,7 +315,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q8400KY',
     date: '2021-12-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '06:02',
     from: 'Lancaster Farms',
     to: 'Maidstone',
@@ -327,7 +327,7 @@ module.exports = {
   }, {
     prisonNumber: 'S4400NF',
     date: '2023-03-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:30',
     from: 'Maidstone',
     to: 'Dartmoor',
@@ -339,7 +339,7 @@ module.exports = {
   }, {
     prisonNumber: 'X6220RE',
     date: '2022-11-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:07',
     from: 'Ranby',
     to: 'Pentonville',
@@ -351,7 +351,7 @@ module.exports = {
   }, {
     prisonNumber: 'E8880FM',
     date: '2022-05-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '14:25',
     from: 'Lancaster Farms',
     to: 'Elmley',
@@ -363,7 +363,7 @@ module.exports = {
   }, {
     prisonNumber: 'F1550WX',
     date: '2022-02-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:48',
     from: 'Bedford',
     to: 'Wakefield',
@@ -375,7 +375,7 @@ module.exports = {
   }, {
     prisonNumber: 'V2640CS',
     date: '2022-05-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '04:37',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -387,7 +387,7 @@ module.exports = {
   }, {
     prisonNumber: 'A7120VU',
     date: '2021-09-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '09:09',
     from: 'Dartmoor',
     to: 'Garth',
@@ -399,7 +399,7 @@ module.exports = {
   }, {
     prisonNumber: 'U9550OE',
     date: '2022-05-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '02:46',
     from: 'Hatfield',
     to: 'Pentonville',
@@ -411,7 +411,7 @@ module.exports = {
   }, {
     prisonNumber: 'A6010PA',
     date: '2022-07-31',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:45',
     from: 'Kirkham',
     to: 'Featherstone',
@@ -423,7 +423,7 @@ module.exports = {
   }, {
     prisonNumber: 'F4450HT',
     date: '2022-02-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '12:21',
     from: 'Wakefield',
     to: 'Lancaster Farms',
@@ -435,7 +435,7 @@ module.exports = {
   }, {
     prisonNumber: 'E7540IG',
     date: '2022-06-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '21:03',
     from: 'Featherstone',
     to: 'Cardiff',
@@ -447,7 +447,7 @@ module.exports = {
   }, {
     prisonNumber: 'E0740WP',
     date: '2021-09-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '17:04',
     from: 'Wakefield',
     to: 'Hatfield',
@@ -459,7 +459,7 @@ module.exports = {
   }, {
     prisonNumber: 'L2120VS',
     date: '2022-06-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '14:30',
     from: 'Usk',
     to: 'Usk',
@@ -471,7 +471,7 @@ module.exports = {
   }, {
     prisonNumber: 'O4010JY',
     date: '2022-09-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '17:32',
     from: 'Thameside',
     to: 'Thameside',
@@ -483,7 +483,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0030SC',
     date: '2023-06-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:07',
     from: 'Usk',
     to: 'Thameside',
@@ -495,7 +495,7 @@ module.exports = {
   }, {
     prisonNumber: 'G0550AJ',
     date: '2021-11-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '00:57',
     from: 'Garth',
     to: 'Isle of Wight',
@@ -507,7 +507,7 @@ module.exports = {
   }, {
     prisonNumber: 'G3700UF',
     date: '2021-11-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '03:23',
     from: 'Lancaster Farms',
     to: 'Send',
@@ -519,7 +519,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2030UB',
     date: '2023-02-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '22:47',
     from: 'Wakefield',
     to: 'Oakwood',
@@ -531,7 +531,7 @@ module.exports = {
   }, {
     prisonNumber: 'F6610DS',
     date: '2021-08-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '17:22',
     from: 'Elmley',
     to: 'Kirkham',
@@ -543,7 +543,7 @@ module.exports = {
   }, {
     prisonNumber: 'S2970QX',
     date: '2021-10-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '11:37',
     from: 'Lancaster Farms',
     to: 'Northumberland',
@@ -555,7 +555,7 @@ module.exports = {
   }, {
     prisonNumber: 'L6380CH',
     date: '2021-08-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '16:32',
     from: 'Hatfield',
     to: 'Maidstone',
@@ -567,7 +567,7 @@ module.exports = {
   }, {
     prisonNumber: 'S5530VY',
     date: '2022-01-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '10:45',
     from: 'Bedford',
     to: 'Featherstone',
@@ -579,7 +579,7 @@ module.exports = {
   }, {
     prisonNumber: 'N6530NE',
     date: '2023-03-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '15:22',
     from: 'Send',
     to: 'Oakwood',
@@ -591,7 +591,7 @@ module.exports = {
   }, {
     prisonNumber: 'N3430RL',
     date: '2022-11-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '17:26',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -603,7 +603,7 @@ module.exports = {
   }, {
     prisonNumber: 'X8220KI',
     date: '2022-06-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '08:35',
     from: 'Isle of Wight',
     to: 'Oakwood',
@@ -615,7 +615,7 @@ module.exports = {
   }, {
     prisonNumber: 'G9410HY',
     date: '2021-09-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '18:17',
     from: 'Usk',
     to: 'Usk',
@@ -627,7 +627,7 @@ module.exports = {
   }, {
     prisonNumber: 'N6380FR',
     date: '2023-01-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '21:55',
     from: 'Altcourse',
     to: 'Elmley',
@@ -639,7 +639,7 @@ module.exports = {
   }, {
     prisonNumber: 'K1240LO',
     date: '2022-10-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '23:42',
     from: 'Cardiff',
     to: 'Northumberland',
@@ -651,7 +651,7 @@ module.exports = {
   }, {
     prisonNumber: 'W1280FF',
     date: '2023-03-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '08:59',
     from: 'Garth',
     to: 'Garth',
@@ -663,7 +663,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y6240ZE',
     date: '2022-03-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '05:56',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -675,7 +675,7 @@ module.exports = {
   }, {
     prisonNumber: 'D0460NG',
     date: '2021-10-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '09:06',
     from: 'Lancaster Farms',
     to: 'Elmley',
@@ -687,7 +687,7 @@ module.exports = {
   }, {
     prisonNumber: 'J4160CG',
     date: '2022-07-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '13:54',
     from: 'Thameside',
     to: 'Northumberland',
@@ -699,7 +699,7 @@ module.exports = {
   }, {
     prisonNumber: 'V8840CK',
     date: '2022-01-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '05:22',
     from: 'Usk',
     to: 'Ranby',
@@ -711,7 +711,7 @@ module.exports = {
   }, {
     prisonNumber: 'F7890TC',
     date: '2022-07-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '15:47',
     from: 'Ranby',
     to: 'Lancaster Farms',
@@ -723,7 +723,7 @@ module.exports = {
   }, {
     prisonNumber: 'G5280DO',
     date: '2022-08-31',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:24',
     from: 'Wakefield',
     to: 'Thameside',
@@ -735,7 +735,7 @@ module.exports = {
   }, {
     prisonNumber: 'K8740MK',
     date: '2022-10-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '01:41',
     from: 'Hatfield',
     to: 'Maidstone',
@@ -747,7 +747,7 @@ module.exports = {
   }, {
     prisonNumber: 'J4010XE',
     date: '2021-10-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:54',
     from: 'Wakefield',
     to: 'Featherstone',
@@ -759,7 +759,7 @@ module.exports = {
   }, {
     prisonNumber: 'B1610BS',
     date: '2022-03-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:25',
     from: 'Lancaster Farms',
     to: 'Thameside',
@@ -771,7 +771,7 @@ module.exports = {
   }, {
     prisonNumber: 'D9240EM',
     date: '2023-02-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '06:18',
     from: 'Ranby',
     to: 'Usk',
@@ -783,7 +783,7 @@ module.exports = {
   }, {
     prisonNumber: 'K2470JS',
     date: '2022-02-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:46',
     from: 'Thameside',
     to: 'Featherstone',
@@ -795,7 +795,7 @@ module.exports = {
   }, {
     prisonNumber: 'W0680QG',
     date: '2022-09-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '00:59',
     from: 'Usk',
     to: 'Bedford',
@@ -807,7 +807,7 @@ module.exports = {
   }, {
     prisonNumber: 'L1430GM',
     date: '2022-06-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '02:33',
     from: 'Thameside',
     to: 'Usk',
@@ -819,7 +819,7 @@ module.exports = {
   }, {
     prisonNumber: 'C6610JK',
     date: '2021-08-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '02:55',
     from: 'Hatfield',
     to: 'Thameside',
@@ -831,7 +831,7 @@ module.exports = {
   }, {
     prisonNumber: 'U6230WY',
     date: '2022-02-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '04:51',
     from: 'Send',
     to: 'Wakefield',
@@ -843,7 +843,7 @@ module.exports = {
   }, {
     prisonNumber: 'W0280BJ',
     date: '2023-03-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:05',
     from: 'Garth',
     to: 'Usk',
@@ -855,7 +855,7 @@ module.exports = {
   }, {
     prisonNumber: 'O2510OP',
     date: '2022-12-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '03:34',
     from: 'Bedford',
     to: 'Northumberland',
@@ -867,7 +867,7 @@ module.exports = {
   }, {
     prisonNumber: 'N5580SR',
     date: '2022-08-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '07:07',
     from: 'Garth',
     to: 'Usk',
@@ -879,7 +879,7 @@ module.exports = {
   }, {
     prisonNumber: 'D1190BR',
     date: '2021-11-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '15:25',
     from: 'Bedford',
     to: 'Usk',
@@ -891,7 +891,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1030WL',
     date: '2023-01-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '06:45',
     from: 'Bedford',
     to: 'Send',
@@ -903,7 +903,7 @@ module.exports = {
   }, {
     prisonNumber: 'D2340JR',
     date: '2022-10-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:54',
     from: 'Pentonville',
     to: 'Hatfield',
@@ -915,7 +915,7 @@ module.exports = {
   }, {
     prisonNumber: 'N6970CI',
     date: '2022-11-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '06:25',
     from: 'Wakefield',
     to: 'Featherstone',
@@ -927,7 +927,7 @@ module.exports = {
   }, {
     prisonNumber: 'D4230WC',
     date: '2021-08-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '16:58',
     from: 'Cardiff',
     to: 'Kirkham',
@@ -939,7 +939,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0160HO',
     date: '2022-03-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:58',
     from: 'Hatfield',
     to: 'Wakefield',
@@ -951,7 +951,7 @@ module.exports = {
   }, {
     prisonNumber: 'E4750SG',
     date: '2022-02-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:27',
     from: 'Wakefield',
     to: 'Cardiff',
@@ -963,7 +963,7 @@ module.exports = {
   }, {
     prisonNumber: 'B6350DN',
     date: '2022-04-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '01:35',
     from: 'Featherstone',
     to: 'Cardiff',
@@ -975,7 +975,7 @@ module.exports = {
   }, {
     prisonNumber: 'M9860IX',
     date: '2022-05-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '11:57',
     from: 'Ranby',
     to: 'Isle of Wight',
@@ -987,7 +987,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0850BJ',
     date: '2022-07-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:41',
     from: 'Lancaster Farms',
     to: 'Pentonville',
@@ -999,7 +999,7 @@ module.exports = {
   }, {
     prisonNumber: 'E5760LE',
     date: '2023-02-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '05:57',
     from: 'Lancaster Farms',
     to: 'Northumberland',
@@ -1011,7 +1011,7 @@ module.exports = {
   }, {
     prisonNumber: 'S8310OL',
     date: '2022-06-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:42',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -1023,7 +1023,7 @@ module.exports = {
   }, {
     prisonNumber: 'E7120LE',
     date: '2021-08-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '20:01',
     from: 'Oakwood',
     to: 'Pentonville',
@@ -1035,7 +1035,7 @@ module.exports = {
   }, {
     prisonNumber: 'A9640VM',
     date: '2022-02-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:59',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -1047,7 +1047,7 @@ module.exports = {
   }, {
     prisonNumber: 'M1710PF',
     date: '2022-08-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:25',
     from: 'Bedford',
     to: 'Featherstone',
@@ -1059,7 +1059,7 @@ module.exports = {
   }, {
     prisonNumber: 'S6320IZ',
     date: '2022-01-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '13:15',
     from: 'Send',
     to: 'Thameside',
@@ -1071,7 +1071,7 @@ module.exports = {
   }, {
     prisonNumber: 'E6310BW',
     date: '2021-11-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '22:27',
     from: 'Kirkham',
     to: 'Hatfield',
@@ -1083,7 +1083,7 @@ module.exports = {
   }, {
     prisonNumber: 'K4050UD',
     date: '2022-03-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '16:09',
     from: 'Maidstone',
     to: 'Dartmoor',
@@ -1095,7 +1095,7 @@ module.exports = {
   }, {
     prisonNumber: 'X5680UD',
     date: '2022-04-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '20:18',
     from: 'Cardiff',
     to: 'Wakefield',
@@ -1107,7 +1107,7 @@ module.exports = {
   }, {
     prisonNumber: 'E4430TR',
     date: '2022-05-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '02:43',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -1119,7 +1119,7 @@ module.exports = {
   }, {
     prisonNumber: 'T2750BC',
     date: '2022-11-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '23:52',
     from: 'Usk',
     to: 'Bedford',
@@ -1131,7 +1131,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q5440GI',
     date: '2023-03-28',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '10:19',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -1143,7 +1143,7 @@ module.exports = {
   }, {
     prisonNumber: 'O5080CQ',
     date: '2021-09-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '22:39',
     from: 'Kirkham',
     to: 'Thameside',
@@ -1155,7 +1155,7 @@ module.exports = {
   }, {
     prisonNumber: 'D1470WI',
     date: '2022-10-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:15',
     from: 'Thameside',
     to: 'Kirkham',
@@ -1167,7 +1167,7 @@ module.exports = {
   }, {
     prisonNumber: 'H3270TG',
     date: '2023-02-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '05:15',
     from: 'Northumberland',
     to: 'Wakefield',
@@ -1179,7 +1179,7 @@ module.exports = {
   }, {
     prisonNumber: 'F5080ML',
     date: '2022-09-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:56',
     from: 'Wakefield',
     to: 'Kirkham',
@@ -1191,7 +1191,7 @@ module.exports = {
   }, {
     prisonNumber: 'X3720ZF',
     date: '2022-12-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '05:09',
     from: 'Maidstone',
     to: 'Pentonville',
@@ -1203,7 +1203,7 @@ module.exports = {
   }, {
     prisonNumber: 'R6510YD',
     date: '2022-03-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:30',
     from: 'Kirkham',
     to: 'Cardiff',
@@ -1215,7 +1215,7 @@ module.exports = {
   }, {
     prisonNumber: 'V0280KS',
     date: '2021-11-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:05',
     from: 'Kirkham',
     to: 'Usk',
@@ -1227,7 +1227,7 @@ module.exports = {
   }, {
     prisonNumber: 'G6660IY',
     date: '2022-02-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '11:45',
     from: 'Usk',
     to: 'Send',
@@ -1239,7 +1239,7 @@ module.exports = {
   }, {
     prisonNumber: 'R9960RZ',
     date: '2022-02-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '19:33',
     from: 'Bedford',
     to: 'Pentonville',
@@ -1251,7 +1251,7 @@ module.exports = {
   }, {
     prisonNumber: 'P1830WV',
     date: '2022-06-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '19:37',
     from: 'Bedford',
     to: 'Usk',
@@ -1263,7 +1263,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q7820NR',
     date: '2022-07-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '22:01',
     from: 'Usk',
     to: 'Cardiff',
@@ -1275,7 +1275,7 @@ module.exports = {
   }, {
     prisonNumber: 'S6500PR',
     date: '2022-05-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '17:06',
     from: 'Hatfield',
     to: 'Maidstone',
@@ -1287,7 +1287,7 @@ module.exports = {
   }, {
     prisonNumber: 'P7350BK',
     date: '2022-07-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '18:12',
     from: 'Usk',
     to: 'Wakefield',
@@ -1299,7 +1299,7 @@ module.exports = {
   }, {
     prisonNumber: 'P3380UJ',
     date: '2021-12-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '22:03',
     from: 'Maidstone',
     to: 'Northumberland',
@@ -1311,7 +1311,7 @@ module.exports = {
   }, {
     prisonNumber: 'T9360IW',
     date: '2022-06-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:24',
     from: 'Lancaster Farms',
     to: 'Thameside',
@@ -1323,7 +1323,7 @@ module.exports = {
   }, {
     prisonNumber: 'W6670JS',
     date: '2021-09-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '09:02',
     from: 'Usk',
     to: 'Oakwood',
@@ -1335,7 +1335,7 @@ module.exports = {
   }, {
     prisonNumber: 'U2180SH',
     date: '2022-03-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '10:25',
     from: 'Hatfield',
     to: 'Wakefield',
@@ -1347,7 +1347,7 @@ module.exports = {
   }, {
     prisonNumber: 'I3590OE',
     date: '2021-09-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '23:10',
     from: 'Usk',
     to: 'Wakefield',
@@ -1359,7 +1359,7 @@ module.exports = {
   }, {
     prisonNumber: 'U7520BF',
     date: '2021-10-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '13:29',
     from: 'Garth',
     to: 'Pentonville',
@@ -1371,7 +1371,7 @@ module.exports = {
   }, {
     prisonNumber: 'P8350SD',
     date: '2022-03-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '05:41',
     from: 'Garth',
     to: 'Pentonville',
@@ -1383,7 +1383,7 @@ module.exports = {
   }, {
     prisonNumber: 'N0220YB',
     date: '2022-04-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '18:02',
     from: 'Pentonville',
     to: 'Dartmoor',
@@ -1395,7 +1395,7 @@ module.exports = {
   }, {
     prisonNumber: 'G2660GQ',
     date: '2021-12-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '04:41',
     from: 'Dartmoor',
     to: 'Garth',
@@ -1407,7 +1407,7 @@ module.exports = {
   }, {
     prisonNumber: 'N4670VK',
     date: '2022-09-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '17:43',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -1419,7 +1419,7 @@ module.exports = {
   }, {
     prisonNumber: 'W9380DA',
     date: '2021-10-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '20:42',
     from: 'Oakwood',
     to: 'Dartmoor',
@@ -1431,7 +1431,7 @@ module.exports = {
   }, {
     prisonNumber: 'J7470LN',
     date: '2022-07-21',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '23:40',
     from: 'Wakefield',
     to: 'Isle of Wight',
@@ -1443,7 +1443,7 @@ module.exports = {
   }, {
     prisonNumber: 'T8640NT',
     date: '2022-03-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:13',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -1455,7 +1455,7 @@ module.exports = {
   }, {
     prisonNumber: 'W2740LZ',
     date: '2021-11-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '08:24',
     from: 'Kirkham',
     to: 'Usk',
@@ -1467,7 +1467,7 @@ module.exports = {
   }, {
     prisonNumber: 'N8130RG',
     date: '2021-08-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '08:38',
     from: 'Thameside',
     to: 'Featherstone',
@@ -1479,7 +1479,7 @@ module.exports = {
   }, {
     prisonNumber: 'C2590AQ',
     date: '2021-11-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '23:34',
     from: 'Pentonville',
     to: 'Maidstone',
@@ -1491,7 +1491,7 @@ module.exports = {
   }, {
     prisonNumber: 'L9570FE',
     date: '2021-09-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '18:04',
     from: 'Thameside',
     to: 'Bedford',
@@ -1503,7 +1503,7 @@ module.exports = {
   }, {
     prisonNumber: 'E6490XA',
     date: '2023-01-21',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:15',
     from: 'Dartmoor',
     to: 'Maidstone',
@@ -1515,7 +1515,7 @@ module.exports = {
   }, {
     prisonNumber: 'L3020EB',
     date: '2022-05-28',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '23:09',
     from: 'Kirkham',
     to: 'Usk',
@@ -1527,7 +1527,7 @@ module.exports = {
   }, {
     prisonNumber: 'D6870CV',
     date: '2021-11-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '20:51',
     from: 'Lancaster Farms',
     to: 'Pentonville',
@@ -1539,7 +1539,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y4460PK',
     date: '2023-03-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:07',
     from: 'Wakefield',
     to: 'Bedford',
@@ -1551,7 +1551,7 @@ module.exports = {
   }, {
     prisonNumber: 'F7910VO',
     date: '2023-01-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '14:31',
     from: 'Wakefield',
     to: 'Garth',
@@ -1563,7 +1563,7 @@ module.exports = {
   }, {
     prisonNumber: 'P9600FD',
     date: '2022-07-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '15:34',
     from: 'Cardiff',
     to: 'Send',
@@ -1575,7 +1575,7 @@ module.exports = {
   }, {
     prisonNumber: 'K7050AI',
     date: '2023-01-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '12:44',
     from: 'Northumberland',
     to: 'Cardiff',
@@ -1587,7 +1587,7 @@ module.exports = {
   }, {
     prisonNumber: 'G5200ED',
     date: '2021-12-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '03:34',
     from: 'Cardiff',
     to: 'Dartmoor',
@@ -1599,7 +1599,7 @@ module.exports = {
   }, {
     prisonNumber: 'U1250DQ',
     date: '2022-06-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:45',
     from: 'Wakefield',
     to: 'Isle of Wight',
@@ -1611,7 +1611,7 @@ module.exports = {
   }, {
     prisonNumber: 'H5720KE',
     date: '2021-08-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '19:14',
     from: 'Usk',
     to: 'Bedford',
@@ -1623,7 +1623,7 @@ module.exports = {
   }, {
     prisonNumber: 'U1060PS',
     date: '2022-01-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '03:17',
     from: 'Usk',
     to: 'Garth',
@@ -1635,7 +1635,7 @@ module.exports = {
   }, {
     prisonNumber: 'M5710GR',
     date: '2022-04-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '17:08',
     from: 'Kirkham',
     to: 'Thameside',
@@ -1647,7 +1647,7 @@ module.exports = {
   }, {
     prisonNumber: 'E0640GY',
     date: '2023-02-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '04:57',
     from: 'Garth',
     to: 'Kirkham',
@@ -1659,7 +1659,7 @@ module.exports = {
   }, {
     prisonNumber: 'W1560OU',
     date: '2022-11-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:36',
     from: 'Bedford',
     to: 'Wakefield',
@@ -1671,7 +1671,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y2630GR',
     date: '2022-09-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:26',
     from: 'Oakwood',
     to: 'Send',
@@ -1683,7 +1683,7 @@ module.exports = {
   }, {
     prisonNumber: 'K1870GS',
     date: '2023-04-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:11',
     from: 'Bedford',
     to: 'Elmley',
@@ -1695,7 +1695,7 @@ module.exports = {
   }, {
     prisonNumber: 'N5030HV',
     date: '2021-12-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '12:24',
     from: 'Kirkham',
     to: 'Send',
@@ -1707,7 +1707,7 @@ module.exports = {
   }, {
     prisonNumber: 'R8740PQ',
     date: '2023-03-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:56',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -1719,7 +1719,7 @@ module.exports = {
   }, {
     prisonNumber: 'G4240UG',
     date: '2023-03-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '05:48',
     from: 'Isle of Wight',
     to: 'Wakefield',
@@ -1731,7 +1731,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q7350IC',
     date: '2021-08-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '02:19',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -1743,7 +1743,7 @@ module.exports = {
   }, {
     prisonNumber: 'L1610ID',
     date: '2022-11-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '15:18',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -1755,7 +1755,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z1010XP',
     date: '2022-11-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '01:21',
     from: 'Isle of Wight',
     to: 'Elmley',
@@ -1767,7 +1767,7 @@ module.exports = {
   }, {
     prisonNumber: 'P5620FR',
     date: '2021-11-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '03:05',
     from: 'Lancaster Farms',
     to: 'Send',
@@ -1779,7 +1779,7 @@ module.exports = {
   }, {
     prisonNumber: 'L2550DZ',
     date: '2023-03-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '07:37',
     from: 'Featherstone',
     to: 'Thameside',
@@ -1791,7 +1791,7 @@ module.exports = {
   }, {
     prisonNumber: 'B7440BI',
     date: '2022-02-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:23',
     from: 'Wakefield',
     to: 'Elmley',
@@ -1803,7 +1803,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7130BQ',
     date: '2022-08-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '11:30',
     from: 'Wakefield',
     to: 'Garth',
@@ -1815,7 +1815,7 @@ module.exports = {
   }, {
     prisonNumber: 'F0420FC',
     date: '2022-06-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '05:45',
     from: 'Usk',
     to: 'Elmley',
@@ -1827,7 +1827,7 @@ module.exports = {
   }, {
     prisonNumber: 'T0870ZC',
     date: '2023-02-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '04:24',
     from: 'Hatfield',
     to: 'Isle of Wight',
@@ -1839,7 +1839,7 @@ module.exports = {
   }, {
     prisonNumber: 'X0750BK',
     date: '2021-11-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:05',
     from: 'Maidstone',
     to: 'Oakwood',
@@ -1851,7 +1851,7 @@ module.exports = {
   }, {
     prisonNumber: 'J5530XT',
     date: '2022-09-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '06:05',
     from: 'Kirkham',
     to: 'Bedford',
@@ -1863,7 +1863,7 @@ module.exports = {
   }, {
     prisonNumber: 'I1670XI',
     date: '2022-08-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '08:03',
     from: 'Ranby',
     to: 'Send',
@@ -1875,7 +1875,7 @@ module.exports = {
   }, {
     prisonNumber: 'G3530QE',
     date: '2023-04-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '20:43',
     from: 'Send',
     to: 'Send',
@@ -1887,7 +1887,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y3930HG',
     date: '2023-02-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:59',
     from: 'Usk',
     to: 'Thameside',
@@ -1899,7 +1899,7 @@ module.exports = {
   }, {
     prisonNumber: 'A2010TJ',
     date: '2022-09-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:31',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -1911,7 +1911,7 @@ module.exports = {
   }, {
     prisonNumber: 'M7720YF',
     date: '2022-01-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:45',
     from: 'Bedford',
     to: 'Wakefield',
@@ -1923,7 +1923,7 @@ module.exports = {
   }, {
     prisonNumber: 'N5790PS',
     date: '2022-06-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '22:21',
     from: 'Kirkham',
     to: 'Pentonville',
@@ -1935,7 +1935,7 @@ module.exports = {
   }, {
     prisonNumber: 'B5700VL',
     date: '2022-08-21',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:27',
     from: 'Cardiff',
     to: 'Send',
@@ -1947,7 +1947,7 @@ module.exports = {
   }, {
     prisonNumber: 'I7480ZW',
     date: '2022-11-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:58',
     from: 'Kirkham',
     to: 'Oakwood',
@@ -1959,7 +1959,7 @@ module.exports = {
   }, {
     prisonNumber: 'F4010GF',
     date: '2023-06-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:14',
     from: 'Wakefield',
     to: 'Garth',
@@ -1971,7 +1971,7 @@ module.exports = {
   }, {
     prisonNumber: 'O8040FH',
     date: '2021-09-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:15',
     from: 'Bedford',
     to: 'Bedford',
@@ -1983,7 +1983,7 @@ module.exports = {
   }, {
     prisonNumber: 'D8480OK',
     date: '2022-08-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '12:05',
     from: 'Ranby',
     to: 'Altcourse',
@@ -1995,7 +1995,7 @@ module.exports = {
   }, {
     prisonNumber: 'M6110KW',
     date: '2022-05-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '19:40',
     from: 'Elmley',
     to: 'Pentonville',
@@ -2007,7 +2007,7 @@ module.exports = {
   }, {
     prisonNumber: 'S1850BL',
     date: '2023-02-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:12',
     from: 'Kirkham',
     to: 'Maidstone',
@@ -2019,7 +2019,7 @@ module.exports = {
   }, {
     prisonNumber: 'B6940UF',
     date: '2022-06-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '23:39',
     from: 'Bedford',
     to: 'Pentonville',
@@ -2031,7 +2031,7 @@ module.exports = {
   }, {
     prisonNumber: 'P1600TK',
     date: '2021-12-11',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '19:29',
     from: 'Featherstone',
     to: 'Elmley',
@@ -2043,7 +2043,7 @@ module.exports = {
   }, {
     prisonNumber: 'I3410EM',
     date: '2021-08-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:32',
     from: 'Usk',
     to: 'Maidstone',
@@ -2055,7 +2055,7 @@ module.exports = {
   }, {
     prisonNumber: 'J2800XP',
     date: '2023-04-28',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '02:16',
     from: 'Pentonville',
     to: 'Featherstone',
@@ -2067,7 +2067,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z5930JJ',
     date: '2021-10-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '13:26',
     from: 'Cardiff',
     to: 'Featherstone',
@@ -2079,7 +2079,7 @@ module.exports = {
   }, {
     prisonNumber: 'W2660UD',
     date: '2022-02-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:10',
     from: 'Cardiff',
     to: 'Ranby',
@@ -2091,7 +2091,7 @@ module.exports = {
   }, {
     prisonNumber: 'J3240YX',
     date: '2021-12-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:13',
     from: 'Isle of Wight',
     to: 'Isle of Wight',
@@ -2103,7 +2103,7 @@ module.exports = {
   }, {
     prisonNumber: 'S3930ID',
     date: '2021-09-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '06:24',
     from: 'Garth',
     to: 'Lancaster Farms',
@@ -2115,7 +2115,7 @@ module.exports = {
   }, {
     prisonNumber: 'A3630CW',
     date: '2022-08-21',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '03:49',
     from: 'Oakwood',
     to: 'Pentonville',
@@ -2127,7 +2127,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z0610FY',
     date: '2022-03-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '03:10',
     from: 'Featherstone',
     to: 'Garth',
@@ -2139,7 +2139,7 @@ module.exports = {
   }, {
     prisonNumber: 'L8020GY',
     date: '2022-05-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '14:23',
     from: 'Maidstone',
     to: 'Bedford',
@@ -2151,7 +2151,7 @@ module.exports = {
   }, {
     prisonNumber: 'H9020PE',
     date: '2022-11-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '09:05',
     from: 'Send',
     to: 'Wakefield',
@@ -2163,7 +2163,7 @@ module.exports = {
   }, {
     prisonNumber: 'F8160ZG',
     date: '2022-10-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '02:12',
     from: 'Usk',
     to: 'Northumberland',
@@ -2175,7 +2175,7 @@ module.exports = {
   }, {
     prisonNumber: 'V7110NG',
     date: '2021-08-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '06:45',
     from: 'Bedford',
     to: 'Elmley',
@@ -2187,7 +2187,7 @@ module.exports = {
   }, {
     prisonNumber: 'K6280YL',
     date: '2022-06-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:58',
     from: 'Lancaster Farms',
     to: 'Hatfield',
@@ -2199,7 +2199,7 @@ module.exports = {
   }, {
     prisonNumber: 'T7430UW',
     date: '2022-09-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:17',
     from: 'Lancaster Farms',
     to: 'Altcourse',
@@ -2211,7 +2211,7 @@ module.exports = {
   }, {
     prisonNumber: 'G8560NQ',
     date: '2022-11-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '05:13',
     from: 'Wakefield',
     to: 'Isle of Wight',
@@ -2223,7 +2223,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7890VF',
     date: '2022-08-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '03:00',
     from: 'Oakwood',
     to: 'Ranby',
@@ -2235,7 +2235,7 @@ module.exports = {
   }, {
     prisonNumber: 'W0580UZ',
     date: '2023-03-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '06:36',
     from: 'Kirkham',
     to: 'Isle of Wight',
@@ -2247,7 +2247,7 @@ module.exports = {
   }, {
     prisonNumber: 'F6860ML',
     date: '2021-09-18',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:39',
     from: 'Wakefield',
     to: 'Kirkham',
@@ -2259,7 +2259,7 @@ module.exports = {
   }, {
     prisonNumber: 'C7350DL',
     date: '2022-01-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '04:18',
     from: 'Hatfield',
     to: 'Kirkham',
@@ -2271,7 +2271,7 @@ module.exports = {
   }, {
     prisonNumber: 'S7430IZ',
     date: '2023-03-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '01:30',
     from: 'Pentonville',
     to: 'Elmley',
@@ -2283,7 +2283,7 @@ module.exports = {
   }, {
     prisonNumber: 'M1040BF',
     date: '2022-10-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:29',
     from: 'Maidstone',
     to: 'Thameside',
@@ -2295,7 +2295,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q6300BT',
     date: '2022-12-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:45',
     from: 'Lancaster Farms',
     to: 'Featherstone',
@@ -2307,7 +2307,7 @@ module.exports = {
   }, {
     prisonNumber: 'V4230SI',
     date: '2022-06-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '09:19',
     from: 'Altcourse',
     to: 'Lancaster Farms',
@@ -2319,7 +2319,7 @@ module.exports = {
   }, {
     prisonNumber: 'U9560CM',
     date: '2022-06-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:43',
     from: 'Dartmoor',
     to: 'Wakefield',
@@ -2331,7 +2331,7 @@ module.exports = {
   }, {
     prisonNumber: 'M7580TQ',
     date: '2022-08-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '14:01',
     from: 'Send',
     to: 'Usk',
@@ -2343,7 +2343,7 @@ module.exports = {
   }, {
     prisonNumber: 'M7230ID',
     date: '2022-11-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '13:44',
     from: 'Elmley',
     to: 'Northumberland',
@@ -2355,7 +2355,7 @@ module.exports = {
   }, {
     prisonNumber: 'F0290YN',
     date: '2023-01-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '00:05',
     from: 'Hatfield',
     to: 'Ranby',
@@ -2367,7 +2367,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1130PF',
     date: '2021-11-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '05:58',
     from: 'Cardiff',
     to: 'Wakefield',
@@ -2379,7 +2379,7 @@ module.exports = {
   }, {
     prisonNumber: 'D3220RH',
     date: '2022-09-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '10:00',
     from: 'Elmley',
     to: 'Northumberland',
@@ -2391,7 +2391,7 @@ module.exports = {
   }, {
     prisonNumber: 'O3220NX',
     date: '2022-03-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '07:21',
     from: 'Cardiff',
     to: 'Ranby',
@@ -2403,7 +2403,7 @@ module.exports = {
   }, {
     prisonNumber: 'U7420SE',
     date: '2022-01-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '02:51',
     from: 'Thameside',
     to: 'Wakefield',
@@ -2415,7 +2415,7 @@ module.exports = {
   }, {
     prisonNumber: 'D2730ER',
     date: '2023-02-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '07:34',
     from: 'Dartmoor',
     to: 'Wakefield',
@@ -2427,7 +2427,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y8260KW',
     date: '2022-08-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '19:45',
     from: 'Thameside',
     to: 'Dartmoor',
@@ -2439,7 +2439,7 @@ module.exports = {
   }, {
     prisonNumber: 'H1840MP',
     date: '2021-12-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '09:34',
     from: 'Garth',
     to: 'Kirkham',
@@ -2451,7 +2451,7 @@ module.exports = {
   }, {
     prisonNumber: 'L6840KG',
     date: '2023-02-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '12:29',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -2463,7 +2463,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z2540KE',
     date: '2023-01-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '20:24',
     from: 'Maidstone',
     to: 'Send',
@@ -2475,7 +2475,7 @@ module.exports = {
   }, {
     prisonNumber: 'P6150NX',
     date: '2023-03-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:43',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -2487,7 +2487,7 @@ module.exports = {
   }, {
     prisonNumber: 'C9860OX',
     date: '2022-06-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '15:13',
     from: 'Dartmoor',
     to: 'Kirkham',
@@ -2499,7 +2499,7 @@ module.exports = {
   }, {
     prisonNumber: 'F3220GG',
     date: '2023-06-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:43',
     from: 'Kirkham',
     to: 'Elmley',
@@ -2511,7 +2511,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2870RS',
     date: '2022-03-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '04:17',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -2523,7 +2523,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z0720SN',
     date: '2022-12-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '19:31',
     from: 'Pentonville',
     to: 'Kirkham',
@@ -2535,7 +2535,7 @@ module.exports = {
   }, {
     prisonNumber: 'J7420AX',
     date: '2023-03-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '04:15',
     from: 'Isle of Wight',
     to: 'Ranby',
@@ -2547,7 +2547,7 @@ module.exports = {
   }, {
     prisonNumber: 'I9330BI',
     date: '2021-09-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '03:55',
     from: 'Northumberland',
     to: 'Send',
@@ -2559,7 +2559,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1160GY',
     date: '2022-02-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:52',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -2571,7 +2571,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z4530KZ',
     date: '2022-06-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '03:08',
     from: 'Bedford',
     to: 'Isle of Wight',
@@ -2583,7 +2583,7 @@ module.exports = {
   }, {
     prisonNumber: 'K1250CA',
     date: '2023-03-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '19:59',
     from: 'Usk',
     to: 'Send',
@@ -2595,7 +2595,7 @@ module.exports = {
   }, {
     prisonNumber: 'U8900DX',
     date: '2022-12-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '01:54',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -2607,7 +2607,7 @@ module.exports = {
   }, {
     prisonNumber: 'L1520LD',
     date: '2023-02-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '08:48',
     from: 'Pentonville',
     to: 'Hatfield',
@@ -2619,7 +2619,7 @@ module.exports = {
   }, {
     prisonNumber: 'I0570NA',
     date: '2023-03-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '07:00',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -2631,7 +2631,7 @@ module.exports = {
   }, {
     prisonNumber: 'M6730HU',
     date: '2022-06-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '20:45',
     from: 'Dartmoor',
     to: 'Kirkham',
@@ -2643,7 +2643,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y3720IA',
     date: '2022-11-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '18:05',
     from: 'Wakefield',
     to: 'Isle of Wight',
@@ -2655,7 +2655,7 @@ module.exports = {
   }, {
     prisonNumber: 'H6350OV',
     date: '2021-09-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '22:01',
     from: 'Send',
     to: 'Kirkham',
@@ -2667,7 +2667,7 @@ module.exports = {
   }, {
     prisonNumber: 'E7440UN',
     date: '2023-02-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '01:40',
     from: 'Pentonville',
     to: 'Ranby',
@@ -2679,7 +2679,7 @@ module.exports = {
   }, {
     prisonNumber: 'G3860TD',
     date: '2022-07-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:47',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -2691,7 +2691,7 @@ module.exports = {
   }, {
     prisonNumber: 'J2070CU',
     date: '2022-09-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '15:09',
     from: 'Thameside',
     to: 'Usk',
@@ -2703,7 +2703,7 @@ module.exports = {
   }, {
     prisonNumber: 'J8840OQ',
     date: '2022-07-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '01:38',
     from: 'Thameside',
     to: 'Hatfield',
@@ -2715,7 +2715,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q3430VX',
     date: '2023-06-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '04:06',
     from: 'Usk',
     to: 'Send',
@@ -2727,7 +2727,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y8090LQ',
     date: '2021-09-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '03:42',
     from: 'Pentonville',
     to: 'Featherstone',
@@ -2739,7 +2739,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q8610UI',
     date: '2022-09-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:00',
     from: 'Send',
     to: 'Wakefield',
@@ -2751,7 +2751,7 @@ module.exports = {
   }, {
     prisonNumber: 'M2770EY',
     date: '2022-04-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '17:05',
     from: 'Featherstone',
     to: 'Northumberland',
@@ -2763,7 +2763,7 @@ module.exports = {
   }, {
     prisonNumber: 'F6410FP',
     date: '2022-10-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '09:46',
     from: 'Isle of Wight',
     to: 'Kirkham',
@@ -2775,7 +2775,7 @@ module.exports = {
   }, {
     prisonNumber: 'P2550PK',
     date: '2021-12-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '07:54',
     from: 'Dartmoor',
     to: 'Isle of Wight',
@@ -2787,7 +2787,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q1090GU',
     date: '2021-08-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '21:44',
     from: 'Usk',
     to: 'Garth',
@@ -2799,7 +2799,7 @@ module.exports = {
   }, {
     prisonNumber: 'E4170MO',
     date: '2021-09-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:25',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -2811,7 +2811,7 @@ module.exports = {
   }, {
     prisonNumber: 'W8830PI',
     date: '2023-02-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '23:24',
     from: 'Bedford',
     to: 'Thameside',
@@ -2823,7 +2823,7 @@ module.exports = {
   }, {
     prisonNumber: 'A1740QI',
     date: '2022-12-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '00:26',
     from: 'Thameside',
     to: 'Ranby',
@@ -2835,7 +2835,7 @@ module.exports = {
   }, {
     prisonNumber: 'V4740XQ',
     date: '2023-04-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '17:49',
     from: 'Elmley',
     to: 'Kirkham',
@@ -2847,7 +2847,7 @@ module.exports = {
   }, {
     prisonNumber: 'E0550PS',
     date: '2023-04-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '23:48',
     from: 'Lancaster Farms',
     to: 'Garth',
@@ -2859,7 +2859,7 @@ module.exports = {
   }, {
     prisonNumber: 'N4350VQ',
     date: '2023-01-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '23:11',
     from: 'Ranby',
     to: 'Thameside',
@@ -2871,7 +2871,7 @@ module.exports = {
   }, {
     prisonNumber: 'E1800CO',
     date: '2022-10-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '21:01',
     from: 'Isle of Wight',
     to: 'Cardiff',
@@ -2883,7 +2883,7 @@ module.exports = {
   }, {
     prisonNumber: 'I1180SW',
     date: '2023-03-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '20:15',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -2895,7 +2895,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q2840KJ',
     date: '2022-12-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '03:32',
     from: 'Pentonville',
     to: 'Usk',
@@ -2907,7 +2907,7 @@ module.exports = {
   }, {
     prisonNumber: 'S4320XL',
     date: '2021-10-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '22:00',
     from: 'Isle of Wight',
     to: 'Wakefield',
@@ -2919,7 +2919,7 @@ module.exports = {
   }, {
     prisonNumber: 'P4830TY',
     date: '2022-08-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '14:37',
     from: 'Pentonville',
     to: 'Usk',
@@ -2931,7 +2931,7 @@ module.exports = {
   }, {
     prisonNumber: 'E3430HJ',
     date: '2022-08-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '03:09',
     from: 'Bedford',
     to: 'Usk',
@@ -2943,7 +2943,7 @@ module.exports = {
   }, {
     prisonNumber: 'G5630YZ',
     date: '2022-07-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '14:32',
     from: 'Send',
     to: 'Kirkham',
@@ -2955,7 +2955,7 @@ module.exports = {
   }, {
     prisonNumber: 'V8480WE',
     date: '2022-01-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '08:33',
     from: 'Pentonville',
     to: 'Altcourse',
@@ -2967,7 +2967,7 @@ module.exports = {
   }, {
     prisonNumber: 'F4330NR',
     date: '2022-04-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '22:55',
     from: 'Wakefield',
     to: 'Kirkham',
@@ -2979,7 +2979,7 @@ module.exports = {
   }, {
     prisonNumber: 'X1810SR',
     date: '2022-10-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '19:00',
     from: 'Altcourse',
     to: 'Bedford',
@@ -2991,7 +2991,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y4760BM',
     date: '2021-09-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '19:03',
     from: 'Send',
     to: 'Pentonville',
@@ -3003,7 +3003,7 @@ module.exports = {
   }, {
     prisonNumber: 'T6270PS',
     date: '2023-01-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '20:37',
     from: 'Dartmoor',
     to: 'Wakefield',
@@ -3015,7 +3015,7 @@ module.exports = {
   }, {
     prisonNumber: 'J9070BW',
     date: '2021-11-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '19:56',
     from: 'Usk',
     to: 'Cardiff',
@@ -3027,7 +3027,7 @@ module.exports = {
   }, {
     prisonNumber: 'J1940HO',
     date: '2021-09-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '02:45',
     from: 'Garth',
     to: 'Hatfield',
@@ -3039,7 +3039,7 @@ module.exports = {
   }, {
     prisonNumber: 'O0630DM',
     date: '2022-06-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '09:52',
     from: 'Oakwood',
     to: 'Pentonville',
@@ -3051,7 +3051,7 @@ module.exports = {
   }, {
     prisonNumber: 'T2440EI',
     date: '2022-08-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '11:10',
     from: 'Usk',
     to: 'Wakefield',
@@ -3063,7 +3063,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z4160PX',
     date: '2022-05-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '01:23',
     from: 'Lancaster Farms',
     to: 'Cardiff',
@@ -3075,7 +3075,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q7690UV',
     date: '2022-09-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '17:41',
     from: 'Pentonville',
     to: 'Dartmoor',
@@ -3087,7 +3087,7 @@ module.exports = {
   }, {
     prisonNumber: 'F9810RY',
     date: '2022-08-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '04:12',
     from: 'Pentonville',
     to: 'Dartmoor',
@@ -3099,7 +3099,7 @@ module.exports = {
   }, {
     prisonNumber: 'G7120IY',
     date: '2023-03-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:07',
     from: 'Usk',
     to: 'Pentonville',
@@ -3111,7 +3111,7 @@ module.exports = {
   }, {
     prisonNumber: 'W6830LM',
     date: '2022-12-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '14:14',
     from: 'Isle of Wight',
     to: 'Send',
@@ -3123,7 +3123,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1410VZ',
     date: '2022-12-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '18:16',
     from: 'Kirkham',
     to: 'Isle of Wight',
@@ -3135,7 +3135,7 @@ module.exports = {
   }, {
     prisonNumber: 'K5260MN',
     date: '2022-09-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '22:16',
     from: 'Lancaster Farms',
     to: 'Pentonville',
@@ -3147,7 +3147,7 @@ module.exports = {
   }, {
     prisonNumber: 'N2160AD',
     date: '2022-05-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '03:42',
     from: 'Thameside',
     to: 'Send',
@@ -3159,7 +3159,7 @@ module.exports = {
   }, {
     prisonNumber: 'J6820HX',
     date: '2022-07-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:21',
     from: 'Oakwood',
     to: 'Kirkham',
@@ -3171,7 +3171,7 @@ module.exports = {
   }, {
     prisonNumber: 'H1740LI',
     date: '2023-02-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '09:35',
     from: 'Hatfield',
     to: 'Dartmoor',
@@ -3183,7 +3183,7 @@ module.exports = {
   }, {
     prisonNumber: 'J8550DT',
     date: '2021-08-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:17',
     from: 'Ranby',
     to: 'Wakefield',
@@ -3195,7 +3195,7 @@ module.exports = {
   }, {
     prisonNumber: 'R2320PI',
     date: '2023-06-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '04:27',
     from: 'Northumberland',
     to: 'Usk',
@@ -3207,7 +3207,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y2720FG',
     date: '2022-12-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '04:05',
     from: 'Usk',
     to: 'Send',
@@ -3219,7 +3219,7 @@ module.exports = {
   }, {
     prisonNumber: 'D6560SS',
     date: '2022-03-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '10:41',
     from: 'Hatfield',
     to: 'Hatfield',
@@ -3231,7 +3231,7 @@ module.exports = {
   }, {
     prisonNumber: 'L2430BE',
     date: '2022-08-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '08:16',
     from: 'Wakefield',
     to: 'Oakwood',
@@ -3243,7 +3243,7 @@ module.exports = {
   }, {
     prisonNumber: 'J2400PW',
     date: '2021-11-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '17:54',
     from: 'Hatfield',
     to: 'Oakwood',
@@ -3255,7 +3255,7 @@ module.exports = {
   }, {
     prisonNumber: 'V8170PE',
     date: '2022-04-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:40',
     from: 'Cardiff',
     to: 'Bedford',
@@ -3267,7 +3267,7 @@ module.exports = {
   }, {
     prisonNumber: 'G8810YW',
     date: '2021-08-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:21',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -3279,7 +3279,7 @@ module.exports = {
   }, {
     prisonNumber: 'O8940ED',
     date: '2022-10-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '20:54',
     from: 'Usk',
     to: 'Oakwood',
@@ -3291,7 +3291,7 @@ module.exports = {
   }, {
     prisonNumber: 'S2300TH',
     date: '2022-12-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '03:32',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -3303,7 +3303,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7790JC',
     date: '2022-01-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '11:25',
     from: 'Thameside',
     to: 'Wakefield',
@@ -3315,7 +3315,7 @@ module.exports = {
   }, {
     prisonNumber: 'W5940PH',
     date: '2022-04-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:23',
     from: 'Oakwood',
     to: 'Ranby',
@@ -3327,7 +3327,7 @@ module.exports = {
   }, {
     prisonNumber: 'D4230NJ',
     date: '2022-07-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:39',
     from: 'Featherstone',
     to: 'Bedford',
@@ -3339,7 +3339,7 @@ module.exports = {
   }, {
     prisonNumber: 'D0020BG',
     date: '2023-02-19',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '12:46',
     from: 'Wakefield',
     to: 'Usk',
@@ -3351,7 +3351,7 @@ module.exports = {
   }, {
     prisonNumber: 'B8270OE',
     date: '2021-11-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '00:29',
     from: 'Bedford',
     to: 'Usk',
@@ -3363,7 +3363,7 @@ module.exports = {
   }, {
     prisonNumber: 'W5940IM',
     date: '2022-08-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '20:28',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -3375,7 +3375,7 @@ module.exports = {
   }, {
     prisonNumber: 'F4170BK',
     date: '2021-08-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '12:40',
     from: 'Maidstone',
     to: 'Northumberland',
@@ -3387,7 +3387,7 @@ module.exports = {
   }, {
     prisonNumber: 'P5590YB',
     date: '2022-12-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '13:00',
     from: 'Elmley',
     to: 'Usk',
@@ -3399,7 +3399,7 @@ module.exports = {
   }, {
     prisonNumber: 'U6260QE',
     date: '2022-12-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '12:25',
     from: 'Thameside',
     to: 'Northumberland',
@@ -3411,7 +3411,7 @@ module.exports = {
   }, {
     prisonNumber: 'V3440HK',
     date: '2022-12-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '02:13',
     from: 'Bedford',
     to: 'Wakefield',
@@ -3423,7 +3423,7 @@ module.exports = {
   }, {
     prisonNumber: 'W3420NK',
     date: '2022-11-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '16:36',
     from: 'Wakefield',
     to: 'Featherstone',
@@ -3435,7 +3435,7 @@ module.exports = {
   }, {
     prisonNumber: 'A3980JY',
     date: '2022-08-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '05:43',
     from: 'Lancaster Farms',
     to: 'Garth',
@@ -3447,7 +3447,7 @@ module.exports = {
   }, {
     prisonNumber: 'E5350LV',
     date: '2023-03-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '17:55',
     from: 'Isle of Wight',
     to: 'Isle of Wight',
@@ -3459,7 +3459,7 @@ module.exports = {
   }, {
     prisonNumber: 'B5210GE',
     date: '2022-02-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:06',
     from: 'Thameside',
     to: 'Pentonville',
@@ -3471,7 +3471,7 @@ module.exports = {
   }, {
     prisonNumber: 'D4480NK',
     date: '2022-05-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '07:32',
     from: 'Thameside',
     to: 'Cardiff',
@@ -3483,7 +3483,7 @@ module.exports = {
   }, {
     prisonNumber: 'P1620LS',
     date: '2021-11-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:54',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -3495,7 +3495,7 @@ module.exports = {
   }, {
     prisonNumber: 'R8460PB',
     date: '2022-12-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '05:15',
     from: 'Pentonville',
     to: 'Featherstone',
@@ -3507,7 +3507,7 @@ module.exports = {
   }, {
     prisonNumber: 'W5630JU',
     date: '2022-03-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:35',
     from: 'Northumberland',
     to: 'Maidstone',
@@ -3519,7 +3519,7 @@ module.exports = {
   }, {
     prisonNumber: 'N1540ES',
     date: '2021-10-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '16:15',
     from: 'Garth',
     to: 'Altcourse',
@@ -3531,7 +3531,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q8340XU',
     date: '2021-10-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '05:42',
     from: 'Hatfield',
     to: 'Wakefield',
@@ -3543,7 +3543,7 @@ module.exports = {
   }, {
     prisonNumber: 'J4650MC',
     date: '2023-04-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '17:16',
     from: 'Thameside',
     to: 'Thameside',
@@ -3555,7 +3555,7 @@ module.exports = {
   }, {
     prisonNumber: 'E2620JI',
     date: '2021-11-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '19:22',
     from: 'Thameside',
     to: 'Hatfield',
@@ -3567,7 +3567,7 @@ module.exports = {
   }, {
     prisonNumber: 'G8630KN',
     date: '2021-11-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '08:41',
     from: 'Oakwood',
     to: 'Cardiff',
@@ -3579,7 +3579,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0280CW',
     date: '2022-06-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '05:04',
     from: 'Maidstone',
     to: 'Maidstone',
@@ -3591,7 +3591,7 @@ module.exports = {
   }, {
     prisonNumber: 'T6130ON',
     date: '2023-01-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '12:52',
     from: 'Usk',
     to: 'Lancaster Farms',
@@ -3603,7 +3603,7 @@ module.exports = {
   }, {
     prisonNumber: 'S4680DL',
     date: '2021-12-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '16:29',
     from: 'Oakwood',
     to: 'Isle of Wight',
@@ -3615,7 +3615,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y4870QN',
     date: '2022-09-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '11:52',
     from: 'Maidstone',
     to: 'Elmley',
@@ -3627,7 +3627,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q7000OP',
     date: '2022-09-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '09:34',
     from: 'Isle of Wight',
     to: 'Maidstone',
@@ -3639,7 +3639,7 @@ module.exports = {
   }, {
     prisonNumber: 'T2520KK',
     date: '2022-05-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '13:29',
     from: 'Send',
     to: 'Featherstone',
@@ -3651,7 +3651,7 @@ module.exports = {
   }, {
     prisonNumber: 'S1280BM',
     date: '2021-11-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '11:30',
     from: 'Wakefield',
     to: 'Kirkham',
@@ -3663,7 +3663,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q1550LP',
     date: '2023-02-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '08:54',
     from: 'Cardiff',
     to: 'Wakefield',
@@ -3675,7 +3675,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2180HT',
     date: '2022-05-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '13:29',
     from: 'Thameside',
     to: 'Elmley',
@@ -3687,7 +3687,7 @@ module.exports = {
   }, {
     prisonNumber: 'X8220TS',
     date: '2021-11-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '12:15',
     from: 'Cardiff',
     to: 'Featherstone',
@@ -3699,7 +3699,7 @@ module.exports = {
   }, {
     prisonNumber: 'T0600NG',
     date: '2021-10-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '04:39',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -3711,7 +3711,7 @@ module.exports = {
   }, {
     prisonNumber: 'B3340BC',
     date: '2021-12-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '18:02',
     from: 'Wakefield',
     to: 'Thameside',
@@ -3723,7 +3723,7 @@ module.exports = {
   }, {
     prisonNumber: 'T5210LT',
     date: '2022-02-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '06:16',
     from: 'Bedford',
     to: 'Elmley',
@@ -3735,7 +3735,7 @@ module.exports = {
   }, {
     prisonNumber: 'B6370IM',
     date: '2022-11-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '02:16',
     from: 'Kirkham',
     to: 'Usk',
@@ -3747,7 +3747,7 @@ module.exports = {
   }, {
     prisonNumber: 'O5420PQ',
     date: '2022-06-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:23',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -3759,7 +3759,7 @@ module.exports = {
   }, {
     prisonNumber: 'F7580VU',
     date: '2022-08-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '08:40',
     from: 'Bedford',
     to: 'Usk',
@@ -3771,7 +3771,7 @@ module.exports = {
   }, {
     prisonNumber: 'W7770NT',
     date: '2021-12-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '10:44',
     from: 'Oakwood',
     to: 'Pentonville',
@@ -3783,7 +3783,7 @@ module.exports = {
   }, {
     prisonNumber: 'T8240OC',
     date: '2021-10-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '09:37',
     from: 'Ranby',
     to: 'Oakwood',
@@ -3795,7 +3795,7 @@ module.exports = {
   }, {
     prisonNumber: 'R2840EC',
     date: '2022-02-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '21:10',
     from: 'Bedford',
     to: 'Garth',
@@ -3807,7 +3807,7 @@ module.exports = {
   }, {
     prisonNumber: 'X4430BL',
     date: '2021-08-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '23:53',
     from: 'Wakefield',
     to: 'Elmley',
@@ -3819,7 +3819,7 @@ module.exports = {
   }, {
     prisonNumber: 'A2120HI',
     date: '2023-03-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '20:21',
     from: 'Maidstone',
     to: 'Featherstone',
@@ -3831,7 +3831,7 @@ module.exports = {
   }, {
     prisonNumber: 'C6810TT',
     date: '2023-03-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '18:49',
     from: 'Pentonville',
     to: 'Usk',
@@ -3843,7 +3843,7 @@ module.exports = {
   }, {
     prisonNumber: 'R7630CX',
     date: '2021-09-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '11:54',
     from: 'Wakefield',
     to: 'Hatfield',
@@ -3855,7 +3855,7 @@ module.exports = {
   }, {
     prisonNumber: 'G4610EE',
     date: '2023-01-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '17:33',
     from: 'Lancaster Farms',
     to: 'Northumberland',
@@ -3867,7 +3867,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y5940LG',
     date: '2021-09-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '11:17',
     from: 'Thameside',
     to: 'Northumberland',
@@ -3879,7 +3879,7 @@ module.exports = {
   }, {
     prisonNumber: 'G7760TN',
     date: '2021-12-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '04:03',
     from: 'Thameside',
     to: 'Pentonville',
@@ -3891,7 +3891,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0840TW',
     date: '2022-09-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '23:37',
     from: 'Dartmoor',
     to: 'Dartmoor',
@@ -3903,7 +3903,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q9520VW',
     date: '2022-10-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '17:28',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -3915,7 +3915,7 @@ module.exports = {
   }, {
     prisonNumber: 'R5190MX',
     date: '2022-08-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '08:10',
     from: 'Bedford',
     to: 'Northumberland',
@@ -3927,7 +3927,7 @@ module.exports = {
   }, {
     prisonNumber: 'F3480ZM',
     date: '2022-07-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '21:01',
     from: 'Usk',
     to: 'Usk',
@@ -3939,7 +3939,7 @@ module.exports = {
   }, {
     prisonNumber: 'B1720ZS',
     date: '2022-03-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '07:05',
     from: 'Bedford',
     to: 'Dartmoor',
@@ -3951,7 +3951,7 @@ module.exports = {
   }, {
     prisonNumber: 'P6730FQ',
     date: '2023-02-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '11:54',
     from: 'Hatfield',
     to: 'Wakefield',
@@ -3963,7 +3963,7 @@ module.exports = {
   }, {
     prisonNumber: 'D0230KL',
     date: '2022-04-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '20:00',
     from: 'Pentonville',
     to: 'Pentonville',
@@ -3975,7 +3975,7 @@ module.exports = {
   }, {
     prisonNumber: 'J1400JR',
     date: '2022-03-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '12:18',
     from: 'Maidstone',
     to: 'Garth',
@@ -3987,7 +3987,7 @@ module.exports = {
   }, {
     prisonNumber: 'C5160ZH',
     date: '2022-06-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '20:06',
     from: 'Thameside',
     to: 'Ranby',
@@ -3999,7 +3999,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z4220IR',
     date: '2021-12-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '04:29',
     from: 'Elmley',
     to: 'Lancaster Farms',
@@ -4011,7 +4011,7 @@ module.exports = {
   }, {
     prisonNumber: 'C1140NL',
     date: '2021-08-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '15:14',
     from: 'Elmley',
     to: 'Pentonville',
@@ -4023,7 +4023,7 @@ module.exports = {
   }, {
     prisonNumber: 'J2820MQ',
     date: '2022-12-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '13:56',
     from: 'Bedford',
     to: 'Wakefield',
@@ -4035,7 +4035,7 @@ module.exports = {
   }, {
     prisonNumber: 'U5750EX',
     date: '2022-01-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '12:33',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -4047,7 +4047,7 @@ module.exports = {
   }, {
     prisonNumber: 'A8770SZ',
     date: '2022-11-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '23:46',
     from: 'Wakefield',
     to: 'Isle of Wight',
@@ -4059,7 +4059,7 @@ module.exports = {
   }, {
     prisonNumber: 'I4220JG',
     date: '2021-10-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:29',
     from: 'Elmley',
     to: 'Ranby',
@@ -4071,7 +4071,7 @@ module.exports = {
   }, {
     prisonNumber: 'P5690UN',
     date: '2023-04-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:36',
     from: 'Northumberland',
     to: 'Wakefield',
@@ -4083,7 +4083,7 @@ module.exports = {
   }, {
     prisonNumber: 'N5960BF',
     date: '2022-10-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '15:18',
     from: 'Elmley',
     to: 'Send',
@@ -4095,7 +4095,7 @@ module.exports = {
   }, {
     prisonNumber: 'G4400GE',
     date: '2022-10-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '20:15',
     from: 'Northumberland',
     to: 'Wakefield',
@@ -4107,7 +4107,7 @@ module.exports = {
   }, {
     prisonNumber: 'J7660DA',
     date: '2022-10-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '08:40',
     from: 'Pentonville',
     to: 'Hatfield',
@@ -4119,7 +4119,7 @@ module.exports = {
   }, {
     prisonNumber: 'C4230LN',
     date: '2022-11-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:56',
     from: 'Usk',
     to: 'Kirkham',
@@ -4131,7 +4131,7 @@ module.exports = {
   }, {
     prisonNumber: 'W8820KB',
     date: '2021-11-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '16:57',
     from: 'Isle of Wight',
     to: 'Elmley',
@@ -4143,7 +4143,7 @@ module.exports = {
   }, {
     prisonNumber: 'V2830PD',
     date: '2022-04-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:01',
     from: 'Northumberland',
     to: 'Maidstone',
@@ -4155,7 +4155,7 @@ module.exports = {
   }, {
     prisonNumber: 'E7630GO',
     date: '2023-03-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '20:09',
     from: 'Send',
     to: 'Wakefield',
@@ -4167,7 +4167,7 @@ module.exports = {
   }, {
     prisonNumber: 'G2770PI',
     date: '2022-05-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:58',
     from: 'Wakefield',
     to: 'Thameside',
@@ -4179,7 +4179,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z1740FN',
     date: '2022-10-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '11:41',
     from: 'Dartmoor',
     to: 'Wakefield',
@@ -4191,7 +4191,7 @@ module.exports = {
   }, {
     prisonNumber: 'S1640XM',
     date: '2022-05-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '06:02',
     from: 'Pentonville',
     to: 'Garth',
@@ -4203,7 +4203,7 @@ module.exports = {
   }, {
     prisonNumber: 'U2370CL',
     date: '2022-04-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '19:10',
     from: 'Usk',
     to: 'Featherstone',
@@ -4215,7 +4215,7 @@ module.exports = {
   }, {
     prisonNumber: 'P4540BQ',
     date: '2022-08-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '07:44',
     from: 'Elmley',
     to: 'Bedford',
@@ -4227,7 +4227,7 @@ module.exports = {
   }, {
     prisonNumber: 'E5810DF',
     date: '2022-05-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '09:28',
     from: 'Wakefield',
     to: 'Garth',
@@ -4239,7 +4239,7 @@ module.exports = {
   }, {
     prisonNumber: 'U7660UZ',
     date: '2022-01-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:07',
     from: 'Northumberland',
     to: 'Wakefield',
@@ -4251,7 +4251,7 @@ module.exports = {
   }, {
     prisonNumber: 'S6460QM',
     date: '2021-08-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '10:43',
     from: 'Garth',
     to: 'Bedford',
@@ -4263,7 +4263,7 @@ module.exports = {
   }, {
     prisonNumber: 'S1840NO',
     date: '2021-12-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:35',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -4275,7 +4275,7 @@ module.exports = {
   }, {
     prisonNumber: 'V7120EE',
     date: '2022-02-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:12',
     from: 'Isle of Wight',
     to: 'Usk',
@@ -4287,7 +4287,7 @@ module.exports = {
   }, {
     prisonNumber: 'N6130KQ',
     date: '2022-03-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '08:55',
     from: 'Usk',
     to: 'Bedford',
@@ -4299,7 +4299,7 @@ module.exports = {
   }, {
     prisonNumber: 'I3510PE',
     date: '2022-04-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '22:40',
     from: 'Usk',
     to: 'Kirkham',
@@ -4311,7 +4311,7 @@ module.exports = {
   }, {
     prisonNumber: 'L5560SE',
     date: '2023-04-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '17:38',
     from: 'Thameside',
     to: 'Featherstone',
@@ -4323,7 +4323,7 @@ module.exports = {
   }, {
     prisonNumber: 'B0390FI',
     date: '2022-02-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '16:29',
     from: 'Bedford',
     to: 'Ranby',
@@ -4335,7 +4335,7 @@ module.exports = {
   }, {
     prisonNumber: 'R7630SU',
     date: '2022-09-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '20:17',
     from: 'Pentonville',
     to: 'Wakefield',
@@ -4347,7 +4347,7 @@ module.exports = {
   }, {
     prisonNumber: 'W3220BX',
     date: '2022-11-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:23',
     from: 'Thameside',
     to: 'Hatfield',
@@ -4359,7 +4359,7 @@ module.exports = {
   }, {
     prisonNumber: 'W6420IF',
     date: '2023-04-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '22:47',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -4371,7 +4371,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2820JJ',
     date: '2021-12-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '10:02',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -4383,7 +4383,7 @@ module.exports = {
   }, {
     prisonNumber: 'A6160TL',
     date: '2022-06-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:36',
     from: 'Kirkham',
     to: 'Send',
@@ -4395,7 +4395,7 @@ module.exports = {
   }, {
     prisonNumber: 'J5520XO',
     date: '2021-10-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '05:51',
     from: 'Elmley',
     to: 'Wakefield',
@@ -4407,7 +4407,7 @@ module.exports = {
   }, {
     prisonNumber: 'N5360ZX',
     date: '2022-04-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '05:50',
     from: 'Kirkham',
     to: 'Kirkham',
@@ -4419,7 +4419,7 @@ module.exports = {
   }, {
     prisonNumber: 'A5970MI',
     date: '2022-08-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '18:02',
     from: 'Kirkham',
     to: 'Kirkham',
@@ -4431,7 +4431,7 @@ module.exports = {
   }, {
     prisonNumber: 'M3580WN',
     date: '2022-08-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:06',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -4443,7 +4443,7 @@ module.exports = {
   }, {
     prisonNumber: 'S8490EX',
     date: '2023-04-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '11:04',
     from: 'Pentonville',
     to: 'Pentonville',
@@ -4455,7 +4455,7 @@ module.exports = {
   }, {
     prisonNumber: 'I3930XT',
     date: '2022-10-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '21:36',
     from: 'Northumberland',
     to: 'Northumberland',
@@ -4467,7 +4467,7 @@ module.exports = {
   }, {
     prisonNumber: 'X3950UW',
     date: '2022-11-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:37',
     from: 'Maidstone',
     to: 'Cardiff',
@@ -4479,7 +4479,7 @@ module.exports = {
   }, {
     prisonNumber: 'P4460FH',
     date: '2022-11-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:37',
     from: 'Northumberland',
     to: 'Kirkham',
@@ -4491,7 +4491,7 @@ module.exports = {
   }, {
     prisonNumber: 'X7250RF',
     date: '2022-08-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '02:22',
     from: 'Kirkham',
     to: 'Oakwood',
@@ -4503,7 +4503,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q2590RE',
     date: '2022-07-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '00:50',
     from: 'Pentonville',
     to: 'Garth',
@@ -4515,7 +4515,7 @@ module.exports = {
   }, {
     prisonNumber: 'G4430SZ',
     date: '2021-08-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:47',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -4527,7 +4527,7 @@ module.exports = {
   }, {
     prisonNumber: 'G7140EI',
     date: '2021-11-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '13:28',
     from: 'Garth',
     to: 'Northumberland',
@@ -4539,7 +4539,7 @@ module.exports = {
   }, {
     prisonNumber: 'B5740PU',
     date: '2023-02-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '19:56',
     from: 'Bedford',
     to: 'Isle of Wight',
@@ -4551,7 +4551,7 @@ module.exports = {
   }, {
     prisonNumber: 'B8540IG',
     date: '2022-09-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '15:08',
     from: 'Maidstone',
     to: 'Usk',
@@ -4563,7 +4563,7 @@ module.exports = {
   }, {
     prisonNumber: 'G8180CT',
     date: '2022-07-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '17:36',
     from: 'Kirkham',
     to: 'Maidstone',
@@ -4575,7 +4575,7 @@ module.exports = {
   }, {
     prisonNumber: 'K6370OS',
     date: '2022-06-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '20:42',
     from: 'Usk',
     to: 'Wakefield',
@@ -4587,7 +4587,7 @@ module.exports = {
   }, {
     prisonNumber: 'B6810EW',
     date: '2021-10-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '20:52',
     from: 'Altcourse',
     to: 'Cardiff',
@@ -4599,7 +4599,7 @@ module.exports = {
   }, {
     prisonNumber: 'W7740GJ',
     date: '2021-09-07',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '19:34',
     from: 'Usk',
     to: 'Dartmoor',
@@ -4611,7 +4611,7 @@ module.exports = {
   }, {
     prisonNumber: 'C9210LJ',
     date: '2023-01-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '23:19',
     from: 'Bedford',
     to: 'Send',
@@ -4623,7 +4623,7 @@ module.exports = {
   }, {
     prisonNumber: 'E1580GS',
     date: '2023-01-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:03',
     from: 'Lancaster Farms',
     to: 'Wakefield',
@@ -4635,7 +4635,7 @@ module.exports = {
   }, {
     prisonNumber: 'F5980NS',
     date: '2021-11-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:31',
     from: 'Northumberland',
     to: 'Wakefield',
@@ -4647,7 +4647,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z1680SE',
     date: '2022-07-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '07:12',
     from: 'Ranby',
     to: 'Pentonville',
@@ -4659,7 +4659,7 @@ module.exports = {
   }, {
     prisonNumber: 'F2420RX',
     date: '2022-02-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '04:42',
     from: 'Pentonville',
     to: 'Maidstone',
@@ -4671,7 +4671,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q2500YB',
     date: '2022-09-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '11:22',
     from: 'Usk',
     to: 'Usk',
@@ -4683,7 +4683,7 @@ module.exports = {
   }, {
     prisonNumber: 'K8710OR',
     date: '2023-01-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '03:03',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -4695,7 +4695,7 @@ module.exports = {
   }, {
     prisonNumber: 'L1170XI',
     date: '2023-03-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:02',
     from: 'Isle of Wight',
     to: 'Kirkham',
@@ -4707,7 +4707,7 @@ module.exports = {
   }, {
     prisonNumber: 'P6210TE',
     date: '2022-10-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '20:03',
     from: 'Featherstone',
     to: 'Ranby',
@@ -4719,7 +4719,7 @@ module.exports = {
   }, {
     prisonNumber: 'R5130YW',
     date: '2022-03-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '08:38',
     from: 'Lancaster Farms',
     to: 'Bedford',
@@ -4731,7 +4731,7 @@ module.exports = {
   }, {
     prisonNumber: 'S0210WU',
     date: '2022-05-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '07:52',
     from: 'Pentonville',
     to: 'Hatfield',
@@ -4743,7 +4743,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q5150QC',
     date: '2022-06-06',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '18:34',
     from: 'Cardiff',
     to: 'Kirkham',
@@ -4755,7 +4755,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q2760WH',
     date: '2022-03-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '23:00',
     from: 'Cardiff',
     to: 'Wakefield',
@@ -4767,7 +4767,7 @@ module.exports = {
   }, {
     prisonNumber: 'K1210VX',
     date: '2021-08-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '03:45',
     from: 'Usk',
     to: 'Thameside',
@@ -4779,7 +4779,7 @@ module.exports = {
   }, {
     prisonNumber: 'I9310RM',
     date: '2022-07-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '05:34',
     from: 'Bedford',
     to: 'Send',
@@ -4791,7 +4791,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q3470PT',
     date: '2021-09-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '12:46',
     from: 'Oakwood',
     to: 'Elmley',
@@ -4803,7 +4803,7 @@ module.exports = {
   }, {
     prisonNumber: 'N4680OK',
     date: '2022-12-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '04:30',
     from: 'Wakefield',
     to: 'Elmley',
@@ -4815,7 +4815,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7610KA',
     date: '2022-10-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '13:53',
     from: 'Pentonville',
     to: 'Thameside',
@@ -4827,7 +4827,7 @@ module.exports = {
   }, {
     prisonNumber: 'S5880EA',
     date: '2021-12-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '03:19',
     from: 'Oakwood',
     to: 'Lancaster Farms',
@@ -4839,7 +4839,7 @@ module.exports = {
   }, {
     prisonNumber: 'G5000FG',
     date: '2022-11-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '12:11',
     from: 'Usk',
     to: 'Send',
@@ -4851,7 +4851,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q2340GB',
     date: '2022-03-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '10:37',
     from: 'Thameside',
     to: 'Send',
@@ -4863,7 +4863,7 @@ module.exports = {
   }, {
     prisonNumber: 'O0830GG',
     date: '2021-09-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '23:21',
     from: 'Wakefield',
     to: 'Northumberland',
@@ -4875,7 +4875,7 @@ module.exports = {
   }, {
     prisonNumber: 'E7290PB',
     date: '2022-11-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '04:13',
     from: 'Bedford',
     to: 'Wakefield',
@@ -4887,7 +4887,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y2490WC',
     date: '2022-11-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '18:57',
     from: 'Elmley',
     to: 'Kirkham',
@@ -4899,7 +4899,7 @@ module.exports = {
   }, {
     prisonNumber: 'S0170RI',
     date: '2022-03-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '11:12',
     from: 'Elmley',
     to: 'Lancaster Farms',
@@ -4911,7 +4911,7 @@ module.exports = {
   }, {
     prisonNumber: 'I9450GE',
     date: '2021-08-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '21:15',
     from: 'Northumberland',
     to: 'Altcourse',
@@ -4923,7 +4923,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q3530ZO',
     date: '2022-08-24',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '23:46',
     from: 'Lancaster Farms',
     to: 'Elmley',
@@ -4935,7 +4935,7 @@ module.exports = {
   }, {
     prisonNumber: 'D2310IB',
     date: '2022-07-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '11:43',
     from: 'Wakefield',
     to: 'Cardiff',
@@ -4947,7 +4947,7 @@ module.exports = {
   }, {
     prisonNumber: 'V2230EP',
     date: '2022-08-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '16:46',
     from: 'Usk',
     to: 'Northumberland',
@@ -4959,7 +4959,7 @@ module.exports = {
   }, {
     prisonNumber: 'P3720YJ',
     date: '2022-06-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '10:00',
     from: 'Thameside',
     to: 'Dartmoor',
@@ -4971,7 +4971,7 @@ module.exports = {
   }, {
     prisonNumber: 'T2120HL',
     date: '2023-03-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '22:31',
     from: 'Maidstone',
     to: 'Wakefield',
@@ -4983,7 +4983,7 @@ module.exports = {
   }, {
     prisonNumber: 'J4250XF',
     date: '2022-04-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '15:56',
     from: 'Kirkham',
     to: 'Usk',
@@ -4995,7 +4995,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q6910UN',
     date: '2022-09-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '14:25',
     from: 'Northumberland',
     to: 'Ranby',
@@ -5007,7 +5007,7 @@ module.exports = {
   }, {
     prisonNumber: 'L5690LD',
     date: '2021-08-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '12:49',
     from: 'Dartmoor',
     to: 'Kirkham',
@@ -5019,7 +5019,7 @@ module.exports = {
   }, {
     prisonNumber: 'Z4590NR',
     date: '2023-03-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '18:19',
     from: 'Wakefield',
     to: 'Maidstone',
@@ -5031,7 +5031,7 @@ module.exports = {
   }, {
     prisonNumber: 'L6460MG',
     date: '2021-10-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '10:51',
     from: 'Kirkham',
     to: 'Usk',
@@ -5043,7 +5043,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7720XX',
     date: '2023-04-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '10:07',
     from: 'Thameside',
     to: 'Pentonville',
@@ -5055,7 +5055,7 @@ module.exports = {
   }, {
     prisonNumber: 'B7340DL',
     date: '2021-12-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '16:51',
     from: 'Bedford',
     to: 'Wakefield',
@@ -5067,7 +5067,7 @@ module.exports = {
   }, {
     prisonNumber: 'C6270OO',
     date: '2022-07-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '09:33',
     from: 'Ranby',
     to: 'Featherstone',
@@ -5079,7 +5079,7 @@ module.exports = {
   }, {
     prisonNumber: 'S3530JJ',
     date: '2022-01-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '01:56',
     from: 'Wakefield',
     to: 'Lancaster Farms',
@@ -5091,7 +5091,7 @@ module.exports = {
   }, {
     prisonNumber: 'I8770QW',
     date: '2022-06-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '06:01',
     from: 'Northumberland',
     to: 'Dartmoor',
@@ -5103,7 +5103,7 @@ module.exports = {
   }, {
     prisonNumber: 'X7540DY',
     date: '2022-12-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '00:12',
     from: 'Hatfield',
     to: 'Lancaster Farms',
@@ -5115,7 +5115,7 @@ module.exports = {
   }, {
     prisonNumber: 'O0330GK',
     date: '2023-02-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '07:47',
     from: 'Isle of Wight',
     to: 'Lancaster Farms',
@@ -5127,7 +5127,7 @@ module.exports = {
   }, {
     prisonNumber: 'F2860IK',
     date: '2021-12-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '09:05',
     from: 'Send',
     to: 'Maidstone',
@@ -5139,7 +5139,7 @@ module.exports = {
   }, {
     prisonNumber: 'H2650YH',
     date: '2022-05-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '21:25',
     from: 'Dartmoor',
     to: 'Pentonville',
@@ -5151,7 +5151,7 @@ module.exports = {
   }, {
     prisonNumber: 'K0570LS',
     date: '2022-01-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '14:11',
     from: 'Cardiff',
     to: 'Wakefield',
@@ -5163,7 +5163,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q8090NX',
     date: '2022-10-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '12:43',
     from: 'Send',
     to: 'Wakefield',
@@ -5175,7 +5175,7 @@ module.exports = {
   }, {
     prisonNumber: 'F6790BQ',
     date: '2023-01-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '19:45',
     from: 'Bedford',
     to: 'Cardiff',
@@ -5187,7 +5187,7 @@ module.exports = {
   }, {
     prisonNumber: 'P5230JR',
     date: '2022-11-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '16:52',
     from: 'Elmley',
     to: 'Northumberland',
@@ -5199,7 +5199,7 @@ module.exports = {
   }, {
     prisonNumber: 'H5490GF',
     date: '2022-03-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '21:01',
     from: 'Dartmoor',
     to: 'Bedford',
@@ -5211,7 +5211,7 @@ module.exports = {
   }, {
     prisonNumber: 'O4120FD',
     date: '2021-10-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '02:43',
     from: 'Kirkham',
     to: 'Kirkham',
@@ -5223,7 +5223,7 @@ module.exports = {
   }, {
     prisonNumber: 'M7260XL',
     date: '2021-08-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '05:04',
     from: 'Usk',
     to: 'Usk',
@@ -5235,7 +5235,7 @@ module.exports = {
   }, {
     prisonNumber: 'W2290NM',
     date: '2021-11-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '19:02',
     from: 'Pentonville',
     to: 'Usk',
@@ -5247,7 +5247,7 @@ module.exports = {
   }, {
     prisonNumber: 'S5040TC',
     date: '2023-03-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '10:12',
     from: 'Garth',
     to: 'Dartmoor',
@@ -5259,7 +5259,7 @@ module.exports = {
   }, {
     prisonNumber: 'T2120BT',
     date: '2022-11-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:56',
     from: 'Dartmoor',
     to: 'Lancaster Farms',
@@ -5271,7 +5271,7 @@ module.exports = {
   }, {
     prisonNumber: 'P8710KS',
     date: '2023-04-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '12:29',
     from: 'Bedford',
     to: 'Oakwood',
@@ -5283,7 +5283,7 @@ module.exports = {
   }, {
     prisonNumber: 'P7230PX',
     date: '2023-03-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '15:20',
     from: 'Thameside',
     to: 'Featherstone',
@@ -5295,7 +5295,7 @@ module.exports = {
   }, {
     prisonNumber: 'X4310QC',
     date: '2021-09-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '11:54',
     from: 'Dartmoor',
     to: 'Wakefield',
@@ -5307,7 +5307,7 @@ module.exports = {
   }, {
     prisonNumber: 'B9500SS',
     date: '2022-11-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '11:47',
     from: 'Hatfield',
     to: 'Kirkham',
@@ -5319,7 +5319,7 @@ module.exports = {
   }, {
     prisonNumber: 'N3020RC',
     date: '2023-03-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '07:50',
     from: 'Ranby',
     to: 'Kirkham',
@@ -5331,7 +5331,7 @@ module.exports = {
   }, {
     prisonNumber: 'B1370GA',
     date: '2022-04-13',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '04:35',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -5343,7 +5343,7 @@ module.exports = {
   }, {
     prisonNumber: 'P6310YR',
     date: '2021-12-26',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '08:01',
     from: 'Wakefield',
     to: 'Garth',
@@ -5355,7 +5355,7 @@ module.exports = {
   }, {
     prisonNumber: 'G9750MJ',
     date: '2022-04-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '17:55',
     from: 'Kirkham',
     to: 'Wakefield',
@@ -5367,7 +5367,7 @@ module.exports = {
   }, {
     prisonNumber: 'W4670LJ',
     date: '2022-08-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '17:48',
     from: 'Ranby',
     to: 'Usk',
@@ -5379,7 +5379,7 @@ module.exports = {
   }, {
     prisonNumber: 'E1620UV',
     date: '2022-06-28',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '22:31',
     from: 'Wakefield',
     to: 'Lancaster Farms',
@@ -5391,7 +5391,7 @@ module.exports = {
   }, {
     prisonNumber: 'H3480WY',
     date: '2022-06-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '10:48',
     from: 'Usk',
     to: 'Elmley',
@@ -5403,7 +5403,7 @@ module.exports = {
   }, {
     prisonNumber: 'J4930OU',
     date: '2022-05-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:57',
     from: 'Hatfield',
     to: 'Maidstone',
@@ -5415,7 +5415,7 @@ module.exports = {
   }, {
     prisonNumber: 'M2730LT',
     date: '2022-05-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '04:51',
     from: 'Dartmoor',
     to: 'Dartmoor',
@@ -5427,7 +5427,7 @@ module.exports = {
   }, {
     prisonNumber: 'G5850XS',
     date: '2023-03-27',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '07:49',
     from: 'Kirkham',
     to: 'Hatfield',
@@ -5439,7 +5439,7 @@ module.exports = {
   }, {
     prisonNumber: 'C6430NF',
     date: '2021-12-09',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '03:29',
     from: 'Lancaster Farms',
     to: 'Hatfield',
@@ -5451,7 +5451,7 @@ module.exports = {
   }, {
     prisonNumber: 'X2140DM',
     date: '2022-01-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '02:45',
     from: 'Wakefield',
     to: 'Northumberland',
@@ -5463,7 +5463,7 @@ module.exports = {
   }, {
     prisonNumber: 'L3880VW',
     date: '2023-02-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '14:45',
     from: 'Altcourse',
     to: 'Lancaster Farms',
@@ -5475,7 +5475,7 @@ module.exports = {
   }, {
     prisonNumber: 'U5640HV',
     date: '2021-09-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '16:02',
     from: 'Maidstone',
     to: 'Elmley',
@@ -5487,7 +5487,7 @@ module.exports = {
   }, {
     prisonNumber: 'O9580OP',
     date: '2022-01-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '03:37',
     from: 'Featherstone',
     to: 'Ranby',
@@ -5499,7 +5499,7 @@ module.exports = {
   }, {
     prisonNumber: 'P1510RM',
     date: '2021-12-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '08:15',
     from: 'Isle of Wight',
     to: 'Thameside',
@@ -5511,7 +5511,7 @@ module.exports = {
   }, {
     prisonNumber: 'S3680CV',
     date: '2022-01-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '17:06',
     from: 'Usk',
     to: 'Cardiff',
@@ -5523,7 +5523,7 @@ module.exports = {
   }, {
     prisonNumber: 'Q5650BY',
     date: '2023-02-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '12:05',
     from: 'Wakefield',
     to: 'Oakwood',
@@ -5535,7 +5535,7 @@ module.exports = {
   }, {
     prisonNumber: 'J0840YP',
     date: '2023-06-05',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '12:56',
     from: 'Elmley',
     to: 'Altcourse',
@@ -5547,7 +5547,7 @@ module.exports = {
   }, {
     prisonNumber: 'C8450AG',
     date: '2023-01-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '19:51',
     from: 'Pentonville',
     to: 'Usk',
@@ -5559,7 +5559,7 @@ module.exports = {
   }, {
     prisonNumber: 'L4820FF',
     date: '2022-11-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '05:13',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -5571,7 +5571,7 @@ module.exports = {
   }, {
     prisonNumber: 'P4480RJ',
     date: '2021-10-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '03:41',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -5583,7 +5583,7 @@ module.exports = {
   }, {
     prisonNumber: 'C8490ZB',
     date: '2022-05-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '09:54',
     from: 'Hatfield',
     to: 'Send',
@@ -5595,7 +5595,7 @@ module.exports = {
   }, {
     prisonNumber: 'J3310XE',
     date: '2021-08-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '06:15',
     from: 'Cardiff',
     to: 'Pentonville',
@@ -5607,7 +5607,7 @@ module.exports = {
   }, {
     prisonNumber: 'W2600XP',
     date: '2022-12-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '07:44',
     from: 'Maidstone',
     to: 'Elmley',
@@ -5619,7 +5619,7 @@ module.exports = {
   }, {
     prisonNumber: 'B2990GO',
     date: '2022-06-21',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '22:01',
     from: 'Thameside',
     to: 'Wakefield',
@@ -5631,7 +5631,7 @@ module.exports = {
   }, {
     prisonNumber: 'J5450MH',
     date: '2021-12-08',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '08:22',
     from: 'Featherstone',
     to: 'Lancaster Farms',
@@ -5643,7 +5643,7 @@ module.exports = {
   }, {
     prisonNumber: 'P5540XM',
     date: '2023-03-10',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '02:06',
     from: 'Kirkham',
     to: 'Maidstone',
@@ -5655,7 +5655,7 @@ module.exports = {
   }, {
     prisonNumber: 'B1570DF',
     date: '2022-07-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '02:55',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -5667,7 +5667,7 @@ module.exports = {
   }, {
     prisonNumber: 'N6200FP',
     date: '2021-12-11',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '22:35',
     from: 'Ranby',
     to: 'Oakwood',
@@ -5679,7 +5679,7 @@ module.exports = {
   }, {
     prisonNumber: 'N3190ME',
     date: '2023-03-29',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '01:22',
     from: 'Pentonville',
     to: 'Maidstone',
@@ -5691,7 +5691,7 @@ module.exports = {
   }, {
     prisonNumber: 'U1710CJ',
     date: '2022-04-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '14:12',
     from: 'Wakefield',
     to: 'Bedford',
@@ -5703,7 +5703,7 @@ module.exports = {
   }, {
     prisonNumber: 'Y6450GX',
     date: '2021-09-01',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '20:07',
     from: 'Wakefield',
     to: 'Dartmoor',
@@ -5715,7 +5715,7 @@ module.exports = {
   }, {
     prisonNumber: 'I8310BC',
     date: '2022-01-18',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '06:40',
     from: 'Send',
     to: 'Wakefield',
@@ -5727,7 +5727,7 @@ module.exports = {
   }, {
     prisonNumber: 'D7650CJ',
     date: '2022-06-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '07:22',
     from: 'Pentonville',
     to: 'Hatfield',
@@ -5739,7 +5739,7 @@ module.exports = {
   }, {
     prisonNumber: 'S3070PU',
     date: '2022-05-31',
-    weekday: 'monday',
+    weekday: 'Monday',
     time: '01:30',
     from: 'Wakefield',
     to: 'Pentonville',
@@ -5751,7 +5751,7 @@ module.exports = {
   }, {
     prisonNumber: 'G8170AR',
     date: '2022-10-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '06:38',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -5763,7 +5763,7 @@ module.exports = {
   }, {
     prisonNumber: 'C4520GP',
     date: '2021-10-12',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '20:23',
     from: 'Ranby',
     to: 'Pentonville',
@@ -5775,7 +5775,7 @@ module.exports = {
   }, {
     prisonNumber: 'F4290LO',
     date: '2023-03-14',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '03:45',
     from: 'Cardiff',
     to: 'Lancaster Farms',
@@ -5787,7 +5787,7 @@ module.exports = {
   }, {
     prisonNumber: 'V3320NJ',
     date: '2022-08-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '00:21',
     from: 'Usk',
     to: 'Kirkham',
@@ -5799,7 +5799,7 @@ module.exports = {
   }, {
     prisonNumber: 'N3770DZ',
     date: '2022-03-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '09:41',
     from: 'Northumberland',
     to: 'Kirkham',
@@ -5811,7 +5811,7 @@ module.exports = {
   }, {
     prisonNumber: 'F1220FG',
     date: '2021-10-17',
-    weekday: 'sunday',
+    weekday: 'Sunday',
     time: '08:21',
     from: 'Maidstone',
     to: 'Thameside',
@@ -5823,7 +5823,7 @@ module.exports = {
   }, {
     prisonNumber: 'L5670QW',
     date: '2023-01-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '02:08',
     from: 'Dartmoor',
     to: 'Elmley',
@@ -5835,7 +5835,7 @@ module.exports = {
   }, {
     prisonNumber: 'H8810WJ',
     date: '2022-07-25',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '05:48',
     from: 'Usk',
     to: 'Send',
@@ -5847,7 +5847,7 @@ module.exports = {
   }, {
     prisonNumber: 'R7540MS',
     date: '2021-09-02',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '19:10',
     from: 'Pentonville',
     to: 'Kirkham',
@@ -5859,7 +5859,7 @@ module.exports = {
   }, {
     prisonNumber: 'X3290PQ',
     date: '2021-08-20',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '22:09',
     from: 'Elmley',
     to: 'Elmley',
@@ -5871,7 +5871,7 @@ module.exports = {
   }, {
     prisonNumber: 'W0240LV',
     date: '2022-08-01',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '00:47',
     from: 'Elmley',
     to: 'Hatfield',
@@ -5883,7 +5883,7 @@ module.exports = {
   }, {
     prisonNumber: 'T8440WR',
     date: '2022-07-22',
-    weekday: 'tuesday',
+    weekday: 'Tuesday',
     time: '17:17',
     from: 'Northumberland',
     to: 'Elmley',
@@ -5895,7 +5895,7 @@ module.exports = {
   }, {
     prisonNumber: 'A3540SS',
     date: '2023-01-30',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '06:07',
     from: 'Featherstone',
     to: 'Wakefield',
@@ -5907,7 +5907,7 @@ module.exports = {
   }, {
     prisonNumber: 'O5250BE',
     date: '2021-11-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '20:03',
     from: 'Wakefield',
     to: 'Wakefield',
@@ -5919,7 +5919,7 @@ module.exports = {
   }, {
     prisonNumber: 'O4730QQ',
     date: '2023-02-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '10:27',
     from: 'Kirkham',
     to: 'Hatfield',
@@ -5931,7 +5931,7 @@ module.exports = {
   }, {
     prisonNumber: 'G0320ZT',
     date: '2023-01-16',
-    weekday: 'saturday',
+    weekday: 'Saturday',
     time: '20:59',
     from: 'Bedford',
     to: 'Dartmoor',
@@ -5943,7 +5943,7 @@ module.exports = {
   }, {
     prisonNumber: 'M6130VE',
     date: '2021-11-04',
-    weekday: 'thursday',
+    weekday: 'Thursday',
     time: '23:27',
     from: 'Wakefield',
     to: 'Send',
@@ -5955,7 +5955,7 @@ module.exports = {
   }, {
     prisonNumber: 'O0360CC',
     date: '2022-10-15',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:17',
     from: 'Ranby',
     to: 'Wakefield',
@@ -5967,7 +5967,7 @@ module.exports = {
   }, {
     prisonNumber: 'W3270KN',
     date: '2022-03-08',
-    weekday: 'friday',
+    weekday: 'Friday',
     time: '08:03',
     from: 'Usk',
     to: 'Maidstone',
@@ -5979,7 +5979,7 @@ module.exports = {
   }, {
     prisonNumber: 'D9710OY',
     date: '2021-11-23',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '16:42',
     from: 'Garth',
     to: 'Elmley',
@@ -5991,7 +5991,7 @@ module.exports = {
   }, {
     prisonNumber: 'K3880ST',
     date: '2022-02-03',
-    weekday: 'wednesday',
+    weekday: 'Wednesday',
     time: '20:10',
     from: 'Send',
     to: 'Ranby',

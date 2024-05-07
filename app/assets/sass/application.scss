@@ -259,7 +259,7 @@ table.govuk-table {
 
 .filter-section-details__static {
   position: relative;
-  left: 0px;
+  left: 0;
 }
 
 .filter-section-details__text {
@@ -506,8 +506,8 @@ table.govuk-table {
   display: none;
 }
 
-.or-v3 {
-  #v3-search-box {
+.or-v3, .mu-v11 {
+  #v3-search-box, #v11-mu-search-box {
     min-width: 400px;
     width: auto;
   }
@@ -519,5 +519,23 @@ table.govuk-table {
       background-color: $govuk-focus-colour;
       font-weight: normal;
     }
+  }
+}
+
+.mu-v11 {
+  .insight-card-value {
+    font-size: 2.25rem;
+  }
+
+  .mis-side-nav {
+    width: 250px;
+  }
+
+  .insight-chart-card {
+    background-color: white;
+  }
+
+  .mis-main #user-selected-filters-form-dashboard {
+    text-align: right;
   }
 }

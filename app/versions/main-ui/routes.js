@@ -10,6 +10,7 @@ const v7Routes = require('./v7/routes')
 const v8Routes = require('./v8/routes')
 const v9Routes = require('./v9/routes')
 const v10Routes = require('./v10/routes')
+const v11Routes = require('./v11/routes')
 const handlers = require('../../utils/handlers')
 
 const addMainUiRoutes = (app) => {
@@ -22,10 +23,11 @@ const addMainUiRoutes = (app) => {
         versions: {
           path: '/main-ui',
           items: [
-            { versionNumber: '10', status: 'In Review', changeLogPath: 'main-ui/v10/views/changelog.html' },
-            { versionNumber: '9', status: 'In Review', changeLogPath: 'main-ui/v9/views/changelog.html' },
-            { versionNumber: '8', status: 'In Review', changeLogPath: 'main-ui/v8/views/changelog.html' },
-            { versionNumber: '7', status: 'In Review', changeLogPath: 'main-ui/v7/views/changelog.html' },
+            { versionNumber: '11', status: 'In Review', changeLogPath: 'main-ui/v11/views/changelog.html' },
+            { versionNumber: '10', status: 'Done', changeLogPath: 'main-ui/v10/views/changelog.html' },
+            { versionNumber: '9', status: 'Done', changeLogPath: 'main-ui/v9/views/changelog.html' },
+            { versionNumber: '8', status: 'Done', changeLogPath: 'main-ui/v8/views/changelog.html' },
+            { versionNumber: '7', status: 'Done', changeLogPath: 'main-ui/v7/views/changelog.html' },
             { versionNumber: '6', status: 'Done', changeLogPath: 'main-ui/v6/views/changelog.html' },
             { versionNumber: '5', status: 'Done', changeLogPath: 'main-ui/v5/views/changelog.html' },
             { versionNumber: '4', status: 'Done', changeLogPath: 'main-ui/v4/views/changelog.html' },
@@ -50,6 +52,7 @@ const addMainUiRoutes = (app) => {
   app.use('/main-ui/v8', v8Routes)
   app.use('/main-ui/v9', v9Routes)
   app.use('/main-ui/v10', v10Routes)
+  app.use('/main-ui/v11', v11Routes)
 }
 
 module.exports = addMainUiRoutes
