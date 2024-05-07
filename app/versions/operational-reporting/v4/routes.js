@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { createRows, createHead, enhancedDefinitions, getRelatedByTags, getRelatedProducts } = require('./utils')
 const handlers = require('../../../utils/handlers')
-const definitions = require('../definitions')
+const definitions = require('../../../data/listDefinitions')
 
 const version = 'v4'
 const enhancedDefinition = enhancedDefinitions(definitions)
