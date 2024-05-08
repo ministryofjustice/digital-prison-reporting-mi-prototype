@@ -40,8 +40,8 @@ const reports = [{
   query: '?filters.date.start=' + getTodayMinusDays(1) + '&filters.date.end=' + getTodayMinusDays(0) + '&filters.direction=out&filters.type=transfer&printable=false'
 }]
 
-const recentlyViewed = []
-const requested = []
+let recentlyViewed = []
+let requested = []
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`main-ui/${version}/views/home`, {
@@ -232,6 +232,12 @@ const removeFromRecent = (data) => {
 router.post('/removeFromRecent/', (req, res) => {
   const data = JSON.parse(req.body.data)
   removeFromRecent(data)
+  res.end()
+})
+
+router.post('/resetLists/', (req, res) => {
+  recentlyViewed = []
+  requested = []
   res.end()
 })
 
