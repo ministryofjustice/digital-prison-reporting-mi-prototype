@@ -36,6 +36,10 @@
   {{ appCardGroupRecent(reports) }}
 </div>
 
+{% if (recentlyViewed.length > 0) or requested.length > 0 %}
+<div><a id="resetLists">Reset Lists</a><div>
+{% endif %}
+
   <script>
     const baseUrl = window.location.origin
     let statusUpdateInterval = setInterval( async () => {
@@ -61,5 +65,14 @@
         location.reload() 
       }
     }
+    const resetLists = async () => {
+      const res = await axios.post(`${baseUrl}/main-ui/v10/resetLists/`, {})
+      .catch(function (error) {
+        console.log(error)
+      });
+      location.reload()
+    }
+
+    document.getElementById("resetLists").addEventListener("click", resetLists);
   </script>
 {% endblock %}
