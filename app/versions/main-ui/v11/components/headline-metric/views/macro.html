@@ -1,0 +1,54 @@
+{% macro appHeadlineMetric(metric) %}
+  {% set name = metric.name %}
+  {% set status = metric.status %}
+  {% set previousValue = metric.previousValue %}
+  {% set value = metric.value %}
+  {% set breakdown = metric.breakdown %}
+  {% set viewRecords = metric.viewRecords %}
+  {% set description = metric.description %}
+
+  <div class="insight-card-group__item">
+    <p class="govuk-heading-m govuk-!-margin-bottom-1">{{ name }}</p>
+    <p class="insight-card-headline govuk-heading-l govuk-!-padding-top-1 govuk-!-margin-bottom-3">
+      {% if status %}
+      <span class="insight-card-value govuk-tag govuk-tag--{{ status.colour }}">{{ value }}</span>
+      <span class="insight-card-description">
+        <b>Status: {{ status.colour | title }}</b>
+        {% if status.threshold %}
+          <br />
+          {% if (status.threshold.greaterThan or status.threshold.greaterThan == 0) and (status.threshold.lessThan or status.threshold.lessThan == 0) %}
+            Between {{ status.threshold.greaterThan }} and {{ status.threshold.lessThan }}
+          {% elif (status.threshold.greaterThan or status.threshold.greaterThan == 0)  %}
+            Greater than {{ status.threshold.greaterThan }}
+          {% elif (status.threshold.lessThan or status.threshold.lessThan == 0) %}
+            Less than {{ status.threshold.lessThan }}
+          {% endif %}
+        {% endif %}
+      </span>
+      {% else %}
+      {{ value }}
+      {% endif %}
+    </p>
+    {% if previousValue or previousValue === 0 %}
+      {% set metricDifference = value - previousValue %}
+      <p class="govuk-body-s govuk-!-margin-bottom-3">
+      {% if metricDifference < 0 %}
+        ▼ Down {{ metricDifference | abs }}
+      {% elif metricDifference > 0 %}
+        ▲ Up {{ metricDifference }}
+      {% else %}
+        ◼ No change
+      {% endif %}
+      </p>
+    {% endif %}
+    {% if breakdown %}
+    <a href="{{ breakdown }}">view breakdown</a>
+    {% endif %}
+    {% if viewRecords %}
+    <a href="{{ viewRecords }}">view records</a>
+    {% endif %}
+    {% if description %}
+    <p class="insight-card-description" data-description="{{ description }}">View details</p>
+    {% endif %}
+  </div>
+{% endmacro %}

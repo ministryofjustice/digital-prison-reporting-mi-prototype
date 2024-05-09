@@ -112,7 +112,12 @@ module.exports = [
           '2024-03': 0,
           '2024-04': 1
         },
-        status: 'red',
+        status: {
+          colour: 'red',
+          threshold: {
+            greaterThan: 0
+          }
+        },
         meta: {
           lastUpdated: ''
         },
@@ -126,7 +131,13 @@ module.exports = [
           '2024-03': 61,
           '2024-04': 50
         },
-        status: 'yellow',
+        status: {
+          colour: 'yellow',
+          threshold: {
+            greaterThan: 10,
+            lessThan: 100
+          }
+        },
         meta: {
           lastUpdated: ''
         },
@@ -140,7 +151,12 @@ module.exports = [
           '2024-03': 3,
           '2024-04': 1
         },
-        status: 'green',
+        status: {
+          colour: 'green',
+          threshold: {
+            lessThan: 10
+          }
+        },
         meta: {
           lastUpdated: ''
         },
@@ -160,8 +176,14 @@ module.exports = [
     updateSchedule: 'Monthly',
     tags: ['External', 'Movements'],
     author: 'Jeremiah Hugo',
-    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
+    filter: { type: 'SelectComparison', name: 'month', options: dashboardFilterValues, text: 'Month' },
     metrics: [
+      {
+        id: 'desc',
+        name: 'Disappearance context',
+        type: 'description',
+        value: 'This page provides a summary of mysterious disappearances, due to various factors. This may include: Drone-based escape, UFO abduction, evaporation, and The Rapture.'
+      },
       {
         id: 'today',
         name: 'Today',
@@ -170,7 +192,12 @@ module.exports = [
           '2024-03': 0,
           '2024-04': 1
         },
-        status: 'red',
+        status: {
+          colour: 'red',
+          threshold: {
+            greaterThan: 0
+          }
+        },
         meta: {
           lastUpdated: ''
         }
@@ -183,7 +210,13 @@ module.exports = [
           '2024-03': 3,
           '2024-04': 3
         },
-        status: 'yellow',
+        status: {
+          colour: 'yellow',
+          threshold: {
+            greaterThan: 0,
+            lessThan: 10
+          }
+        },
         meta: {
           lastUpdated: ''
         }
@@ -196,7 +229,12 @@ module.exports = [
           '2024-03': 30,
           '2024-04': 24
         },
-        status: 'green',
+        status: {
+          colour: 'green',
+          threshold: {
+            lessThan: 100
+          }
+        },
         meta: {
           lastUpdated: ''
         }
