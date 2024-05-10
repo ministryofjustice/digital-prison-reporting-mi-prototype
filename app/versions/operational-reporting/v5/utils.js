@@ -98,7 +98,7 @@ const createTagsCol = (tags, url) => {
 const createRows = (enhancedDefinitionsArray, url) => {
   return enhancedDefinitionsArray.map((d, index) => ([
     { html: '<a href="./report/' + d.id + '">' + d.name + '</a>' },
-    { html: createTagsCol(d.tags, url) },
+    { html: createTagsCol(d.tags, url) }
   ]))
 }
 

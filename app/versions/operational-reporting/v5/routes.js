@@ -8,12 +8,12 @@ const version = 'v5'
 const enhancedDefinition = enhancedDefinitions(definitions)
 const baseBreadcrumbs = [
   { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
-  { text: "Prototype", href: "/" },
-  { text: "Operational Reporting", href: "/operational-reporting/" }
+  { text: 'Prototype', href: '/' },
+  { text: 'Operational Reporting', href: '/operational-reporting/' }
 ]
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.redirect(`/operational-reporting/${version}/reports/`);
+  res.redirect(`/operational-reporting/${version}/reports/`)
 }])
 
 const reportPaths = [
@@ -35,7 +35,7 @@ router.get(reportPaths, [handlers.configureNavigation, function (req, res) {
       relatedItems: [...getRelatedItems(reportData)],
       breadcrumbs: [
         ...baseBreadcrumbs,
-        ...getTagBreadcrumbs(tags),
+        ...getTagBreadcrumbs(tags)
       ]
     })
 }])
@@ -54,7 +54,7 @@ const getTagBreadcrumbs = (tags) => {
   const crumbs = tags.length ? [{ text: 'Reports', href: currentTagHref }] : []
   tags.forEach(tag => {
     currentTagHref += tag.id + '/'
-    crumbs.push({ text: "Tag: " + tag.text, href: currentTagHref })
+    crumbs.push({ text: 'Tag: ' + tag.text, href: currentTagHref })
   })
   crumbs.pop()
   return crumbs
@@ -62,7 +62,7 @@ const getTagBreadcrumbs = (tags) => {
 
 const filterRowsByTags = (tags, definition) => {
   return definition.filter(def => {
-    let defTags = def.tags.map(t => t.slug)
+    const defTags = def.tags.map(t => t.slug)
     const found = []
     tags.forEach(tag => {
       found.push(defTags.includes(tag.id))
@@ -89,14 +89,13 @@ router.get(tagsPath, [
       head: createHead(),
       breadcrumbs: [
         ...baseBreadcrumbs,
-        ...getTagBreadcrumbs(tags),
-      ],
+        ...getTagBreadcrumbs(tags)
+      ]
     })
   }
 ])
 
 const getRelatedItems = (reportData) => {
-
   const relatedItems = []
   const relatedLevelOne = reportData.tags[1] ? getRelatedByTags({ tag: reportData.tags[1].text, definition: enhancedDefinition }) : []
   relatedItems.push(relatedLevelOne)

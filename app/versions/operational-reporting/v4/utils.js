@@ -106,7 +106,7 @@ const createRows = (enhancedDefinitionsArray, url) => {
     { html: createTagsCol(d.tags, url) },
     // { html: createTaggedCol(d.subDomain.name) },  - leaving commented for easy debugging
     // { html: createTaggedCol(d.domain) },
-    { html: createProducCol(d.product, url) },
+    { html: createProducCol(d.product, url) }
   ]))
 }
 
