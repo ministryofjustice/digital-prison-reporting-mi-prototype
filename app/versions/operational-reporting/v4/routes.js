@@ -50,7 +50,7 @@ const tagsPath = [
 ]
 
 const getTagBreadcrumbs = (tags) => {
-  let currentTagHref = `/operational-reporting/v4/reports/`
+  let currentTagHref = '/operational-reporting/v4/reports/'
   const crumbs = tags.length ? [{ text: 'Reports', href: currentTagHref }] : []
   tags.forEach(tag => {
     currentTagHref += tag.id + '/'

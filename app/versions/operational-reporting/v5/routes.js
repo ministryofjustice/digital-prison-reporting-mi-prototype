@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { createRows, createHead, enhancedDefinitions, getRelatedByTags, getRelatedProducts } = require('./utils')
+const { createRows, createHead, enhancedDefinitions, getRelatedByTags } = require('./utils')
 const handlers = require('../../../utils/handlers')
 const definitions = require('../../../data/listDefinitions')
 
@@ -50,7 +50,7 @@ const tagsPath = [
 ]
 
 const getTagBreadcrumbs = (tags) => {
-  let currentTagHref = `/operational-reporting/v5/reports/`
+  let currentTagHref = '/operational-reporting/v5/reports/'
   const crumbs = tags.length ? [{ text: 'Reports', href: currentTagHref }] : []
   tags.forEach(tag => {
     currentTagHref += tag.id + '/'
