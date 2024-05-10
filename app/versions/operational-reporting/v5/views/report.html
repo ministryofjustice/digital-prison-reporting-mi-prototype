@@ -23,9 +23,8 @@
 
   <p class="govuk-body">
   {% for tag in tags %}
-    <a href='/operational-reporting/v4/reports/{{ tag.id }}/'><strong class="govuk-tag {{ tag.class }}">{{ tag.text }}</strong></a>
+    <a href='/operational-reporting/v5/reports/{{ tag.slug }}/'><strong class="govuk-tag {{ tag.class }}">{{ tag.text }}</strong></a>
   {% endfor %}
-    <a href='/operational-reporting/v4/reports/{{ product.slug }}/'><strong class="govuk-tag govuk-tag--grey">{{ product.name }}</strong></a>
   </p>
 
   <div class="report-placeholeder">

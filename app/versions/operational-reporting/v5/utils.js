@@ -15,8 +15,9 @@ const tagColors = [
 
 const setTags = (tags) => {
   return tags.map((tag, i) => ({
-    text: tag,
-    id: sanitizeStringIds(tag),
+    text: tag.name,
+    id: tag.id,
+    slug: tag.slug,
     level: i,
     class: tagColors[i]
   }))
@@ -25,14 +26,14 @@ const setTags = (tags) => {
 const enhancedDefinitions = (definitions) => {
   return definitions.map((def, index) => {
     const { product, subDomain, domain } = generateDomainDataForDefinition()
-
     return {
       ...def,
       id: sanitizeStringIds(def.name),
-      tags: setTags(def.tags),
-      subDomain,
-      domain,
-      product
+      tags: setTags([
+        product,
+        domain,
+        subDomain
+      ])
     }
   })
 }
@@ -89,34 +90,22 @@ const getRelatedProducts = (reportData, definition, filterIndex) => {
 const createTagsCol = (tags, url) => {
   return tags.map(t => {
     let tagHtml = `<strong class="govuk-tag ${t.class}">${t.text}</strong>`
-    if (!url.includes(t.id)) tagHtml = `<a href="${url}${t.id}/">${tagHtml}</a>`
+    if (!url.includes(t.slug)) tagHtml = `<a href="${url}${t.slug}/">${tagHtml}</a>`
     return tagHtml
   }).join('&nbsp;')
-}
-
-const createProducCol = (product, url) => {
-  let productHtml = `<strong class="govuk-tag">${product.name}</strong>`
-  if (!url.includes(product.slug)) productHtml = `<a href="${url}${product.slug}/">${productHtml}</a>`
-  return productHtml
 }
 
 const createRows = (enhancedDefinitionsArray, url) => {
   return enhancedDefinitionsArray.map((d, index) => ([
     { html: '<a href="./report/' + d.id + '">' + d.name + '</a>' },
     { html: createTagsCol(d.tags, url) },
-    // { html: createTaggedCol(d.subDomain.name) },  - leaving commented for easy debugging
-    // { html: createTaggedCol(d.domain) },
-    { html: createProducCol(d.product, url) },
   ]))
 }
 
 const createHead = () => {
   return [
     { text: 'Name' },
-    { text: 'Tags' },
-    // { text: 'Sub Domain ' }, - leaving commented for easy debugging
-    // { text: 'Domain ' }
-    { text: 'Product ' }
+    { text: 'Tags' }
   ]
 }
 

@@ -10,16 +10,12 @@
   
     {% set i = loop.index - 1 %}
     {% set text = tags[i].text %}
-    {% set tagId %}{{ tags[i].id if tags[i].id else product.slug }}{% endset %}
-    {% set text %} 
-      {{ tags[i].text if tags[i].text else product.name }} 
-    {% endset %}
-    {% set class %} 
-      {{ tags[i].class if tags[i].class else 'govuk-tag--grey' }} 
-    {% endset %}
+    {% set tagId = tags[i].slug %}
+    {% set text = tags[i].text %}
+    {% set class = tags[i].class %}
 
     <h3 class="govuk-heading-s govuk-!-margin-top-1">
-      Also in tag: <a href="/operational-reporting/v4/reports/{{ tagId }}/"><strong class="govuk-tag {{ class }}">{{ text }}</strong></a>
+      Also in tag: <a href="/operational-reporting/v5/reports/{{ tagId }}/"><strong class="govuk-tag {{ class }}">{{ text }}</strong></a>
     </h3>
 
     <div class="govuk-!-margin-bottom-6">

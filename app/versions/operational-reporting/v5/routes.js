@@ -4,7 +4,7 @@ const { createRows, createHead, enhancedDefinitions, getRelatedByTags, getRelate
 const handlers = require('../../../utils/handlers')
 const definitions = require('../../../data/listDefinitions')
 
-const version = 'v4'
+const version = 'v5'
 const enhancedDefinition = enhancedDefinitions(definitions)
 const baseBreadcrumbs = [
   { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
@@ -50,7 +50,7 @@ const tagsPath = [
 ]
 
 const getTagBreadcrumbs = (tags) => {
-  let currentTagHref = `/operational-reporting/v4/reports/`
+  let currentTagHref = `/operational-reporting/v5/reports/`
   const crumbs = tags.length ? [{ text: 'Reports', href: currentTagHref }] : []
   tags.forEach(tag => {
     currentTagHref += tag.id + '/'
@@ -62,11 +62,10 @@ const getTagBreadcrumbs = (tags) => {
 
 const filterRowsByTags = (tags, definition) => {
   return definition.filter(def => {
-    let defTags = def.tags.map(t => t.id)
+    let defTags = def.tags.map(t => t.slug)
     const found = []
-    const product = def.product
     tags.forEach(tag => {
-      found.push(defTags.includes(tag.id) || product.slug === tag.id)
+      found.push(defTags.includes(tag.id))
     })
     return found.every(Boolean)
   })
@@ -117,9 +116,6 @@ const getRelatedItems = (reportData) => {
     })
     relatedItems.push(relatedLeveltwo)
   }
-
-  const relatedProducts = getRelatedProducts(reportData, enhancedDefinition, 2)
-  relatedItems.push(relatedProducts)
 
   return relatedItems
 }
