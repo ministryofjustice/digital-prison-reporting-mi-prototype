@@ -1,0 +1,39 @@
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+
+<h3 class="govuk-heading-m">Version 5</h3>
+<h3 class="govuk-heading-m">Operational Reports</h3>
+
+{% if tags.length %}
+  <p>{{ rows.length }} reports tagged:
+  {% for tag in tags %}
+  
+    <strong class="govuk-tag remove-tag" data-remove-tag='{{tag.id}}'>
+      {{tag.text}}
+    </strong>
+  {% endfor %}
+  </p>
+{% endif %}
+
+<script>
+  document.querySelectorAll('[data-remove-tag]').forEach((el) => {
+    el.addEventListener("click", () => {
+    const tag = el.dataset.removeTag
+    let url = window.location.href
+    url = url.replace(`${tag}/`,'')
+    window.location.href = url
+  })
+  })
+</script>
+
+<div id="op-reports-table">
+  {{ govukTable({
+    caption: caption,
+    captionClasses: "govuk-table__caption--m",
+    head: head,
+    rows: rows
+  }) }}
+</div>
+
+{% endblock %}
