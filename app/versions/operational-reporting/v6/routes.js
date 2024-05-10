@@ -9,7 +9,27 @@ const baseBreadCrumbs = [
 ]
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`operational-reporting/${version}/home`,
+  res.render(`operational-reporting/${version}/views/home`,
+    {
+      ...req.renderOptions,
+      breadcrumbs: [
+        ...baseBreadCrumbs
+      ]
+    })
+}])
+
+router.get('/catalogue', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
+  res.render(`operational-reporting/${version}/views/catalogue`,
+    {
+      ...req.renderOptions,
+      breadcrumbs: [
+        ...baseBreadCrumbs
+      ]
+    })
+}])
+
+router.get('/catalogue/report', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
+  res.render(`operational-reporting/${version}/views/report`,
     {
       ...req.renderOptions,
       breadcrumbs: [

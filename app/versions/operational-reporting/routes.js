@@ -18,7 +18,7 @@ const addOperationalReportingRoutes = (app) => {
         versions: {
           path: '/operational-reporting',
           items: [
-            { versionNumber: '6', status: 'In progress', changeLogPath: 'operational-reporting/v6/changelog.html' },
+            { versionNumber: '6', status: 'In progress', changeLogPath: 'operational-reporting/v6/views/changelog.html' },
             { versionNumber: '5', status: 'In progress', changeLogPath: 'operational-reporting/v5/views/changelog.html' },
             { versionNumber: '4', status: 'In progress', changeLogPath: 'operational-reporting/v4/views/changelog.html' },
             { versionNumber: '3', status: 'In progress', changeLogPath: 'operational-reporting/v3/changelog.html' },
