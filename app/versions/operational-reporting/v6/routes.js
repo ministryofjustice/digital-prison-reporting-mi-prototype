@@ -5,7 +5,8 @@ const handlers = require('../../../utils/handlers')
 const version = 'v6'
 const baseBreadCrumbs = [
   { text: 'Digital Prison Services', href: 'https://dps-dev.prison.service.justice.gov.uk/' },
-  { text: "Home", href: "/" }
+  { text: 'Prototype', href: '/' },
+  { text: 'Operational Reporting', href: '/operational-reporting/' }
 ]
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
@@ -23,7 +24,8 @@ router.get('/catalogue', [handlers.configureCurrentUrl, handlers.configureNaviga
     {
       ...req.renderOptions,
       breadcrumbs: [
-        ...baseBreadCrumbs
+        ...baseBreadCrumbs,
+        { text: 'Home', href: '/operational-reporting/v6/' }
       ]
     })
 }])
@@ -33,7 +35,9 @@ router.get('/catalogue/report', [handlers.configureCurrentUrl, handlers.configur
     {
       ...req.renderOptions,
       breadcrumbs: [
-        ...baseBreadCrumbs
+        ...baseBreadCrumbs,
+        { text: 'Home', href: '/operational-reporting/v6/' },
+        { text: 'Catalogue', href: '/operational-reporting/v6/catalogue/' }
       ]
     })
 }])
