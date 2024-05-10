@@ -1,0 +1,6 @@
+{% macro bookmarkToggle(data) %}
+  {% set id = data.id %}
+  {% set checked %}{{ 'checked' if data.bookmarked else '' }}{% endset %}
+
+  {%- include "./template.html" -%}
+{% endmacro %}

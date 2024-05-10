@@ -562,3 +562,48 @@ table.govuk-table {
     }
   }
 }
+
+// OR V6
+
+.dpr-tag {
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: normal;
+  padding-left: govuk-spacing(2);
+  padding-right: govuk-spacing(2);
+  position: relative;
+  cursor: pointer;
+  text-transform: none;
+
+  &:hover {
+    background-color: lighten(govuk-colour("blue"),10%);
+  }
+}
+
+.dpr-tag:hover:after {
+  background: govuk-colour("light-grey");
+  content: attr(tooltip);
+  display: block;
+  color: black;
+  padding: govuk-spacing(2);
+  position: absolute;
+  top: 34px;
+  white-space: nowrap;
+  text-transform: none;
+  z-index: 98;
+  font-size: 14px;
+}
+
+.dpr-tag:hover:before {
+  content: '';
+  z-index: 98;
+  display: block;
+  position: absolute;
+  top: 26px;
+  left: 25px;
+  width: 20; 
+  height: 20;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid govuk-colour("light-grey"); 
+}

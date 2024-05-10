@@ -3,7 +3,14 @@
 {% block reportBody %}
 
 <span class="govuk-caption-m">Version 6</span>
-<h3 class="govuk-heading-m">The Orphanage</h3>
+<h3 class="govuk-heading-m">Report Title</h3>
+bookmarked {{ bookmarked }}
+
+<p class="govuk-body">
+  {% for tag in tags %}
+    <strong class="govuk-tag dpr-tag" tooltip='Remove tag filter'>{{ tag.text }}</strong>
+  {% endfor %}
+</p>
 
 <ul class="govuk-list govuk-list--bullet">
   <li>Report</li>
