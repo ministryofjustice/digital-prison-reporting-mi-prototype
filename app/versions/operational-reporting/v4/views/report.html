@@ -1,0 +1,37 @@
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+  {% set dataHtml %}
+    <pre class="govuk-body-xs"id="json" data-dashboard='{{ reportData | dump | safe }}'></pre>
+    <script>
+      const data = document.getElementById("json").dataset.dashboard
+      const json = JSON.parse(data)
+      document.getElementById("json").textContent = JSON.stringify(json, null, 2);
+    </script> 
+  {% endset %} 
+  {{ govukDetails({
+    summaryText: "Data",
+    html: dataHtml 
+  }) }}
+
+  {% set name = reportData.name %}
+  {% set product = reportData.product %}
+
+  <span class="govuk-caption-m">Operational Reports: Version 4 </span>
+  <h3 class="govuk-heading-m govuk-!-margin-bottom-3">{{ name }}</h3>
+
+
+  <p class="govuk-body">
+  {% for tag in tags %}
+    <a href='/operational-reporting/v4/reports/{{ tag.id }}/'><strong class="govuk-tag {{ tag.class }}">{{ tag.text }}</strong></a>
+  {% endfor %}
+    <a href='/operational-reporting/v4/reports/{{ product.slug }}/'><strong class="govuk-tag govuk-tag--grey">{{ product.name }}</strong></a>
+  </p>
+
+  <div class="report-placeholeder">
+    <p>Report Placeholder</p>
+  </div>
+
+  {{ discoverRelatedSection(reportData, relatedItems) }}
+
+{% endblock %}

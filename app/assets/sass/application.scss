@@ -533,6 +533,22 @@ table.govuk-table {
   .mis-main #user-selected-filters-form-dashboard {
     text-align: right;
   }
+}
+
+.report-placeholeder {
+  height: 200px;
+  background-color: govuk-colour("light-grey");
+  margin: 25px 0px;
+  padding: 30px;
+  text-align: center;
+
+  p {
+    color: govuk-colour("mid-grey");
+  }
+}
+
+.remove-tag {
+  cursor: pointer;
 
   .govuk-form-group {
     display: flex;
