@@ -13,7 +13,11 @@ module.exports = {
       .filter(q => q.startsWith(queryParameterPrefix))
       .forEach(q => {
         const filterName = q.replace(queryParameterPrefix, '')
-        const splitFilterName = filterName.split('.')
+        let splitFilterName = filterName.split('.')
+
+        if (filterName.endsWith('.compare')) {
+          splitFilterName = [filterName]
+        }
 
         switch (splitFilterName.length) {
           case 1:

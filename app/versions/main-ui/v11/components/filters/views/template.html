@@ -21,7 +21,34 @@
         "data-update-url-on-change": updateUrlOnChange
       }
     }) }}
-  
+
+  {%- elif filter.type === 'SelectComparison' %}
+
+    {{ govukSelect({
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      value: filter.value,
+      items: filter.options,
+      label: {
+        text: filter.text + ':'
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+    {{ govukSelect({
+      id: 'filters.' + filter.name + '.compare',
+      name: 'filters.' + filter.name + '.compare',
+      value: filter.compareValue,
+      items: filter.options,
+      label: {
+        text: 'Compared to:'
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+
   {% elif filter.type === 'Radio' %}
 
   <div class='table-filter'>
