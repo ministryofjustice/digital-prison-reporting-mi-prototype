@@ -202,11 +202,11 @@ function getDashboard (dashboardId) {
   return dashboardDefinitions.find(definition => definition.id === dashboardId)
 }
 
-function getMetrics (dashboard, filterValue, previousFilterValue) {
+function getMetrics (dashboard, filterValue, compareFilterValue) {
   return dashboard.metrics.map(m => ({
     ...m,
-    value: filterValue ? m.values[filterValue] : m.values,
-    previousValue: previousFilterValue ? m.values[previousFilterValue] : null
+    value: filterValue && m.values ? m.values[filterValue] : (m.values ?? m.value),
+    previousValue: compareFilterValue && m.values ? m.values[compareFilterValue] : null
   }))
 }
 
@@ -224,8 +224,16 @@ function getFilterValue (req, dashboard) {
   return filterValue
 }
 
-function getPreviousFilterValue (filterValue, dashboard) {
-  if (filterValue && dashboard.filter.options) {
+function getCompareFilterValue (req, filterValue, dashboard) {
+  if (!dashboard.filter) {
+    return null
+  }
+
+  const compareFilterValue = req.renderOptions.filterValues[`${dashboard.filter.name}.compare`]
+
+  if (compareFilterValue) {
+    return compareFilterValue
+  } else if (dashboard.filter.options) {
     const filterValueIndex = dashboard.filter.options
       .findIndex(o => o.value === filterValue)
 
@@ -245,19 +253,20 @@ router.get('/metrics/:dashboardId/', [
     const dashboardId = req.params.dashboardId
     const dashboard = getDashboard(dashboardId)
     const filterValue = getFilterValue(req, dashboard)
-    const previousFilterValue = getPreviousFilterValue(filterValue, dashboard)
+    const compareFilterValue = getCompareFilterValue(req, filterValue, dashboard)
 
     res.render(`main-ui/${version}/views/metrics-dashboard`,
       {
         ...req.renderOptions,
-        metrics: getMetrics(dashboard, filterValue, previousFilterValue),
+        metrics: getMetrics(dashboard, filterValue, compareFilterValue),
         categories: getCategories(dashboard),
         title: dashboard.name,
         category: dashboardId,
         metric: dashboard,
         filters: [{
           ...dashboard.filter,
-          value: filterValue
+          value: filterValue,
+          compareValue: compareFilterValue
         }],
         breadcrumbs: [
           {
