@@ -533,6 +533,18 @@ table.govuk-table {
   .mis-main #user-selected-filters-form-dashboard {
     text-align: right;
   }
+
+  .govuk-form-group {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+
+    .govuk-label {
+      padding-top: 8px;
+      padding-right: 10px;
+      flex-basis: 50%;
+    }
+  }
 }
 
 .report-placeholeder {
@@ -549,16 +561,4 @@ table.govuk-table {
 
 .remove-tag {
   cursor: pointer;
-
-  .govuk-form-group {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 3px;
-
-    .govuk-label {
-      padding-top: 8px;
-      padding-right: 10px;
-      flex-basis: 50%;
-    }
-  }
 }
