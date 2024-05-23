@@ -2,6 +2,16 @@
 
 {% block reportBody %}
 
+<div class="report-action-icons">
+  <div class="icon-wrapper icon-wrapper--l icon-live icon-disabled" tooltip="Print disabled">
+    <i class="icon print-icon"></i>
+  </div><div class="icon-wrapper icon-wrapper--l icon-live icon-disabled" tooltip="Share disabled">
+    <i class="icon share-icon"></i>
+  </div><div class="icon-wrapper icon-wrapper--l icon-live icon-disabled" tooltip="Export disabled">
+    <i class="icon download-icon"></i>
+  </div>
+</div>
+
 <span class="govuk-caption-m">Legacy Nomis Reports</span>
 <h3 class="govuk-heading-m govuk-!-margin-bottom-2">{{ reportData.name }} {{ bookmarkToggle(reportData.id, bookmarked) }}</h3>
 <p class="govuk-body-s">Tagged:
@@ -10,6 +20,7 @@
   {% endfor %}
 </p>
 
+<div class="govuk-!-margin-top-8">
 {{ govukTable({
   caption: caption,
   captionClasses: "govuk-table__caption--m",
@@ -19,6 +30,7 @@
     id: 'placeholder-reports-table'
   }
 }) }}
+</div>
 
 {{ discoverRelatedSection(relatedItems) }}
 

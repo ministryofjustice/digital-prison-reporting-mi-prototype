@@ -22,6 +22,7 @@ router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, func
       ...req.renderOptions,
       bookmarks,
       recentlyViewed,
+      showGettingStarted,
       breadcrumbs: [
         ...baseBreadCrumbs
       ]
@@ -186,6 +187,13 @@ router.post('/addToRecentlyViewed/', (req, res) => {
 router.post('/resetLists/', (req, res) => {
   resetBookmarkList()
   resetRecentlyViewedList()
+  res.end()
+})
+
+// update homepage links
+let showGettingStarted = true
+router.post('/removeLink/', (req, res) => {
+  showGettingStarted = false
   res.end()
 })
 
