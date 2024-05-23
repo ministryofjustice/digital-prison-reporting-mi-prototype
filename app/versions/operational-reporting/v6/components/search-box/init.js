@@ -1,10 +1,10 @@
 class ORSearchBoxv6 {
-  highlightText(text, searchValue) {
+  highlightText (text, searchValue) {
     const resetText = text.replaceAll('<b>', '').replaceAll('</b>', '')
     return resetText.replaceAll(new RegExp(`(${searchValue})`, 'gi'), '<b>$1</b>')
   }
 
-  getMatchingFields(report, searchValue) {
+  getMatchingFields (report, searchValue) {
     const matchingFields = []
 
     if (searchValue && searchValue.length > 0) {
@@ -19,7 +19,7 @@ class ORSearchBoxv6 {
     return matchingFields
   }
 
-  showMatchesColumn(rows) {
+  showMatchesColumn (rows) {
     const matchesHeader = document.getElementById('matches-header')
     if (matchesHeader.classList.contains('hide-header-column')) {
       matchesHeader.classList.remove('hide-header-column')
@@ -30,7 +30,7 @@ class ORSearchBoxv6 {
     }
   }
 
-  hideMatchesColumn(rows) {
+  hideMatchesColumn (rows) {
     const matchesHeader = document.getElementById('matches-header')
     if (!matchesHeader.classList.contains('hide-header-column')) {
       rows.forEach((row) => {
@@ -41,20 +41,20 @@ class ORSearchBoxv6 {
     }
   }
 
-  highlightReportName(row, searchValue) {
+  highlightReportName (row, searchValue) {
     const cells = Array.from(row.cells)
-    const nameCell = cells[1].getElementsByTagName("a")[0]
+    const nameCell = cells[1].getElementsByTagName('a')[0]
     const nameString = nameCell.innerHTML
     const highlighted = this.highlightText(nameString, searchValue)
     nameCell.innerHTML = highlighted
   }
 
-  hightlightMatchesColumn(row, searchValue, values) {
+  hightlightMatchesColumn (row, searchValue, values) {
     const cells = Array.from(row.cells)
     cells[3].innerHTML = this.highlightText(values, searchValue)
   }
 
-  initInputFromQueryParam(inputElement) {
+  initInputFromQueryParam (inputElement) {
     const urlParams = new URLSearchParams(window.location.search)
     const value = urlParams.get('search')
     if (value) {
@@ -63,7 +63,7 @@ class ORSearchBoxv6 {
     }
   }
 
-  addQueryParam(value) {
+  addQueryParam (value) {
     const queryParams = new URLSearchParams(window.location.search)
     if (value.length) {
       queryParams.set('search', value)
@@ -75,7 +75,7 @@ class ORSearchBoxv6 {
     }
   }
 
-  updateSearchListing(value) {
+  updateSearchListing (value) {
     const table = document.getElementById('op-reports-table')
     const rowCountElement = document.getElementById('row-count')
     const rows = Array.from(table.rows)
@@ -123,9 +123,8 @@ class ORSearchBoxv6 {
     rowCountElement.innerHTML = rowCount
   }
 
-  init() {
+  init () {
     const v6OrSearchBox = document.querySelector('#v6-or-search-box')
-    let value;
 
     if (v6OrSearchBox) {
       v6OrSearchBox.addEventListener('keyup', e => {
@@ -138,7 +137,7 @@ class ORSearchBoxv6 {
           // eslint-disable-next-line no-undef
           location.reload()
         }
-      });
+      })
 
       this.updateSearchListing('')
     }
