@@ -21,22 +21,22 @@ class ORSearchBoxv6 {
 
   showMatchesColumn(rows) {
     const matchesHeader = document.getElementById('matches-header')
-    if (matchesHeader.classList.contains("hide-header-column")) {
-      matchesHeader.classList.remove("hide-header-column")
+    if (matchesHeader.classList.contains('hide-header-column')) {
+      matchesHeader.classList.remove('hide-header-column')
       rows.forEach((row) => {
         const cells = Array.from(row.cells)
-        cells[3].classList.remove("hide-column")
+        cells[3].classList.remove('hide-column')
       })
     }
   }
 
   hideMatchesColumn(rows) {
     const matchesHeader = document.getElementById('matches-header')
-    if (!matchesHeader.classList.contains("hide-header-column")) {
+    if (!matchesHeader.classList.contains('hide-header-column')) {
       rows.forEach((row) => {
         const cells = Array.from(row.cells)
-        cells[3].classList.add("hide-column")
-        matchesHeader.classList.add("hide-header-column")
+        cells[3].classList.add('hide-column')
+        matchesHeader.classList.add('hide-header-column')
       })
     }
   }
@@ -55,7 +55,7 @@ class ORSearchBoxv6 {
   }
 
   initInputFromQueryParam(inputElement) {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search)
     const value = urlParams.get('search')
     if (value) {
       inputElement.value = value
@@ -67,10 +67,11 @@ class ORSearchBoxv6 {
     const queryParams = new URLSearchParams(window.location.search)
     if (value.length) {
       queryParams.set('search', value)
-      history.replaceState(null, null, "?" + queryParams.toString());
+      // eslint-disable-next-line no-undef
+      history.replaceState(null, null, '?' + queryParams.toString())
     } else {
       queryParams.delete('search')
-      window.history.pushState({}, document.title, window.location.pathname);
+      window.history.pushState({}, document.title, window.location.pathname)
     }
   }
 
@@ -93,14 +94,14 @@ class ORSearchBoxv6 {
     rows.forEach((row) => {
       const rowId = row.getAttribute('rowid')
 
-      const matches = [];
+      const matches = []
       searchFilteredDef.forEach((def) => {
         const defId = def.id
         if (rowId === defId) matches.push(def)
       })
 
       if (!matches.length) {
-        row.classList.add("hide-table-row")
+        row.classList.add('hide-table-row')
         rowCount--
       } else {
         if (row.classList.contains('hide-table-row')) {
@@ -132,8 +133,9 @@ class ORSearchBoxv6 {
         this.addQueryParam(e.target.value)
       })
 
-      v6OrSearchBox.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
+      v6OrSearchBox.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+          // eslint-disable-next-line no-undef
           location.reload()
         }
       });

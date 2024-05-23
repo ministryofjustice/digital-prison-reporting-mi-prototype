@@ -3,7 +3,7 @@ const maxLength = 15
 
 /**
  * Check if item exists in recently viewed array
- * @return {boolean} 
+ * @return {boolean}
  */
 const isInRecentlyViewed = (id) => {
   return recentlyViewed.filter((rec) => rec.id === id).length > 0
@@ -44,7 +44,7 @@ const removeFromRecentlyViewed = (data) => {
  * Enhances the data for the recently viewed items
  *
  * @param {*} definitions
- * @return {*} 
+ * @return {*}
  */
 const getRecentlyViewedData = (definitions) => {
   return recentlyViewed
@@ -80,7 +80,7 @@ const resetRecentlyViewedList = () => {
 const getRecentlyViewedPageData = (definitions, req, createRows, createHead, maxItems) => {
   const recentlyViewedDefinitions = getRecentlyViewedDefinitions(definitions)
   const recentlyViewed = getRecentlyViewedData(definitions)
-  let recentlyViewedRows = createRows(recentlyViewedDefinitions, req)
+  const recentlyViewedRows = createRows(recentlyViewedDefinitions, req)
 
   return {
     slideData: {

@@ -23,7 +23,7 @@ const createHead = (rows) => {
   headings.push({ text: '', classes: 'dpr-table__bm_head bg-color--grey' }) // Bookmark column
   headings.push({ text: 'Name', classes: 'bg-color--grey' })
 
-  // Only show tags if there are tags to show 
+  // Only show tags if there are tags to show
   if (showTagsColumn(rows)) headings.push({ text: 'Tags', classes: 'bg-color--grey' })
   headings.push({ text: 'Match(es)', classes: 'bg-color--grey hide-header-column', attributes: { id: 'matches-header' } })
   return headings

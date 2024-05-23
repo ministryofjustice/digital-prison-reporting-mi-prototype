@@ -1,5 +1,4 @@
 (() => {
-
   const toggles = document.getElementsByClassName('dpr-view-toggle')
   Array.from(toggles).forEach((toggle) => {
     const toggleContainer = toggle.parentNode.parentNode
@@ -23,13 +22,14 @@
         // Update Query Params
         const queryParams = new URLSearchParams(window.location.search)
         queryParams.set(toggle.id, active)
-        history.replaceState(null, null, "?" + queryParams.toString());
+        // eslint-disable-next-line no-undef
+        history.replaceState(null, null, '?' + queryParams.toString())
       })
     })
   })
 
   const initToggleStateFromQueryParams = () => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search)
 
     urlParams.keys().forEach(key => {
       const toggle = document.getElementById(key)

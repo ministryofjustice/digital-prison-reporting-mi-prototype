@@ -2,7 +2,7 @@
  * get the related items for an individual tag
  *
  * @param {*} { tag, duplicates, definition }
- * @return {*} 
+ * @return {*}
  */
 const getRelatedByTags = ({ tag, duplicates, definition }) => {
   duplicates = duplicates ? duplicates.map((d) => d.text) : []
@@ -26,10 +26,10 @@ const getRelatedByTags = ({ tag, duplicates, definition }) => {
  * Get the related items of a report
  *
  * @param {*} reportData
- * @return {*} 
+ * @return {*}
  */
 const getRelatedItems = (reportData, definition) => {
-  let tags = [...reportData.tags]
+  const tags = [...reportData.tags]
   tags.shift()
   let duplicates = []
   const relatedItems = []

@@ -5,7 +5,7 @@ const { products, domains, subDomains } = require('../../../../data/domainMappin
  *
  * @param {object} params request params
  * @param {boolean} deleteId
- * @return {{ id: string, text: string }[]} tags data   
+ * @return {{ id: string, text: string }[]} tags data
  */
 const getTagsFromReq = (params, deleteId) => {
   if (deleteId) delete params.id
@@ -39,36 +39,11 @@ const getTagBreadcrumbs = (tags, enableLastLink) => {
 }
 
 /**
- * Creates the HTML for the Tag column in the catalogue list 
+ * Creates the HTML for the Tag column in the catalogue list
  *
  * @param {*} tags
  * @param {*} url
- * @return {*} 
- */
-// const createTagsCol = (tags, req) => {
-//   const originalUrl = req.originalUrl
-//   const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-//   let url = new URL(fullUrl)
-//   const params = new URLSearchParams(url.search);
-//   url.search = ''
-//   const path = url.pathname
-
-//   let href = !path.includes('/catalogue/') ? '/operational-reporting/v6/catalogue/' : path
-//   return tags
-//     .filter(tag => !originalUrl.includes(tag.slug))
-//     .map(t => {
-//       href = `${path}${t.slug}/`
-//       if (params.get('search')) href = `${href}?${params.toString()}`
-//       return `<a href="${href}" class="dpr-tag--link"><strong class="govuk-tag dpr-tag dpr-tag--add" data-tag-slug=${t.slug} tooltip='Filter list by this tag'>${t.text}</strong></a>`
-//     }).join('&nbsp;')
-// }
-
-/**
- * Creates the HTML for the Tag column in the catalogue list 
- *
- * @param {*} tags
- * @param {*} url
- * @return {*} 
+ * @return {*}
  */
 const createTagsCol = (tags, req) => {
   const originalUrl = req.originalUrl
@@ -77,7 +52,7 @@ const createTagsCol = (tags, req) => {
     .map(t => {
       const tagHtml = `<strong class="govuk-tag dpr-tag dpr-tag--add" data-tag-slug=${t.slug} tooltip='Filter list by this tag'>${t.text}</strong>`
       if (!originalUrl.includes('/catalogue/')) {
-        let href = `/operational-reporting/v6/catalogue/${t.slug}/`
+        const href = `/operational-reporting/v6/catalogue/${t.slug}/`
         return `<a href="${href}" class="dpr-tag--link">${tagHtml}</a>`
       } else {
         return `${tagHtml}`
@@ -90,7 +65,7 @@ const createTagsCol = (tags, req) => {
  *
  * @param {*} tags
  * @param {*} definition
- * @return {*} 
+ * @return {*}
  */
 const filterRowsByTags = (tags, definition) => {
   return definition.filter(def => {
@@ -103,11 +78,10 @@ const filterRowsByTags = (tags, definition) => {
   })
 }
 
-
 const showTagsColumn = (rows) => {
   const hasTags = []
   rows.forEach(row => {
-    tagsCol = row.find(r => r.text === 'tags')
+    const tagsCol = row.find(r => r.text === 'tags')
     hasTags.push(tagsCol && tagsCol.html !== '')
   })
   return hasTags.some(Boolean)
@@ -118,11 +92,11 @@ const showTagsColumn = (rows) => {
  * NOTE: Not needed outside of prototype
  *
  * @param {*} definitions
- * @return {*} 
+ * @return {*}
  */
 const addTagsToDefinition = (definitions) => {
   return definitions.map((def) => {
-    let misOr = def.tags.find((t) => t === 'MIS' || t === 'ORS')
+    const misOr = def.tags.find((t) => t === 'MIS' || t === 'ORS')
     const { product, subDomain, domain } = generateDomainDataForDefinition()
     const tagData = []
     if (misOr) tagData.push({ id: misOr.toLowerCase(), name: misOr, slug: misOr.toLowerCase() })
@@ -143,7 +117,7 @@ const addTagsToDefinition = (definitions) => {
  * NOTE: Not needed outside of prototype
  *
  * @param {*} tags
- * @return {} 
+ * @return {}
  */
 const setTags = (tags) => {
   return tags.map((tag, i) => ({
@@ -157,13 +131,13 @@ const setTags = (tags) => {
 /**
  * Randomly assigns a product, domain, subdomain configuration
  * NOTE: Not needed outside of prototype
- * 
- * relationship: 
+ *
+ * relationship:
  * - A sub domain has one domain
  * - A sub domain had one product
  * - A product has many domains
  *
- * @return {*} 
+ * @return {*}
  */
 const generateDomainDataForDefinition = () => {
   const productId = Math.floor(Math.random() * products.length)

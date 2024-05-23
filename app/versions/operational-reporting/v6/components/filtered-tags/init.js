@@ -1,7 +1,7 @@
 (() => {
   document.querySelectorAll('[data-remove-tag]')
     .forEach((el) => {
-      el.addEventListener("click", () => {
+      el.addEventListener('click', () => {
         const tag = el.dataset.removeTag
         let url = window.location.href
         url = url.replace(`${tag}/`, '')

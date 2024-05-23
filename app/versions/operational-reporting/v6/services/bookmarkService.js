@@ -4,7 +4,7 @@ let bookmarks = []
  * Creates the bookmark toggle html
  *
  * @param {*} id
- * @return {*} 
+ * @return {*}
  */
 const createBookMarkToggleHtml = (id) => {
   const checked = isBookmarked(id) ? 'checked' : null
@@ -17,7 +17,7 @@ const createBookMarkToggleHtml = (id) => {
 
 /**
  * Check if bookmark exists
- * @return {boolean} 
+ * @return {boolean}
  */
 const isBookmarked = (id) => {
   return bookmarks.filter((bmId) => bmId === id).length > 0
@@ -55,7 +55,7 @@ const bumpBookmark = (data) => {
  * Enhances the data for the bookmarked items
  *
  * @param {*} definitions
- * @return {*} 
+ * @return {*}
  */
 const getBookmarkData = (definitions) => {
   return bookmarks

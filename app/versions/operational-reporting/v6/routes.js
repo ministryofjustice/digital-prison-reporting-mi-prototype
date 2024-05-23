@@ -34,13 +34,13 @@ router.get('/my-reports/:type/', [handlers.configureCurrentUrl, handlers.configu
   switch (type) {
     case 'bookmarks':
       listingData = getBookmarkPageData(enhancedDefinitions, req, createRows, createHead, 100)
-      break;
+      break
     case 'recently-viewed':
       listingData = getRecentlyViewedPageData(enhancedDefinitions, req, createRows, createHead, 15)
-      break;
+      break
     default:
       listingData = getBookmarkPageData(enhancedDefinitions, req, createRows, createHead, 100)
-      break;
+      break
   }
 
   res.render(`operational-reporting/${version}/views/my-reports`,
@@ -49,7 +49,7 @@ router.get('/my-reports/:type/', [handlers.configureCurrentUrl, handlers.configu
       listingData,
       breadcrumbs: [
         ...baseBreadCrumbs,
-        { text: 'Home', href: '/operational-reporting/v6/' },
+        { text: 'Home', href: '/operational-reporting/v6/' }
       ]
     })
 }])
@@ -127,16 +127,16 @@ router.get(['/contact-us', '/getting-started'], [handlers.configureNavigation, f
     case '/contact-us/':
       title = 'Contact Us'
       content = 'Information about how to contact us with questions will be available on this page'
-      break;
+      break
     case '/getting-started/':
       title = 'Getting started'
       gettingStarted = true
       content = 'Information about how to get started and tutorials about how to use the service will be available on this page'
-      break;
+      break
     default:
       title = 'Generic title'
       content = 'Information about page'
-      break;
+      break
   }
 
   res.render(`operational-reporting/${version}/views/generic`,
