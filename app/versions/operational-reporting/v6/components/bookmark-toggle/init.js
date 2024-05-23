@@ -12,8 +12,7 @@
       })
 
     if (!currentUrl.includes('catalogue') && !currentUrl.includes('recently-viewed') && !currentUrl.includes('/report/')) {
-      // eslint-disable-next-line no-undef
-      location.reload()
+      window.location.reload()
     }
   }
 
@@ -28,8 +27,7 @@
       })
 
     if (!currentUrl.includes('catalogue') && !currentUrl.includes('recently-viewed') && !currentUrl.includes('/report/')) {
-      // eslint-disable-next-line no-undef
-      location.reload()
+      window.location.reload()
     }
   }
 

@@ -134,8 +134,7 @@ class ORSearchBoxv6 {
 
       v6OrSearchBox.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-          // eslint-disable-next-line no-undef
-          location.reload()
+          window.location.reload()
         }
       })
 
