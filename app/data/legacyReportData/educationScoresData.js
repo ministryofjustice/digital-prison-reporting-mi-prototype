@@ -1,164 +1,164 @@
 const educationScoresData = [
   {
     'Prison Number': 'A5213DC',
-    'Surname': 'Watson',
+    Surname: 'Watson',
     'First Name': 'Christopher',
     'Study Area': 'General Studies',
-    'Level': 'Entry Level Qualification'
+    Level: 'Entry Level Qualification'
   },
   {
     'Prison Number': 'A2982CR',
-    'Surname': 'Churchill',
+    Surname: 'Churchill',
     'First Name': 'Cameron',
     'Study Area': 'Mathematics',
-    'Level': 'Level 3'
+    Level: 'Level 3'
   },
   {
     'Prison Number': 'A6971AR',
-    'Surname': 'Reid',
+    Surname: 'Reid',
     'First Name': 'Jonathan',
     'Study Area': 'BICS',
-    'Level': 'BICSc Mandatory Unit Card'
+    Level: 'BICSc Mandatory Unit Card'
   },
   {
     'Prison Number': 'A6949AR',
-    'Surname': 'Glover',
+    Surname: 'Glover',
     'First Name': 'Stewart',
     'Study Area': 'Personal & Social Development PSD',
-    'Level': 'Level 1'
+    Level: 'Level 1'
   },
   {
     'Prison Number': 'A2088ED',
-    'Surname': 'Gibson',
+    Surname: 'Gibson',
     'First Name': 'Steven',
     'Study Area': 'Mathematics',
-    'Level': 'Level 3'
+    Level: 'Level 3'
   },
   {
     'Prison Number': 'A2088ED',
-    'Surname': 'Gibson',
+    Surname: 'Gibson',
     'First Name': 'Steven',
     'Study Area': 'English',
-    'Level': 'Award Entry Level 3'
+    Level: 'Award Entry Level 3'
   },
   {
     'Prison Number': 'A8372EY',
-    'Surname': 'Ogden',
+    Surname: 'Ogden',
     'First Name': 'Isaac',
     'Study Area': 'Reading Measure - current',
-    'Level': 'Reading Measure 1.5'
+    Level: 'Reading Measure 1.5'
   },
   {
     'Prison Number': 'A5413CA',
-    'Surname': 'Gibson',
+    Surname: 'Gibson',
     'First Name': 'Phil',
     'Study Area': 'General Studies',
-    'Level': 'No Qualifications Gained'
+    Level: 'No Qualifications Gained'
   },
   {
     'Prison Number': 'A2802AE',
-    'Surname': 'Paige',
+    Surname: 'Paige',
     'First Name': 'Oliver',
     'Study Area': 'Personal Development',
-    'Level': 'Level 1'
+    Level: 'Level 1'
   },
   {
     'Prison Number': 'A7285AF',
-    'Surname': 'MacDonald',
+    Surname: 'MacDonald',
     'First Name': 'Paul',
     'Study Area': 'General Studies',
-    'Level': 'Entry Level Qualification'
+    Level: 'Entry Level Qualification'
   },
   {
     'Prison Number': 'A7285AF',
-    'Surname': 'MacDonald',
+    Surname: 'MacDonald',
     'First Name': 'Paul',
     'Study Area': 'English',
-    'Level': 'Award Entry Level 1'
+    Level: 'Award Entry Level 1'
   },
   {
     'Prison Number': 'A2359EP',
-    'Surname': 'Anderson',
+    Surname: 'Anderson',
     'First Name': 'Austin',
     'Study Area': 'Improving Productivity Using IT',
-    'Level': 'Certificate Level 1'
+    Level: 'Certificate Level 1'
   },
   {
     'Prison Number': 'A2359EP',
-    'Surname': 'Anderson',
+    Surname: 'Anderson',
     'First Name': 'Austin',
     'Study Area': 'Mathematics',
-    'Level': 'Functional Skills Level 1'
+    Level: 'Functional Skills Level 1'
   },
   {
     'Prison Number': 'A8231AB',
-    'Surname': 'Kerr',
+    Surname: 'Kerr',
     'First Name': 'Charles',
     'Study Area': 'Functional Skills qualification in Maths',
-    'Level': 'Functional Skills Level 1'
+    Level: 'Functional Skills Level 1'
   },
   {
     'Prison Number': 'A1964AA',
-    'Surname': 'Cornish',
+    Surname: 'Cornish',
     'First Name': 'Harry',
     'Study Area': 'Advice and Guidance',
-    'Level': 'Certificate Level 2'
+    Level: 'Certificate Level 2'
   },
   {
     'Prison Number': 'A1231AA',
-    'Surname': 'Ince',
+    Surname: 'Ince',
     'First Name': 'Victor',
     'Study Area': 'General Studies',
-    'Level': ''
+    Level: ''
   },
   {
     'Prison Number': 'A6554EY',
-    'Surname': 'Bond',
+    Surname: 'Bond',
     'First Name': 'Cameron',
     'Study Area': 'Personal & Social Development PSD',
-    'Level': 'Level 1'
+    Level: 'Level 1'
   },
   {
     'Prison Number': 'A7890AG',
-    'Surname': 'Slater',
+    Surname: 'Slater',
     'First Name': 'Jonathan',
     'Study Area': '',
-    'Level': ''
+    Level: ''
   },
   {
     'Prison Number': 'A6980AC',
-    'Surname': 'Berry',
+    Surname: 'Berry',
     'First Name': 'Nicholas',
     'Study Area': 'Mathematics',
-    'Level': 'Level 1'
+    Level: 'Level 1'
   },
   {
     'Prison Number': 'A0368ET',
-    'Surname': 'Young',
+    Surname: 'Young',
     'First Name': 'William',
     'Study Area': 'BICS',
-    'Level': 'BICSc Mandatory Unit Card'
+    Level: 'BICSc Mandatory Unit Card'
   },
   {
     'Prison Number': 'A2813EZ',
-    'Surname': 'Bower',
+    Surname: 'Bower',
     'First Name': 'Jake',
     'Study Area': 'Personal & Social Development PSD',
-    'Level': 'Level 1'
+    Level: 'Level 1'
   },
   {
     'Prison Number': 'A1231AD',
-    'Surname': 'Robertson',
+    Surname: 'Robertson',
     'First Name': 'Jacob',
     'Study Area': '',
-    'Level': ''
+    Level: ''
   },
   {
     'Prison Number': 'A9231AB',
-    'Surname': 'Parr',
+    Surname: 'Parr',
     'First Name': 'Blake',
     'Study Area': 'General Studies',
-    'Level': 'Entry Level Qualification'
+    Level: 'Entry Level Qualification'
   }
 ]
 
