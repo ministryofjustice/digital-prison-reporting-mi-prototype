@@ -14,7 +14,7 @@ module.exports = [
     updateSchedule: 'Monthly',
     tags: ['MIS', 'Activities', 'Movements'],
     author: 'Myles Padilla',
-    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
+    filter: { type: 'SelectComparison', name: 'month', options: dashboardFilterValues, text: 'Month' },
     metrics: [
       {
         id: 'to-activities',
@@ -73,7 +73,7 @@ module.exports = [
     updateSchedule: 'Monthly',
     tags: ['ORS', 'Movements'],
     author: 'Hoyt Morin',
-    filter: { type: 'Select', name: 'month', options: dashboardFilterValues },
+    filter: { type: 'SelectComparison', name: 'month', options: dashboardFilterValues, text: 'Month' },
     metrics: [
       {
         id: 'transfers-in',
@@ -185,8 +185,8 @@ module.exports = [
         value: 'This page provides a summary of mysterious disappearances, due to various factors. This may include: Drone-based escape, UFO abduction, evaporation, and The Rapture.'
       },
       {
-        id: 'today',
-        name: 'Today',
+        id: 'off-wing',
+        name: 'Off wing',
         type: 'headline',
         values: {
           '2024-03': 0,
@@ -203,8 +203,8 @@ module.exports = [
         }
       },
       {
-        id: 'this-week',
-        name: 'This week',
+        id: 'from-cell',
+        name: 'From cell',
         type: 'headline',
         values: {
           '2024-03': 3,
@@ -222,8 +222,8 @@ module.exports = [
         }
       },
       {
-        id: 'this-month',
-        name: 'This month',
+        id: 'mysterious',
+        name: 'Mysterious',
         type: 'headline',
         values: {
           '2024-03': 30,
