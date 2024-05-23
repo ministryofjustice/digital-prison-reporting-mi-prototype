@@ -1,0 +1,5 @@
+<div class="dpr-view-toggle" id="{{ toggleId }}">
+  {% for icon in icons %}<div class="icon-wrapper icon-wrapper--l icon-live {% if icon.active %}icon-active{% endif %}" index={{ loop.index - 1}} tooltip="{{icon.tooltip}}">
+      <i class="icon {{ icon.name }}-icon"></i>
+    </div>{% endfor %}
+</div>

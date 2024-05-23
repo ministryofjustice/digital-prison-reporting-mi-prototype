@@ -1,4 +1,4 @@
-const bookmarks = []
+let bookmarks = []
 
 /**
  * Creates the bookmark toggle html
@@ -8,7 +8,8 @@ const bookmarks = []
  */
 const createBookMarkToggleHtml = (id) => {
   const checked = isBookmarked(id) ? 'checked' : null
-  return `<div class='bookmark'>
+  const tooltip = !checked ? 'Add Bookmark' : 'Remove Bookmark'
+  return `<div class='bookmark dpr-bookmark-tooltip' tooltip="${tooltip}">
   <input class="bookmark-input" type='checkbox' id='${id}' ${checked} />
   <label for='${id}'></label>
 </div>`
@@ -44,30 +45,73 @@ const removeBookmark = (data) => {
   bookmarks.splice(index, 1)
 }
 
+const bumpBookmark = (data) => {
+  const { id } = data
+  removeBookmark(data)
+  if (!isBookmarked(id)) bookmarks.unshift(id)
+}
+
 /**
- * Enhances the data for the bookmark
+ * Enhances the data for the bookmarked items
  *
  * @param {*} definitions
  * @return {*} 
  */
 const getBookmarkData = (definitions) => {
-  return definitions
-    .filter((report) => bookmarks.includes(report.id))
-    .map(report => {
-      const { id } = report
+  return bookmarks
+    .map(id => {
+      const report = definitions.find((def) => def.id === id)
       return {
         id,
-        text: report.text,
+        text: report.name,
         href: `./report/${report.id}`,
+        tag: report.tags[0].text
       }
     })
+}
+
+const getBookMarkDefinitions = (definitions) => {
+  return bookmarks
+    .map((id) => definitions.find((def) => def.id === id))
+}
+
+const resetBookmarkList = () => {
+  bookmarks = []
+}
+
+const getBookmarkPageData = (definitions, req, createRows, createHead, maxItems) => {
+  const bookmarkDefinitions = getBookMarkDefinitions(definitions)
+  const bookmarks = getBookmarkData(bookmarkDefinitions)
+  const bookmarkRows = createRows(bookmarkDefinitions, req)
+
+  return {
+    slideData: {
+      title: 'My Bookmarks',
+      type: 'bookmarks',
+      icon: 'bookmark',
+      toggleId: 'bookmark-toggle',
+      darkBg: true
+    },
+    cardData: {
+      items: bookmarks.slice(0, maxItems),
+      count: bookmarks.length
+    },
+    tableData: {
+      rows: bookmarkRows.slice(0, maxItems),
+      head: createHead(bookmarkRows).slice(0, 3)
+    }
+  }
 }
 
 module.exports = {
   createBookMarkToggleHtml,
   addBookmark,
   removeBookmark,
+  bumpBookmark,
   bookmarks,
   isBookmarked,
-  getBookmarkData
+  getBookmarkData,
+  getBookMarkDefinitions,
+  resetBookmarkList,
+  getBookmarkPageData
 }

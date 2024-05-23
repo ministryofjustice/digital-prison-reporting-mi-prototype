@@ -2,17 +2,34 @@
 
 {% block reportBody %}
 
-<span class="govuk-caption-m">Version 6</span>
-<h3 class="govuk-heading-m">The Orphanage</h3>
+<div class='dpr-catalogue-banner'>
+  <h3 class="govuk-heading-xl govuk-!-margin-bottom-3">Legacy Nomis Reports</h3>
+  <p class="govuk-body govuk-!-margin-bottom-5">Repository for migrated Nomis reports</p>
+  <ul >
+    <li><a href="./getting-started/" class="dpr-chevron-link">Getting started</a></li>
+    <li><a href="./contact-us/" class="dpr-chevron-link">Contact us</a></li>
+    <li><a href="./catalogue/" class="dpr-chevron-link">Find a Report</a></li>
+  </ul>
+</div>
 
-<ul class="govuk-list govuk-list--bullet">
-  <li>My Bookmarks</li>
-  <li>My requested</li>
-  <li>Recently viewed</li>
-</ul>
+{{ reportSlide(bookmarks) }}
+{{ reportSlide(recentlyViewed) }}
 
----{{ bookmarks | dump | safe }} ---
+{% if bookmarks.cardData.items.length > 0 or recentlyViewed.cardData.items.length > 0 %}
+<div class="reset-link"><a id="resetLists">Reset Lists</a><div>
+{% endif %}
 
-<a href="./catalogue">Catalogue</a>
+<script>
+  const baseUrlv6 = `${window.location.origin}/operational-reporting/v6`
+  const resetLists = async () => {
+    const res = await axios.post(`${baseUrlv6}/resetLists/`, {})
+      .catch(function (error) {
+        console.log(error)
+      });
+    location.reload()
+  }
 
+  const resetbutton = document.getElementById("resetLists")
+  if(resetbutton) resetbutton.addEventListener("click", resetLists);
+</script>
 {% endblock %}

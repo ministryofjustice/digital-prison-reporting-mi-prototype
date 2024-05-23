@@ -1,7 +1,19 @@
 {% extends "layout.html" %}
 
+{% from "../components/filtered-tags/macro.html" import filteredTags %}
+{% from "../components/report-slide/macro.html" import reportSlide %}
+{% from "../components/bookmark-toggle/macro.html" import bookmarkToggle %}
+{% from "../components/card-group-related/macro.html" import appCardGroupRelated %}
+{% from "../components/discover-related-section/macro.html" import discoverRelatedSection %}
+{% from "../components/search-box/macro.html" import appSearchBox %}
+{% from "../components/view-toggle/macro.html" import viewToggle %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "../../../main-ui/v5/components/data-table/views/macro.html" import appDataTable %}
+
+
 {% block pageTitle %}
-Version Baseplate
+Legacy Nomis Reports
 {% endblock %}
 
 {% block subHeader %}
@@ -14,8 +26,8 @@ Version Baseplate
 
 {% block content %}
 
-  <div class="govuk-width-container ">
+  <div class="govuk-width-container or-v6">
     {% block reportBody %}{% endblock %}
   </div>
-
 {% endblock %}
+ 

@@ -1,0 +1,46 @@
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+  <h3 class="govuk-heading-xl govuk-!-margin-bottom-3">{{ title }}</h3>
+  <p>{{ content }}</p>
+  
+{% if gettingStarted %}
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "What is the Legacy Nomis Reports?"
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for What is the Legacy Nomis Reports?.</p>'
+      }
+    },
+    {
+      heading: {
+        text: "Finding a report"
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for Finding a report.</p>'
+      }
+    },
+    {
+      heading: {
+        text: "Bookmarking"
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for Bookmarking.</p>'
+      }
+    },
+    {
+      heading: {
+        text: "Report Tags"
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for Report Tags.</p>'
+      }
+    }
+  ]
+}) }}
+{% endif %}
+{% endblock %}

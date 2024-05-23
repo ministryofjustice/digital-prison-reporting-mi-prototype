@@ -1,0 +1,34 @@
+<div class="dpr-slide-container dpr-full-width-bg-container {% if darkBg %} dpr-full-width-bg-container--grey{% endif %} {% if title.length %}dpr-slide-container--padding-top{% endif %}">
+  {% if title.length %}
+    <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+      <div class="icon-wrapper">
+        <i class="icon {{icon}}-icon"></i>
+      </div>
+      {{ title }}
+    </h3>
+  {% endif %}
+
+  <p class="govuk-body-s">{{ introText }}{% if items.length and items.length < count %} Showing your top 6. <a href="{{ seeAllHref }}">See all</a>{% endif %}</p>  
+
+  {% if items.length > 0 %}
+
+  {% set contentOneHtml %}
+    {{ cardGroup(items) }}
+  {% endset %}
+
+  {% set contentTwoHtml %}
+    {{ govukTable({
+      caption: caption,
+      captionClasses: "govuk-table__caption--m",
+      head: head,
+      rows: rows,
+      attributes: {
+        id: type + '-reports-table'
+      }
+    }) }}
+  {% endset %}
+
+  {{ toggleContent(toggleId, toggleData, contentOneHtml, contentTwoHtml) }}
+  
+  {% endif %}
+</div>

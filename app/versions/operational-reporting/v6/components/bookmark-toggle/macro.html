@@ -1,6 +1,7 @@
-{% macro bookmarkToggle(data) %}
-  {% set id = data.id %}
-  {% set checked %}{{ 'checked' if data.bookmarked else '' }}{% endset %}
+{% macro bookmarkToggle(id, bookmarked) %}
+  {% set id = id %}
+  {% set checked %}{{ 'checked' if bookmarked else '' }}{% endset %}
+  {% set tooltip %}{{ 'Remove Bookmark' if bookmarked else 'Add Bookmark' }}{% endset %}
 
   {%- include "./template.html" -%}
 {% endmacro %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Version Baseplate
+{% endblock %}
+
+{% block subHeader %}
+<div class="govuk-width-container ">
+  {{ govukBreadcrumbs({
+    items: breadCrumbs
+  }) }}
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-width-container ">
+    {% block reportBody %}{% endblock %}
+  </div>
+
+{% endblock %}

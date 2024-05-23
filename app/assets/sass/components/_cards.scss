@@ -116,7 +116,10 @@
     }
   }
 
-
+  .dpr-card-group__item--pb {
+    padding-bottom: 25px;
+  }
+  
   .dpr-card-group__item {
     min-height: 120px;
     position: relative;

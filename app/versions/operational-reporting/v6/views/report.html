@@ -2,19 +2,59 @@
 
 {% block reportBody %}
 
-<span class="govuk-caption-m">Version 6</span>
-<h3 class="govuk-heading-m">Report Title</h3>
-bookmarked {{ bookmarked }}
-
-<p class="govuk-body">
-  {% for tag in tags %}
-    <strong class="govuk-tag dpr-tag" tooltip='Remove tag filter'>{{ tag.text }}</strong>
+<span class="govuk-caption-m">Legacy Nomis Reports</span>
+<h3 class="govuk-heading-m govuk-!-margin-bottom-2">{{ reportData.name }} {{ bookmarkToggle(reportData.id, bookmarked) }}</h3>
+<p class="govuk-body-s">Tagged:
+  {% for tag in reportData.tags %}
+    <a href="/operational-reporting/v6/catalogue/{{ tag.slug }}/"><strong class="govuk-tag dpr-tag dpr-tag--large govuk-tag--grey dpr-tag--add" tooltip='See all reports with this tag'>{{ tag.text }}</strong></a>
   {% endfor %}
 </p>
 
-<ul class="govuk-list govuk-list--bullet">
-  <li>Report</li>
-  <li>Related Items</li>
-</ul>
+{{ govukTable({
+  caption: caption,
+  captionClasses: "govuk-table__caption--m",
+  head: mockData.data.head,
+  rows: mockData.data.rows,
+  attributes: {
+    id: 'placeholder-reports-table'
+  }
+}) }}
+
+{{ discoverRelatedSection(relatedItems) }}
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
+<script type="text/javascript">
+(async () => {
+  const baseUrl = `${window.location.origin}/operational-reporting/v6/`
+  const reportId = '{{ reportData.id }}'
+  const bookmarked = {{ bookmarked }}
+
+  const addToRecentlyViewed = async (id) => {
+    return await axios
+      .post(`${baseUrl}/addToRecentlyViewed/`, {
+        data: JSON.stringify({ id })
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  }
+
+  const bumpBookmark = async (id) => {
+    return await axios
+      .post(`${baseUrl}/bumpBookmark/`, {
+        data: JSON.stringify({ id })
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  }
+
+  if( bookmarked ) {
+    await bumpBookmark(reportId)
+  }
+
+  await addToRecentlyViewed(reportId)
+})()
+</script>
 
 {% endblock %}

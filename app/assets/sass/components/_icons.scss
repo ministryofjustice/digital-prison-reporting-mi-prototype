@@ -1,0 +1,233 @@
+.icon:before {
+  font-family: "Material Icons";
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+  font-style: normal;
+  text-transform: none;
+  line-height: 26px;
+  font-size: 36px;
+  display: inline-block;
+  color: black;
+}
+
+.icon-wrapper {
+  display: inline-block;
+  position: relative;
+  border-radius: 100px;
+  background-color: govuk-colour("mid-grey");
+  width: 26px;
+  height: 26px;
+  padding: 0px;
+  margin-right: 6px;
+  vertical-align: middle;
+
+  .icon:before {
+    line-height: 26px;
+    font-size: 16px;
+    text-align: center;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: white;
+    width: 26px;
+    height: 26px
+  }
+
+  .viewed-icon.icon:before {
+    content: "history";
+    font-size: 20px;
+  }
+}
+
+.icon-live {
+  border-radius: 0px;
+  background-color: govuk-colour("blue");
+
+  &.icon-active {
+    background-color: govuk-colour("yellow");
+
+    .icon:before {
+      color: black;
+    }
+  }
+
+  &:hover {
+    background-color: govuk-colour("light-blue");
+    cursor: pointer;
+
+    .icon:before {
+      color: white;
+    }
+  }
+
+  &.icon-disabled {
+    background-color: govuk-colour("mid-grey");
+
+    &:hover {
+        background-color: lighten(govuk-colour("mid-grey"), 5%);
+        cursor: pointer;
+    
+        .icon:before {
+          color: white;
+        }
+      }
+  }
+}
+
+.icon-live:hover:after {
+  background: govuk-colour("dark-grey");
+  content: attr(tooltip);
+  display: block;
+  color: white;
+  padding: govuk-spacing(3);
+  position: absolute;
+  white-space: nowrap;
+  text-transform: none;
+  z-index: 98;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  font-family: Helvetica Neue, Helvetica, Arial;
+}
+
+.icon-live:hover:before {
+  content: '';
+  z-index: 98;
+  display: block;
+  position: absolute;
+  width: 20;
+  height: 20;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid govuk-colour("dark-grey");
+}
+
+
+.icon-live.icon-wrapper--xl:hover:after {
+  top: 65px !important;
+}
+
+.icon-live.icon-wrapper--xl:hover:before {
+  top: 56px !important;
+  left: 15px !important;
+}
+
+.icon-live.icon-wrapper--l:hover:after {
+  top: 50px !important;
+}
+
+.icon-live.icon-wrapper--l:hover:before {
+  top: 44px !important;
+  left: 8px !important;
+}
+
+.icon-live.icon-wrapper:hover:after {
+  top: 38px;
+}
+
+.icon-live.icon-wrapper:hover:before {
+  top: 32px;
+  left: 5px;
+}
+
+.icon-wrapper--l {
+  width: 35px;
+  height: 35px;
+
+  .icon:before {
+    line-height: 35px;
+    font-size: 21px;
+    // background-color: rgba(0, 0, 0, 0.5);
+    width: 35px;
+    height: 35px
+  }
+
+  .viewed-icon.icon:before {
+    content: "history";
+    font-size: 25px;
+  }
+}
+
+.icon-wrapper--xl {
+  width: 50px;
+  height: 50px;
+
+  .icon:before {
+    line-height: 50px;
+    font-size: 30px;
+    // background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px
+  }
+
+  .viewed-icon.icon:before {
+    content: "history";
+    font-size: 35px;
+  }
+}
+
+.bookmark-icon.icon:before {
+  content: "bookmark";
+}
+
+.viewed-icon.icon:before {
+  content: "history";
+}
+
+.list-icon.icon:before {
+  content: "list";
+}
+
+.card-icon.icon:before {
+  content: "grid_view";
+}
+
+.print-icon.icon:before {
+  content: "print";
+}
+
+.download-icon.icon:before {
+  content: "download";
+}
+
+.share-icon.icon:before {
+  content: "share";
+}
+
+.close-icon.icon:before {
+  content: "close";
+}
+
+.info-icon.icon:before {
+  content: "info";
+}
+
+.info-icon.icon:before {
+  content: "info";
+}
+
+.pending-icon.icon:before {
+  content: "pending";
+}
+
+.hourglass-icon.icon:before {
+  content: "hourglass_empty";
+}
+
+.pending-actions-icon.icon:before {
+  content: "pending_actions";
+}
+
+.pr-icon-wrapper {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
+
+.dpr-info-tooltip:before {
+  display: inline-block;
+  color: govuk-colour("dark-grey");
+  font-size: 24px;
+  vertical-align: middle;
+  cursor: pointer;
+}
