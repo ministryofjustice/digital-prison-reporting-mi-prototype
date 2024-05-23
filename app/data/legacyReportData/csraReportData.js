@@ -1,7 +1,7 @@
 const csraReportData = [
   {
     'Prison Number': 'A7654AC',
-    'Surname': 'Robertson',
+    Surname: 'Robertson',
     'First Name': 'Joshua',
     'Date of Birth': '1/6/1985',
     Location: 'B-3-002',
@@ -10,7 +10,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A8231AB',
-    'Surname': 'Murray',
+    Surname: 'Murray',
     'First Name': 'Robert',
     'Date of Birth': '20/9/1996',
     Location: 'C-4-012',
@@ -19,7 +19,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A8231AB',
-    'Surname': 'Mathis',
+    Surname: 'Mathis',
     'First Name': 'Evan',
     'Date of Birth': '19/7/1979',
     Location: 'G-4-004',
@@ -28,7 +28,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A1964AA',
-    'Surname': 'Gill',
+    Surname: 'Gill',
     'First Name': 'Adam',
     'Date of Birth': '31/7/2001',
     Location: 'COURT',
@@ -37,7 +37,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A1231AA',
-    'Surname': 'Randall',
+    Surname: 'Randall',
     'First Name': 'Matt',
     'Date of Birth': '16/10/1998',
     Location: 'C-5-004',
@@ -46,7 +46,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A9231AA',
-    'Surname': 'Payne',
+    Surname: 'Payne',
     'First Name': 'Ryan',
     'Date of Birth': '3/4/1991',
     Location: 'A-4-009',
@@ -55,7 +55,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A8232AA',
-    'Surname': 'Hamilton',
+    Surname: 'Hamilton',
     'First Name': 'Blake',
     'Date of Birth': '9/4/2003',
     Location: 'E-4-003',
@@ -64,7 +64,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A6781AB',
-    'Surname': 'Paige',
+    Surname: 'Paige',
     'First Name': 'Neil',
     'Date of Birth': '28/4/2005',
     Location: 'A-5-039',
@@ -73,7 +73,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A7806AP',
-    'Surname': 'Paterson',
+    Surname: 'Paterson',
     'First Name': 'Victor',
     'Date of Birth': '11/2/2003',
     Location: 'B-5-046',
@@ -82,7 +82,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A8649AL',
-    'Surname': 'Allan',
+    Surname: 'Allan',
     'First Name': 'Brian',
     'Date of Birth': '8/7/1990',
     Location: 'A-5-026',
@@ -91,7 +91,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A3867FB',
-    'Surname': 'Cornish',
+    Surname: 'Cornish',
     'First Name': 'Brian',
     'Date of Birth': '25/1/2001',
     Location: 'TAP',
@@ -100,7 +100,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A3310FA',
-    'Surname': 'Peters',
+    Surname: 'Peters',
     'First Name': 'Luke',
     'Date of Birth': '24/4/1987',
     Location: 'B-3-004',
@@ -109,7 +109,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A1986FC',
-    'Surname': 'Davies',
+    Surname: 'Davies',
     'First Name': 'Tim',
     'Date of Birth': '18/11/1991',
     Location: 'G-5-032',
@@ -118,7 +118,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A9295EA',
-    'Surname': 'Bell',
+    Surname: 'Bell',
     'First Name': 'Liam',
     'Date of Birth': '4/12/1996',
     Location: 'C-5-016',
@@ -127,7 +127,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A5553EM',
-    'Surname': 'Hunter',
+    Surname: 'Hunter',
     'First Name': 'Carl',
     'Date of Birth': '1/1/1974',
     Location: 'A-5-025',
@@ -136,7 +136,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A1122DZ',
-    'Surname': 'Davidson',
+    Surname: 'Davidson',
     'First Name': 'Adam',
     'Date of Birth': '15/10/1999',
     Location: 'C-5-028',
@@ -145,7 +145,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A4218AV',
-    'Surname': 'Buckland',
+    Surname: 'Buckland',
     'First Name': 'Lucas',
     'Date of Birth': '25/4/1992',
     Location: 'G-4-047',
@@ -154,7 +154,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A9920DP',
-    'Surname': 'Grant',
+    Surname: 'Grant',
     'First Name': 'Julian',
     'Date of Birth': '14/4/1988',
     Location: 'C-3-014',
@@ -163,7 +163,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A5191EJ',
-    'Surname': 'Cornish',
+    Surname: 'Cornish',
     'First Name': 'Kevin',
     'Date of Birth': '12/11/1989',
     Location: 'SEG-E1-005',
@@ -172,7 +172,7 @@ const csraReportData = [
   },
   {
     'Prison Number': 'A9669DE',
-    'Surname': 'Black',
+    Surname: 'Black',
     'First Name': 'Jake',
     'Date of Birth': '16/9/1984',
     Location: 'G-4-048',
