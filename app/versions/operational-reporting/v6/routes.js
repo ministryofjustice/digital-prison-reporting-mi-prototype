@@ -188,6 +188,7 @@ router.post('/resetLists/', (req, res) => {
   resetBookmarkList()
   resetRecentlyViewedList()
   res.end()
+  showGettingStarted = true
 })
 
 // update homepage links

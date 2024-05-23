@@ -84,7 +84,7 @@ const getRecentlyViewedPageData = (definitions, req, createRows, createHead, max
 
   return {
     slideData: {
-      title: 'recently Viewed',
+      title: 'Recently Viewed',
       type: 'recently-viewed',
       icon: 'viewed',
       toggleId: 'viewed-toggle',
