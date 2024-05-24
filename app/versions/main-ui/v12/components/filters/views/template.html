@@ -1,0 +1,161 @@
+{% from "govuk/components/select/macro.njk"       import govukSelect %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "moj/components/filter/macro.njk"         import mojFilter -%}
+{% from "govuk/components/input/macro.njk"        import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk"       import govukButton %}
+
+<form id="user-selected-filters-form-{{ title }}">
+{%- for filter in filters %}
+  {%- if filter.type === 'Select' %}
+
+    {% set items = [ { value: null, text: '' } ].concat(filter.options) %}
+
+    {{ govukSelect({
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      value: filter.value,
+      items: items,
+      label: {
+        text: filter.text
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+
+  {%- elif filter.type === 'SelectComparison' %}
+
+    {{ govukSelect({
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      value: filter.value,
+      items: filter.options,
+      label: {
+        text: filter.text
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+    {{ govukSelect({
+      id: 'filters.' + filter.name + '.compare',
+      name: 'filters.' + filter.name + '.compare',
+      value: filter.compareValue,
+      items: filter.options,
+      label: {
+        text: 'Compared to'
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+
+  {% elif filter.type === 'Radio' %}
+
+  <div class='table-filter'>
+    {{ govukRadios({
+      classes: radioClasses,
+      id: 'filters.' + filter.name,
+      name: 'filters.' + filter.name,
+      formGroup: {
+        classes: "govuk-!-margin-bottom-3"
+      },
+      fieldset: {
+        legend: {
+          text: filter.text,
+          classes: "govuk-label"
+        }
+      },
+      items: filter.options,
+      value: filter.value
+    }) }}
+
+  </div>
+
+  {% elif filter.type === 'daterange' %}
+    <div class='table-filter'>
+      <div class="date-range-input govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
+            {{ filter.text }}
+          </legend>
+
+          {{ govukInput({
+            id: 'filters.' + filter.name + '.start',
+            label: {
+              text: 'Start'
+            },
+            formGroup: {
+              classes: "govuk-!-margin-bottom-3"
+            },
+            name: 'filters.' + filter.name + '.start',
+            value: filter.value.start,
+            type: 'date',
+            attributes: {
+              max: getTodayIsoDate()
+            }
+          }) }}
+
+          {{ govukInput({
+            id: 'filters.' + filter.name + '.end',
+            label: {
+              text: 'End'
+            },
+            name: 'filters.' + filter.name + '.end',
+            value: filter.value.end,
+            type: 'date',
+            attributes: {
+              max: getTodayIsoDate()
+            }
+          }) }}
+        </fieldset>
+      </div>
+    </div>
+
+  {% elif filter.type === 'checkboxes' %}
+  
+    <div class='checkbox-filter'> 
+      {{ govukCheckboxes({
+        id: 'filters.' + filter.name,
+        name: 'filters.' + filter.name,
+        classes: "govuk-checkboxes--small",
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        fieldset: {
+          legend: {
+            text: filter.text,
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: filter.options,
+        values: filter.value
+      }) }}
+    </div>
+
+  {% endif %}
+{%- endfor %}    
+</form>
+
+{% if onApply %}
+<div class="filter-section-action">
+  {{ govukButton({
+    text: "Apply " + title,
+    attributes: {
+      'onclick': onApply
+    },
+    classes: "govuk-button govuk-!-margin-bottom-0"
+  }) }}
+
+  {% if onReset %}
+    {{ govukButton({
+      text: "Reset " + title,
+      attributes: {
+        'onclick': onReset
+      },
+      classes: "govuk-button govuk-!-margin-bottom-0"
+    }) }}
+  {% endif %}
+</div>
+{% endif %}

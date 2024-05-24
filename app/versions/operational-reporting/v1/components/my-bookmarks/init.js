@@ -21,6 +21,9 @@ $(function () {
   $('#toggle-list-view').click(() => {
     $('#bookmark-card-view').css('display', 'none')
     $('#my-bookmarks-table').css('display', 'block')
+    $('.insight-card-headline-group-list-item').css('display', 'block')
+    $('.insight-card-headline-group-card-item').css('display', 'none')
+    $('.insight-card-container').css('row-gap', '0').css('column-gap', '0')
     $('#toggle-list-view').addClass('active')
     $('#toggle-card-view').removeClass('active')
   })
@@ -28,6 +31,9 @@ $(function () {
   $('#toggle-card-view').click(() => {
     $('#bookmark-card-view').css('display', 'block')
     $('#my-bookmarks-table').css('display', 'none')
+    $('.insight-card-headline-group-list-item').css('display', 'none')
+    $('.insight-card-headline-group-card-item').css('display', 'block')
+    $('.insight-card-container').css('row-gap', '10px').css('column-gap', '10px')
     $('#toggle-card-view').addClass('active')
     $('#toggle-list-view').removeClass('active')
   })

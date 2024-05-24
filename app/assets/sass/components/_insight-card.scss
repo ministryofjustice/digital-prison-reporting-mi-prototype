@@ -9,7 +9,7 @@
   .insight-card-group__item {
     flex-grow: 4;
     flex-shrink: 1;
-    flex-basis: 29%;
+    flex-basis: 15%;
     min-width: 220px;
     position: relative;
   }
@@ -120,3 +120,26 @@
   display: flex;
   flex-direction: row;
 }
+
+.insight-card-headline-group {
+  position: relative;
+  padding-top: 40px;
+
+  .view-controls {
+    top: 10px;
+  }
+
+  .insight-card-headline-group-list-item {
+    display: none;
+    border-bottom: 1px solid #b1b4b6;
+    padding: 10px 0 10px 0;
+    margin: 0;
+    flex-basis: 20%;
+    background-color: white;
+  }
+
+  .insight-card-headline-group-list-item:hover {
+    background-color: #f3f2f1;
+  }
+}
+

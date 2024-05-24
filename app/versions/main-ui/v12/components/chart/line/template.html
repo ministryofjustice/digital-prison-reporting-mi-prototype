@@ -1,0 +1,78 @@
+{% set defaultColours = ['#1d70b8', '#d53880', '#228980', '#f47738'] %}
+
+{% set id = chartData.id %}
+{% set labels = chartData.labels %}
+{% set data = chartData.data %}
+{% set type = chartData.type %}
+
+
+<div class="chart chart--line">
+  <canvas id="{{ id }}_{{ type }}"></canvas>
+  <script>
+    new Chart(document.getElementById('{{ id }}_{{ type }}'), {
+    type: 'line',
+    data: {
+      labels: [{% for label in labels %}'{{ label }}',{% endfor %}],
+      datasets: [
+        {% for set in data %}
+          {
+            label: '{{ set.title }}',
+            data: [{{ set.data }}],
+            borderColor: '{{ defaultColours[loop.index-1] }}',
+            backgroundColor: '{{ defaultColours[loop.index-1] }}',
+            pointStyle: 'circle',
+            pointRadius: 4,
+            pointHoverRadius: 10,
+            datalabels: {
+              align: 'end',
+              anchor: 'end'
+            }
+          },
+        {% endfor %}
+      ]
+    },
+    options: {
+      animation: false,
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        datalabels: {
+          display: false
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+        },
+        tooltip: { 
+          backgroundColor: '#FFF',
+          bodyColor: '#000',
+          bodyFontSize: 16,
+          titleColor: '#000',
+          displayColors: false,
+          borderWidth: 1,
+          borderColor: '#b1b4b6',
+          cornerRadius: 0,
+          padding: 15,
+          footerFont: {
+            weight: 'bold'
+          }
+        }
+      },
+      scales: {
+        {% if chartData.xMaxValue or chartData.xMinValue %}
+        xAxis: {
+          min: {{ chartData.xMinValue }},
+          max: {{ chartData.xMaxValue }}
+        }
+        {% endif %}
+        {% if chartData.yMaxValue or chartData.yMinValue %}
+        yAxis: {
+          min: {{ chartData.yMinValue }},
+          max: {{ chartData.yMaxValue }}
+        }
+        {% endif %}
+      }
+    }
+  })
+  </script>
+</div>
