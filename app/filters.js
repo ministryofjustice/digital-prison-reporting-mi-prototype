@@ -20,7 +20,6 @@ module.exports = function () {
     }
 
     return navItems.map(n => {
-      console.log(currentUrl)
       if (currentUrl.startsWith(n.href) &&
         (n.href !== '/' || currentUrl === '/')) {
         return { ...n, active: true }
