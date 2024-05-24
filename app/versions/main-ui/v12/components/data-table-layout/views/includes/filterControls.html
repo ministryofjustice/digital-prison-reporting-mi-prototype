@@ -1,0 +1,154 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set detailsClasses = 'filters-accordion govuk-!-margin-0' %}
+
+{% set selectedFilters = filters | mapSelectedValuesForButtonMenu(createUrlForParametersFilters) %}
+
+{% set filterHtml %}
+<div class="data-table-filters v12-filter-form">
+  {{ appFilters(
+    "Filter",
+    filters,
+    "onApplyFilters()"
+  ) }}
+</div>
+{% endset %}
+
+{% set columnsHtml %}
+{% set cols = {
+  name: "columns",
+  type: "checkboxes",
+  options: columnOptions,
+  value: columns
+}%}
+
+<div class="data-table-columns">
+  {{ appFilters(
+    "Columns",
+    [
+      cols
+    ],
+    "onApplyColumns()",
+    "onResetColumns()"
+  ) }}
+
+  <p id="maxColumnHelpText" class="govuk-body max-column-help-text">Max column allowance reached. Remove a column before selecting another</p>
+</div>
+{% endset %}
+
+<div class="filter-section">
+  <div class="filter-section-row filter-section-row__filter">
+    
+    <div class="filter-section-accordion-button">
+      {{ govukDetails({
+        summaryText: "Filters",
+        classes: detailsClasses,
+        html: filterHtml 
+      }) }}
+    </div>
+
+    <div class="filter-section-details">
+      {%- for filter in selectedFilters %}
+        <p class="govuk-body filter-remove-button__text govuk-!-margin-bottom-0" onclick="removeFilter('{{ filter.href }}')">
+          {{ filter.text }}
+          <span class="filter-remove-button-icon"></span>
+        </p>
+      {%- endfor %}
+    </div>
+  </div>  
+
+  <div class="filter-section-row filter-section-row__columns">
+    <div class="filter-section-accordion-button">
+      {{ govukDetails({
+        summaryText: "Columns",
+        classes: detailsClasses,
+        html: columnsHtml 
+      }) }}
+    </div>
+    <div class="filter-section-details">
+      <div class="filter-section-details__text">
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ columns.length }} of {{ columnOptions.length}} shown</p>
+      </div>
+    </div>
+  </div>   
+
+</div>
+
+{% block pageScripts %}
+<script lang="js">
+  const onApplyFilters = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("filters[.\\w]+=[^&]*", "g"),"")
+      .replace(new RegExp("paging\\.selectedPage=\\d+"), "paging.selectedPage=1");
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-filters input, .data-table-filters select").serialize();
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+  const onApplyColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += $(".data-table-columns input").serialize().replaceAll("filters.","");
+    url = url
+      .replaceAll("?&","?")
+      .replaceAll("&&","&")
+    
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+  const onResetColumns = function() {
+    let url = decodeURI(window.location.href)
+      .replaceAll(new RegExp("&?columns=[^&]*", "g"),"")
+    if (url.indexOf("?") === -1) {
+      url += "?";
+    } else {
+      url += "&";
+    }
+    url += "columns=reset";
+
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+  const removeFilter = function(url) {
+    document.querySelectorAll('.loading-panel').forEach((l) => {
+      l.classList.add('show')
+    })
+
+    setTimeout(() => {  
+      window.location.href = url
+     }, 2000);
+  }
+
+</script>
+{% endblock %}

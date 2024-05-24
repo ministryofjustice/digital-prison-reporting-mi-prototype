@@ -1,5 +1,5 @@
-const dataTableFilters = require('./versions/main-ui/v1/components/data-table/filters')
-const filtersFilters = require('./versions/main-ui/v1/components/filters/filters')
+const dataTableFilters = require('./versions/main-ui/v6/components/data-table/filters')
+const filtersFilters = require('./versions/main-ui/v6/components/filters/filters')
 const { runtime } = require('nunjucks')
 
 module.exports = function () {

@@ -1,0 +1,93 @@
+{% macro appHeadlineMetric(metric) %}
+  {% set name = metric.name %}
+  {% set status = metric.status %}
+  {% set previousValue = metric.previousValue %}
+  {% set breakdown = metric.breakdown %}
+  {% set viewRecords = metric.viewRecords %}
+  {% set description = metric.description %}
+
+  {% if metric.value.headline %}
+    {% set value = metric.value.headline %}
+  {% else %}
+    {% set value = metric.value %}
+  {% endif %}
+
+  <div class="insight-card-group__item insight-card-headline-group-card-item">
+    <p class="govuk-heading-m govuk-!-margin-bottom-1">{{ name }}</p>
+    <p class="insight-card-headline govuk-heading-l govuk-!-padding-top-1 govuk-!-margin-bottom-3">
+      {% if status %}
+        <span class="insight-card-value govuk-tag govuk-tag--{{ status.colour }}">{{ value }}</span>
+      {% else %}
+        {{ value }}
+      {% endif %}
+      <span class="insight-card-description">
+        {% if metric.value.description or metric.value.description == 0  %}
+          <b>{{ metric.value.description }}</b>
+          <br/>
+        {% endif %}
+        {% if status %}
+          <b>Status: {{ status.colour | title }}</b>
+          {% if status.threshold %}
+            <br />
+            {% if (status.threshold.greaterThan or status.threshold.greaterThan == 0) and (status.threshold.lessThan or status.threshold.lessThan == 0) %}
+              Between {{ status.threshold.greaterThan }} and {{ status.threshold.lessThan }}
+            {% elif (status.threshold.greaterThan or status.threshold.greaterThan == 0)  %}
+              Greater than {{ status.threshold.greaterThan }}
+            {% elif (status.threshold.lessThan or status.threshold.lessThan == 0) %}
+              Less than {{ status.threshold.lessThan }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </span>
+    </p>
+    {% if previousValue or previousValue === 0 %}
+      {% set metricDifference = (value - previousValue)  | round(2) %}
+      <p class="govuk-body-s govuk-!-margin-bottom-3">
+      {% if metricDifference < 0 %}
+        ▼ Down {{ metricDifference | abs }}
+      {% elif metricDifference > 0 %}
+        ▲ Up {{ metricDifference }}
+      {% else %}
+        ◼ No change
+      {% endif %}
+      </p>
+    {% endif %}
+    {% if breakdown %}
+    <a href="{{ breakdown }}">view breakdown</a>
+    {% endif %}
+    {% if viewRecords %}
+    <a href="{{ viewRecords }}">view records</a>
+    {% endif %}
+  </div>
+  <div class="insight-card-group__item insight-card-headline-group-list-item govuk-body-s" style="flex-basis: 40%"><b>{{ name }}</b></div>
+  <div class="insight-card-group__item insight-card-headline-group-list-item govuk-body-s">
+    {% if status %}
+    <span class="govuk-tag govuk-tag--{{ status.colour }}">{{ value }}</span>
+    {% else %}
+    {{ value }}
+    {% endif %}
+  </div>
+  <div class="insight-card-group__item insight-card-headline-group-list-item govuk-body-s">
+    {% if metric.value.description %}
+    {{ metric.value.description }}
+    {% endif %}
+    {% if breakdown %}
+    <a href="{{ breakdown }}">view breakdown</a>
+    {% endif %}
+    {% if viewRecords %}
+    <a href="{{ viewRecords }}">view records</a>
+    {% endif %}
+  </div>
+  <div class="insight-card-group__item insight-card-headline-group-list-item govuk-body-s">
+    {% if previousValue or previousValue === 0 %}
+    {% set metricDifference = (value - previousValue) | round(2) %}
+    {% if metricDifference < 0 %}
+    ▼ Down {{ metricDifference | abs }}
+    {% elif metricDifference > 0 %}
+    ▲ Up {{ metricDifference }}
+    {% else %}
+    ◼ No change
+    {% endif %}
+    {% endif %}
+  </div>
+{% endmacro %}

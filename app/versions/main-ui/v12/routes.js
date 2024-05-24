@@ -2,15 +2,16 @@ const express = require('express')
 const router = express.Router()
 
 const reportingService = require('../../../services/reportingService')
-const dataFormats = require('../../../data/reportDataFormats')
-const { filterTableLayoutHandlers } = require('../v6/components/data-table-layout/handlers')
+const dataFormats = require('./data/reportDataFormats')
+const { filterTableLayoutHandlers } = require('../v12/components/data-table-layout/handlers')
 const handlers = require('../../../utils/handlers')
 const listEndpoints = require('express-list-endpoints')
-const listDefinitions = require('../../../data/listDefinitions')
+const listDefinitions = require('./data/listDefinitions')
 const dashboardDefinitions = require('./data/dashboardDefinitions')
 const filterHandlers = require('./components/filters/handlers')
+const { getRagStatus } = require('./utils/metrics')
 
-const version = 'v11'
+const version = 'v12'
 
 const distinct = (values, value) => values.includes(value) ? values : values.concat(value)
 const distinctKeywords = (values, value) => values.find(v => v.type === value.type && v.value === value.value) ? values : values.concat(value)
@@ -36,71 +37,6 @@ const getSelectedKeywords = (selectedKeywords, definitions) => selectedKeywords
   .reduce(distinctKeywords, [])
 
 const getSelectedValues = (req, section) => req.query[section] ? (Array.isArray(req.query[section]) ? req.query[section] : req.query[section].split(/,/)) : []
-
-router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/${version}/views/cards`, {
-    ...req.renderOptions,
-    title: 'Version 11',
-    cards: [{
-      text: 'Lists',
-      href: './lists/',
-      description: 'Tabular data (e.g. prisoner movements).'
-    }, {
-      text: 'Metrics',
-      href: './metrics/',
-      description: 'Grouped and summarised data (e.g. prisoners arriving today).'
-    }],
-    myLists,
-    breadcrumbs: [{
-      text: 'Home',
-      href: '/'
-    },
-    {
-      text: 'Main UI',
-      href: '/main-ui'
-    }]
-  })
-}])
-
-router.get('/lists/save', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render('main-ui/v11/views/save-list', {
-    ...req.renderOptions,
-    title: 'Pin to homepage',
-    myLists,
-    breadcrumbs: [{
-      text: 'Home',
-      href: '/'
-    },
-    {
-      text: 'Main UI',
-      href: '/main-ui'
-    },
-    {
-      text: version.toUpperCase() + ' Home',
-      href: `/main-ui/${version}/`
-    }]
-  })
-}])
-
-router.get('/lists/manage', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/${version}/views/manage-lists`, {
-    ...req.renderOptions,
-    title: 'Manage pins',
-    myLists,
-    breadcrumbs: [{
-      text: 'Home',
-      href: '/'
-    },
-    {
-      text: 'Main UI',
-      href: '/main-ui'
-    },
-    {
-      text: version.toUpperCase() + ' Home',
-      href: `/main-ui/${version}/`
-    }]
-  })
-}])
 
 const renderSearch = (req, res, type, definitions) => {
   const selectedTags = getSelectedValues(req, 'tags')
@@ -146,8 +82,20 @@ const renderSearch = (req, res, type, definitions) => {
   })
 }
 
-router.get('/lists/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  renderSearch(req, res, 'lists', listDefinitions)
+router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
+  renderSearch(req, res, 'lists', [
+    ...listDefinitions.map(l => ({
+      ...l,
+      type: 'List',
+      path: 'lists'
+    })),
+    ...dashboardDefinitions.map(d => ({
+      ...d,
+      type: 'Dashboard',
+      path: 'metrics',
+      id: d.metrics ? d.id : false // Don't show a link for dashboards with no metrics
+    }))
+  ])
 }])
 
 router.get('/lists/:listId', [
@@ -158,91 +106,150 @@ router.get('/lists/:listId', [
     const list = listDefinitions.find(definition => definition.id === listId)
 
     req.dataTableLayoutOptions = {
-      dataFormat: dataFormats.externalMovements,
       title: list.name,
-      listData: reportingService.listExternalMovements,
-      countData: reportingService.countExternalMovements,
-      version: 'v9'
+      version,
+      dataFormat: list.dataFormat ?? dataFormats.externalMovements,
+      listData: list.listData ?? reportingService.listExternalMovements,
+      countData: list.countData ?? reportingService.countExternalMovements
     }
-    req.renderOptions.breadcrumbs = [{
-      text: 'Home',
-      href: '/'
-    },
-    {
-      text: 'Main UI',
-      href: '/main-ui'
-    },
-    {
-      text: version.toUpperCase() + ' Home',
-      href: `/main-ui/${version}/`
-    }]
+
+    req.renderOptions.breadcrumbs = [
+      {
+        text: 'Home',
+        href: '/'
+      },
+      {
+        text: 'Main UI',
+        href: '/main-ui'
+      },
+      {
+        text: version.toUpperCase() + ' Home',
+        href: `/main-ui/${version}/`
+      }
+    ]
     next()
   },
   ...filterTableLayoutHandlers
 ])
 
-function getCategories (dashboard) {
-  return dashboardDefinitions
-    .filter(definition => definition.product === dashboard.product)
-    .map(definition => ({
-      id: definition.id,
-      name: definition.name.startsWith(dashboard.product) ? definition.name.replace(`${dashboard.product} `, '') : definition.name
-    }))
-}
-
-router.get('/metrics/', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  const definitions = dashboardDefinitions.map(d => ({
-    ...d,
-    id: d.metrics ? d.id : false // Don't show a link for dashboards with no metrics
-  }))
-  renderSearch(req, res, 'metrics', definitions)
-}])
-
 function getDashboard (dashboardId) {
   return dashboardDefinitions.find(definition => definition.id === dashboardId)
 }
 
-function getMetrics (dashboard, filterValue, compareFilterValue) {
-  return dashboard.metrics.map(m => ({
-    ...m,
-    value: filterValue && m.values ? m.values[filterValue] : (m.values ?? m.value),
-    previousValue: compareFilterValue && m.values ? m.values[compareFilterValue] : null
-  }))
-}
+function getMetrics (dashboard, filterValues, compareFilterValues) {
+  return dashboard.metrics.map((m, index, all) => {
+    let metrics = m.value
+    let previousMetrics = null
 
-function getFilterValue (req, dashboard) {
-  if (!dashboard.filter) {
-    return null
-  }
+    if (m.values) {
+      if (filterValues) {
+        metrics = m.values
 
-  const filterValue = req.renderOptions.filterValues[dashboard.filter.name]
+        filterValues.forEach(v => {
+          metrics = metrics[v.value]
+        })
+      }
 
-  if (!filterValue && dashboard.filter.options) {
-    return dashboard.filter.options[dashboard.filter.options.length - 1].value
-  }
+      if (compareFilterValues) {
+        previousMetrics = m.values
 
-  return filterValue
-}
-
-function getCompareFilterValue (req, filterValue, dashboard) {
-  if (!dashboard.filter) {
-    return null
-  }
-
-  const compareFilterValue = req.renderOptions.filterValues[`${dashboard.filter.name}.compare`]
-
-  if (compareFilterValue) {
-    return compareFilterValue
-  } else if (dashboard.filter.options) {
-    const filterValueIndex = dashboard.filter.options
-      .findIndex(o => o.value === filterValue)
-
-    if (filterValueIndex && filterValueIndex > 0) {
-      return dashboard.filter.options[filterValueIndex - 1].value
+        compareFilterValues.forEach(v => {
+          if (v !== null) {
+            previousMetrics = previousMetrics[v.value]
+          }
+        })
+      }
     }
+
+    let status = m.status
+
+    if (m.ragThresholdRules) {
+      const value = metrics && metrics.headline ? metrics.headline : metrics
+
+      if (!Number.isNaN(Number.parseFloat(value))) {
+        status = {
+          colour: getRagStatus(value, m.ragThresholdRules)
+        }
+      }
+    }
+
+    let groupStart = false
+    let groupEnd = false
+
+    if (index === 0) {
+      groupStart = true
+    } else if (index === all.length - 1) {
+      groupEnd = true
+    } else {
+      if (all[index - 1].type !== m.type) {
+        groupStart = true
+      }
+
+      if (all[index + 1].type !== m.type) {
+        groupEnd = true
+      }
+    }
+
+    return {
+      ...m,
+      groupStart,
+      groupEnd,
+      value: metrics,
+      previousValue: previousMetrics,
+      status
+    }
+  })
+}
+
+function getFilterValues (req, dashboard) {
+  if (!dashboard.filters) {
+    return null
   }
 
-  return null
+  return dashboard.filters.map(filter => {
+    const filterValue = req.renderOptions.filterValues[filter.name]
+
+    if (!filterValue && filter.options) {
+      return {
+        name: filter.name,
+        value: filter.options[filter.options.length - 1].value
+      }
+    }
+
+    return {
+      name: filter.name,
+      value: filterValue
+    }
+  })
+}
+
+function getCompareFilterValues (req, filterValues, dashboard) {
+  if (!dashboard.filters || !dashboard.filters.find(f => f.type === 'SelectComparison')) {
+    return null
+  }
+
+  return dashboard.filters.map(filter => {
+    const compareFilterValue = req.renderOptions.filterValues[`${filter.name}.compare`]
+
+    if (compareFilterValue) {
+      return {
+        name: filter.name,
+        value: compareFilterValue
+      }
+    } else if (filter.options) {
+      const filterValueIndex = filter.options
+        .findIndex(o => o.value === filterValues.find(fv => fv.name === filter.name).value)
+
+      if (filterValueIndex && filterValueIndex > 0) {
+        return {
+          name: filter.name,
+          value: filter.options[filterValueIndex - 1].value
+        }
+      }
+    }
+
+    return null
+  })
 }
 
 router.get('/metrics/:dashboardId/', [
@@ -252,22 +259,29 @@ router.get('/metrics/:dashboardId/', [
   function (req, res) {
     const dashboardId = req.params.dashboardId
     const dashboard = getDashboard(dashboardId)
-    const filterValue = getFilterValue(req, dashboard)
-    const compareFilterValue = getCompareFilterValue(req, filterValue, dashboard)
+    const filterValues = getFilterValues(req, dashboard)
+    const compareFilterValues = getCompareFilterValues(req, filterValues, dashboard)
+    const filters = dashboard.filters
+      ? dashboard.filters.map(filter => {
+        const filterValue = filterValues ? filterValues.find(v => v.name === filter.name) : null
+        const compareFilterValue = compareFilterValues ? compareFilterValues.find(v => v && v.name === filter.name) : null
+
+        return {
+          ...filter,
+          value: filterValue ? filterValue.value : null,
+          compareValue: compareFilterValue ? compareFilterValue.value : null
+        }
+      })
+      : null
 
     res.render(`main-ui/${version}/views/metrics-dashboard`,
       {
         ...req.renderOptions,
-        metrics: getMetrics(dashboard, filterValue, compareFilterValue),
-        categories: getCategories(dashboard),
+        metrics: getMetrics(dashboard, filterValues, compareFilterValues),
         title: dashboard.name,
         category: dashboardId,
         metric: dashboard,
-        filters: [{
-          ...dashboard.filter,
-          value: filterValue,
-          compareValue: compareFilterValue
-        }],
+        filters,
         breadcrumbs: [
           {
             text: 'Home',
@@ -280,15 +294,12 @@ router.get('/metrics/:dashboardId/', [
           {
             text: version.toUpperCase() + ' Home',
             href: `/main-ui/${version}/`
-          },
-          {
-            text: 'Metrics',
-            href: `/main-ui/${version}/metrics/`
           }
         ]
       }
     )
-  }])
+  }
+])
 
 router.get('/routes', (req, res) => {
   res.status(200).send(listEndpoints(router))

@@ -1,0 +1,71 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+{% from "../components/chart-card/macro.html"      import chartCard %}
+{% from "../components/filters/views/macro.html" import appFilters %}
+{% from "../components/headline-metric/views/macro.html" import appHeadlineMetric %}
+
+{% extends "./metrics-layout.html" %}
+
+{% block dashboardBody %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <h3 class="govuk-heading-l">
+      {{ title }}
+      <span class="govuk-caption-m">
+        Last updated: {{ metric.lastUpdated }} (sampled {{ metric.updateSchedule }})
+      </span>
+    </h3>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    {{ appFilters('dashboard', filters, null, null, true) }}
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full insight-card-container">
+    {% for metric in metrics %}
+      {% if metric.value %}
+        {% if metric.type == 'headline' %}
+          {% if metric.groupStart %}
+          <div class="insight-card-headline-group insight-card-group__item-full-width insight-card-container">
+            <div class="view-controls">
+              <div id="toggle-card-view" class="view-cards active">
+                <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">Card view</p></span>
+              </div>
+              <div id="toggle-list-view" class="view-list">
+                <span class="tooltiptext tooltiptext--view-type"><p class="govuk-body-xs govuk-!-margin-bottom-0">List view</p></span>
+              </div>
+            </div>
+          {% endif %}
+
+          {{ appHeadlineMetric(metric) }}
+
+          {% if metric.groupEnd %}
+          </div>
+          {% endif %}
+        {% elif metric.type == 'chartCard' %}
+          <div class="insight-card-group__item-full-width">
+            {{ chartCard(metric.value, metric.id) }}
+          </div>
+        {% elif metric.type == 'description' %}
+          <div class="insight-card-group__item-full-width">
+            {{ govukDetails({
+              summaryText: metric.name,
+              text: metric.value
+            }) }}
+          </div>
+        {% elif metric.type == 'table' %}
+          <div class="insight-card-group__item-full-width">
+            {{ govukTable({
+            head: metric.value.head,
+            rows: metric.value.rows
+            }) }}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

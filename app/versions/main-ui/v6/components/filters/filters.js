@@ -1,10 +1,10 @@
 /* Nunjuck filter methods to be included in an app's filters.js */
 
 const getFilterValueForDisplay = filter => {
-  switch (filter.type) {
+  switch (filter.type.toLowerCase()) {
     case 'select':
     case 'radio':
-      return filter.options.find(o => o.value === filter.value).text
+      return (filter.options.find(o => o.value.toString() === filter.value) ?? {}).text
     case 'date-range':
       return filter.value.start + ' - ' + filter.value.end
     default:
