@@ -45,7 +45,11 @@ module.exports = {
     { path: '/app/v10-async-card-group', location: '/app/versions/main-ui/v10/components/card-group-status/init.js' },
     { path: '/app/v10-async-card-recent', location: '/app/versions/main-ui/v10/components/card-group-recent/init.js' },
     { path: '/app/v11-search-box.js', location: '/app/versions/main-ui/v11/components/search-box/init.js' },
-    { path: '/app/v11-filters.js', location: '/app/versions/main-ui/v11/components/filters/init.js' }
+    { path: '/app/v11-filters.js', location: '/app/versions/main-ui/v11/components/filters/init.js' },
+    { path: '/app/bookmark-toggle-v6', location: '/app/versions/operational-reporting/v6/components/bookmark-toggle/init.js' },
+    { path: '/app/filtered-tags-v6', location: '/app/versions/operational-reporting/v6/components/filtered-tags/init.js' },
+    { path: '/app/v6-search-box.js', location: '/app/versions/operational-reporting/v6/components/search-box/init.js' },
+    { path: '/app/v6-view-toggle.js', location: '/app/versions/operational-reporting/v6/components/view-toggle/init.js' }
   ],
 
   stylesheets: []

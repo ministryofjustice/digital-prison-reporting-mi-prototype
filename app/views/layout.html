@@ -72,6 +72,7 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
+  <div class="dpr-footer-container">
     {{ govukFooter({
       meta: {
         items: [
@@ -86,6 +87,7 @@
         ]
       }
     }) }}
+    </div>
   {% endblock %}
 {% endif %}
 

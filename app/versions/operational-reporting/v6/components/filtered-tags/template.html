@@ -1,0 +1,13 @@
+{% if tags.length %}
+  <p class="govuk-body govuk-!-margin-bottom-0 govuk-!-margin-top-3">List filtered by tag{% if tags.length > 1 %}s{% endif %}: 
+    {% for tag in tags %}
+      <strong 
+        class="govuk-tag dpr-tag dpr-tag--remove dpr-tag--large" 
+        tooltip='Remove tag' 
+        data-remove-tag='{{tag.id}}'
+      >
+      {{ tag.text }}
+      </strong>
+    {% endfor %}
+  </p>
+{% endif %}

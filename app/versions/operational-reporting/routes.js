@@ -5,6 +5,7 @@ const v2Routes = require('./v2/routes')
 const v3Routes = require('./v3/routes')
 const v4Routes = require('./v4/routes')
 const v5Routes = require('./v5/routes')
+const v6Routes = require('./v6/routes')
 const handlers = require('../../utils/handlers')
 
 const addOperationalReportingRoutes = (app) => {
@@ -17,7 +18,7 @@ const addOperationalReportingRoutes = (app) => {
         versions: {
           path: '/operational-reporting',
           items: [
-
+            { versionNumber: '6', status: 'In progress', changeLogPath: 'operational-reporting/v6/views/changelog.html' },
             { versionNumber: '5', status: 'In progress', changeLogPath: 'operational-reporting/v5/views/changelog.html' },
             { versionNumber: '4', status: 'In progress', changeLogPath: 'operational-reporting/v4/views/changelog.html' },
             { versionNumber: '3', status: 'In progress', changeLogPath: 'operational-reporting/v3/changelog.html' },
@@ -36,6 +37,7 @@ const addOperationalReportingRoutes = (app) => {
   app.use('/operational-reporting/v3', v3Routes)
   app.use('/operational-reporting/v4', v4Routes)
   app.use('/operational-reporting/v5', v5Routes)
+  app.use('/operational-reporting/v6', v6Routes)
 }
 
 module.exports = addOperationalReportingRoutes

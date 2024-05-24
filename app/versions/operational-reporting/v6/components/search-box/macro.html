@@ -1,0 +1,19 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% macro appSearchBox(tags, authors, keywords) %}
+
+<div class="search-box-section">
+  {{ govukInput({
+    id: 'v6-or-search-box',
+    name: 'search',
+    autocomplete: "off",
+    suffix: {
+      html: "&#x1F50D;"
+    }
+  }) }}
+  <p id="search-query-message" class="govuk-body-xs search-query-message search-query-message--hidden">Press return to preserve your search query</p>
+</div>
+
+{% endmacro %}

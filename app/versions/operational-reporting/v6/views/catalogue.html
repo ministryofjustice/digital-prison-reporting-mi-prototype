@@ -1,0 +1,66 @@
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+
+<div class='dpr-full-width-bg-container dpr-full-width-bg-container--grey catalogue-controls-container'>
+  <h3 class="govuk-heading-l govuk-!-margin-bottom-1">Product Catalogue</h3>
+  {{ govukDetails({
+    summaryText: "How to use",
+    html: "<p>Begin to search for a report by using the search bar below. 
+      Your search term will return results that match the report name, tag, keywords and author of the report</p> 
+      <p>You can also filter the report list by tag name - 
+        click a tag from the tags column in the table and the table will only display reports associated with that tag. 
+        You can select multiple tags to filter with. Tag filters can be removed by clicking the tag in the header</p>
+      <p>Once you have found a report you can bookmark it for quick access later. Clicking the bookmark icon next to the report you want to add it to your bookmarks. 
+        All your bookmarked reports will appear on the homepage</p>"
+  }) }}
+  {{ filteredTags(selectedTags, rows) }}
+  <div class="govuk-!-margin-top-1 dpr-search-container">
+    <p class="govuk-!-margin-bottom-1">Search</p>
+    {{ appSearchBox(tags, authors, keywords) }}
+  </div>
+  <p class="govuk-body-s govuk-!-margin-bottom-0">Showing <span id="row-count"></span> reports</p> 
+</div>
+
+
+<div id="reports-table">
+  {{ govukTable({
+    caption: caption,
+    captionClasses: "govuk-table__caption--m",
+    head: head,
+    rows: rows,
+    attributes: {
+      id: 'op-reports-table'
+    }
+  }) }}
+</div>
+
+<script type="text/javascript">
+  document.definitions = {{ definitions | json }}
+
+  const table = document.getElementById('op-reports-table')
+  const rows = Array.from(table.rows)
+
+  rows.forEach(( row ) => {
+    const cells = Array.from(row.cells)
+    row.setAttribute("rowid",cells[0].getAttribute('cellid'));
+  })
+
+  document
+    .querySelectorAll('.dpr-tag--add')
+    .forEach((tag) => {
+      tag.addEventListener('click', () => {
+        const tagSlug = tag.getAttribute('data-tag-slug')
+        const url = new URL(window.location.href)
+        const params = new URLSearchParams(url.search);
+        url.search = ''
+        let href = `${url.href}${tagSlug}/`
+        if (params.get('search')) href = `${href}?${params.toString()}`
+        window.location.href = href
+      })
+    })
+
+
+</script>
+
+{% endblock %}

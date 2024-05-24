@@ -1,0 +1,37 @@
+{% extends "./layout.html" %}
+
+{% block reportBody %}
+
+<div class='dpr-catalogue-banner'>
+  <h3 class="govuk-heading-xl govuk-!-margin-bottom-3">Legacy Nomis Reports</h3>
+  <p class="govuk-body govuk-!-margin-bottom-5">Repository for migrated Nomis reports</p>
+  <ul >
+    {% if showGettingStarted %}
+    <li><a href="./getting-started/" class="dpr-chevron-link">Getting started</a></li>
+    {% endif %}
+    <li><a href="./contact-us/" class="dpr-chevron-link">Contact us</a></li>
+    <li><a href="./catalogue/" class="dpr-chevron-link">Find a Report</a></li>
+  </ul>
+</div>
+
+{{ reportSlide(bookmarks) }}
+{{ reportSlide(recentlyViewed) }}
+
+{% if bookmarks.cardData.items.length > 0 or recentlyViewed.cardData.items.length > 0 %}
+<div class="reset-link"><a id="resetLists">Reset Lists</a><div>
+{% endif %}
+
+<script>
+  const baseUrlv6 = `${window.location.origin}/operational-reporting/v6`
+  const resetLists = async () => {
+    const res = await axios.post(`${baseUrlv6}/resetLists/`, {})
+      .catch(function (error) {
+        console.log(error)
+      });
+    location.reload()
+  }
+
+  const resetbutton = document.getElementById("resetLists")
+  if(resetbutton) resetbutton.addEventListener("click", resetLists);
+</script>
+{% endblock %}

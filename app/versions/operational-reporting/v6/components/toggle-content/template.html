@@ -1,0 +1,11 @@
+  <div class="toggle-content-container">
+    <div class="slide-toggle-container"> 
+      {{ viewToggle(toggleId, toggleData) }}
+    </div>
+    <div class="toggle-content  toggle-content--active">
+      {{ contentOneHtml | safe }}
+    </div>
+    <div class="toggle-content">
+      {{ contentTwoHtml | safe }}
+    </div>
+  </div>

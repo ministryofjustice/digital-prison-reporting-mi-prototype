@@ -46,7 +46,7 @@ let requested = []
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
   res.render(`main-ui/${version}/views/home`, {
     ...req.renderOptions,
-    title: 'Version 10 - Asynchronous Reports',
+    title: 'Asynchronous Reports',
     recentlyViewed,
     requested,
     reports,

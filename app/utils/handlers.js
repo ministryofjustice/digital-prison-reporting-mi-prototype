@@ -42,6 +42,11 @@ module.exports = {
           text: 'MIS',
           href: '/mis/',
           description: 'Management Information System'
+        },
+        {
+          text: 'Icon Set',
+          href: '/icons/',
+          description: 'Icons'
         }
       ]
     }
