@@ -592,7 +592,7 @@ module.exports = [
     tags: ['MIS'],
     author: 'Triss Burly',
     filters: [
-      { type: 'Select', name: 'establishment', options: pndMetricsMarch.map(m => ({ value: m.code, text: m.name })), text: 'Establishment' },
+      { type: 'SelectComparison', name: 'establishment', options: pndMetricsMarch.map(m => ({ value: m.code, text: m.name })), text: 'Establishment' },
       { type: 'Select', name: 'score', options: pndEstablishment.filter(e => e.name.endsWith('Score')).map(e => ({ value: e.name, text: e.header })), text: 'Score' }
     ],
     metrics: [
@@ -613,7 +613,7 @@ module.exports = [
                   type: 'line',
                   labels: [],
                   data: [{
-                    title: 'Score',
+                    title: m.name,
                     data: []
                   }],
                   yMinValue: 0,
