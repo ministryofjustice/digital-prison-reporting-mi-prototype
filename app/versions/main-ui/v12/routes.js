@@ -160,7 +160,15 @@ function getMetrics (dashboard, filterValues, compareFilterValues) {
         })
 
         if (m.type === 'chartCard' && previousMetrics) {
-          metrics.chart[0].data = metrics.chart[0].data.concat(previousMetrics.chart[0].data)
+          metrics = {
+            ...metrics,
+            chart: [
+              {
+                ...metrics.chart[0],
+                data: metrics.chart[0].data.concat(previousMetrics.chart[0].data)
+              }
+            ]
+          }
         }
       }
     }
