@@ -194,8 +194,6 @@ function getMetrics (dashboard, filterValues, compareFilterValues) {
       }
     }
 
-    console.log(metrics)
-
     let status = m.status
 
     if (m.ragThresholdRules) {
@@ -245,8 +243,8 @@ function getFilterValues (req, dashboard) {
     const filterValue = req.renderOptions.filterValues[filter.name]
 
     if (filter.type === 'SelectRange') {
-      let startIndex = filter.options.findIndex(o => o.value === req.renderOptions.filterValues[filter.name].start)
-      let endIndex = filter.options.findIndex(o => o.value === req.renderOptions.filterValues[filter.name].end)
+      let startIndex = filter.options.findIndex(o => o.value === (req.renderOptions.filterValues[filter.name] ?? {}).start)
+      let endIndex = filter.options.findIndex(o => o.value === (req.renderOptions.filterValues[filter.name] ?? {}).end)
 
       startIndex = startIndex === -1 ? 0 : startIndex
       endIndex = endIndex === -1 ? filter.options.length - 1 : endIndex
