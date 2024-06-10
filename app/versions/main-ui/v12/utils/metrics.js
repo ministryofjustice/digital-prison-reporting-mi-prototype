@@ -15,6 +15,9 @@ const getRagStatus = (value, thresholdRules) => {
   return matchingRule ? matchingRule.status : 'none'
 }
 
+const distinct = (values, value) => values.includes(value) ? values : values.concat(value)
+
 module.exports = {
-  getRagStatus
+  getRagStatus,
+  distinct
 }

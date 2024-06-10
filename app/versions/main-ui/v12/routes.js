@@ -9,11 +9,10 @@ const listEndpoints = require('express-list-endpoints')
 const listDefinitions = require('./data/listDefinitions')
 const dashboardDefinitions = require('./data/dashboardDefinitions')
 const filterHandlers = require('./components/filters/handlers')
-const { getRagStatus } = require('./utils/metrics')
+const { getRagStatus, distinct } = require('./utils/metrics')
 
 const version = 'v12'
 
-const distinct = (values, value) => values.includes(value) ? values : values.concat(value)
 const distinctKeywords = (values, value) => values.find(v => v.type === value.type && v.value === value.value) ? values : values.concat(value)
 const stringSort = (a, b) => a > b ? 1 : -1
 
@@ -145,33 +144,57 @@ function getMetrics (dashboard, filterValues, compareFilterValues) {
       if (filterValues) {
         metrics = m.values
 
-        filterValues.forEach(v => {
-          metrics = metrics[v.value]
-        })
+        filterValues
+          .filter(v => !Array.isArray(v.value))
+          .forEach(v => {
+            metrics = metrics[v.value]
+          })
       }
 
       if (compareFilterValues) {
         previousMetrics = m.values
 
-        compareFilterValues.forEach(v => {
-          if (v !== null) {
+        compareFilterValues
+          .filter(v => v !== null && !Array.isArray(v.value))
+          .forEach(v => {
             previousMetrics = previousMetrics[v.value]
-          }
-        })
+          })
 
         if (m.type === 'chartCard' && previousMetrics) {
           metrics = {
             ...metrics,
-            chart: [
-              {
-                ...metrics.chart[0],
-                data: metrics.chart[0].data.concat(previousMetrics.chart[0].data)
-              }
-            ]
+            chart: metrics.chart.map((chart, index) => ({
+              ...chart,
+              data: chart.data.concat(previousMetrics.chart[index].data)
+            }))
+          }
+        }
+
+        if (m.type === 'chartCard') {
+          const rangeFilterValue = filterValues.find(f => Array.isArray(f.value))
+
+          if (rangeFilterValue) {
+            metrics = {
+              ...metrics,
+              chart: metrics.chart.map(chart => {
+                const matchingIndices = chart.labels.map((label, index) => ({ label, index })).filter(l => rangeFilterValue.value.includes(l.label)).map(l => (l.index))
+
+                return {
+                  ...chart,
+                  labels: chart.labels.filter(l => rangeFilterValue.value.includes(l)),
+                  data: chart.data.filter(d => ({
+                    title: d.title,
+                    data: d.data.filter((dataPoint, index) => matchingIndices.includes(index))
+                  }))
+                }
+              })
+            }
           }
         }
       }
     }
+
+    console.log(metrics)
 
     let status = m.status
 
@@ -221,10 +244,29 @@ function getFilterValues (req, dashboard) {
   return dashboard.filters.map(filter => {
     const filterValue = req.renderOptions.filterValues[filter.name]
 
-    if (!filterValue && filter.options) {
+    if (filter.type === 'SelectRange') {
+      let startIndex = filter.options.findIndex(o => o.value === req.renderOptions.filterValues[filter.name].start)
+      let endIndex = filter.options.findIndex(o => o.value === req.renderOptions.filterValues[filter.name].end)
+
+      startIndex = startIndex === -1 ? 0 : startIndex
+      endIndex = endIndex === -1 ? filter.options.length - 1 : endIndex
+
+      if (startIndex > endIndex) {
+        const tempIndex = endIndex
+        endIndex = startIndex
+        startIndex = tempIndex
+      }
+
       return {
         name: filter.name,
-        value: filter.options[filter.options.length - 1].value
+        value: filter.options.map(o => o.value).slice(startIndex, endIndex + 1)
+      }
+    } else {
+      if (!filterValue && filter.options) {
+        return {
+          name: filter.name,
+          value: filter.options[filter.options.length - 1].value
+        }
       }
     }
 
@@ -240,28 +282,31 @@ function getCompareFilterValues (req, filterValues, dashboard) {
     return null
   }
 
-  return dashboard.filters.map(filter => {
-    const compareFilterValue = req.renderOptions.filterValues[`${filter.name}.compare`]
+  return dashboard.filters
+    .map(filter => {
+      const compareFilterValue = req.renderOptions.filterValues[`${filter.name}.compare`]
 
-    if (compareFilterValue) {
-      return {
-        name: filter.name,
-        value: compareFilterValue
-      }
-    } else if (filter.options) {
-      const filterValueIndex = filter.options
-        .findIndex(o => o.value === filterValues.find(fv => fv.name === filter.name).value)
-
-      if (filterValueIndex && filterValueIndex > 0) {
+      if (compareFilterValue) {
         return {
           name: filter.name,
-          value: filter.options[filterValueIndex - 1].value
+          value: compareFilterValue
+        }
+      } else if (filter.options) {
+        const filterValueIndex = filter.options
+          .findIndex(o => o.value === filterValues.find(fv => fv.name === filter.name).value)
+
+        if (filterValueIndex > -1) {
+          const prevFilterValueIndex = filterValueIndex === 0 ? filterValueIndex + 1 : filterValueIndex - 1
+
+          return {
+            name: filter.name,
+            value: filter.options[prevFilterValueIndex].value
+          }
         }
       }
-    }
 
-    return null
-  })
+      return null
+    })
 }
 
 router.get('/metrics/:dashboardId/', [

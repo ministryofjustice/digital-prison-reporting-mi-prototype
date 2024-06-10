@@ -8,18 +8,16 @@
 
 {% block dashboardBody %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    <h3 class="govuk-heading-l">
-      {{ title }}
-      <span class="govuk-caption-m">
-        Last updated: {{ metric.lastUpdated }} (sampled {{ metric.updateSchedule }})
-      </span>
-    </h3>
-  </div>
-  <div class="govuk-grid-column-one-half">
-    {{ appFilters('dashboard', filters, null, null, true) }}
-  </div>
+<div>
+  <h3 class="govuk-heading-l">
+    {{ title }}
+    <span class="govuk-caption-m">
+      Last updated: {{ metric.lastUpdated }} (sampled {{ metric.updateSchedule }})
+    </span>
+  </h3>
+</div>
+<div>
+  {{ appFilters('dashboard', filters, null, null, true) }}
 </div>
 
 <div class="govuk-grid-row">
