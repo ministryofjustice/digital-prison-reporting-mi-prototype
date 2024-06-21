@@ -1,5 +1,6 @@
 const { pndMetrics, pndScoreRagThresholdRules, pndMonthFilterValues } = require('./pnd')
 const { pndEstablishment } = require('./reportDataFormats')
+const { distinct } = require('../utils/metrics')
 
 const pndMetricsMarch = pndMetrics.filter(m => m.month === '2024-03')
 const pndMetricsApril = pndMetrics.filter(m => m.month === '2024-04')
@@ -593,7 +594,8 @@ module.exports = [
     author: 'Triss Burly',
     filters: [
       { type: 'SelectComparison', name: 'establishment', options: pndMetricsMarch.map(m => ({ value: m.code, text: m.name })), text: 'Establishment' },
-      { type: 'Select', name: 'score', options: pndEstablishment.filter(e => e.name.endsWith('Score')).map(e => ({ value: e.name, text: e.header })), text: 'Score' }
+      { type: 'Select', name: 'score', options: pndEstablishment.filter(e => e.name.endsWith('Score')).map(e => ({ value: e.name, text: e.header })), text: 'Score' },
+      { type: 'SelectRange', name: 'month', options: pndMetrics.map(m => (m.month)).reduce(distinct, []).map(m => ({ value: m, text: m })), text: 'Month' }
     ],
     metrics: [
       {

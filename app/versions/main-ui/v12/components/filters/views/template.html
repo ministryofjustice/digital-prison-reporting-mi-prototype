@@ -11,6 +11,7 @@
 
     {% set items = [ { value: null, text: '' } ].concat(filter.options) %}
 
+  <div class='table-filter'>
     {{ govukSelect({
       id: 'filters.' + filter.name,
       name: 'filters.' + filter.name,
@@ -23,9 +24,10 @@
         "data-update-url-on-change": updateUrlOnChange
       }
     }) }}
+  </div>
 
   {%- elif filter.type === 'SelectComparison' %}
-
+  <div class='table-filter table-filter-comparison'>
     {{ govukSelect({
       id: 'filters.' + filter.name,
       name: 'filters.' + filter.name,
@@ -38,18 +40,54 @@
         "data-update-url-on-change": updateUrlOnChange
       }
     }) }}
+  </div>
+
+  <div class='table-filter'>
     {{ govukSelect({
       id: 'filters.' + filter.name + '.compare',
       name: 'filters.' + filter.name + '.compare',
       value: filter.compareValue,
       items: filter.options,
       label: {
-        text: 'Compared to'
+        text: 'compared to'
       },
       attributes: {
         "data-update-url-on-change": updateUrlOnChange
       }
     }) }}
+  </div>
+
+  {%- elif filter.type === 'SelectRange' %}
+  <div class='table-filter table-filter-comparison'>
+    {{ govukSelect({
+      id: 'filters.' + filter.name + '.start',
+      name: 'filters.' + filter.name + '.start',
+      value: filter.value[0],
+      items: filter.options,
+      label: {
+        text: filter.text + ' from'
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+  </div>
+
+  <div class='table-filter'>
+    {{ govukSelect({
+      id: 'filters.' + filter.name + '.end',
+      name: 'filters.' + filter.name + '.end',
+      value: filter.value[filter.value.length - 1],
+      items: filter.options,
+      label: {
+        text: 'to'
+      },
+      attributes: {
+        "data-update-url-on-change": updateUrlOnChange
+      }
+    }) }}
+  </div>
+  <br />
 
   {% elif filter.type === 'Radio' %}
 
