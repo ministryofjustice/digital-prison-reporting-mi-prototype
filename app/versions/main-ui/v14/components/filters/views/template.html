@@ -1,0 +1,99 @@
+{% from "govuk/components/select/macro.njk"       import govukSelect %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "moj/components/filter/macro.njk"         import mojFilter -%}
+{% from "govuk/components/input/macro.njk"        import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk"       import govukButton %}
+{% from "../../relative-date-picker/macro.html"              import dprRelativeDatePicker %}
+
+
+<form id="user-selected-filters-form-{{ title }}">
+  <div class='dpr-filter-container'> 
+  {%- for filter in filters %}
+
+  <div class='dpr-filter-item {% if filter.type === "daterange" %}dpr-filter-item__span-2 {% endif %}'> 
+
+    {%- if filter.type === 'Select' %}
+
+      {{ govukSelect({
+        id: 'filters.' + filter.name,
+        name: 'filters.' + filter.name,
+        value: filter.value,
+        items: filter.options,
+        label: {
+          text: filter.text
+        }
+      }) }}
+    
+    {% elif filter.type === 'Radio' %}
+
+      {{ govukRadios({
+        classes: 'govuk-radios--small',
+        id: 'filters.' + filter.name,
+        name: 'filters.' + filter.name,
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        fieldset: {
+          legend: {
+            text: filter.text,
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: filter.options,
+        value: filter.value
+      }) }}
+
+    {% elif filter.type === 'daterange' %}
+
+        {{dprRelativeDatePicker(filter)}}
+
+    {% elif filter.type === 'checkboxes' %}
+    
+      <div class='checkbox-filter'> 
+        {{ govukCheckboxes({
+          id: 'filters.' + filter.name,
+          name: 'filters.' + filter.name,
+          classes: "govuk-checkboxes--small",
+          formGroup: {
+            classes: "govuk-!-margin-bottom-3"
+          },
+          fieldset: {
+            legend: {
+              text: filter.text,
+              classes: "govuk-label govuk-!-font-weight-bold"
+            }
+          },
+          items: filter.options,
+          values: filter.value
+        }) }}
+      </div>
+
+    {% endif %}
+
+    </div>
+  {%- endfor %}   
+  </div> 
+</form>
+
+{% if onApply %}
+<div class="filter-section-action">
+  {{ govukButton({
+    text: "Apply Columns",  
+    attributes: {
+      'onclick': onApply
+    },
+    classes: "govuk-button govuk-!-margin-bottom-0"
+  }) }}
+
+  {% if onReset %}
+    {{ govukButton({
+      text: "Reset Columns",  
+      attributes: {
+        'onclick': onReset
+      },
+      classes: "govuk-button govuk-!-margin-bottom-0"
+    }) }}
+  {% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,139 @@
+
+{% from "govuk/components/input/macro.njk"        import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+<div class="date-range-input govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
+      {{ filter.text }}
+    </legend>
+
+    <div class="dpr-datepicker-container"> 
+    <div class='dpr-date-picker-input'>
+    {{ govukInput({
+      id: 'filters.' + filter.name + '.start',
+      label: {
+        text: 'Start'
+      },
+      formGroup: {
+        classes: "govuk-!-margin-bottom-3"
+      },
+      name: 'filters.' + filter.name + '.start',
+      value: filter.value.start,
+      type: 'date',
+      attributes: {
+        max: getTodayIsoDate()
+      }
+    }) }}
+    </div>
+
+    <div class='dpr-date-picker-input'>
+    {{ govukInput({
+      id: 'filters.' + filter.name + '.end',
+      label: {
+        text: 'End'
+      },
+      name: 'filters.' + filter.name + '.end',
+      value: filter.value.end,
+      type: 'date',
+      attributes: {
+        max: getTodayIsoDate()
+      }
+    }) }}
+    </div>
+
+    {% set relativeRadioHtml %}
+      <div class="dpr-datepicker-container">
+
+
+      <div>
+      {{ govukRadios({
+        classes: 'govuk-radios--small',
+        id: 'relative-date-duration',
+        name: 'relative-date-duration',
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        fieldset: {
+          legend: {
+            text: 'Range',
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: [
+          {
+            value: "1week",
+            text: "7 days"
+          },
+          {
+            value: "2weeks",
+            text: "14 days"
+          },
+          {
+            value: "1month",
+            text: "1 month"
+          },
+          {
+            value: "3months",
+            text: "3 months"
+          },
+          {
+            value: "6months",
+            text: "6 months"
+          },
+          {
+            value: "1year",
+            text: "1 year"
+          }
+        ],
+        value: filter.value
+      }) }}
+      </div>
+      <div>
+      {{ govukRadios({
+        classes: 'govuk-radios--small',
+        id: 'relative-date-options',
+        name: 'relative-date-options',
+        fieldset: {
+          legend: {
+            text: 'Options',
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: [
+          {
+            value: "prior",
+            text: "In the past"
+          },
+          {
+            value: "future",
+            text: "In the future"
+          }
+        ],
+        value: 'prior'
+      }) }}
+      </div>
+    </div>
+    {% endset -%}
+
+    <div class="dpr-filter-item__span-2">
+    {{ govukCheckboxes({
+      name: "use-relative-date",
+      classes: "govuk-checkboxes--small",
+      items: [
+        {
+          id: "relative-date-range-toggle",
+          value: "relative-date",
+          text: "Use relative range",
+          conditional: {
+            html: relativeRadioHtml
+          }
+        }
+      ]
+    }) }}
+    </div>
+
+  </fieldset>
+</div>
