@@ -1,4 +1,6 @@
 /* global $ */
+/* global dayjs */
+
 $(function () {
   $("input[name='relative-date-duration']").change(function () {
     updateDatePickerValues()

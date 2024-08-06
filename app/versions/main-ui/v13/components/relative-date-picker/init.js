@@ -12,7 +12,7 @@ $(function () {
 
   $("input[name='filters.date.end']").change(function () {
     const { optionsValue } = getRangeValues()
-    if (optionsValue && optionsValue === 'from-end-date' && $("input[name='use-relative-date']").is(":checked")) {
+    if (optionsValue && optionsValue === 'from-end-date' && $("input[name='use-relative-date']").is(':checked')) {
       updateDatePickerValues()
     }
   })
