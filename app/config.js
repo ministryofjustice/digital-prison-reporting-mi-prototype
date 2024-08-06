@@ -51,7 +51,8 @@ module.exports = {
     { path: '/app/v6-search-box.js', location: '/app/versions/operational-reporting/v6/components/search-box/init.js' },
     { path: '/app/v6-view-toggle.js', location: '/app/versions/operational-reporting/v6/components/view-toggle/init.js' },
     { path: '/app/v12-search-box.js', location: '/app/versions/main-ui/v12/components/search-box/init.js' },
-    { path: '/app/v13-relative-date-range.js', location: '/app/versions/main-ui/v13/components/relative-date-picker/init.js' }
+    { path: '/app/v13-relative-date-range.js', location: '/app/versions/main-ui/v13/components/relative-date-picker/init.js' },
+    { path: '/app/v14-relative-date-range.js', location: '/app/versions/main-ui/v14/components/relative-date-picker/init.js' }
   ],
   stylesheets: []
 }

@@ -51,8 +51,8 @@
       <div>
       {{ govukRadios({
         classes: 'govuk-radios--small',
-        id: 'relative-date-radio',
-        name: 'relative-date-radio',
+        id: 'relative-date-duration',
+        name: 'relative-date-duration',
         formGroup: {
           classes: "govuk-!-margin-bottom-3"
         },
@@ -94,8 +94,8 @@
       <div>
       {{ govukRadios({
         classes: 'govuk-radios--small',
-        id: 'relative-date-start-radio',
-        name: 'relative-date-start-radio',
+        id: 'relative-date-options',
+        name: 'relative-date-options',
         fieldset: {
           legend: {
             text: 'Options',
@@ -104,42 +104,19 @@
         },
         items: [
           {
-            value: "from-today",
-            text: "From today"
+            value: "prior",
+            text: "In the past"
           },
           {
-            value: "from-start",
-            text: "From start of time period"
-          },
-          {
-            value: "from-end-date",
-            text: "From end date"
-          },
-          {
-            value: "include-current",
-            text: "Include current"
+            value: "future",
+            text: "In the future"
           }
         ],
-        value: 'from-today'
+        value: 'prior'
       }) }}
       </div>
     </div>
-    {% set rangeOptionsExplainedHtml %}
-      <ul class="govuk-list">
-        <li><strong>From today</strong> - The range is relative from today</li>
-        <li><strong>From start of time period</strong> - The range is relative from the start of the week, month, year. Weeks go from Sunday to Sunday</li>
-        <li><strong>From end date</strong> - The range is relative to the end date you have selected in the end date input</li>
-        <li><strong>Include current</strong> - The range is relative to the end of the current week, month, year. </li>
-      <ul>
-    {% endset %}
-
-    {{ govukDetails({
-      summaryText: "Range options explained",
-      html: rangeOptionsExplainedHtml
-    }) }}
     {% endset -%}
-
-
 
     <div class="dpr-filter-item__span-2">
     {{ govukCheckboxes({

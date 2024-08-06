@@ -8,12 +8,16 @@ $(function () {
     updateDatePickerValues()
   });
 
+  $("input[name='filters.date.end']").change(function () {
+    const { optionsValue } = getRangeValues()
+    if (optionsValue && optionsValue === 'from-end-date' && $("input[name='use-relative-date']").is(":checked")) {
+      updateDatePickerValues()
+    }
+  });
+
   const updateDatePickerValues = () => {
     const { rangeValue, optionsValue } = getRangeValues()
-    console.log({ rangeValue, optionsValue })
-
     const { startDate, endDate } = setDateValues(rangeValue, optionsValue)
-    console.log({ startDate, endDate })
 
     setDatepickerValues(startDate, endDate)
   }
@@ -49,6 +53,9 @@ $(function () {
         break;
       case 'include-current':
         ({ startDate, endDate } = setDateValuesFromCurrent(rangeValue))
+        break;
+      case 'from-end-date':
+        ({ startDate, endDate } = setDateValuesFromEndDate(rangeValue))
         break;
       default:
         break;
@@ -160,6 +167,40 @@ $(function () {
       case '1year':
         endDate = dayjs().endOf('year')
         startDate = dayjs().endOf('year').subtract(1, 'year')
+        break;
+      default:
+        break;
+    }
+
+    return {
+      startDate,
+      endDate
+    }
+  }
+
+  const setDateValuesFromEndDate = (rangeValue) => {
+    const endDateString = $("input[name='filters.date.end']").val()
+    const endDate = dayjs(endDateString)
+    let startDate
+
+    switch (rangeValue) {
+      case '1week':
+        startDate = endDate.subtract(1, 'week')
+        break;
+      case '2weeks':
+        startDate = endDate.subtract(2, 'week')
+        break;
+      case '1month':
+        startDate = endDate.subtract(1, 'month')
+        break;
+      case '3months':
+        startDate = endDate.subtract(3, 'month')
+        break;
+      case '6months':
+        startDate = endDate.subtract(6, 'month')
+        break;
+      case '1year':
+        startDate = endDate.subtract(1, 'year')
         break;
       default:
         break;
