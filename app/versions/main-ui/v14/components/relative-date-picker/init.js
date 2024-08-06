@@ -2,37 +2,37 @@
 $(function () {
   $("input[name='relative-date-duration']").change(function () {
     updateDatePickerValues()
-  });
+  })
 
   $("input[name='relative-date-options']").change(function () {
     updateDatePickerValues()
-  });
+  })
 
   $("input[name='use-relative-date']").change(function () {
-    if ($("input[name='use-relative-date']").is(":checked")) {
+    if ($("input[name='use-relative-date']").is(':checked')) {
       updateDatePickerValues()
     }
   })
 
   $("input[name='filters.date.end']").change(function () {
     const { optionsValue } = getRangeValues()
-    if (optionsValue && optionsValue === 'prior' && $("input[name='use-relative-date']").is(":checked")) {
+    if (optionsValue && optionsValue === 'prior' && $("input[name='use-relative-date']").is(':checked')) {
       updateDatePickerValues()
     }
-    if (optionsValue && optionsValue === 'future' && $("input[name='use-relative-date']").is(":checked")) {
+    if (optionsValue && optionsValue === 'future' && $("input[name='use-relative-date']").is(':checked')) {
       $("input[name='use-relative-date").trigger('click')
     }
-  });
+  })
 
   $("input[name='filters.date.start']").change(function () {
     const { optionsValue } = getRangeValues()
-    if (optionsValue && optionsValue === 'future' && $("input[name='use-relative-date']").is(":checked")) {
+    if (optionsValue && optionsValue === 'future' && $("input[name='use-relative-date']").is(':checked')) {
       updateDatePickerValues()
     }
-    if (optionsValue && optionsValue === 'prior' && $("input[name='use-relative-date']").is(":checked")) {
+    if (optionsValue && optionsValue === 'prior' && $("input[name='use-relative-date']").is(':checked')) {
       $("input[name='use-relative-date").trigger('click')
     }
-  });
+  })
 
   const updateDatePickerValues = () => {
     const { rangeValue, optionsValue } = getRangeValues()

@@ -1,4 +1,6 @@
 /* global $ */
+/* global dayjs */
+
 $(function () {
   $("input[name='relative-date-radio']").change(function () {
     updateDatePickerValues()
@@ -47,18 +49,18 @@ $(function () {
     switch (optionsValue) {
       case 'from-today':
         ({ startDate, endDate } = setDateValuesFromToday(rangeValue))
-        break;
+        break
       case 'from-start':
         ({ startDate, endDate } = setDateValuesFromStart(rangeValue))
-        break;
+        break
       case 'include-current':
         ({ startDate, endDate } = setDateValuesFromCurrent(rangeValue))
-        break;
+        break
       case 'from-end-date':
         ({ startDate, endDate } = setDateValuesFromEndDate(rangeValue))
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
@@ -69,29 +71,29 @@ $(function () {
 
   const setDateValuesFromToday = (rangeValue) => {
     let startDate
-    let endDate = dayjs()
+    const endDate = dayjs()
 
     switch (rangeValue) {
       case '1week':
         startDate = dayjs().subtract(1, 'week')
-        break;
+        break
       case '2weeks':
         startDate = dayjs().subtract(2, 'week')
-        break;
+        break
       case '1month':
         startDate = dayjs().subtract(1, 'month')
-        break;
+        break
       case '3months':
         startDate = dayjs().subtract(3, 'month')
-        break;
+        break
       case '6months':
         startDate = dayjs().subtract(6, 'month')
-        break;
+        break
       case '1year':
         startDate = dayjs().subtract(1, 'year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
@@ -108,29 +110,29 @@ $(function () {
       case '1week':
         endDate = dayjs().startOf('week')
         startDate = endDate.subtract(1, 'week')
-        break;
+        break
       case '2weeks':
         endDate = dayjs().startOf('week')
         startDate = endDate.subtract(2, 'week')
-        break;
+        break
       case '1month':
         endDate = dayjs().startOf('month')
         startDate = dayjs().subtract(1, 'month').startOf('month')
-        break;
+        break
       case '3months':
         endDate = dayjs().startOf('month')
         startDate = dayjs().subtract(2, 'month').startOf('month')
-        break;
+        break
       case '6months':
         endDate = dayjs().startOf('month')
         startDate = dayjs().subtract(6, 'month').startOf('month')
-        break;
+        break
       case '1year':
         endDate = dayjs().startOf('year')
         startDate = dayjs().subtract(1, 'year').startOf('year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {

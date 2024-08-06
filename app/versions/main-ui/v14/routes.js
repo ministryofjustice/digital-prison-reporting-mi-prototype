@@ -44,7 +44,7 @@ let recentlyViewed = []
 let requested = []
 
 router.get('', [handlers.configureCurrentUrl, handlers.configureNavigation, function (req, res) {
-  res.render(`main-ui/v10/views/home`, {
+  res.render('main-ui/v10/views/home', {
     ...req.renderOptions,
     title: 'Asynchronous Reports',
     recentlyViewed,
@@ -247,7 +247,7 @@ router.get('/requested/:requestId', [
   (req, res) => {
     const requestId = req.params.requestId
     const requestData = requested.find((r) => r.requestId === requestId)
-    res.render(`main-ui/v10/views/list-polling`, {
+    res.render('main-ui/v10/views/list-polling', {
       ...req.renderOptions,
       reportName: 'External Movements',
       requestData,
