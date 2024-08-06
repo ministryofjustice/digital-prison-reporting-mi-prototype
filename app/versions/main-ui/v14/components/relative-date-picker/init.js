@@ -50,8 +50,8 @@ $(function () {
   }
 
   const getRangeValues = () => {
-    const rangeValue = $("input[name='relative-date-duration']:checked").val();
-    const optionsValue = $("input[name='relative-date-options']:checked").val();
+    const rangeValue = $("input[name='relative-date-duration']:checked").val()
+    const optionsValue = $("input[name='relative-date-options']:checked").val()
 
     return {
       rangeValue,
@@ -66,12 +66,12 @@ $(function () {
     switch (optionsValue) {
       case 'prior':
         ({ startDate, endDate } = setDateValuesPrior(rangeValue))
-        break;
+        break
       case 'future':
         ({ startDate, endDate } = setDateValuesFuture(rangeValue))
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
@@ -88,24 +88,24 @@ $(function () {
     switch (rangeValue) {
       case '1week':
         startDate = endDate.subtract(1, 'week')
-        break;
+        break
       case '2weeks':
         startDate = endDate.subtract(2, 'week')
-        break;
+        break
       case '1month':
         startDate = endDate.subtract(1, 'month')
-        break;
+        break
       case '3months':
         startDate = endDate.subtract(3, 'month')
-        break;
+        break
       case '6months':
         startDate = endDate.subtract(6, 'month')
-        break;
+        break
       case '1year':
         startDate = endDate.subtract(1, 'year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
@@ -122,24 +122,24 @@ $(function () {
     switch (rangeValue) {
       case '1week':
         endDate = startDate.add(1, 'week')
-        break;
+        break
       case '2weeks':
         endDate = startDate.add(2, 'week')
-        break;
+        break
       case '1month':
         endDate = startDate.add(1, 'month')
-        break;
+        break
       case '3months':
         endDate = startDate.add(3, 'month')
-        break;
+        break
       case '6months':
         endDate = startDate.add(6, 'month')
-        break;
+        break
       case '1year':
         endDate = startDate.add(1, 'year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {

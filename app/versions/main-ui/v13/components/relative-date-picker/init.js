@@ -2,18 +2,18 @@
 $(function () {
   $("input[name='relative-date-radio']").change(function () {
     updateDatePickerValues()
-  });
+  })
 
   $("input[name='relative-date-start-radio']").change(function () {
     updateDatePickerValues()
-  });
+  })
 
   $("input[name='filters.date.end']").change(function () {
     const { optionsValue } = getRangeValues()
     if (optionsValue && optionsValue === 'from-end-date' && $("input[name='use-relative-date']").is(":checked")) {
       updateDatePickerValues()
     }
-  });
+  })
 
   const updateDatePickerValues = () => {
     const { rangeValue, optionsValue } = getRangeValues()
@@ -31,8 +31,8 @@ $(function () {
   }
 
   const getRangeValues = () => {
-    const rangeValue = $("input[name='relative-date-radio']:checked").val();
-    const optionsValue = $("input[name='relative-date-start-radio']:checked").val();
+    const rangeValue = $("input[name='relative-date-radio']:checked").val()
+    const optionsValue = $("input[name='relative-date-start-radio']:checked").val()
 
     return {
       rangeValue,
@@ -147,29 +147,29 @@ $(function () {
       case '1week':
         endDate = dayjs().endOf('week')
         startDate = dayjs().endOf('week').subtract(1, 'week')
-        break;
+        break
       case '2weeks':
         endDate = dayjs().endOf('week')
         startDate = dayjs().endOf('week').subtract(2, 'week')
-        break;
+        break
       case '1month':
         endDate = dayjs().endOf('month')
         startDate = dayjs().endOf('month').subtract(1, 'month')
-        break;
+        break
       case '3months':
         endDate = dayjs().endOf('month')
         startDate = dayjs().endOf('month').subtract(3, 'month')
-        break;
+        break
       case '6months':
         endDate = dayjs().endOf('month')
         startDate = dayjs().endOf('month').subtract(6, 'month')
-        break;
+        break
       case '1year':
         endDate = dayjs().endOf('year')
         startDate = dayjs().endOf('year').subtract(1, 'year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
@@ -186,24 +186,24 @@ $(function () {
     switch (rangeValue) {
       case '1week':
         startDate = endDate.subtract(1, 'week')
-        break;
+        break
       case '2weeks':
         startDate = endDate.subtract(2, 'week')
-        break;
+        break
       case '1month':
         startDate = endDate.subtract(1, 'month')
-        break;
+        break
       case '3months':
         startDate = endDate.subtract(3, 'month')
-        break;
+        break
       case '6months':
         startDate = endDate.subtract(6, 'month')
-        break;
+        break
       case '1year':
         startDate = endDate.subtract(1, 'year')
-        break;
+        break
       default:
-        break;
+        break
     }
 
     return {
