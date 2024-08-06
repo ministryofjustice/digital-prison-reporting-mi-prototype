@@ -1,0 +1,157 @@
+
+{% from "govuk/components/input/macro.njk"        import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk"   import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk"       import govukRadios %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+<div class="date-range-input govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-label govuk-!-font-weight-bold">
+      {{ filter.text }}
+    </legend>
+
+    <div class="dpr-datepicker-container"> 
+    <div class='dpr-date-picker-input'>
+    {{ govukInput({
+      id: 'filters.' + filter.name + '.start',
+      label: {
+        text: 'Start'
+      },
+      formGroup: {
+        classes: "govuk-!-margin-bottom-3"
+      },
+      name: 'filters.' + filter.name + '.start',
+      value: filter.value.start,
+      type: 'date',
+      attributes: {
+        max: getTodayIsoDate()
+      }
+    }) }}
+    </div>
+
+    <div class='dpr-date-picker-input'>
+    {{ govukInput({
+      id: 'filters.' + filter.name + '.end',
+      label: {
+        text: 'End'
+      },
+      name: 'filters.' + filter.name + '.end',
+      value: filter.value.end,
+      type: 'date',
+      attributes: {
+        max: getTodayIsoDate()
+      }
+    }) }}
+    </div>
+
+    {% set relativeRadioHtml %}
+      <div class="dpr-datepicker-container">
+
+
+      <div>
+      {{ govukRadios({
+        classes: 'govuk-radios--small',
+        id: 'relative-date-radio',
+        name: 'relative-date-radio',
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        fieldset: {
+          legend: {
+            text: 'Range',
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: [
+          {
+            value: "1week",
+            text: "7 days"
+          },
+          {
+            value: "2weeks",
+            text: "14 days"
+          },
+          {
+            value: "1month",
+            text: "1 month"
+          },
+          {
+            value: "3months",
+            text: "3 months"
+          },
+          {
+            value: "6months",
+            text: "6 months"
+          },
+          {
+            value: "1year",
+            text: "1 year"
+          }
+        ],
+        value: filter.value
+      }) }}
+      </div>
+      <div>
+      {{ govukRadios({
+        classes: 'govuk-radios--small',
+        id: 'relative-date-start-radio',
+        name: 'relative-date-start-radio',
+        fieldset: {
+          legend: {
+            text: 'Options',
+            classes: "govuk-label govuk-!-font-weight-bold"
+          }
+        },
+        items: [
+          {
+            value: "from-today",
+            text: "From today"
+          },
+          {
+            value: "from-start",
+            text: "From start of time period"
+          },
+          {
+            value: "include-current",
+            text: "Include current"
+          }
+        ],
+        value: 'from-today'
+      }) }}
+      </div>
+    </div>
+    {% set rangeOptionsExplainedHtml %}
+      <ul class="govuk-list">
+        <li><strong>From today</strong> - The range is relative from today</li>
+        <li><strong>From start of time period</strong> - The range is relative from the start of the week, month, year. Weeks go from Sunday to Sunday</li>
+        <li><strong>Include current</strong> - The range is relative to the end of the current week, month, year. </li>
+      <ul>
+    {% endset %}
+
+    {{ govukDetails({
+      summaryText: "Range options explained",
+      html: rangeOptionsExplainedHtml
+    }) }}
+    {% endset -%}
+
+
+
+    <div class="dpr-filter-item__span-2">
+    {{ govukCheckboxes({
+      name: "Relative Date",
+      classes: "govuk-checkboxes--small",
+      items: [
+        {
+          id: "relative-date-range-toggle",
+          value: "relative-date",
+          text: "Relative Range",
+          conditional: {
+            html: relativeRadioHtml
+          }
+        }
+      ]
+    }) }}
+    </div>
+
+  </fieldset>
+</div>
