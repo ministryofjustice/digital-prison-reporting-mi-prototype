@@ -1,0 +1,54 @@
+.dpr-filter-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+
+  .govuk-list {
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  .govuk-details__summary {
+    margin-top: 10px;
+  }
+
+  .govuk-form-group {
+    margin-bottom: 0px;
+  }
+
+  .date-range-input {
+    max-width: none;
+  }
+
+  .dpr-filter-item {
+    border-bottom: 2px Solid #b1b4b6;
+    background-color: #fafaf9;
+    padding: 20px;
+  }
+
+  .dpr-filter-item__span-2 {
+    grid-column: span 2;
+
+    .dpr-datepicker-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 15px;
+    }
+  }
+
+  .dpr-relative-range-radio {
+    margin-bottom: 0px;
+
+    .govuk-radios {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .govuk-radios__item {
+        float: none;
+      }
+    }
+  }
+}
