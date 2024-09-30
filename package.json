@@ -53,7 +53,7 @@
     "nunjucks": "^3.2.4",
     "portscanner": "^2.2.0",
     "require-dir": "^1.2.0",
-    "sass": "^1.76.0",
+    "sass": "^1.79.4",
     "universal-analytics": "^0.5.3",
     "uuid": "^9.0.1"
   },
