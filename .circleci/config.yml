@@ -94,10 +94,6 @@ workflows:
       - integration_test:
           requires:
             - build
-      - hmpps/npm_security_audit:
-          slack_channel: << pipeline.parameters.alerts-slack-channel >>
-          context:
-            - hmpps-common-vars
 
   security:
     triggers:
