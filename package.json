@@ -28,7 +28,7 @@
     "chartjs-plugin-labels": "^1.1.0",
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.7",
-    "cross-spawn": "^7.0.5",
+    "cross-spawn": "^7.0.6",
     "del": "^6.1.1",
     "dotenv": "^16.4.7",
     "eslint-plugin-cypress": "^4.1.0",
