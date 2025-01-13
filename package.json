@@ -55,7 +55,7 @@
     "require-dir": "^1.2.0",
     "sass": "^1.83.1",
     "universal-analytics": "^0.5.3",
-    "uuid": "^11.0.2"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "cypress": "13.17.0",
