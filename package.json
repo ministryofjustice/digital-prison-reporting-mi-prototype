@@ -44,7 +44,7 @@
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^6.0.0",
-    "inquirer": "^12.3.0",
+    "inquirer": "^12.3.1",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
     "marked": "^15.0.6",
