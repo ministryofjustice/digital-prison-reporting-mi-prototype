@@ -64,7 +64,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-jasmine2": "^29.7.0",
     "standard": "^17.1.2",
-    "start-server-and-test": "^2.0.9",
+    "start-server-and-test": "^2.0.10",
     "supertest": "^6.3.4"
   },
   "overrides": {
