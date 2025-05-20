@@ -44,7 +44,7 @@
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^5.1.0",
-    "inquirer": "^12.3.2",
+    "inquirer": "^8.2.4",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
     "marked": "^15.0.6",
@@ -68,7 +68,10 @@
     "supertest": "^6.3.4"
   },
   "overrides": {
-    "axios": "^1.6.2",
+    "eazy-logger": ">=4.1.0",
+    "braces": "3.0.3",
+    "micromatch": "4.0.8",
+    "axios": "^1.8.2",
     "glob-parent": "^6.0.2",
     "semver": "^7.5.3"
   },
