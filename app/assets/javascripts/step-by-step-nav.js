@@ -10,6 +10,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Modules.AppStepNav = function () {
     const actions = {} // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
+
+    // Utility function to escape HTML special characters
+    function escapeHTML (str) {
+      return str.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+    }
+
     let rememberShownStep = false
     let stepNavSize
     let sessionStoreLink = 'govuk-step-nav-active-link'
@@ -62,7 +72,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       function addShowHideAllButton () {
-        $element.prepend('<div class="app-step-nav__controls"><button aria-expanded="false" class="app-step-nav__button app-step-nav__button--controls js-step-controls-button">' + actions.showAllText + '</button></div>')
+        $element.prepend('<div class="app-step-nav__controls"><button aria-expanded="false" class="app-step-nav__button app-step-nav__button--controls js-step-controls-button">' + escapeHTML(actions.showAllText) + '</button></div>')
       }
 
       function addShowHideToggle () {
@@ -268,7 +278,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
           if ($showOrHideAllButton.text() === actions.showAllText) {
             $showOrHideAllButton.text(actions.hideAllText)
-            $element.find('.js-toggle-link').html(actions.hideText)
+            $element.find('.js-toggle-link').text(actions.hideText)
             shouldshowAll = true
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllShown', {
@@ -276,7 +286,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             })
           } else {
             $showOrHideAllButton.text(actions.showAllText)
-            $element.find('.js-toggle-link').html(actions.showText)
+            $element.find('.js-toggle-link').text(actions.showText)
             shouldshowAll = false
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllHidden', {
@@ -334,7 +344,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         $stepElement.toggleClass('step-is-shown', isShown)
         $stepContent.toggleClass('js-hidden', !isShown)
         $titleLink.attr('aria-expanded', isShown)
-        $stepElement.find('.js-toggle-link').html(isShown ? actions.hideText : actions.showText)
+        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideText : actions.showText)
       }
 
       function isShown () {
